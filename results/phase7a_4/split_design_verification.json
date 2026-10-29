@@ -1,0 +1,341 @@
+{
+  "audit_phase": "Phase 7A.4 \u2014 Job-Grouped Split Redesign and Leakage Verification",
+  "timestamp_iso": "2026-10-27T23:25:00+05:30",
+  "source_files": {
+    "train_metadata_repaired.csv": {
+      "path": "c:/Users/hp/Desktop/Research project/data/processed/phase7a_diagnostic/train_metadata_repaired.csv",
+      "size_bytes": 115217,
+      "sha256": "e012ab201aa4525b78dae855d124d2785a70c3061cd3c1006d1ba83aa1430897"
+    },
+    "val_metadata_repaired.csv": {
+      "path": "c:/Users/hp/Desktop/Research project/data/processed/phase7a_diagnostic/val_metadata_repaired.csv",
+      "size_bytes": 27795,
+      "sha256": "833ed347f715de8026b0ac6b978fe5afbf1d543a23d7641981343b83095e288d"
+    },
+    "test_metadata_repaired.csv": {
+      "path": "c:/Users/hp/Desktop/Research project/data/processed/phase7a_diagnostic/test_metadata_repaired.csv",
+      "size_bytes": 27345,
+      "sha256": "abeb4ca0cf8642ba1d0a16fe449ce3f1e2949776a0cdd55a5fafca5e5331aa09"
+    },
+    "confirmatory_metadata_repaired.csv": {
+      "path": "c:/Users/hp/Desktop/Research project/data/processed/phase7a_diagnostic/confirmatory_metadata_repaired.csv",
+      "size_bytes": 150883,
+      "sha256": "964e26a5a4ee2aef4f8cf37fd1fb516f7bd823efa4b935d181347fc078e75625"
+    },
+    "X_train_repaired.npy": {
+      "path": "c:/Users/hp/Desktop/Research project/data/processed/phase7a_diagnostic/X_train_repaired.npy",
+      "size_bytes": 2105028,
+      "sha256": "ef3bc8e7ed6dc1cefd2e03c3ce581ceb1eed37814bfc27bf95590eed8ee293cf"
+    },
+    "X_val_repaired.npy": {
+      "path": "c:/Users/hp/Desktop/Research project/data/processed/phase7a_diagnostic/X_val_repaired.npy",
+      "size_bytes": 482488,
+      "sha256": "2774b50a4e3ff840b3a0c9b71c34e2224049add9284f94a9512c944f82564140"
+    },
+    "X_test_repaired.npy": {
+      "path": "c:/Users/hp/Desktop/Research project/data/processed/phase7a_diagnostic/X_test_repaired.npy",
+      "size_bytes": 488068,
+      "sha256": "b1497a7034d24bd2ad5ac0db2ec08dbb389ff75dbc06edc2160824d988467aa4"
+    },
+    "y_train_repaired.npy": {
+      "path": "c:/Users/hp/Desktop/Research project/data/processed/phase7a_diagnostic/y_train_repaired.npy",
+      "size_bytes": 27288,
+      "sha256": "2f09005b6a56f3e8ea237984aca474c75b91dc61fd5cfb1891beba92c3155972"
+    },
+    "y_val_repaired.npy": {
+      "path": "c:/Users/hp/Desktop/Research project/data/processed/phase7a_diagnostic/y_val_repaired.npy",
+      "size_bytes": 6352,
+      "sha256": "df32bba10edc2d086955239c1625f77de50f4f213f03ed1fa6e64348e0bd20db"
+    },
+    "y_test_repaired.npy": {
+      "path": "c:/Users/hp/Desktop/Research project/data/processed/phase7a_diagnostic/y_test_repaired.npy",
+      "size_bytes": 6424,
+      "sha256": "7695bb1ed4a383f4c2c000adcad859fbd6c5098dcd6aab6bfdcbd4c007cc3986"
+    }
+  },
+  "dataset_totals": {
+    "total_windows": 4960,
+    "total_entities": 412,
+    "total_parent_jobs": 74,
+    "label_counts": {
+      "normal": 4278,
+      "warning": 341,
+      "critical": 341
+    },
+    "failing_jobs_count": 50,
+    "pure_normal_jobs_count": 24
+  },
+  "candidate_a": {
+    "design_name": "Candidate A: Stratified Group Split by Parent Job",
+    "random_seed": 48,
+    "stratification_strategy": "Strata on parent-job critical window density and pure-normal status",
+    "pairwise_overlap": {
+      "train_val_job_overlap": 0,
+      "train_test_job_overlap": 0,
+      "val_test_job_overlap": 0
+    },
+    "splits": {
+      "train": {
+        "parent_jobs": 51,
+        "entities": 284,
+        "windows": 3278,
+        "window_pct": 66.09,
+        "normal_windows": 2797,
+        "warning_windows": 244,
+        "critical_windows": 237,
+        "normal_pct": 65.38,
+        "warning_pct": 71.55,
+        "critical_pct": 69.5,
+        "min_timestamp": 5100.0,
+        "max_timestamp": 10800.0,
+        "job_ids": [
+          "3998246322",
+          "4861489847",
+          "5007599851",
+          "5130456910",
+          "5402488769",
+          "5494054149",
+          "5576497561",
+          "5633010278",
+          "5633010856",
+          "5633011441",
+          "5633011727",
+          "5633011919",
+          "5633012381",
+          "5799763220",
+          "5921809619",
+          "5966089485",
+          "609252516",
+          "609260421",
+          "6124898063",
+          "6127648867",
+          "6167397602",
+          "6176114691",
+          "6184966843",
+          "6207106814",
+          "6217796840",
+          "6221861800",
+          "6224307516",
+          "6236432122",
+          "6236432374",
+          "6237265030",
+          "6238340468",
+          "6238837081",
+          "6238837822",
+          "6238838528",
+          "6238839290",
+          "6238842108",
+          "6238843875",
+          "6249158050",
+          "6249977622",
+          "6250505806",
+          "6251100019",
+          "6251277720",
+          "6251414911",
+          "6251441029",
+          "6251451037",
+          "6251480205",
+          "6251812952",
+          "6251904229",
+          "6251949326",
+          "6251995937",
+          "6252065564"
+        ]
+      },
+      "val": {
+        "parent_jobs": 12,
+        "entities": 69,
+        "windows": 657,
+        "window_pct": 13.25,
+        "normal_windows": 560,
+        "warning_windows": 48,
+        "critical_windows": 49,
+        "normal_pct": 13.09,
+        "warning_pct": 14.08,
+        "critical_pct": 14.37,
+        "min_timestamp": 5100.0,
+        "max_timestamp": 10800.0,
+        "job_ids": [
+          "4665617026",
+          "6127571078",
+          "6177502198",
+          "6233966714",
+          "6237552348",
+          "6238836357",
+          "6238840043",
+          "6238842343",
+          "6250023935",
+          "6251664479",
+          "6251933641",
+          "698645235"
+        ]
+      },
+      "test": {
+        "parent_jobs": 11,
+        "entities": 59,
+        "windows": 1025,
+        "window_pct": 20.67,
+        "normal_windows": 921,
+        "warning_windows": 49,
+        "critical_windows": 55,
+        "normal_pct": 21.53,
+        "warning_pct": 14.37,
+        "critical_pct": 16.13,
+        "min_timestamp": 5100.0,
+        "max_timestamp": 10800.0,
+        "job_ids": [
+          "1650628364",
+          "5633010199",
+          "5633011295",
+          "5664371117",
+          "6127642779",
+          "6238835298",
+          "6238835525",
+          "6238841354",
+          "6238843128",
+          "6238844615",
+          "6251639598"
+        ]
+      }
+    }
+  },
+  "candidate_b": {
+    "design_name": "Candidate B: Temporal Group Split Constrained by Parent Jobs",
+    "method": "Ordered by parent-job mean prediction timestamp",
+    "pairwise_overlap": {
+      "train_val_job_overlap": 0,
+      "train_test_job_overlap": 0,
+      "val_test_job_overlap": 0
+    },
+    "splits": {
+      "train": {
+        "parent_jobs": 62,
+        "entities": 233,
+        "windows": 3261,
+        "window_pct": 65.75,
+        "normal_windows": 2819,
+        "warning_windows": 219,
+        "critical_windows": 223,
+        "normal_pct": 65.9,
+        "warning_pct": 64.22,
+        "critical_pct": 65.4,
+        "min_timestamp": 5100.0,
+        "max_timestamp": 10800.0,
+        "job_ids": [
+          "1650628364",
+          "3998246322",
+          "4665617026",
+          "4861489847",
+          "5007599851",
+          "5130456910",
+          "5402488769",
+          "5494054149",
+          "5576497561",
+          "5633010199",
+          "5633010278",
+          "5633010856",
+          "5633011295",
+          "5633011441",
+          "5633011727",
+          "5633011919",
+          "5633012381",
+          "5664371117",
+          "5799763220",
+          "5921809619",
+          "5966089485",
+          "609252516",
+          "609260421",
+          "6124898063",
+          "6127571078",
+          "6127642779",
+          "6127648867",
+          "6167397602",
+          "6176114691",
+          "6177502198",
+          "6184966843",
+          "6207106814",
+          "6217796840",
+          "6221861800",
+          "6224307516",
+          "6233966714",
+          "6236432122",
+          "6236432374",
+          "6237265030",
+          "6237552348",
+          "6238340468",
+          "6238835298",
+          "6238835525",
+          "6238836357",
+          "6238837081",
+          "6238837822",
+          "6238838528",
+          "6238839290",
+          "6238840043",
+          "6238841354",
+          "6238842108",
+          "6238842343",
+          "6238843128",
+          "6238844615",
+          "6249977622",
+          "6250505806",
+          "6251100019",
+          "6251414911",
+          "6251441029",
+          "6251480205",
+          "6251812952",
+          "6251904229"
+        ]
+      },
+      "val": {
+        "parent_jobs": 3,
+        "entities": 9,
+        "windows": 180,
+        "window_pct": 3.63,
+        "normal_windows": 173,
+        "warning_windows": 4,
+        "critical_windows": 3,
+        "normal_pct": 4.04,
+        "warning_pct": 1.17,
+        "critical_pct": 0.88,
+        "min_timestamp": 5100.0,
+        "max_timestamp": 10800.0,
+        "job_ids": [
+          "6238843875",
+          "6249158050",
+          "6250023935"
+        ]
+      },
+      "test": {
+        "parent_jobs": 9,
+        "entities": 170,
+        "windows": 1519,
+        "window_pct": 30.63,
+        "normal_windows": 1286,
+        "warning_windows": 118,
+        "critical_windows": 115,
+        "normal_pct": 30.06,
+        "warning_pct": 34.6,
+        "critical_pct": 33.72,
+        "min_timestamp": 5100.0,
+        "max_timestamp": 10800.0,
+        "job_ids": [
+          "6251277720",
+          "6251451037",
+          "6251639598",
+          "6251664479",
+          "6251933641",
+          "6251949326",
+          "6251995937",
+          "6252065564",
+          "698645235"
+        ]
+      }
+    }
+  },
+  "generalization_trade_offs": {
+    "candidate_a": "Evaluates generalization across unseen jobs/workloads arriving at the cluster. Preserves excellent class balance (Crit: 69.5% Tr, 14.4% Va, 16.1% Te; Warn: 71.6% Tr, 14.1% Va, 14.4% Te).",
+    "candidate_b": "Attempts temporal ordering by mean job time, but cannot achieve true chronological isolation due to 91.9% concurrency. Severely starves validation (only 3 jobs, 180 windows, 3 critical windows = 0.9%).",
+    "recommendation": "Recommend Candidate A (Stratified Group Split by Parent Job, Seed 48). It provides rigorous 0% parent-job leakage while preserving robust statistical power for minority failure classes."
+  },
+  "verdict": "SPLIT DESIGN VERIFIED"
+}

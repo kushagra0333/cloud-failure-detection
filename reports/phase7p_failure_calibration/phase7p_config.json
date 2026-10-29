@@ -1,0 +1,95 @@
+{
+  "phase": "Phase 7P",
+  "name": "Leakage-Safe Failure-Risk Calibration and Operating-Threshold Selection",
+  "project_root": "C:\\Users\\hp\\Desktop\\Research project",
+  "date": "2026-10-29",
+  "governance": {
+    "split_id": "Candidate_A_Job_Grouped_Split",
+    "split_hash": "f84bc4fe54f8e0583e2ee52f49b2fbe8e6fcafb4f020c656985a1acc31bb4946",
+    "authorized_partitions": ["Candidate_A_Train", "Candidate_A_Validation"],
+    "forbidden_partitions": ["Candidate_A_Test", "Phase6_Confirmatory_Holdout"],
+    "train_samples": 3278,
+    "val_samples": 657
+  },
+  "candidate_model": {
+    "architecture": "MultiResolutionLSTMClassifier",
+    "recent_seq_len": 5,
+    "recent_features": 31,
+    "historical_seq_len": 7,
+    "historical_features": 93,
+    "param_count": 67027,
+    "loss": "AsymmetricCriticalMarginLoss",
+    "class_weights": [1.0, 2.0, 2.0],
+    "auxiliary_margin": 0.50,
+    "lambda_crit": 0.10,
+    "seeds": [42, 123, 456]
+  },
+  "oof_generation": {
+    "strategy": "ParentJobGroupedKFold",
+    "n_folds": 5,
+    "parent_job_field": "parent_job_id",
+    "train_parent_jobs": 51,
+    "epochs_per_fold": 25,
+    "batch_size": 64,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001
+  },
+  "calibration": {
+    "primary_method": "PlattScaling",
+    "secondary_method": "IsotonicRegression",
+    "input_score": "logit(clip(P_fail, 1e-6, 1-1e-6))",
+    "target": "y_fail = (y > 0).astype(int)",
+    "training_data": "Candidate_A_Train_Out_Of_Fold_Only"
+  },
+  "threshold_selection": {
+    "candidate_grid": {
+      "min": 0.0,
+      "max": 1.0,
+      "step": 0.005,
+      "total_points": 201
+    },
+    "selection_data": "Candidate_A_Train_Out_Of_Fold_Only",
+    "specificity_constraints": {
+      "pure_normal_entity_far_max": 10.0,
+      "normal_window_fpr_max": 5.0
+    },
+    "prioritization": [
+      "Satisfy specificity constraints on Train OOF",
+      "Maximize mean Episode Recall across seeds",
+      "Maximize mean Genuine Critical Recall across seeds",
+      "Conservative tie-break (largest threshold)"
+    ]
+  },
+  "evaluation_policies": {
+    "V0": {
+      "name": "Historical Raw Reference",
+      "score": "P_fail (raw)",
+      "threshold": 0.50,
+      "margin_rule": "z2 - z1 >= 0.50"
+    },
+    "V1": {
+      "name": "Calibrated Primary Treatment",
+      "score": "q_fail (Platt)",
+      "threshold": "Preselected tau from Train OOF",
+      "margin_rule": "z2 - z1 >= 0.50"
+    },
+    "V2": {
+      "name": "Isotonic Comparison",
+      "score": "q_fail (Isotonic)",
+      "threshold": "Preselected tau from Train OOF",
+      "margin_rule": "z2 - z1 >= 0.50"
+    },
+    "V3": {
+      "name": "Uncalibrated Diagnostic",
+      "score": "P_fail (raw)",
+      "threshold": "Preselected tau from Train OOF",
+      "margin_rule": "z2 - z1 >= 0.50"
+    }
+  },
+  "operational_gates": {
+    "gate_1a": {"name": "Episode Recall", "threshold": 0.70, "comparator": ">="},
+    "gate_1b": {"name": "Genuine Critical Recall", "threshold": 0.50, "comparator": ">="},
+    "gate_2a": {"name": "Pure-Normal Entity FAR", "threshold": 0.10, "comparator": "<="},
+    "gate_2b": {"name": "Normal-Window FPR", "threshold": 0.05, "comparator": "<="}
+  }
+}

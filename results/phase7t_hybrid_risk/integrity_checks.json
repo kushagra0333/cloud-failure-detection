@@ -1,0 +1,22 @@
+{
+  "tests": {
+    "check_01_authorized_inputs_only": true,
+    "check_02_zero_access_prohibited_partitions": true,
+    "check_03_exact_row_alignment": true,
+    "check_04_hybrid_formula_exactness": true,
+    "check_05_critical_margin_from_s2": true,
+    "check_06_leak_free_threshold_selection": true,
+    "check_07_policy_frozen_before_eval": true,
+    "check_08_component_risks_in_0_1": true,
+    "check_09_validation_denominators_correct": true,
+    "check_10_auc_complement_identity_zero_error": true,
+    "check_11_fold_assignment_hash_match": true,
+    "check_12_reproducible_parameter_count": true,
+    "check_13_within_job_ranking_computed": true,
+    "check_14_job_6251277720_influence_computed": true,
+    "check_15_confusion_matrices_match_metrics": true,
+    "check_16_deterministic_reproducibility": true
+  },
+  "all_passed": true,
+  "timestamp_utc": "2026-10-29T08:48:32Z"
+}

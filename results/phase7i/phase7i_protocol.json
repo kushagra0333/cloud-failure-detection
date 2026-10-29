@@ -1,0 +1,79 @@
+{
+  "protocol_id": "PROTOCOL-PHASE-7I-01",
+  "phase_name": "Phase 7I — Controlled Loss-Weighting Experiment on Stabilized Hierarchical Features",
+  "timestamp": "2026-10-28T21:28:00+05:30",
+  "objective": "Investigate whether moderate class-loss weighting can improve failure detection while controlling false alarms on stabilized hierarchical features.",
+  "scope": "Strictly TRAIN/VALIDATION only. Test set and Phase 6 holdout evaluation are strictly unauthorized.",
+  "data_inputs": {
+    "split_design": "Candidate A Job-Grouped Split (Seed 48)",
+    "train_rows": 3278,
+    "val_rows": 657,
+    "val_class_distribution": {
+      "class_0_normal": 560,
+      "class_1_warning": 48,
+      "class_2_critical": 49
+    },
+    "feature_representation": "Hierarchical Causal Baseline with Variance Floor (sigma_floor = 0.05)",
+    "train_features_path": "results/phase7h/X_train_hierarchical_floored.npy",
+    "val_features_path": "results/phase7h/X_val_hierarchical_floored.npy",
+    "routing_val_path": "results/phase7h/routing_val_hierarchical_floored.csv",
+    "train_labels_path": "data/processed/phase7c/y_train.npy",
+    "val_labels_path": "data/processed/phase7c/y_val.npy",
+    "train_metadata_path": "data/processed/phase7c/train_metadata.csv",
+    "val_metadata_path": "data/processed/phase7c/val_metadata.csv"
+  },
+  "experimental_conditions": {
+    "condition_A": {
+      "name": "Condition A — Unweighted baseline",
+      "weights": [1.0, 1.0, 1.0],
+      "loss_function": "nn.CrossEntropyLoss(weight=[1.0, 1.0, 1.0], reduction='mean')"
+    },
+    "condition_B": {
+      "name": "Condition B — Moderate weighting",
+      "weights": [1.0, 2.0, 2.0],
+      "loss_function": "nn.CrossEntropyLoss(weight=[1.0, 2.0, 2.0], reduction='mean')"
+    },
+    "condition_C": {
+      "name": "Condition C — Stronger weighting",
+      "weights": [1.0, 3.0, 3.0],
+      "loss_function": "nn.CrossEntropyLoss(weight=[1.0, 3.0, 3.0], reduction='mean')"
+    },
+    "condition_D": {
+      "name": "Condition D — Higher weighting",
+      "weights": [1.0, 5.0, 5.0],
+      "loss_function": "nn.CrossEntropyLoss(weight=[1.0, 5.0, 5.0], reduction='mean')"
+    }
+  },
+  "fixed_parameters": {
+    "model_architecture": "CompactTemporalTransformer(input_dim=31, d_model=32, nhead=4, num_layers=2, dim_feedforward=64, num_classes=3, dropout=0.1, max_seq_len=5)",
+    "sequence_length": 5,
+    "input_dimension": 31,
+    "random_seed": 42,
+    "batch_size": 64,
+    "max_epochs": 40,
+    "early_stopping_patience": 10,
+    "optimizer": "AdamW(lr=5e-4, weight_decay=1e-4)",
+    "lr_scheduler": "ReduceLROnPlateau(mode='min', factor=0.5, patience=5)",
+    "decision_rule": "Standard argmax: y_pred = argmax([P(0), P(1), P(2)])"
+  },
+  "operational_gates": {
+    "gate_1_detection": {
+      "episode_recall_min_pct": 70.0,
+      "critical_recall_min_pct": 50.0,
+      "gate_1_rule": "Episode Recall >= 70.0% AND Critical Recall >= 50.0%"
+    },
+    "gate_2_false_alarm": {
+      "pure_normal_entity_far_max_pct": 10.0,
+      "normal_window_fpr_max_pct": 5.0,
+      "gate_2_rule": "Pure-Normal Entity FAR <= 10.0% AND Normal-Window FPR <= 5.0%"
+    },
+    "overall_winner_rule": "A configuration is declared an OPERATIONAL WINNER if and only if it satisfies Gate 1 AND Gate 2 simultaneously on Validation. Otherwise retain NO_OPERATIONAL_WINNER."
+  },
+  "metric_definitions": {
+    "critical_recall": "Proportion of true Critical windows (y_true == 2) predicted as class 2 under frozen 3-class argmax: sum(y_pred == 2 | y_true == 2) / 49",
+    "episode_recall": "Proportion of 20 failure episodes where at least one window in (0, 1800s] pre-failure triggers a failure alert (y_pred > 0): detected_episodes / 20",
+    "pure_normal_entity_far": "Proportion of 49 pure-normal entities with at least one false alarm window (y_pred > 0): fa_entities / 49",
+    "normal_window_fpr": "Proportion of 560 healthy windows (y_true == 0) predicted as failure (y_pred > 0): fp_windows / 560",
+    "parent_job_far": "Proportion of 4 pure-normal parent jobs with at least one false alarm: fa_jobs / 4"
+  }
+}

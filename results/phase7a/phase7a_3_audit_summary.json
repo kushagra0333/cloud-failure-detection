@@ -1,0 +1,179 @@
+{
+  "audit_metadata": {
+    "phase": "Phase 7A.3 \u2014 Independent Repair Verification and Split-Leakage Audit",
+    "date": "2026-10-27",
+    "final_verdict": "READY_FOR_SPLIT_REDESIGN"
+  },
+  "artifact_integrity": {
+    "production_target_generator_sha256": "22e8c14a9f9730857c901707558adc13449486442808364ab928bfabafa2fcfe",
+    "backup_original_sha256": "d04f074581eec9ee64b02178133be23fceb9943263372d134ebf1c952f39c648",
+    "regression_tests_file": "tests/test_phase7a_labeling_repair.py",
+    "tests_executed_and_passed": 18,
+    "full_repo_tests_passed": 177,
+    "test_failures_or_errors": 0
+  },
+  "array_alignment": {
+    "train": {
+      "metadata_rows": 3395,
+      "X_shape": [
+        3395,
+        5,
+        31
+      ],
+      "y_shape": [
+        3395
+      ],
+      "labels": {
+        "0": 2959,
+        "1": 215,
+        "2": 221
+      },
+      "unknown_count": 0,
+      "finite_features": true,
+      "aligned": true
+    },
+    "val": {
+      "metadata_rows": 778,
+      "X_shape": [
+        778,
+        5,
+        31
+      ],
+      "y_shape": [
+        778
+      ],
+      "labels": {
+        "0": 643,
+        "1": 72,
+        "2": 63
+      },
+      "unknown_count": 0,
+      "finite_features": true,
+      "aligned": true
+    },
+    "test": {
+      "metadata_rows": 787,
+      "X_shape": [
+        787,
+        5,
+        31
+      ],
+      "y_shape": [
+        787
+      ],
+      "labels": {
+        "0": 676,
+        "1": 54,
+        "2": 57
+      },
+      "unknown_count": 0,
+      "finite_features": true,
+      "aligned": true
+    },
+    "confirmatory": {
+      "metadata_rows": 5315,
+      "X_shape": [
+        5315,
+        5,
+        31
+      ],
+      "y_shape": [
+        5315
+      ],
+      "labels": {
+        "0": 4655,
+        "1": 286,
+        "2": 374
+      },
+      "unknown_count": 0,
+      "finite_features": true,
+      "aligned": true
+    }
+  },
+  "post_failure_censoring_verification": {
+    "retained_windows_endpoint_ge_first_fail": 0,
+    "retained_windows_history_crosses_first_fail": 0,
+    "verification_result": "ZERO_VIOLATIONS_CONFIRMED"
+  },
+  "row_removal_reconciliation": {
+    "total_original_windows": 12327,
+    "total_clean_windows": 10275,
+    "total_removed_windows": 2052,
+    "breakdown_by_category": {
+      "post_all_failures_normal": 1621,
+      "between_failures_cross_history_normal": 55,
+      "between_failures_clean_history_normal": 94,
+      "between_failures_cross_history_warning": 31,
+      "between_failures_clean_history_warning": 29,
+      "between_failures_cross_history_critical": 160,
+      "between_failures_clean_history_critical": 62
+    },
+    "breakdown_by_split": {
+      "train": {
+        "original": 4798,
+        "retained": 3395,
+        "removed": 1403,
+        "removed_normal": 1229,
+        "removed_warning": 32,
+        "removed_critical": 142
+      },
+      "val": {
+        "original": 1015,
+        "retained": 778,
+        "removed": 237,
+        "removed_normal": 197,
+        "removed_warning": 0,
+        "removed_critical": 40
+      },
+      "test": {
+        "original": 1003,
+        "retained": 787,
+        "removed": 216,
+        "removed_normal": 188,
+        "removed_warning": 14,
+        "removed_critical": 14
+      },
+      "confirmatory": {
+        "original": 5511,
+        "retained": 5315,
+        "removed": 196,
+        "removed_normal": 156,
+        "removed_warning": 14,
+        "removed_critical": 26
+      }
+    }
+  },
+  "parent_job_leakage_audit": {
+    "authoritative_parent_identifier": "job_id (verified string before underscore in '{job_id}_{task_index}')",
+    "unique_jobs": {
+      "train": 60,
+      "val": 25,
+      "test": 22,
+      "confirmatory": 113
+    },
+    "pairwise_overlaps": {
+      "train_vs_val": {
+        "common_jobs": 15,
+        "pct_val_jobs_in_train": 60.0,
+        "val_windows_from_train_jobs": 612,
+        "val_windows_leakage_pct": 78.7
+      },
+      "train_vs_test": {
+        "common_jobs": 16,
+        "pct_test_jobs_in_train": 72.7,
+        "test_windows_from_train_jobs": 702,
+        "test_windows_leakage_pct": 89.2
+      },
+      "val_vs_test": {
+        "common_jobs": 11,
+        "pct_test_jobs_in_val": 50.0
+      },
+      "train_vs_confirmatory": {
+        "common_jobs": 15,
+        "pct_confirmatory_jobs_in_train": 13.3,
+        "unseen_confirmatory_jobs_pct": 86.7
+      }
+    },
+    "generalization_implication": "SEVERELY_COMPROMISED_CURRENT_SPLITS. Val (78.7% leakage) and Test (89.2% leakage) measure batch memorization rather than true out-of-distribution cloud generalization. Retraining on current splits will recreate the confirmatory failure trap."
+  }
+}

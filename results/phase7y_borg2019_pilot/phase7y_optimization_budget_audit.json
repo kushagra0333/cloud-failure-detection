@@ -1,0 +1,65 @@
+{
+  "audit_timestamp_utc": "2026-10-29T12:50:54.279110+00:00",
+  "hard_scan_cap_bytes": 21000000000,
+  "monetary_budget_cap_usd": 0.125,
+  "pricing_rate_usd_per_tib": 6.25,
+  "candidates_evaluation": {
+    "original_baseline": {
+      "name": "Original Baseline Query",
+      "file": "phase7y_dry_run_query.sql",
+      "bytes_scanned": 749075319040,
+      "bytes_scanned_readable": "749,075,319,040 bytes (697.63 GiB / 749.08 GB)",
+      "cost_at_6_25_usd": 4.258,
+      "within_byte_cap": false,
+      "within_budget_cap": false,
+      "status": "REJECTED_EXCEEDS_BUDGET",
+      "telemetry_preserved": true
+    },
+    "candidate_a": {
+      "name": "Candidate A: Projection Reduction",
+      "file": "phase7y_candidate_a_projection_reduction.sql",
+      "bytes_scanned": 418578205568,
+      "bytes_scanned_readable": "418,578,205,568 bytes (389.83 GiB / 418.58 GB)",
+      "cost_at_6_25_usd": 2.3793,
+      "within_byte_cap": false,
+      "within_budget_cap": false,
+      "status": "REJECTED_EXCEEDS_BUDGET",
+      "telemetry_preserved": true
+    },
+    "candidate_b": {
+      "name": "Candidate B: Source-Scan Reduction",
+      "file": "phase7y_candidate_b_source_scan_reduction.sql",
+      "bytes_scanned": 418578205568,
+      "bytes_scanned_readable": "418,578,205,568 bytes (389.83 GiB / 418.58 GB)",
+      "cost_at_6_25_usd": 2.3793,
+      "within_byte_cap": false,
+      "within_budget_cap": false,
+      "status": "REJECTED_EXCEEDS_BUDGET",
+      "telemetry_preserved": true
+    },
+    "candidate_c": {
+      "name": "Candidate C: Bounded Pilot Scope",
+      "file": "phase7y_candidate_c_bounded_pilot_scope.sql",
+      "bytes_scanned": 418578205568,
+      "bytes_scanned_readable": "418,578,205,568 bytes (389.83 GiB / 418.58 GB)",
+      "cost_at_6_25_usd": 2.3793,
+      "within_byte_cap": false,
+      "within_budget_cap": false,
+      "status": "REJECTED_EXCEEDS_BUDGET",
+      "telemetry_preserved": true
+    },
+    "candidate_d": {
+      "name": "Candidate D: Alternative Access Strategy",
+      "file": "phase7y_candidate_d_alternative_source.sql",
+      "bytes_scanned": 2520117308,
+      "bytes_scanned_readable": "2,520,117,308 bytes (2.35 GiB / 2.52 GB)",
+      "cost_at_6_25_usd": 0.0143,
+      "within_byte_cap": true,
+      "within_budget_cap": true,
+      "status": "WITHIN_BUDGET_FOR_REVIEW",
+      "telemetry_preserved": false
+    }
+  },
+  "telemetry_pilot_budget_verdict": "NO_OPTIMIZATION_WITHIN_BUDGET",
+  "alternative_event_pilot_verdict": "OPTIMIZATION_CANDIDATE_WITHIN_BUDGET_FOR_REVIEW"
+}

@@ -1,0 +1,170 @@
+{
+  "manifest_version": "1.0",
+  "phase": "Phase 7P",
+  "description": "Sealed manifest for Phase 7P Failure-Risk Calibration and Operating-Threshold Selection deliverables",
+  "total_deliverables": 23,
+  "manifest_seal_timestamp": "2026-10-29T06:31:14Z",
+  "deliverables": [
+    {
+      "filename": "calibration_analysis.csv",
+      "relative_path": "results/phase7p_failure_calibration/calibration_analysis.csv",
+      "size_bytes": 714,
+      "sha256": "cecdce1e67102c228cd2e9eea502acf1230d9ebbe74f34005aa43febd35f5e95",
+      "timestamp_utc": "2026-10-29T06:25:39Z"
+    },
+    {
+      "filename": "calibrator_parameters.json",
+      "relative_path": "results/phase7p_failure_calibration/calibrator_parameters.json",
+      "size_bytes": 890,
+      "sha256": "978bf4094a059ff515757582dab06b69884e9201cb964e653eeaee63d7245e4c",
+      "timestamp_utc": "2026-10-29T06:25:13Z"
+    },
+    {
+      "filename": "confusion_matrices.csv",
+      "relative_path": "results/phase7p_failure_calibration/confusion_matrices.csv",
+      "size_bytes": 663,
+      "sha256": "b8db8a5e343e894b0a10542966680b74c290aa7c7a12f6076cd6517841280b2f",
+      "timestamp_utc": "2026-10-29T06:25:39Z"
+    },
+    {
+      "filename": "critical_margin_analysis.csv",
+      "relative_path": "results/phase7p_failure_calibration/critical_margin_analysis.csv",
+      "size_bytes": 335,
+      "sha256": "d125da1aacc782623656833c8f927dab1e11f50842eb375ef043dbd9aa53b576",
+      "timestamp_utc": "2026-10-29T06:25:39Z"
+    },
+    {
+      "filename": "data_manifest.json",
+      "relative_path": "results/phase7p_failure_calibration/data_manifest.json",
+      "size_bytes": 2135,
+      "sha256": "810f25dd3a9aeeb9a90500d0635feea2109951371a72031a6e8818d06c2a5ed7",
+      "timestamp_utc": "2026-10-29T06:16:22Z"
+    },
+    {
+      "filename": "discrepancy_ledger.csv",
+      "relative_path": "results/phase7p_failure_calibration/discrepancy_ledger.csv",
+      "size_bytes": 2339,
+      "sha256": "56031be1f7791bfca611c8b023859716421afbd87ed62df5fba953f219cbc160",
+      "timestamp_utc": "2026-10-29T06:16:22Z"
+    },
+    {
+      "filename": "episode_error_analysis.csv",
+      "relative_path": "results/phase7p_failure_calibration/episode_error_analysis.csv",
+      "size_bytes": 2620,
+      "sha256": "a33ecea857d9fbcd8fb83aa4e3b71a14f58ed8f8134a7835b768786aa1693ad6",
+      "timestamp_utc": "2026-10-29T06:25:39Z"
+    },
+    {
+      "filename": "fold_assignments.csv",
+      "relative_path": "results/phase7p_failure_calibration/fold_assignments.csv",
+      "size_bytes": 124871,
+      "sha256": "d614a741b43f691ecae40f8dde9b20f4a95d7f0d148e8ce9be047c4d3514a492",
+      "timestamp_utc": "2026-10-29T06:25:11Z"
+    },
+    {
+      "filename": "frozen_operating_policy.json",
+      "relative_path": "results/phase7p_failure_calibration/frozen_operating_policy.json",
+      "size_bytes": 1895,
+      "sha256": "0c15810826492887d9a7943b1784db2a04817cfec9312d89092ef07624b612b5",
+      "timestamp_utc": "2026-10-29T06:25:39Z"
+    },
+    {
+      "filename": "independent_audit_report.md",
+      "relative_path": "results/phase7p_failure_calibration/independent_audit_report.md",
+      "size_bytes": 2594,
+      "sha256": "db948970d89344ee23e92616ed09ab76f74ca9247f2e0b17241f3b014b817d8e",
+      "timestamp_utc": "2026-10-29T06:28:45Z"
+    },
+    {
+      "filename": "integrity_checks.json",
+      "relative_path": "results/phase7p_failure_calibration/integrity_checks.json",
+      "size_bytes": 3467,
+      "sha256": "1196efd671d9db3123b623b1431f43e6197b476a0b354ead9ae3530b9609c4f3",
+      "timestamp_utc": "2026-10-29T06:31:14Z"
+    },
+    {
+      "filename": "operational_gate_summary.csv",
+      "relative_path": "results/phase7p_failure_calibration/operational_gate_summary.csv",
+      "size_bytes": 1150,
+      "sha256": "c7320d88aada591ce2d27cf635f40c42c230bd1b42b326499bdeaf8ad9779f1e",
+      "timestamp_utc": "2026-10-29T06:25:39Z"
+    },
+    {
+      "filename": "out_of_fold_predictions.csv",
+      "relative_path": "results/phase7p_failure_calibration/out_of_fold_predictions.csv",
+      "size_bytes": 1221195,
+      "sha256": "6d862aae6bcf68b78dcc97eafa06450ca476162630dcab91f302c83f6b471ee7",
+      "timestamp_utc": "2026-10-29T06:25:13Z"
+    },
+    {
+      "filename": "paired_comparison.csv",
+      "relative_path": "results/phase7p_failure_calibration/paired_comparison.csv",
+      "size_bytes": 334,
+      "sha256": "22b07594f136c663e0503c57ba0f219ccbbdd7e6ccfbd3dff7806a9c0f9479c6",
+      "timestamp_utc": "2026-10-29T06:25:39Z"
+    },
+    {
+      "filename": "per_seed_metrics.csv",
+      "relative_path": "results/phase7p_failure_calibration/per_seed_metrics.csv",
+      "size_bytes": 1927,
+      "sha256": "befa3f2c3c48571e85048e3c57812108b01b7f971f3e2dce371c14f199df380f",
+      "timestamp_utc": "2026-10-29T06:25:39Z"
+    },
+    {
+      "filename": "phase7p_config.json",
+      "relative_path": "results/phase7p_failure_calibration/phase7p_config.json",
+      "size_bytes": 3166,
+      "sha256": "b902998d5d0a1f90669136e470998f0898c7eb8feda647eccd52378bb2bdf79e",
+      "timestamp_utc": "2026-10-29T06:17:17Z"
+    },
+    {
+      "filename": "phase7p_design.md",
+      "relative_path": "results/phase7p_failure_calibration/phase7p_design.md",
+      "size_bytes": 8970,
+      "sha256": "a88d15c69720975a357c81a7741ee03a7992a95e15cc0327305bac494c6a7639",
+      "timestamp_utc": "2026-10-29T06:16:53Z"
+    },
+    {
+      "filename": "phase7p_final_report.md",
+      "relative_path": "results/phase7p_failure_calibration/phase7p_final_report.md",
+      "size_bytes": 23901,
+      "sha256": "222d662a41eff324749beb2f723311ba7010a50cdd3f1e01a23c2de9aa870298",
+      "timestamp_utc": "2026-10-29T06:31:14Z"
+    },
+    {
+      "filename": "preflight_audit.json",
+      "relative_path": "results/phase7p_failure_calibration/preflight_audit.json",
+      "size_bytes": 1031,
+      "sha256": "880e5fdbab2ad3ad2cc11345ceedd302d52109496a66a3dc0cb756f6a3bd6743",
+      "timestamp_utc": "2026-10-29T06:16:22Z"
+    },
+    {
+      "filename": "reliability_bins.csv",
+      "relative_path": "results/phase7p_failure_calibration/reliability_bins.csv",
+      "size_bytes": 1822,
+      "sha256": "fdec3a88e476d574eaa9147e6cdf30cb461b584298fbb993bd0066cc3a319649",
+      "timestamp_utc": "2026-10-29T06:25:39Z"
+    },
+    {
+      "filename": "threshold_selection_results.csv",
+      "relative_path": "results/phase7p_failure_calibration/threshold_selection_results.csv",
+      "size_bytes": 12522,
+      "sha256": "4fb88a3858044cf5196c25f0941da53c35a74e311ffa8ae899ed238876594cbc",
+      "timestamp_utc": "2026-10-29T06:25:39Z"
+    },
+    {
+      "filename": "training_or_calibration_logs.csv",
+      "relative_path": "results/phase7p_failure_calibration/training_or_calibration_logs.csv",
+      "size_bytes": 1094,
+      "sha256": "5f545b6d301ea8fd0a6580002316ae2a3a45145c2c21d36a9f98d09218a3585d",
+      "timestamp_utc": "2026-10-29T06:25:39Z"
+    },
+    {
+      "filename": "validation_predictions.csv",
+      "relative_path": "results/phase7p_failure_calibration/validation_predictions.csv",
+      "size_bytes": 141038,
+      "sha256": "e934c2902e4381f9be60fb1e6cea9d9d53740e54cc09926803b74872231089f4",
+      "timestamp_utc": "2026-10-29T06:25:39Z"
+    }
+  ]
+}

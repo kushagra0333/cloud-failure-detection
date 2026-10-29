@@ -1,0 +1,497 @@
+{
+  "protocol_version": "1.0-pre-registered",
+  "evaluation_partition": "confirmatory_holdout",
+  "date_executed": "2026-10-26",
+  "entity_inventory": {
+    "total_pre_registered_entities": 300,
+    "pre_registered_failure_entities": 100,
+    "pre_registered_normal_entities": 200,
+    "evaluated_entities": 188,
+    "evaluated_normal_entities": 188,
+    "evaluated_failure_entities": 0,
+    "excluded_entities_count": 112,
+    "excluded_failure_entities_count": 100,
+    "excluded_normal_entities_count": 12,
+    "exclusion_reason_failure": "All 100 frozen failure entities failed before completing 15 pre-failure historical observations (75 min history invariant); zero post-failure telemetry was evaluated as early detection.",
+    "exclusion_reason_normal": "12 normal entities had < 15 observations or telemetry gaps exceeding the 1.5x cadence threshold."
+  },
+  "windows_evaluated": 2596,
+  "model_selection_policy": {
+    "rule": "Pure-Normal Entity FAR <= 12.0%, then highest Macro-F1",
+    "verdict": "Under holdout evaluation, all models exceeded the 12.0% operational FAR threshold due to high false-alarm rates on pure-normal tasks."
+  },
+  "models": {
+    "Random Forest": {
+      "model_name": "Random Forest",
+      "sample_size": {
+        "total_windows": 2596,
+        "total_entities": 188,
+        "pure_normal_entities": 188,
+        "failure_episodes": 0
+      },
+      "accuracy": 0.7076271186440678,
+      "macro_f1": 0.2762613730355666,
+      "class_metrics": {
+        "normal": {
+          "class_id": 0,
+          "precision": 1.0,
+          "recall": 0.7076271186440678,
+          "f1_score": 0.8287841191066998,
+          "pr_auc": 1.0,
+          "support": 2596,
+          "prevalence_adjusted_precision": 1.0
+        },
+        "warning": {
+          "class_id": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1_score": 0.0,
+          "pr_auc": null,
+          "support": 0,
+          "prevalence_adjusted_precision": 0.0
+        },
+        "critical": {
+          "class_id": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1_score": 0.0,
+          "pr_auc": null,
+          "support": 0,
+          "prevalence_adjusted_precision": 0.0
+        }
+      },
+      "false_alarm_metrics": {
+        "window_fpr": {
+          "fp_count": 759,
+          "total_normal_windows": 2596,
+          "fpr_pct": 29.23728813559322
+        },
+        "pure_normal_entity_far": {
+          "false_alarm_count": 79,
+          "total_pure_normal_entities": 188,
+          "far_pct": 42.02127659574468
+        },
+        "all_entity_normal_period_far": {
+          "false_alarm_count": 79,
+          "total_entities": 188,
+          "far_pct": 42.02127659574468
+        }
+      },
+      "episode_metrics": {
+        "total_episodes": 0,
+        "detected_count": 0,
+        "detection_rate_pct": null,
+        "lead_time_distribution_minutes": null,
+        "missed_episodes": 0
+      },
+      "confusion_matrix": [
+        [
+          1837,
+          182,
+          577
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "prevalence_assumption": {
+        "sampled_prevalence": 0.0,
+        "production_prevalence": 0.005,
+        "note": "Production prevalence (0.5%) applied as documented sensitivity analysis."
+      },
+      "bootstrap_confidence_intervals_95": {
+        "macro_f1": {
+          "mean": 0.2762815578753683,
+          "std": 0.006565056338078737,
+          "ci_lower_95": 0.2631530534013925,
+          "ci_upper_95": 0.2889952376237459
+        },
+        "accuracy": {
+          "mean": 0.7081981971196413,
+          "std": 0.02871658777678493,
+          "ci_lower_95": 0.6521540905482917,
+          "ci_upper_95": 0.76520282109398
+        },
+        "window_fpr_pct": {
+          "mean": 29.180180288035867,
+          "std": 2.8716587776784928,
+          "ci_lower_95": 23.479717890601993,
+          "ci_upper_95": 34.784590945170834
+        },
+        "pure_normal_far_pct": {
+          "mean": 42.035463088962366,
+          "std": 2.61312683071868,
+          "ci_lower_95": 36.75076452599389,
+          "ci_upper_95": 47.15982028241335
+        },
+        "normal_recall": {
+          "mean": 0.7081981971196413,
+          "std": 0.02871658777678493,
+          "ci_lower_95": 0.6521540905482917,
+          "ci_upper_95": 0.76520282109398
+        }
+      }
+    },
+    "Temporal LSTM": {
+      "model_name": "Temporal LSTM",
+      "sample_size": {
+        "total_windows": 2596,
+        "total_entities": 188,
+        "pure_normal_entities": 188,
+        "failure_episodes": 0
+      },
+      "accuracy": 0.5658705701078582,
+      "macro_f1": 0.24091840918409183,
+      "class_metrics": {
+        "normal": {
+          "class_id": 0,
+          "precision": 1.0,
+          "recall": 0.5658705701078582,
+          "f1_score": 0.7227552275522755,
+          "pr_auc": 1.0,
+          "support": 2596,
+          "prevalence_adjusted_precision": 1.0
+        },
+        "warning": {
+          "class_id": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1_score": 0.0,
+          "pr_auc": null,
+          "support": 0,
+          "prevalence_adjusted_precision": 0.0
+        },
+        "critical": {
+          "class_id": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1_score": 0.0,
+          "pr_auc": null,
+          "support": 0,
+          "prevalence_adjusted_precision": 0.0
+        }
+      },
+      "false_alarm_metrics": {
+        "window_fpr": {
+          "fp_count": 1127,
+          "total_normal_windows": 2596,
+          "fpr_pct": 43.41294298921417
+        },
+        "pure_normal_entity_far": {
+          "false_alarm_count": 96,
+          "total_pure_normal_entities": 188,
+          "far_pct": 51.06382978723404
+        },
+        "all_entity_normal_period_far": {
+          "false_alarm_count": 96,
+          "total_entities": 188,
+          "far_pct": 51.06382978723404
+        }
+      },
+      "episode_metrics": {
+        "total_episodes": 0,
+        "detected_count": 0,
+        "detection_rate_pct": null,
+        "lead_time_distribution_minutes": null,
+        "missed_episodes": 0
+      },
+      "confusion_matrix": [
+        [
+          1469,
+          588,
+          539
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "prevalence_assumption": {
+        "sampled_prevalence": 0.0,
+        "production_prevalence": 0.005,
+        "note": "Production prevalence (0.5%) applied as documented sensitivity analysis."
+      },
+      "bootstrap_confidence_intervals_95": {
+        "macro_f1": {
+          "mean": 0.24091151103781602,
+          "std": 0.009359665061054685,
+          "ci_lower_95": 0.22239480680791654,
+          "ci_upper_95": 0.25833923698016675
+        },
+        "accuracy": {
+          "mean": 0.5665999851555918,
+          "std": 0.03435028407187285,
+          "ci_lower_95": 0.500582699249768,
+          "ci_upper_95": 0.6326766723108687
+        },
+        "window_fpr_pct": {
+          "mean": 43.34000148444081,
+          "std": 3.435028407187285,
+          "ci_lower_95": 36.73233276891313,
+          "ci_upper_95": 49.941730075023195
+        },
+        "pure_normal_far_pct": {
+          "mean": 50.98972668189525,
+          "std": 2.7435305485967016,
+          "ci_lower_95": 45.59839285714286,
+          "ci_upper_95": 56.30521439344968
+        },
+        "normal_recall": {
+          "mean": 0.5665999851555918,
+          "std": 0.03435028407187285,
+          "ci_lower_95": 0.500582699249768,
+          "ci_upper_95": 0.6326766723108687
+        }
+      }
+    },
+    "Compact Temporal Transformer": {
+      "model_name": "Compact Temporal Transformer",
+      "sample_size": {
+        "total_windows": 2596,
+        "total_entities": 188,
+        "pure_normal_entities": 188,
+        "failure_episodes": 0
+      },
+      "accuracy": 0.5550847457627118,
+      "macro_f1": 0.23796548592188918,
+      "class_metrics": {
+        "normal": {
+          "class_id": 0,
+          "precision": 1.0,
+          "recall": 0.5550847457627118,
+          "f1_score": 0.7138964577656676,
+          "pr_auc": 1.0,
+          "support": 2596,
+          "prevalence_adjusted_precision": 1.0
+        },
+        "warning": {
+          "class_id": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1_score": 0.0,
+          "pr_auc": null,
+          "support": 0,
+          "prevalence_adjusted_precision": 0.0
+        },
+        "critical": {
+          "class_id": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1_score": 0.0,
+          "pr_auc": null,
+          "support": 0,
+          "prevalence_adjusted_precision": 0.0
+        }
+      },
+      "false_alarm_metrics": {
+        "window_fpr": {
+          "fp_count": 1155,
+          "total_normal_windows": 2596,
+          "fpr_pct": 44.49152542372881
+        },
+        "pure_normal_entity_far": {
+          "false_alarm_count": 114,
+          "total_pure_normal_entities": 188,
+          "far_pct": 60.63829787234043
+        },
+        "all_entity_normal_period_far": {
+          "false_alarm_count": 114,
+          "total_entities": 188,
+          "far_pct": 60.63829787234043
+        }
+      },
+      "episode_metrics": {
+        "total_episodes": 0,
+        "detected_count": 0,
+        "detection_rate_pct": null,
+        "lead_time_distribution_minutes": null,
+        "missed_episodes": 0
+      },
+      "confusion_matrix": [
+        [
+          1441,
+          620,
+          535
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "prevalence_assumption": {
+        "sampled_prevalence": 0.0,
+        "production_prevalence": 0.005,
+        "note": "Production prevalence (0.5%) applied as documented sensitivity analysis."
+      },
+      "bootstrap_confidence_intervals_95": {
+        "macro_f1": {
+          "mean": 0.2378012512801749,
+          "std": 0.00930845701634407,
+          "ci_lower_95": 0.2182385035074045,
+          "ci_upper_95": 0.25510548657684584
+        },
+        "accuracy": {
+          "mean": 0.5552188610940708,
+          "std": 0.03363425016863341,
+          "ci_lower_95": 0.48667439165701043,
+          "ci_upper_95": 0.6198482894108834
+        },
+        "window_fpr_pct": {
+          "mean": 44.47811389059292,
+          "std": 3.363425016863341,
+          "ci_lower_95": 38.015171058911655,
+          "ci_upper_95": 51.33256083429896
+        },
+        "pure_normal_far_pct": {
+          "mean": 60.55019610260676,
+          "std": 2.771325082358775,
+          "ci_lower_95": 55.26088929219601,
+          "ci_upper_95": 66.07142857142857
+        },
+        "normal_recall": {
+          "mean": 0.5552188610940708,
+          "std": 0.03363425016863341,
+          "ci_lower_95": 0.48667439165701043,
+          "ci_upper_95": 0.6198482894108834
+        }
+      }
+    },
+    "Representation Hybrid": {
+      "model_name": "Representation Hybrid",
+      "sample_size": {
+        "total_windows": 2596,
+        "total_entities": 188,
+        "pure_normal_entities": 188,
+        "failure_episodes": 0
+      },
+      "accuracy": 0.7338212634822804,
+      "macro_f1": 0.28215952010664297,
+      "class_metrics": {
+        "normal": {
+          "class_id": 0,
+          "precision": 1.0,
+          "recall": 0.7338212634822804,
+          "f1_score": 0.8464785603199289,
+          "pr_auc": 1.0,
+          "support": 2596,
+          "prevalence_adjusted_precision": 1.0
+        },
+        "warning": {
+          "class_id": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1_score": 0.0,
+          "pr_auc": null,
+          "support": 0,
+          "prevalence_adjusted_precision": 0.0
+        },
+        "critical": {
+          "class_id": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1_score": 0.0,
+          "pr_auc": null,
+          "support": 0,
+          "prevalence_adjusted_precision": 0.0
+        }
+      },
+      "false_alarm_metrics": {
+        "window_fpr": {
+          "fp_count": 691,
+          "total_normal_windows": 2596,
+          "fpr_pct": 26.617873651771955
+        },
+        "pure_normal_entity_far": {
+          "false_alarm_count": 80,
+          "total_pure_normal_entities": 188,
+          "far_pct": 42.5531914893617
+        },
+        "all_entity_normal_period_far": {
+          "false_alarm_count": 80,
+          "total_entities": 188,
+          "far_pct": 42.5531914893617
+        }
+      },
+      "episode_metrics": {
+        "total_episodes": 0,
+        "detected_count": 0,
+        "detection_rate_pct": null,
+        "lead_time_distribution_minutes": null,
+        "missed_episodes": 0
+      },
+      "confusion_matrix": [
+        [
+          1905,
+          168,
+          523
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "prevalence_assumption": {
+        "sampled_prevalence": 0.0,
+        "production_prevalence": 0.005,
+        "note": "Production prevalence (0.5%) applied as documented sensitivity analysis."
+      },
+      "bootstrap_confidence_intervals_95": {
+        "macro_f1": {
+          "mean": 0.2822335710584191,
+          "std": 0.00603186502599055,
+          "ci_lower_95": 0.269054162538805,
+          "ci_upper_95": 0.2940333150595159
+        },
+        "accuracy": {
+          "mean": 0.734581034443218,
+          "std": 0.027144484797058475,
+          "ci_lower_95": 0.6766742990867419,
+          "ci_upper_95": 0.7890687027982184
+        },
+        "window_fpr_pct": {
+          "mean": 26.541896555678196,
+          "std": 2.7144484797058475,
+          "ci_lower_95": 21.09312972017816,
+          "ci_upper_95": 32.332570091325806
+        },
+        "pure_normal_far_pct": {
+          "mean": 42.43061253638647,
+          "std": 2.7457139173958067,
+          "ci_lower_95": 37.066611127209505,
+          "ci_upper_95": 47.78857252789535
+        },
+        "normal_recall": {
+          "mean": 0.734581034443218,
+          "std": 0.027144484797058475,
+          "ci_lower_95": 0.6766742990867419,
+          "ci_upper_95": 0.7890687027982184
+        }
+      }
+    }
+  }
+}

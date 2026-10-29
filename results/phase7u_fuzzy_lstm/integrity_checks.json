@@ -1,0 +1,22 @@
+{
+  "tests": {
+    "check_01_authorized_inputs_only": true,
+    "check_02_zero_access_prohibited_partitions": true,
+    "check_03_exact_row_alignment": true,
+    "check_04_membership_breakpoints_strictly_increasing": true,
+    "check_05_train_only_membership_derivation": true,
+    "check_06_synthetic_unit_tests_passed": true,
+    "check_07_relative_primary_low_property": true,
+    "check_08_relative_primary_high_property": true,
+    "check_09_fuzzy_outputs_finite_and_bounded": true,
+    "check_10_policy_frozen_before_validation": true,
+    "check_11_validation_denominators_verified": true,
+    "check_12_within_job_ranking_32_jobs": true,
+    "check_13_job_6251277720_influence_computed": true,
+    "check_14_fuzzy_rule_explanations_exported": true,
+    "check_15_reproducible_inference": true,
+    "check_16_discrepancy_ledger_complete": true
+  },
+  "all_passed": true,
+  "timestamp_utc": "2026-10-29T09:02:34Z"
+}

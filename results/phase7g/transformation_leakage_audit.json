@@ -1,0 +1,45 @@
+{
+  "phase": "Phase 7G Step 3 \u2014 Transformation Leakage and Integrity Audit",
+  "audit_timestamp": "2026-10-28T20:18:00+05:30",
+  "overall_status": "PASS",
+  "tests": {
+    "test_1_temporal_causality": {
+      "status": "PASS",
+      "hierarchical_future_leakage_diff": 0.0,
+      "parent_job_future_leakage_diff": 0.0,
+      "details": "Verified 100% bitwise identity for earlier windows when future and concurrent sibling telemetry was corrupted."
+    },
+    "test_2_zero_label_contamination": {
+      "status": "PASS",
+      "max_diff_without_labels": 0.0,
+      "details": "Verified that transformers execute independently of ground-truth label or time_to_failure columns."
+    },
+    "test_3_partition_isolation": {
+      "status": "PASS",
+      "job_overlap_count": 0,
+      "train_unique_jobs": 51,
+      "val_unique_jobs": 12,
+      "details": "Verified zero job overlap across Candidate A split boundaries."
+    },
+    "test_4_cluster_fallback_parity": {
+      "status": "PASS",
+      "hierarchical_fallback_windows": 54,
+      "hierarchical_fallback_max_diff": 0.0,
+      "parent_job_fallback_windows": 54,
+      "parent_job_fallback_max_diff": 0.0,
+      "details": "All windows with insufficient history strictly preserve the frozen Phase 7C cluster scaler."
+    },
+    "test_5_permutation_invariance": {
+      "status": "PASS",
+      "max_diff_after_permutation": 0.0,
+      "details": "Verified 100% mathematical invariance to row shuffling. Ordering is strictly temporal."
+    },
+    "test_6_ledger_consistency": {
+      "status": "PASS",
+      "task_source_windows": 532,
+      "parent_job_source_windows": 71,
+      "cluster_fallback_windows": 54,
+      "details": "Verified 100% structural and logical consistency of hierarchical ledger."
+    }
+  }
+}

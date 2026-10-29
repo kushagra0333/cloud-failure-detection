@@ -1,0 +1,148 @@
+{
+  "audit_metadata": {
+    "phase": "Phase 7I-A",
+    "description": "Comprehensive provenance, data-access, and integrity claim audit",
+    "timestamp_iso": "2026-10-28T21:51:00+05:30"
+  },
+  "script_provenance": {
+    "script_path": "scripts/run_phase7i_experiment.py",
+    "sha256": "50d031582be1c14a02743f5423f1815fd210f41a8f9b0c1984bde94299bf586c",
+    "static_code_inspection": {
+      "candidate_a_test_references": 0,
+      "phase6_holdout_references": 0,
+      "data_loading_calls": [
+        "np.load(train_feat_p)",
+        "np.load(val_feat_p)",
+        "np.load(y_train_p)",
+        "np.load(y_val_p)",
+        "pd.read_csv(train_meta_p)",
+        "pd.read_csv(val_meta_p)",
+        "pd.read_csv(routing_val_p)"
+      ],
+      "conclusion": "Static code analysis strictly confirms zero I/O calls to Candidate A Test or Phase 6 Holdout data."
+    }
+  },
+  "io_ledger": {
+    "read_artifacts": [
+      {
+        "path": "results/phase7h/X_train_hierarchical_floored.npy",
+        "access_mode": "np.load (float32)",
+        "purpose": "Authoritative training feature tensor (N=3,278, L=5, D=31)",
+        "sha256": "970378c6a704fbfa4e25f9ff3db844b8ddf81e06964d9a24cb30f5f61a670d4f"
+      },
+      {
+        "path": "results/phase7h/X_val_hierarchical_floored.npy",
+        "access_mode": "np.load (float32)",
+        "purpose": "Authoritative validation feature tensor (N=657, L=5, D=31)",
+        "sha256": "1e185e2874ec2c0c0bd47a484701e850c3448b995fd04f145c6bdbf5d7fe90cd"
+      },
+      {
+        "path": "data/processed/phase7c/y_train.npy",
+        "access_mode": "np.load (int64)",
+        "purpose": "Authoritative training ground truth labels (N=3,278)",
+        "sha256": "355ca59b1609780181fabe8f06c6ab51cc5c53cfbec91cb822d76b8e373fab1e"
+      },
+      {
+        "path": "data/processed/phase7c/y_val.npy",
+        "access_mode": "np.load (int64)",
+        "purpose": "Authoritative validation ground truth labels (N=657)",
+        "sha256": "eb968a74ae86dcc574f3341055ff45ca9fcf77ec5a1b4cee5ad8cb4c1e2631b9"
+      },
+      {
+        "path": "data/processed/phase7c/train_metadata.csv",
+        "access_mode": "pd.read_csv",
+        "purpose": "Training window metadata for invariant assertion",
+        "sha256": "0180ade4098711680c44bbd2ca8c3c5d85834a86042546cc9300b00f1df725ce"
+      },
+      {
+        "path": "data/processed/phase7c/val_metadata.csv",
+        "access_mode": "pd.read_csv",
+        "purpose": "Validation window metadata for episode and false alarm evaluation",
+        "sha256": "8d22193f11d671dc570d29abf9255d06386880d49c5de83c68d6404a8b41b956"
+      },
+      {
+        "path": "results/phase7h/routing_val_hierarchical_floored.csv",
+        "access_mode": "pd.read_csv",
+        "purpose": "Validation baseline source and history depth metadata",
+        "sha256": "84be869be7bc302523a9cfbf7f2128f46b35a0d77a5fff7ec2cb6a90008de7a8"
+      }
+    ],
+    "written_artifacts": [
+      {
+        "path": "models/checkpoints_phase7i/transformer_condA_unweighted.pt",
+        "sha256": "5a4a907d4a31891d5ded01a718956b74dccf5e525253501bc9acac270ee975c8"
+      },
+      {
+        "path": "models/checkpoints_phase7i/transformer_condB_moderate.pt",
+        "sha256": "6461a8b81b9cedfea41b0871ff2e67cf1a0818c3a467c0df19236a8f85600a72"
+      },
+      {
+        "path": "models/checkpoints_phase7i/transformer_condC_stronger.pt",
+        "sha256": "1329ee91520ac2733a51777cb7e6e83f6f989667e7d3639e1e30cc560e7d56bb"
+      },
+      {
+        "path": "models/checkpoints_phase7i/transformer_condD_higher.pt",
+        "sha256": "3cf9c3b6ba97021d254f1beb6b23b2c9a25324c1c591c0ec7db23a59487e4ef8"
+      },
+      {
+        "path": "results/phase7i/phase7i_metrics.json",
+        "sha256": "8b86329f39385063b4c49f8bb5122fab7e16a1d4f1a54cb8c96cf96fd8761a1c"
+      },
+      {
+        "path": "results/phase7i/phase7i_comparison.csv",
+        "sha256": "22967bd649503347369f624f03fc99e0ab9bc55f95b78f9105cd6edd89b4a878"
+      },
+      {
+        "path": "results/phase7i/phase7i_validation_predictions.csv",
+        "sha256": "9e405514b98e043409585b3e2b1120a68d75afcb10d982667bd6b20661d6f1fc"
+      },
+      {
+        "path": "results/phase7i/phase7i_calibration_metrics.json",
+        "sha256": "78cc1dbfc5f477c6c79776f2703be5d89e036c23292d861082d840337a404eb5"
+      },
+      {
+        "path": "results/phase7i/phase7i_per_job_analysis.csv",
+        "sha256": "e2e4d68b6d1c3120d88566f62340a2101567d4ab87f86fec0b6b8c54b1140cbf"
+      },
+      {
+        "path": "results/phase7i/phase7i_integrity_report.json",
+        "sha256": "e02301c8d41b90e5077e39524f5dbb328999ddf4d8ef9bd4884adde492eaf9e8"
+      },
+      {
+        "path": "results/phase7i/phase7i_manifest.json",
+        "sha256": "854789e40c922d6998aa923fa0f72a00621468989ff50e5e43a1d1bfa58fb56d"
+      }
+    ]
+  },
+  "epistemic_distinction_of_integrity_claims": {
+    "tier_1_verified_evidence": {
+      "claim": "Candidate A Test data and Phase 6 Holdout data were not loaded or processed by scripts/run_phase7i_experiment.py.",
+      "evidence": [
+        "Static AST and text search of scripts/run_phase7i_experiment.py shows no path variables, file handles, or library calls opening test or holdout paths.",
+        "Console execution logs record tensor shapes exclusively matching Train (3278, 5, 31) and Val (657, 5, 31).",
+        "Validation predictions file contains exactly 657 rows matching val_metadata.csv entity_ids and timestamps."
+      ],
+      "verification_confidence": "HIGH_EMPIRICALLY_VERIFIED"
+    },
+    "tier_2_command_log_evidence": {
+      "claim": "Commands executed during Phase 7I were restricted to train/val workflows.",
+      "evidence": [
+        "Available IDE and terminal execution transcripts record execution of scripts/run_phase7i_experiment.py and inspection scripts for train/val data only."
+      ],
+      "verification_confidence": "HIGH_LOGGED"
+    },
+    "tier_3_unverifiable_retrospective_claims": {
+      "claim": "No OS process or external tool ever read or queried Candidate A Test or holdout files during the Phase 7I session.",
+      "limitation_explanation": [
+        "Windows NTFS filesystem metadata does not reliably log non-destructive read operations (last access timestamps are disabled or granular by default).",
+        "It is mathematically impossible to retrospectively prove that an unmonitored external process did not read a file merely because its modification timestamp and file hash remained unchanged.",
+        "Integrity reports must not conflate 'unmodified file on disk' with 'mathematical proof of zero read access'."
+      ],
+      "verification_confidence": "RETROSPECTIVELY_UNVERIFIABLE_BY_DESIGN"
+    }
+  },
+  "integrity_report_wording_correction": {
+    "original_phrasing_in_phase7i": "Asserted absolute boolean 'no_test_data_accessed: True' and 'status: PASSED_ALL_CHECKS' without distinguishing between script code verification and OS-level file access auditing.",
+    "corrected_scientific_phrasing": "The Phase 7I pipeline is proven not to have loaded Candidate A Test or Phase 6 Holdout data based on rigorous static source code analysis of scripts/run_phase7i_experiment.py and execution log telemetry. However, retrospective OS-level read access cannot be audited from filesystem state alone."
+  }
+}

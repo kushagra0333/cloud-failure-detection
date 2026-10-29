@@ -1,0 +1,77 @@
+{
+  "audit_phase": "Phase 7K-A",
+  "timestamp": "2026-10-28T23:42:00+05:30",
+  "project_root": "C:\\Users\\hp\\Desktop\\Research project",
+  "auditor": "Antigravity Independent Audit Subsystem",
+  "data_governance": {
+    "candidate_a_train_size": 3278,
+    "candidate_a_val_size": 657,
+    "candidate_a_test_access": "NEVER_ACCESSED",
+    "candidate_a_test_historical_status": "INSPECTED_IN_PHASE_7D_NON_VIRGIN",
+    "phase_6_holdout_access": "STRICTLY_QUARANTINED_UNTOUCHED",
+    "phase_7k_artifacts_preserved": true
+  },
+  "verification_summary": {
+    "total_models_evaluated": 5,
+    "total_weighting_conditions": 2,
+    "total_seeds": 3,
+    "total_training_runs": 30,
+    "checkpoints_verified": "30/30",
+    "epochs_logged_verified": "750/750",
+    "feature_tensor_dimensions": {
+      "M0": {
+        "expected": 31,
+        "actual": 31,
+        "status": "PASS"
+      },
+      "M1": {
+        "expected": 36,
+        "actual": 36,
+        "status": "PASS"
+      },
+      "M2": {
+        "expected": 35,
+        "actual": 35,
+        "status": "PASS"
+      },
+      "M3": {
+        "expected": 33,
+        "actual": 33,
+        "status": "PASS"
+      },
+      "M4": {
+        "expected": 42,
+        "actual": 42,
+        "status": "PASS"
+      }
+    },
+    "feature_ordering_deterministic": true,
+    "baseline_prefix_preserved": true,
+    "duplicate_features_detected": false,
+    "preprocessors_fitted_on_train_only": true,
+    "preprocessors_train_samples": 16390,
+    "validation_leakage_detected": false,
+    "temporal_causality_violations": 0,
+    "post_failure_records_included": 0,
+    "validation_predictions_rows": 657,
+    "probability_bounds_verified": true,
+    "max_probability_row_sum_error": 1.6e-07,
+    "p_fail_equals_p1_plus_p2": true,
+    "threshold_evaluations_reproduced": "6030/6030",
+    "max_reproduction_discrepancy": 0.0,
+    "gate1_passes_isolated": 295,
+    "gate2_passes_isolated": 2867,
+    "simultaneous_gate_passes": 0,
+    "operational_winner_found": false
+  },
+  "threshold_selection_answers": {
+    "q1_seed_optimization": "The reported peak Macro-F1 threshold was optimized independently for each individual seed (e.g. M1 Cond B: seed 42 th=0.535, seed 123 th=0.545, seed 456 th=0.420). A common threshold was NOT used across seeds.",
+    "q2_cross_seed_macro_f1": "Yes, the reported cross-seed aggregate Macro-F1 is the mathematical mean of each seed's own optimal post-hoc threshold Macro-F1.",
+    "q3_metric_alignment": "Yes, Episode Recall, Critical Recall, Entity FAR, and Window FPR are evaluated at the exact same seed-specific peak threshold as that seed's peak Macro-F1.",
+    "q4_exploratory_distinction": "The report distinguishes exploratory best-threshold metrics from a predeclared deployable operating point, but the cross-seed aggregate represents an unconstrained post-hoc peak envelope rather than a deployable fixed policy.",
+    "q5_evaluation_counts": "Exactly 30 runs (5 models x 2 conditions x 3 seeds) x 201 thresholds = 6,030 threshold evaluation rows, with Policy A (Binary Alert) and Policy B (Cascaded 3-Class Decision) evaluated for every single threshold."
+  },
+  "audit_verdict": "PHASE 7K RESULTS REPRODUCED WITH QUALIFICATIONS",
+  "scientific_verdict": "NO OPERATIONAL WINNER",
+  "recommendation": "Because auxiliary feature groups (J1-J3) fail to overcome the fundamental trade-off between sensitivity and pure-normal FAR at sequence length L=5 (25 minutes), subsequent research should evaluate multi-scale sequence representations (L >= 12, spanning >= 60 minutes) and hierarchical task-job context models rather than further tuning 25-minute flat LSTM models."
+}

@@ -1,0 +1,38 @@
+{
+  "protocol_version": "3.0-EXTERNAL-GENERALIZATION-STANDBY",
+  "creation_timestamp_utc": "2026-10-29T09:15:34Z",
+  "status": "STANDBY_GOVERNING_SPECIFICATION",
+  "governing_principles": [
+    "1. Zero post-hoc hyperparameter tuning, threshold re-selection, or rule modification.",
+    "2. Single-pass inference execution under locked model checkpoints and frozen operating policies.",
+    "3. Evaluation of all models across the 3 audited random seeds (42, 123, 456).",
+    "4. Transparent reporting of both primary frozen operating policies and threshold-independent ranking metrics (ROC-AUC, AP, Brier)."
+  ],
+  "target_cohort_minimum_specifications": {
+    "workload_independence": "Must originate from a distinct cluster, trace, or administrative domain (e.g. Google Borg 2019, Alibaba 2018 cluster trace, Azure VM trace, or independent LANL HPC logs).",
+    "telemetry_features": "Must provide telemetry mappable to the 31 Borg features (CPU utilization, memory usage, disk I/O, network transfer, page faults).",
+    "temporal_resolution": "5-minute continuous sampling intervals; minimum 60-minute duration per entity (12 continuous steps: 7 historical + 5 recent).",
+    "entity_and_job_grouping": "Must provide unique task/instance identifiers (entity_id) and workload parent job identifiers (parent_job_id) to evaluate within-job ranking and cross-job false alarm rates.",
+    "label_semantics": "Ground truth labels mapped to NORMAL (0), WARNING (1: failure within 10-25m), and CRITICAL (2: failure within 5m)."
+  },
+  "operational_gates": {
+    "gate_1a_episode_recall_min": 70.0,
+    "gate_1b_critical_recall_min": 50.0,
+    "gate_2a_entity_far_max": 10.0,
+    "gate_2b_window_fpr_max": 5.0
+  },
+  "frozen_models_on_standby": [
+    {
+      "model": "Phase 7S S2",
+      "policy": "P_fail >= 0.50, z2 - z1 >= 0.50"
+    },
+    {
+      "model": "Phase 7T Hybrid (80/20)",
+      "policy": "R_hybrid >= 0.7650, z2_S2 - z1_S2 >= 0.50"
+    },
+    {
+      "model": "Phase 7U Fuzzy",
+      "policy": "Primary: tau = 1.0000; Diagnostic: tau = 0.5000"
+    }
+  ]
+}

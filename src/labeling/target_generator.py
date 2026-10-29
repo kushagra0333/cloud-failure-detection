@@ -1,0 +1,173 @@
+"""Target label generation adhering strictly to verified lifecycle failure semantics."""
+
+from typing import Dict, List, Optional, Tuple, Any
+import numpy as np
+import pandas as pd
+
+from src.ingestion.schema import (
+    ClusterEventTypeV2,
+    ClusterEventTypeV3,
+    FailureLabel,
+    get_event_classifier,
+)
+
+
+class TargetLabelGenerator:
+    """Generates ground-truth failure prediction labels for cloud tasks.
+    
+    Adheres strictly to Master Engineering Prompt Section 2.6:
+    Let tau_{i,t} = T_i^{FAIL} - t:
+    - CRITICAL (2) : 0 < tau <= 15 minutes (900 seconds)
+    - WARNING  (1) : 15 < tau <= 30 minutes (1800 seconds)
+    - NORMAL   (0) : No qualifying failure in (t, t + 30 min] and verified observation
+    - UNKNOWN  (-1): Incomplete observation or censored cancellation
+    """
+
+    def __init__(
+        self,
+        critical_horizon_sec: float = 900.0,   # 15 minutes
+        warning_horizon_sec: float = 1800.0,  # 30 minutes
+        trace_version: str = "2011",
+    ):
+        self.critical_horizon_sec = critical_horizon_sec
+        self.warning_horizon_sec = warning_horizon_sec
+        self.trace_version = trace_version
+        self.event_cls = get_event_classifier(trace_version)
+
+    def derive_label_for_task(
+        self,
+        prediction_time_sec: float,
+        task_events: pd.DataFrame,
+        telemetry_max_time_sec: float,
+    ) -> Tuple[FailureLabel, Optional[float]]:
+        """Derives the future label for an entity at prediction time t.
+        
+        Args:
+            prediction_time_sec: Timestamp t (end of latest fully observed window).
+            task_events: DataFrame of all lifecycle events for this entity.
+            telemetry_max_time_sec: Max end_time of telemetry observed for this entity.
+            
+        Returns:
+            Tuple of (FailureLabel, time_to_failure_sec).
+        """
+        t = prediction_time_sec
+
+        # Handle missing, null, or non-finite prediction timestamps safely
+        if pd.isna(t) or not np.isfinite(t):
+            return FailureLabel.UNKNOWN, None
+
+        # 0. Strict Prior/Concurrent Failure Check (Protocol Amendment 2.1 line 201)
+        # Any observation at or after the entity's first failure event (time_sec <= t)
+        # is post-failure telemetry and must be labeled UNKNOWN (-1) and strictly excluded.
+        if not task_events.empty and "event_type" in task_events.columns and "time_sec" in task_events.columns:
+            prior_fails = task_events[
+                (task_events["event_type"] == self.event_cls.FAIL) &
+                (task_events["time_sec"] <= t)
+            ]
+            if not prior_fails.empty:
+                return FailureLabel.UNKNOWN, None
+
+        # 1. Locate any abnormal failure event occurring strictly after prediction time t
+        future_fails = pd.DataFrame()
+        if not task_events.empty and "event_type" in task_events.columns and "time_sec" in task_events.columns:
+            future_fails = task_events[
+                (task_events["event_type"] == self.event_cls.FAIL) &
+                (task_events["time_sec"] > t)
+            ]
+
+        if not future_fails.empty:
+            earliest_fail_sec = future_fails["time_sec"].min()
+            tau = earliest_fail_sec - t
+
+            if 0.0 < tau <= self.critical_horizon_sec:
+                return FailureLabel.CRITICAL, tau
+            elif self.critical_horizon_sec < tau <= self.warning_horizon_sec:
+                return FailureLabel.WARNING, tau
+            else:
+                # Failure occurs beyond 30 minutes; task was active without failure in (t, t + 30m]
+                return FailureLabel.NORMAL, tau
+
+        # 2. No future abnormal failure found. Check if future is legitimately NORMAL or UNKNOWN
+        # Check if telemetry extends at least 30 minutes ahead
+        if telemetry_max_time_sec >= t + self.warning_horizon_sec:
+            return FailureLabel.NORMAL, None
+
+        # Check if task completed normally (FINISH) in the future
+        future_finishes = task_events[
+            (task_events["event_type"] == self.event_cls.FINISH) &
+            (task_events["time_sec"] > t)
+        ]
+        if not future_finishes.empty:
+            finish_time = future_finishes["time_sec"].min()
+            # If task finished normally before 30 min, it completed its run without failing
+            if finish_time <= t + self.warning_horizon_sec:
+                return FailureLabel.NORMAL, None
+            else:
+                return FailureLabel.NORMAL, None
+
+        # Check if task was cancelled (KILL) within the 30-minute window
+        future_kills = task_events[
+            (task_events["event_type"] == self.event_cls.KILL) &
+            (task_events["time_sec"] > t)
+        ]
+        if not future_kills.empty:
+            kill_time = future_kills["time_sec"].min()
+            if kill_time <= t + self.warning_horizon_sec:
+                # Censored: User cancellation terminates the run; cannot observe potential failure
+                return FailureLabel.UNKNOWN, None
+
+        # Check if task was evicted (EVICT) within the 30-minute window
+        future_evicts = task_events[
+            (task_events["event_type"] == self.event_cls.EVICT) &
+            (task_events["time_sec"] > t)
+        ]
+        if not future_evicts.empty:
+            evict_time = future_evicts["time_sec"].min()
+            if evict_time <= t + self.warning_horizon_sec:
+                # Censored: Infrastructure preemption terminates the run
+                return FailureLabel.UNKNOWN, None
+
+        # 3. Observation terminates without any terminal event before t + 30 min (e.g. shard boundary)
+        return FailureLabel.UNKNOWN, None
+
+    def label_telemetry_windows(
+        self,
+        telemetry_df: pd.DataFrame,
+        events_df: pd.DataFrame,
+    ) -> pd.DataFrame:
+        """Assigns labels to each telemetry observation window across entities."""
+        labeled_df = telemetry_df.copy()
+        labeled_df["label"] = FailureLabel.UNKNOWN
+        labeled_df["time_to_failure_sec"] = np.nan
+
+        # Pre-group events by entity for fast lookup (filter to telemetry entities only)
+        telem_entities = set(telemetry_df["entity_id"].unique())
+        filtered_events = events_df[events_df["entity_id"].isin(telem_entities)]
+        events_by_entity = {}
+        for entity_id, group in filtered_events.groupby("entity_id"):
+            events_by_entity[entity_id] = group.sort_values("time_sec")
+
+        # Compute max telemetry time per entity
+        max_telem_by_entity = telemetry_df.groupby("entity_id")["end_time_sec"].max().to_dict()
+
+        labels = []
+        ttfs = []
+
+        for idx, row in telemetry_df.iterrows():
+            eid = row["entity_id"]
+            t_pred = row["end_time_sec"]
+
+            ent_events = events_by_entity.get(eid, pd.DataFrame(columns=["event_type", "time_sec"]))
+            max_telem = max_telem_by_entity.get(eid, t_pred)
+
+            label, ttf = self.derive_label_for_task(
+                prediction_time_sec=t_pred,
+                task_events=ent_events,
+                telemetry_max_time_sec=max_telem,
+            )
+            labels.append(int(label))
+            ttfs.append(ttf if ttf is not None else np.nan)
+
+        labeled_df["label"] = labels
+        labeled_df["time_to_failure_sec"] = ttfs
+        return labeled_df

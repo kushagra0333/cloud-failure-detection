@@ -1,0 +1,102 @@
+{
+  "audit_metadata": {
+    "phase": "Phase 7A \u2014 Controlled Labeling Repair and Data Integrity Verification",
+    "date": "2026-10-27",
+    "total_windows_audited": 12327,
+    "total_affected_windows": 2052
+  },
+  "split_summaries": {
+    "confirmatory": {
+      "split_name": "confirmatory",
+      "total_windows": 5511,
+      "total_entities": 335,
+      "original_labels": {
+        "0": 4811,
+        "2": 400,
+        "1": 300
+      },
+      "post_failure_normal": 149,
+      "between_failure_cross_history_normal": 7,
+      "between_failure_clean_history_normal": 0,
+      "between_failure_warning": 14,
+      "between_failure_critical": 26,
+      "post_all_failure_non_normal": 0,
+      "clean_pre_failure_normal": 140,
+      "pure_normal_control": 4515,
+      "clean_warning": 286,
+      "clean_critical": 374,
+      "affected_windows_count": 196
+    },
+    "train": {
+      "split_name": "train",
+      "total_windows": 4798,
+      "total_entities": 367,
+      "original_labels": {
+        "0": 4188,
+        "2": 363,
+        "1": 247
+      },
+      "post_failure_normal": 1130,
+      "between_failure_cross_history_normal": 40,
+      "between_failure_clean_history_normal": 59,
+      "between_failure_warning": 32,
+      "between_failure_critical": 142,
+      "post_all_failure_non_normal": 0,
+      "clean_pre_failure_normal": 1496,
+      "pure_normal_control": 1463,
+      "clean_warning": 215,
+      "clean_critical": 221,
+      "affected_windows_count": 1403
+    },
+    "val": {
+      "split_name": "val",
+      "total_windows": 1015,
+      "total_entities": 78,
+      "original_labels": {
+        "0": 840,
+        "2": 103,
+        "1": 72
+      },
+      "post_failure_normal": 197,
+      "between_failure_cross_history_normal": 0,
+      "between_failure_clean_history_normal": 0,
+      "between_failure_warning": 0,
+      "between_failure_critical": 40,
+      "post_all_failure_non_normal": 0,
+      "clean_pre_failure_normal": 339,
+      "pure_normal_control": 304,
+      "clean_warning": 72,
+      "clean_critical": 63,
+      "affected_windows_count": 237
+    },
+    "test": {
+      "split_name": "test",
+      "total_windows": 1003,
+      "total_entities": 80,
+      "original_labels": {
+        "0": 864,
+        "2": 71,
+        "1": 68
+      },
+      "post_failure_normal": 145,
+      "between_failure_cross_history_normal": 8,
+      "between_failure_clean_history_normal": 35,
+      "between_failure_warning": 14,
+      "between_failure_critical": 14,
+      "post_all_failure_non_normal": 0,
+      "clean_pre_failure_normal": 345,
+      "pure_normal_control": 331,
+      "clean_warning": 54,
+      "clean_critical": 57,
+      "affected_windows_count": 216
+    }
+  },
+  "key_findings": {
+    "confirmatory_post_failure_normal": 149,
+    "confirmatory_between_failure_cross_history_normal": 7,
+    "train_post_failure_normal": 1130,
+    "val_post_failure_normal": 197,
+    "test_post_failure_normal": 145,
+    "conclusion": "The 1,130 train, 197 val, 145 test, 149 confirmatory, and 7 cross-history windows reported historically are mathematically and empirically confirmed to the exact integer."
+  }
+}

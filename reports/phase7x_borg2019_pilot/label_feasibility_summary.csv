@@ -1,0 +1,7 @@
+class_label,class_name,time_to_failure_min,time_to_failure_max,event_trigger,inclusion_status,leakage_risk
+0,NORMAL,25.0,Infinity / Pure-Normal,None within 25 min,INCLUDED_IN_TRAIN_VAL_TEST,NONE (Drawn from stable pre-failure or pure-normal tasks)
+1,WARNING,10.0,25.0,Primary FAIL (type=5),INCLUDED_IN_TRAIN_VAL_TEST,NONE (Causal lead-time strictly before event)
+2,CRITICAL,0.0,5.0,Primary FAIL (type=5),INCLUDED_IN_TRAIN_VAL_TEST,NONE (Imminent pre-failure window before event)
+-1,AMBIGUOUS_BUFFER,5.0,10.0,Primary FAIL (type=5),STRICTLY_EXCLUDED,PREVENTED (Excluded to prevent boundary ambiguity)
+-2,POST_EVENT_OBSERVATION,-9999.0,0.0,Any event occurred,STRICTLY_EXCLUDED,PREVENTED (Censored to eliminate post-event leakage)
+8,LOST_SENSITIVITY,0.0,25.0,Node LOST (type=8),SEPARATE_SENSITIVITY_BENCHMARK,ISOLATED (Evaluated independently of software crashes)

@@ -1,0 +1,489 @@
+{
+  "reconstruction_timestamp_utc": "2026-10-28T09:06:36Z",
+  "duration_seconds": 31.68,
+  "source_shards": {
+    "event_shards": {
+      "data/raw/sample_task_events.csv.gz": "eae977d521bc6ed5d8deef56f1e06009d41844d4eb9a7e308e610d68e1b10f18",
+      "data/raw/sample_task_events_part1.csv.gz": "c122f250cf1f9817dc722a5b7457eb5caf122619accfada078de66d40f311501",
+      "data/raw/sample_task_events_part2.csv.gz": "3534b71a7c6a3952f192485c4726119ff8d904fc2d7b828b8d96987db4aab767"
+    },
+    "usage_shards": {
+      "data/raw/sample_task_usage.csv.gz": "841254d3bc4199c26c82890dcd6bc87fcfb1ff23d75be8e39f0337f0ed1c6e28",
+      "data/raw/sample_task_usage_part1.csv.gz": "1fa83e39536baac92a1646dbe750541c6504e4c26a85b7f45d9259fd16d3919c"
+    }
+  },
+  "candidate_a_split": {
+    "path": "C:\\Users\\hp\\Desktop\\Research project\\results\\phase7a_4\\candidate_a_job_grouped_split.csv",
+    "sha256": "f84bc4fe54f8e0583e2ee52f49b2fbe8e6fcafb4f020c656985a1acc31bb4946",
+    "total_windows": 4960
+  },
+  "feature_definitions": {
+    "feature_count": 31,
+    "feature_cols": [
+      "cpu_utilization",
+      "memory_utilization",
+      "assigned_memory",
+      "disk_io_time",
+      "cycles_per_instruction",
+      "memory_accesses_per_instruction",
+      "cpu_utilization_lag_1",
+      "memory_utilization_lag_1",
+      "cpu_utilization_lag_2",
+      "memory_utilization_lag_2",
+      "cpu_utilization_lag_3",
+      "memory_utilization_lag_3",
+      "cpu_utilization_lag_6",
+      "memory_utilization_lag_6",
+      "cpu_diff_1",
+      "cpu_rel_change_1",
+      "memory_diff_1",
+      "cpu_rolling_mean_3",
+      "cpu_rolling_std_3",
+      "cpu_rolling_range_3",
+      "memory_rolling_mean_3",
+      "cpu_rolling_mean_6",
+      "cpu_rolling_std_6",
+      "cpu_rolling_range_6",
+      "memory_rolling_mean_6",
+      "cpu_trend_slope_6",
+      "cpu_exceed_85",
+      "cpu_exceed_fraction_6",
+      "memory_to_assigned_ratio",
+      "task_age_minutes",
+      "cpi_missing_fraction_6"
+    ]
+  },
+  "partitions": {
+    "train": {
+      "windows": 3278,
+      "entities": 284,
+      "parent_jobs": 51,
+      "X_shape": [
+        3278,
+        5,
+        31
+      ],
+      "X_sha256": "d8561f50206a8dcd40df6d3f7ee618bbea359921237c7fb84e22faf458f3d2e0",
+      "y_sha256": "355ca59b1609780181fabe8f06c6ab51cc5c53cfbec91cb822d76b8e373fab1e",
+      "meta_sha256": "0180ade4098711680c44bbd2ca8c3c5d85834a86042546cc9300b00f1df725ce"
+    },
+    "val": {
+      "windows": 657,
+      "entities": 69,
+      "parent_jobs": 12,
+      "X_shape": [
+        657,
+        5,
+        31
+      ],
+      "X_sha256": "f5f586d6192ee0a7730af0e3833eba71a0288b8a5aeeb65ef7f87e1b1c60a751",
+      "y_sha256": "eb968a74ae86dcc574f3341055ff45ca9fcf77ec5a1b4cee5ad8cb4c1e2631b9",
+      "meta_sha256": "8d22193f11d671dc570d29abf9255d06386880d49c5de83c68d6404a8b41b956"
+    },
+    "test": {
+      "windows": 1025,
+      "entities": 59,
+      "parent_jobs": 11,
+      "X_shape": [
+        1025,
+        5,
+        31
+      ],
+      "X_sha256": "0692d48095a79c29c68fdb61876699a4f5dc1b6703b65cd6c188604babccb2c3",
+      "y_sha256": "c073fe68540017728fd2ddde25bf7334c3b95cdcc760cd556764ca23a0c307b0",
+      "meta_sha256": "5bf69371833c4b90558afaf0f445244252bc6a6cc5a368cc2cc027d8a38fb4cf"
+    }
+  },
+  "missingness_summary": {
+    "train": {
+      "total_windows": 3278,
+      "total_sequence_steps": 16390,
+      "features_missingness": {
+        "cpu_utilization": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "memory_utilization": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "assigned_memory": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "disk_io_time": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cycles_per_instruction": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "memory_accesses_per_instruction": {
+          "nan_count": 1670,
+          "nan_pct": 10.189139719341062
+        },
+        "cpu_utilization_lag_1": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "memory_utilization_lag_1": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_utilization_lag_2": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "memory_utilization_lag_2": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_utilization_lag_3": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "memory_utilization_lag_3": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_utilization_lag_6": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "memory_utilization_lag_6": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_diff_1": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_rel_change_1": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "memory_diff_1": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_rolling_mean_3": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_rolling_std_3": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_rolling_range_3": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "memory_rolling_mean_3": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_rolling_mean_6": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_rolling_std_6": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_rolling_range_6": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "memory_rolling_mean_6": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_trend_slope_6": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_exceed_85": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_exceed_fraction_6": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "memory_to_assigned_ratio": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "task_age_minutes": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpi_missing_fraction_6": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        }
+      }
+    },
+    "val": {
+      "total_windows": 657,
+      "total_sequence_steps": 3285,
+      "features_missingness": {
+        "cpu_utilization": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "memory_utilization": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "assigned_memory": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "disk_io_time": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cycles_per_instruction": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "memory_accesses_per_instruction": {
+          "nan_count": 205,
+          "nan_pct": 6.2404870624048705
+        },
+        "cpu_utilization_lag_1": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "memory_utilization_lag_1": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_utilization_lag_2": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "memory_utilization_lag_2": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_utilization_lag_3": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "memory_utilization_lag_3": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_utilization_lag_6": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "memory_utilization_lag_6": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_diff_1": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_rel_change_1": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "memory_diff_1": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_rolling_mean_3": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_rolling_std_3": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_rolling_range_3": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "memory_rolling_mean_3": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_rolling_mean_6": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_rolling_std_6": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_rolling_range_6": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "memory_rolling_mean_6": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_trend_slope_6": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_exceed_85": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_exceed_fraction_6": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "memory_to_assigned_ratio": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "task_age_minutes": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpi_missing_fraction_6": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        }
+      }
+    },
+    "test": {
+      "total_windows": 1025,
+      "total_sequence_steps": 5125,
+      "features_missingness": {
+        "cpu_utilization": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "memory_utilization": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "assigned_memory": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "disk_io_time": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cycles_per_instruction": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "memory_accesses_per_instruction": {
+          "nan_count": 240,
+          "nan_pct": 4.682926829268292
+        },
+        "cpu_utilization_lag_1": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "memory_utilization_lag_1": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_utilization_lag_2": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "memory_utilization_lag_2": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_utilization_lag_3": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "memory_utilization_lag_3": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_utilization_lag_6": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "memory_utilization_lag_6": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_diff_1": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_rel_change_1": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "memory_diff_1": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_rolling_mean_3": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_rolling_std_3": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_rolling_range_3": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "memory_rolling_mean_3": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_rolling_mean_6": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_rolling_std_6": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_rolling_range_6": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "memory_rolling_mean_6": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_trend_slope_6": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_exceed_85": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpu_exceed_fraction_6": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "memory_to_assigned_ratio": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "task_age_minutes": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        },
+        "cpi_missing_fraction_6": {
+          "nan_count": 0,
+          "nan_pct": 0.0
+        }
+      }
+    }
+  }
+}

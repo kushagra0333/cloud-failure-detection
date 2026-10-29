@@ -1,0 +1,14 @@
+{
+  "candidate_a_job_grouped_split.csv": {
+    "size_bytes": 256213,
+    "sha256": "f84bc4fe54f8e0583e2ee52f49b2fbe8e6fcafb4f020c656985a1acc31bb4946"
+  },
+  "candidate_b_temporal_group_split.csv": {
+    "size_bytes": 256673,
+    "sha256": "a9f31e43b164d8dd12089d0ad6e610e403a5e867615c1c6fcc022cf6fdf46804"
+  },
+  "split_design_verification.json": {
+    "size_bytes": 10819,
+    "sha256": "b8ff4770f648f331eafda0fd59a0a11a66d0a87b6f25e84f856964ef895e3382"
+  }
+}

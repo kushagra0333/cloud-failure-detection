@@ -1,0 +1,29 @@
+{
+  "phase": "Phase 7N",
+  "timestamp": "2026-10-29T11:25:00+05:30",
+  "project_root": "C:\\Users\\hp\\Desktop\\Research project",
+  "governance_status": "PASSED_STRICT_ALLOWLIST",
+  "authorized_partitions": [
+    "Candidate_A_Train",
+    "Candidate_A_Validation"
+  ],
+  "forbidden_partitions_accessed": false,
+  "split_hash": "f84bc4fe54f8e0583e2ee52f49b2fbe8e6fcafb4f020c656985a1acc31bb4946",
+  "split_path": "C:\\Users\\hp\\Desktop\\Research project\\results\\phase7a_4\\candidate_a_job_grouped_split.csv",
+  "sample_counts": {
+    "train_windows": 3278,
+    "val_windows": 657,
+    "val_normal": 560,
+    "val_warning": 48,
+    "val_critical": 49,
+    "val_episodes": 20,
+    "val_pure_normal_entities": 49,
+    "val_pure_normal_jobs": 4
+  },
+  "phase7m_manifest_audit": {
+    "all_artifacts_matched": true,
+    "artifacts_checked": 32
+  },
+  "discrepancies_resolved": 5,
+  "preflight_verdict": "READY_FOR_TRAINING"
+}

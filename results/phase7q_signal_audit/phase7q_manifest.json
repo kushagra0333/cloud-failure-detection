@@ -1,0 +1,163 @@
+{
+  "manifest_version": "1.0",
+  "phase": "Phase 7Q",
+  "description": "Sealed manifest for Phase 7Q Cross-Job Predictive Signal Audit and Causal Workload-Relative Features",
+  "total_deliverables": 22,
+  "manifest_seal_timestamp": "2026-10-29T07:24:35Z",
+  "deliverables": [
+    {
+      "filename": "confusion_matrices.csv",
+      "relative_path": "results/phase7q_signal_audit/confusion_matrices.csv",
+      "size_bytes": 875,
+      "sha256": "bf0cfbbaac6decb53025648e19218868e8e0a2ed0e221a14037e32eeb06d673f",
+      "timestamp_utc": "2026-10-29T07:23:38Z"
+    },
+    {
+      "filename": "critical_margin_analysis.csv",
+      "relative_path": "results/phase7q_signal_audit/critical_margin_analysis.csv",
+      "size_bytes": 712,
+      "sha256": "56964a6239158e25e5fdfc794d1cd9df791fddc1ec530b6b07136ab34dba2409",
+      "timestamp_utc": "2026-10-29T07:23:38Z"
+    },
+    {
+      "filename": "data_manifest.json",
+      "relative_path": "results/phase7q_signal_audit/data_manifest.json",
+      "size_bytes": 2999,
+      "sha256": "0cc5b20cc0871edc4bdc4377474954a2a7f05f3a05ffe5ab7e8da51fac65f101",
+      "timestamp_utc": "2026-10-29T07:24:34Z"
+    },
+    {
+      "filename": "discrepancy_ledger.csv",
+      "relative_path": "results/phase7q_signal_audit/discrepancy_ledger.csv",
+      "size_bytes": 1318,
+      "sha256": "2dc130c28dbfa817f3c10d5d72f8c9a4672b4fc14e97baeb50eb1862083363de",
+      "timestamp_utc": "2026-10-29T07:10:41Z"
+    },
+    {
+      "filename": "fold_assignments.csv",
+      "relative_path": "results/phase7q_signal_audit/fold_assignments.csv",
+      "size_bytes": 157504,
+      "sha256": "29bc9cee8ab52c435d8b9a85bc589be82f6e27f5448bd75201c856124633be17",
+      "timestamp_utc": "2026-10-29T07:23:33Z"
+    },
+    {
+      "filename": "fold_diagnostics.csv",
+      "relative_path": "results/phase7q_signal_audit/fold_diagnostics.csv",
+      "size_bytes": 2705,
+      "sha256": "93819b0787e6d05836cda90e581f4b44aa4220fa998290115d264d36160f5103",
+      "timestamp_utc": "2026-10-29T07:09:45Z"
+    },
+    {
+      "filename": "independent_audit_report.md",
+      "relative_path": "results/phase7q_signal_audit/independent_audit_report.md",
+      "size_bytes": 2795,
+      "sha256": "a3e8905da52a301b8e70a6f2b407ebe81de825bfebe3dba93b2209162f914001",
+      "timestamp_utc": "2026-10-29T07:24:25Z"
+    },
+    {
+      "filename": "integrity_checks.json",
+      "relative_path": "results/phase7q_signal_audit/integrity_checks.json",
+      "size_bytes": 3711,
+      "sha256": "13d11ab767ff490c9319726c366f344ad53e3fcac11a7cd7e68f3dd0069f5c33",
+      "timestamp_utc": "2026-10-29T07:24:34Z"
+    },
+    {
+      "filename": "oof_predictions.csv",
+      "relative_path": "results/phase7q_signal_audit/oof_predictions.csv",
+      "size_bytes": 1875072,
+      "sha256": "c4a35638e44d70152505f0c63c80a032a1403c7fa362ab1b503cce4de362f3e5",
+      "timestamp_utc": "2026-10-29T07:23:37Z"
+    },
+    {
+      "filename": "operational_gate_summary.csv",
+      "relative_path": "results/phase7q_signal_audit/operational_gate_summary.csv",
+      "size_bytes": 735,
+      "sha256": "7fe1eb859b061088417077f0327cf1eeabb3f921e5f6c884c7c082247c53810a",
+      "timestamp_utc": "2026-10-29T07:23:38Z"
+    },
+    {
+      "filename": "paired_comparison.csv",
+      "relative_path": "results/phase7q_signal_audit/paired_comparison.csv",
+      "size_bytes": 945,
+      "sha256": "37a09b9263359b5c6ce3a50db784e50fd81ab9b79f2957d6ef2f4317c2857613",
+      "timestamp_utc": "2026-10-29T07:23:38Z"
+    },
+    {
+      "filename": "per_fold_metrics.csv",
+      "relative_path": "results/phase7q_signal_audit/per_fold_metrics.csv",
+      "size_bytes": 2316,
+      "sha256": "72bc19f753e85e4a2e3213a0f832d41ae303615ad3f753a6c6638e98122e90ef",
+      "timestamp_utc": "2026-10-29T07:23:38Z"
+    },
+    {
+      "filename": "per_seed_metrics.csv",
+      "relative_path": "results/phase7q_signal_audit/per_seed_metrics.csv",
+      "size_bytes": 2436,
+      "sha256": "b0fb5adf44f95803fd370c3fc5a17770f42ec02366b534730513860c46a67869",
+      "timestamp_utc": "2026-10-29T07:23:38Z"
+    },
+    {
+      "filename": "phase7p_ranking_reaudit.csv",
+      "relative_path": "results/phase7q_signal_audit/phase7p_ranking_reaudit.csv",
+      "size_bytes": 1284,
+      "sha256": "e9ea436a05c6d898c8bfdc91d135d9a707ebf3d3fc21d6648b0542210f5d31fa",
+      "timestamp_utc": "2026-10-29T07:09:45Z"
+    },
+    {
+      "filename": "phase7q_config.json",
+      "relative_path": "results/phase7q_signal_audit/phase7q_config.json",
+      "size_bytes": 2783,
+      "sha256": "b1119514fa7ac1fc448c404e10f8bc478db4442100a7696412e1088bf2dffb1c",
+      "timestamp_utc": "2026-10-29T07:14:10Z"
+    },
+    {
+      "filename": "phase7q_design.md",
+      "relative_path": "results/phase7q_signal_audit/phase7q_design.md",
+      "size_bytes": 7205,
+      "sha256": "3dcac538248b1242f2b04d9040ef237b6914f50f0ef159aa429f551faca243a6",
+      "timestamp_utc": "2026-10-29T07:13:54Z"
+    },
+    {
+      "filename": "phase7q_final_report.md",
+      "relative_path": "results/phase7q_signal_audit/phase7q_final_report.md",
+      "size_bytes": 26784,
+      "sha256": "646aee491e43b8db77b361b2f62abd5e63cfe4f403f3c67b6a8cb448f29e19e7",
+      "timestamp_utc": "2026-10-29T07:24:34Z"
+    },
+    {
+      "filename": "phase7q_signal_audit.md",
+      "relative_path": "results/phase7q_signal_audit/phase7q_signal_audit.md",
+      "size_bytes": 8120,
+      "sha256": "a99fd8df4e1c63b3f05ad49f779eab4f8a73ad6c6a6a61e7776eff3d361526b2",
+      "timestamp_utc": "2026-10-29T07:11:16Z"
+    },
+    {
+      "filename": "preflight_audit.json",
+      "relative_path": "results/phase7q_signal_audit/preflight_audit.json",
+      "size_bytes": 3417,
+      "sha256": "5e0f97065da0cbf89e7a129daaba009d333e4d95ad8478af63cb2b826ff7e8fa",
+      "timestamp_utc": "2026-10-29T07:10:28Z"
+    },
+    {
+      "filename": "prevalence_baselines.json",
+      "relative_path": "results/phase7q_signal_audit/prevalence_baselines.json",
+      "size_bytes": 438,
+      "sha256": "a7ba678e4d776c79ae0be0449e10c23f11997510cf091e4395667961728511a9",
+      "timestamp_utc": "2026-10-29T07:09:45Z"
+    },
+    {
+      "filename": "training_logs.csv",
+      "relative_path": "results/phase7q_signal_audit/training_logs.csv",
+      "size_bytes": 1974,
+      "sha256": "0cee9d0b4a06d2926855c66b6531d2e1bf57535d0aeaa9ef189f8c2eb90c12a4",
+      "timestamp_utc": "2026-10-29T07:23:37Z"
+    },
+    {
+      "filename": "validation_predictions.csv",
+      "relative_path": "results/phase7q_signal_audit/validation_predictions.csv",
+      "size_bytes": 399019,
+      "sha256": "b1518822153264f1ac0b35f140f2a4d2daa01a69354a960da5e543a5bc2da151",
+      "timestamp_utc": "2026-10-29T07:23:37Z"
+    }
+  ]
+}

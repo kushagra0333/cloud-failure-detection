@@ -1,0 +1,134 @@
+# Temporal LSTM/Transformer Framework for Early Failure Prediction in Cloud Computing
+# Default Master Configuration
+
+project:
+  name: "cloud-task-early-failure-prediction"
+  version: "1.0.0"
+  random_seed: 42
+  device: "cpu" # 'cpu' or 'cuda'
+
+paths:
+  raw_data_dir: "data/raw"
+  processed_data_dir: "data/processed"
+  synthetic_benchmark_dir: "data/synthetic_benchmark"
+  checkpoints_dir: "checkpoints"
+  reports_dir: "reports"
+  metrics_dir: "reports/metrics"
+
+time_series:
+  observation_interval_seconds: 300 # \Delta t = 5 minutes = 300 seconds
+  observation_interval_minutes: 5.0
+  sequence_length: 15 # L = 15 observations (75 minutes history)
+  history_duration_minutes: 75.0
+
+labeling:
+  critical_horizon_minutes: 15.0 # H_critical
+  warning_horizon_minutes: 30.0  # H_warning
+  label_classes:
+    NORMAL: 0
+    WARNING: 1
+    CRITICAL: 2
+  unknown_label: -1
+  censor_incomplete_horizon: true # Exclude records with < 30 min future trace unless terminal event reached
+
+splitting:
+  strategy: "entity_grouped" # 'entity_grouped' (unseen task generalization) or 'chronological'
+  train_ratio: 0.70
+  val_ratio: 0.15
+  test_ratio: 0.15
+  embargo_interval_minutes: 30.0 # Applicable when using chronological strategy
+
+features:
+  raw_telemetry:
+    - "cpu_utilization"
+    - "memory_utilization"
+    - "assigned_memory"
+    - "cycles_per_instruction"
+    - "memory_accesses_per_instruction"
+    - "disk_io_time"
+  lags:
+    enabled: true
+    lag_steps: [1, 2, 3, 6] # 5, 10, 15, 30 minutes
+  differences:
+    enabled: true
+    epsilon: 1.0e-5
+  rolling_windows:
+    enabled: true
+    window_sizes: [3, 6] # 15, 30 minutes
+    min_periods: 2
+  trend_slope:
+    enabled: true
+    window_size: 6
+  threshold_exceedance:
+    enabled: true
+    cpu_threshold: 0.85
+    memory_threshold: 0.85
+  resource_ratios:
+    enabled: true
+    epsilon: 1.0e-5
+  missingness_tracking:
+    enabled: true
+    window_size: 6
+
+preprocessing:
+  imputation_strategy: "median" # Fitted strictly on training set
+  forward_fill_limit: 2         # Max 2 consecutive missing intervals
+  scaling_strategy: "standard"  # StandardScaler fitted strictly on training set
+  clip_outliers: false
+
+baselines:
+  majority_class:
+    enabled: true
+  logistic_regression:
+    enabled: true
+    max_iter: 1000
+    C: 1.0
+    class_weight: "balanced"
+  random_forest:
+    enabled: true
+    n_estimators: 100
+    max_depth: 10
+    random_state: 42
+    class_weight: "balanced"
+
+lstm:
+  input_dim: null # Dynamically derived from feature registry
+  hidden_dim: 128
+  num_layers: 2
+  dropout: 0.2
+  bidirectional: false
+  num_classes: 3
+
+transformer:
+  input_dim: null # Dynamically derived from feature registry
+  d_model: 64
+  nhead: 4
+  num_layers: 2
+  dim_feedforward: 128
+  dropout: 0.2
+  num_classes: 3
+  pooling: "mean" # 'last', 'mean', or 'cls'
+
+hybrid:
+  lstm_hidden_dim: 64
+  transformer_d_model: 64
+  transformer_nhead: 4
+  num_classes: 3
+
+training:
+  optimizer: "AdamW"
+  learning_rate: 1.0e-3
+  weight_decay: 1.0e-4
+  batch_size: 64
+  max_epochs: 50
+  early_stopping_patience: 7
+  gradient_clip_norm: 1.0
+  loss_function: "cross_entropy" # 'cross_entropy', 'weighted_ce', or 'focal_loss'
+  focal_loss_gamma: 2.0
+  validation_metric: "macro_f1"
+
+evaluation:
+  alert_decision_rule: "combined" # P(WARNING) + P(CRITICAL) >= theta
+  alert_threshold: 0.50
+  event_max_horizon_minutes: 30.0
+  false_alarm_step_scale: 1000 # FA per 1000 steps

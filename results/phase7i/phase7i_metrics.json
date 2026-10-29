@@ -1,0 +1,534 @@
+{
+  "condition_A": {
+    "macro_f1": 0.30676526978909885,
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.852359208523592,
+    "precision": [
+      0.852359208523592,
+      0.0,
+      0.0
+    ],
+    "recall": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "f1": [
+      0.9202958093672966,
+      0.0,
+      0.0
+    ],
+    "support": [
+      560,
+      48,
+      49
+    ],
+    "confusion_matrix": [
+      [
+        560,
+        0,
+        0
+      ],
+      [
+        48,
+        0,
+        0
+      ],
+      [
+        49,
+        0,
+        0
+      ]
+    ],
+    "critical_recall": 0.0,
+    "critical_correct": 0,
+    "critical_total": 49,
+    "episode_metrics": {
+      "total_episodes": 20,
+      "detected_episodes": 0,
+      "episode_recall_pct": 0.0,
+      "episode_recall_ci95": [
+        0.0,
+        0.0
+      ],
+      "lead_time_mean_sec": 0.0,
+      "lead_time_median_sec": 0.0,
+      "lead_time_min_sec": 0.0,
+      "lead_time_max_sec": 0.0
+    },
+    "false_alarm_metrics": {
+      "pure_normal_entities": 49,
+      "fa_entities": 0,
+      "entity_far_pct": 0.0,
+      "entity_far_ci95": [
+        0.0,
+        0.0
+      ],
+      "normal_windows": 560,
+      "fp_windows": 0,
+      "window_fpr_pct": 0.0,
+      "window_fpr_ci95": [
+        0.0,
+        0.0
+      ],
+      "pure_normal_jobs": 4,
+      "fa_jobs": 0,
+      "job_far_pct": 0.0
+    },
+    "calibration": {
+      "expected_calibration_error_ece": 0.0740239410639898,
+      "brier_score": 0.254436694541311,
+      "negative_log_likelihood": 0.5030542016029358
+    },
+    "probability_diagnostics": {
+      "overall_mean_probs": {
+        "P_Normal": 0.8418407440185547,
+        "P_Warning": 0.07849512994289398,
+        "P_Critical": 0.07966407388448715
+      },
+      "on_true_normal_windows": {
+        "mean_P_Normal": 0.8457692265510559,
+        "mean_P_Warning": 0.07713621854782104,
+        "mean_P_Critical": 0.07709454745054245,
+        "median_P_Normal": 0.8541814088821411
+      },
+      "on_true_warning_windows": {
+        "mean_P_Normal": 0.8232531547546387,
+        "mean_P_Warning": 0.08340481668710709,
+        "mean_P_Critical": 0.09334205836057663
+      },
+      "on_true_critical_windows": {
+        "mean_P_Normal": 0.8151525259017944,
+        "mean_P_Warning": 0.08921615779399872,
+        "mean_P_Critical": 0.09563127160072327,
+        "median_P_Critical": 0.09406698495149612
+      },
+      "predicted_class_distribution": {
+        "pred_c0_count": 657,
+        "pred_c1_count": 0,
+        "pred_c2_count": 0,
+        "pred_c0_pct": 100.0,
+        "pred_c1_pct": 0.0,
+        "pred_c2_pct": 0.0
+      }
+    },
+    "operational_gates": {
+      "gate1_passed": false,
+      "gate2_passed": true,
+      "operational_winner": false,
+      "gate_gaps": {
+        "episode_recall_gap": 70.0,
+        "critical_recall_gap": 0.5,
+        "entity_far_excess": 0.0,
+        "window_fpr_excess": 0.0
+      }
+    },
+    "checkpoint_sha256": "5a4a907d4a31891d5ded01a718956b74dccf5e525253501bc9acac270ee975c8",
+    "best_epoch": 1,
+    "training_time_sec": 7.593648195266724,
+    "weights": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "condition_B": {
+    "macro_f1": 0.30676526978909885,
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.852359208523592,
+    "precision": [
+      0.852359208523592,
+      0.0,
+      0.0
+    ],
+    "recall": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "f1": [
+      0.9202958093672966,
+      0.0,
+      0.0
+    ],
+    "support": [
+      560,
+      48,
+      49
+    ],
+    "confusion_matrix": [
+      [
+        560,
+        0,
+        0
+      ],
+      [
+        48,
+        0,
+        0
+      ],
+      [
+        49,
+        0,
+        0
+      ]
+    ],
+    "critical_recall": 0.0,
+    "critical_correct": 0,
+    "critical_total": 49,
+    "episode_metrics": {
+      "total_episodes": 20,
+      "detected_episodes": 0,
+      "episode_recall_pct": 0.0,
+      "episode_recall_ci95": [
+        0.0,
+        0.0
+      ],
+      "lead_time_mean_sec": 0.0,
+      "lead_time_median_sec": 0.0,
+      "lead_time_min_sec": 0.0,
+      "lead_time_max_sec": 0.0
+    },
+    "false_alarm_metrics": {
+      "pure_normal_entities": 49,
+      "fa_entities": 0,
+      "entity_far_pct": 0.0,
+      "entity_far_ci95": [
+        0.0,
+        0.0
+      ],
+      "normal_windows": 560,
+      "fp_windows": 0,
+      "window_fpr_pct": 0.0,
+      "window_fpr_ci95": [
+        0.0,
+        0.0
+      ],
+      "pure_normal_jobs": 4,
+      "fa_jobs": 0,
+      "job_far_pct": 0.0
+    },
+    "calibration": {
+      "expected_calibration_error_ece": 0.13483769381971658,
+      "brier_score": 0.28213863932793126,
+      "negative_log_likelihood": 0.5584639310836792
+    },
+    "probability_diagnostics": {
+      "overall_mean_probs": {
+        "P_Normal": 0.7175214886665344,
+        "P_Warning": 0.13712775707244873,
+        "P_Critical": 0.14535073935985565
+      },
+      "on_true_normal_windows": {
+        "mean_P_Normal": 0.7216005921363831,
+        "mean_P_Warning": 0.1351839303970337,
+        "mean_P_Critical": 0.14321541786193848,
+        "median_P_Normal": 0.7291536331176758
+      },
+      "on_true_warning_windows": {
+        "mean_P_Normal": 0.6972329020500183,
+        "mean_P_Warning": 0.1457865983247757,
+        "mean_P_Critical": 0.1569804698228836
+      },
+      "on_true_critical_windows": {
+        "mean_P_Normal": 0.6907773017883301,
+        "mean_P_Warning": 0.15086086094379425,
+        "mean_P_Critical": 0.15836182236671448,
+        "median_P_Critical": 0.15811142325401306
+      },
+      "predicted_class_distribution": {
+        "pred_c0_count": 657,
+        "pred_c1_count": 0,
+        "pred_c2_count": 0,
+        "pred_c0_pct": 100.0,
+        "pred_c1_pct": 0.0,
+        "pred_c2_pct": 0.0
+      }
+    },
+    "operational_gates": {
+      "gate1_passed": false,
+      "gate2_passed": true,
+      "operational_winner": false,
+      "gate_gaps": {
+        "episode_recall_gap": 70.0,
+        "critical_recall_gap": 0.5,
+        "entity_far_excess": 0.0,
+        "window_fpr_excess": 0.0
+      }
+    },
+    "checkpoint_sha256": "6461a8b81b9cedfea41b0871ff2e67cf1a0818c3a467c0df19236a8f85600a72",
+    "best_epoch": 1,
+    "training_time_sec": 5.673036336898804,
+    "weights": [
+      1.0,
+      2.0,
+      2.0
+    ]
+  },
+  "condition_C": {
+    "macro_f1": 0.30676526978909885,
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.852359208523592,
+    "precision": [
+      0.852359208523592,
+      0.0,
+      0.0
+    ],
+    "recall": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "f1": [
+      0.9202958093672966,
+      0.0,
+      0.0
+    ],
+    "support": [
+      560,
+      48,
+      49
+    ],
+    "confusion_matrix": [
+      [
+        560,
+        0,
+        0
+      ],
+      [
+        48,
+        0,
+        0
+      ],
+      [
+        49,
+        0,
+        0
+      ]
+    ],
+    "critical_recall": 0.0,
+    "critical_correct": 0,
+    "critical_total": 49,
+    "episode_metrics": {
+      "total_episodes": 20,
+      "detected_episodes": 0,
+      "episode_recall_pct": 0.0,
+      "episode_recall_ci95": [
+        0.0,
+        0.0
+      ],
+      "lead_time_mean_sec": 0.0,
+      "lead_time_median_sec": 0.0,
+      "lead_time_min_sec": 0.0,
+      "lead_time_max_sec": 0.0
+    },
+    "false_alarm_metrics": {
+      "pure_normal_entities": 49,
+      "fa_entities": 0,
+      "entity_far_pct": 0.0,
+      "entity_far_ci95": [
+        0.0,
+        0.0
+      ],
+      "normal_windows": 560,
+      "fp_windows": 0,
+      "window_fpr_pct": 0.0,
+      "window_fpr_ci95": [
+        0.0,
+        0.0
+      ],
+      "pure_normal_jobs": 4,
+      "fa_jobs": 0,
+      "job_far_pct": 0.0
+    },
+    "calibration": {
+      "expected_calibration_error_ece": 0.21972985459063513,
+      "brier_score": 0.32765646919722285,
+      "negative_log_likelihood": 0.6283256411552429
+    },
+    "probability_diagnostics": {
+      "overall_mean_probs": {
+        "P_Normal": 0.6326292753219604,
+        "P_Warning": 0.1810653954744339,
+        "P_Critical": 0.18630531430244446
+      },
+      "on_true_normal_windows": {
+        "mean_P_Normal": 0.6371078491210938,
+        "mean_P_Warning": 0.17824587225914001,
+        "mean_P_Critical": 0.18464630842208862,
+        "median_P_Normal": 0.6490671634674072
+      },
+      "on_true_warning_windows": {
+        "mean_P_Normal": 0.6057363152503967,
+        "mean_P_Warning": 0.19705788791179657,
+        "mean_P_Critical": 0.19720584154129028
+      },
+      "on_true_critical_windows": {
+        "mean_P_Normal": 0.6077904105186462,
+        "mean_P_Warning": 0.19762229919433594,
+        "mean_P_Critical": 0.19458730518817902,
+        "median_P_Critical": 0.19376042485237122
+      },
+      "predicted_class_distribution": {
+        "pred_c0_count": 657,
+        "pred_c1_count": 0,
+        "pred_c2_count": 0,
+        "pred_c0_pct": 100.0,
+        "pred_c1_pct": 0.0,
+        "pred_c2_pct": 0.0
+      }
+    },
+    "operational_gates": {
+      "gate1_passed": false,
+      "gate2_passed": true,
+      "operational_winner": false,
+      "gate_gaps": {
+        "episode_recall_gap": 70.0,
+        "critical_recall_gap": 0.5,
+        "entity_far_excess": 0.0,
+        "window_fpr_excess": 0.0
+      }
+    },
+    "checkpoint_sha256": "1329ee91520ac2733a51777cb7e6e83f6f989667e7d3639e1e30cc560e7d56bb",
+    "best_epoch": 1,
+    "training_time_sec": 5.809427499771118,
+    "weights": [
+      1.0,
+      3.0,
+      3.0
+    ]
+  },
+  "condition_D": {
+    "macro_f1": 0.30676526978909885,
+    "balanced_accuracy": 0.3333333333333333,
+    "accuracy": 0.852359208523592,
+    "precision": [
+      0.852359208523592,
+      0.0,
+      0.0
+    ],
+    "recall": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "f1": [
+      0.9202958093672966,
+      0.0,
+      0.0
+    ],
+    "support": [
+      560,
+      48,
+      49
+    ],
+    "confusion_matrix": [
+      [
+        560,
+        0,
+        0
+      ],
+      [
+        48,
+        0,
+        0
+      ],
+      [
+        49,
+        0,
+        0
+      ]
+    ],
+    "critical_recall": 0.0,
+    "critical_correct": 0,
+    "critical_total": 49,
+    "episode_metrics": {
+      "total_episodes": 20,
+      "detected_episodes": 0,
+      "episode_recall_pct": 0.0,
+      "episode_recall_ci95": [
+        0.0,
+        0.0
+      ],
+      "lead_time_mean_sec": 0.0,
+      "lead_time_median_sec": 0.0,
+      "lead_time_min_sec": 0.0,
+      "lead_time_max_sec": 0.0
+    },
+    "false_alarm_metrics": {
+      "pure_normal_entities": 49,
+      "fa_entities": 0,
+      "entity_far_pct": 0.0,
+      "entity_far_ci95": [
+        0.0,
+        0.0
+      ],
+      "normal_windows": 560,
+      "fp_windows": 0,
+      "window_fpr_pct": 0.0,
+      "window_fpr_ci95": [
+        0.0,
+        0.0
+      ],
+      "pure_normal_jobs": 4,
+      "fa_jobs": 0,
+      "job_far_pct": 0.0
+    },
+    "calibration": {
+      "expected_calibration_error_ece": 0.32325574587832123,
+      "brier_score": 0.41085525351376045,
+      "negative_log_likelihood": 0.7443149089813232
+    },
+    "probability_diagnostics": {
+      "overall_mean_probs": {
+        "P_Normal": 0.5291034579277039,
+        "P_Warning": 0.2400410920381546,
+        "P_Critical": 0.23085545003414154
+      },
+      "on_true_normal_windows": {
+        "mean_P_Normal": 0.534654974937439,
+        "mean_P_Warning": 0.23582905530929565,
+        "mean_P_Critical": 0.22951596975326538,
+        "median_P_Normal": 0.5450863242149353
+      },
+      "on_true_warning_windows": {
+        "mean_P_Normal": 0.4940749406814575,
+        "mean_P_Warning": 0.26535066962242126,
+        "mean_P_Critical": 0.24057437479496002
+      },
+      "on_true_critical_windows": {
+        "mean_P_Normal": 0.49997127056121826,
+        "mean_P_Warning": 0.263385534286499,
+        "mean_P_Critical": 0.23664316534996033,
+        "median_P_Critical": 0.23031558096408844
+      },
+      "predicted_class_distribution": {
+        "pred_c0_count": 657,
+        "pred_c1_count": 0,
+        "pred_c2_count": 0,
+        "pred_c0_pct": 100.0,
+        "pred_c1_pct": 0.0,
+        "pred_c2_pct": 0.0
+      }
+    },
+    "operational_gates": {
+      "gate1_passed": false,
+      "gate2_passed": true,
+      "operational_winner": false,
+      "gate_gaps": {
+        "episode_recall_gap": 70.0,
+        "critical_recall_gap": 0.5,
+        "entity_far_excess": 0.0,
+        "window_fpr_excess": 0.0
+      }
+    },
+    "checkpoint_sha256": "3cf9c3b6ba97021d254f1beb6b23b2c9a25324c1c591c0ec7db23a59487e4ef8",
+    "best_epoch": 1,
+    "training_time_sec": 5.925222158432007,
+    "weights": [
+      1.0,
+      5.0,
+      5.0
+    ]
+  }
+}

@@ -1,0 +1,5 @@
+split,original_windows,excluded_windows,retained_windows,retained_normal,retained_warning,retained_critical,removed_normal,removed_warning,removed_critical,retained_entities,original_entities
+train,4798,1403,3395,2959,215,221,1229,32,142,282,367
+val,1015,237,778,643,72,63,197,0,40,64,78
+test,1003,216,787,676,54,57,188,14,14,66,80
+confirmatory,5511,196,5315,4655,286,374,156,14,26,329,335

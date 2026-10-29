@@ -1,0 +1,124 @@
+{
+  "audit_timestamp_utc": "2026-10-29T07:56:41Z",
+  "label_mapping": {
+    "0": "NORMAL",
+    "1": "WARNING",
+    "2": "CRITICAL"
+  },
+  "target_definition": "y_fail = 1 if y_true in {1, 2} else 0",
+  "probability_formula": "P_fail = P1 + P2 = 1 - P0",
+  "max_prob_sum_error": 1.5699999988960656e-07,
+  "max_pfail_def_error": 1.6000000005456094e-07,
+  "mismatched_rows": 0,
+  "is_correctly_constructed": true,
+  "per_run_prob_integrity": [
+    {
+      "cohort": "Train_OOF",
+      "model": "Q0",
+      "seed": 42,
+      "max_sum_diff": 1.4000000003733248e-07,
+      "max_pfail_diff": 7.000000012968854e-08,
+      "max_p0_inv_diff": 1.4000000003733248e-07,
+      "all_probs_in_0_1": true
+    },
+    {
+      "cohort": "Validation",
+      "model": "Q0",
+      "seed": 42,
+      "max_sum_diff": 1.3617664995635437e-07,
+      "max_pfail_diff": 8.000000006891383e-08,
+      "max_p0_inv_diff": 1.3617659997612012e-07,
+      "all_probs_in_0_1": true
+    },
+    {
+      "cohort": "Train_OOF",
+      "model": "Q0",
+      "seed": 123,
+      "max_sum_diff": 1.4199999998076862e-07,
+      "max_pfail_diff": 7.000000001866624e-08,
+      "max_p0_inv_diff": 1.5000000008758008e-07,
+      "all_probs_in_0_1": true
+    },
+    {
+      "cohort": "Validation",
+      "model": "Q0",
+      "seed": 123,
+      "max_sum_diff": 1.373000000359781e-07,
+      "max_pfail_diff": 8.000000006891383e-08,
+      "max_p0_inv_diff": 1.37300000033376e-07,
+      "all_probs_in_0_1": true
+    },
+    {
+      "cohort": "Train_OOF",
+      "model": "Q0",
+      "seed": 456,
+      "max_sum_diff": 1.5100000005929815e-07,
+      "max_pfail_diff": 7.000000012968854e-08,
+      "max_p0_inv_diff": 1.5000000003206893e-07,
+      "all_probs_in_0_1": true
+    },
+    {
+      "cohort": "Validation",
+      "model": "Q0",
+      "seed": 456,
+      "max_sum_diff": 1.4410699999967136e-07,
+      "max_pfail_diff": 7.120000000693238e-08,
+      "max_p0_inv_diff": 1.4999999997655777e-07,
+      "all_probs_in_0_1": true
+    },
+    {
+      "cohort": "Train_OOF",
+      "model": "Q1",
+      "seed": 42,
+      "max_sum_diff": 1.4000000003733248e-07,
+      "max_pfail_diff": 7.000000001866624e-08,
+      "max_p0_inv_diff": 1.5000000003206893e-07,
+      "all_probs_in_0_1": true
+    },
+    {
+      "cohort": "Validation",
+      "model": "Q1",
+      "seed": 42,
+      "max_sum_diff": 1.4069999987320614e-07,
+      "max_pfail_diff": 8.000000006891383e-08,
+      "max_p0_inv_diff": 1.400000000095769e-07,
+      "all_probs_in_0_1": true
+    },
+    {
+      "cohort": "Train_OOF",
+      "model": "Q1",
+      "seed": 123,
+      "max_sum_diff": 1.43000000063509e-07,
+      "max_pfail_diff": 7.000000001866624e-08,
+      "max_p0_inv_diff": 1.4500000002082292e-07,
+      "all_probs_in_0_1": true
+    },
+    {
+      "cohort": "Validation",
+      "model": "Q1",
+      "seed": 123,
+      "max_sum_diff": 1.299230001361451e-07,
+      "max_pfail_diff": 7.000000001866624e-08,
+      "max_p0_inv_diff": 1.3000000003565715e-07,
+      "all_probs_in_0_1": true
+    },
+    {
+      "cohort": "Train_OOF",
+      "model": "Q1",
+      "seed": 456,
+      "max_sum_diff": 1.5699999988960656e-07,
+      "max_pfail_diff": 7.000000001866624e-08,
+      "max_p0_inv_diff": 1.6000000005456094e-07,
+      "all_probs_in_0_1": true
+    },
+    {
+      "cohort": "Validation",
+      "model": "Q1",
+      "seed": 456,
+      "max_sum_diff": 1.407130001407353e-07,
+      "max_pfail_diff": 6.000000007944095e-08,
+      "max_p0_inv_diff": 1.4070000003366806e-07,
+      "all_probs_in_0_1": true
+    }
+  ]
+}

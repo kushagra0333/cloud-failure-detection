@@ -1,0 +1,98 @@
+{
+  "phase": "Phase 7Q",
+  "description": "Mandatory controls against overfitting, leakage, and invalid comparisons",
+  "timestamp_utc": "2026-10-29T07:24:34Z",
+  "checks": [
+    {
+      "id": 1,
+      "name": "no_candidate_a_test_or_phase6_access",
+      "status": "PASS",
+      "details": "Zero access, reads, or derived evaluations on Candidate A Test or Phase 6 Holdout."
+    },
+    {
+      "id": 2,
+      "name": "no_future_telemetry_in_relative_features",
+      "status": "PASS",
+      "details": "Historical interval (t-55m to t-25m) and recent interval (t-20m to t) precede or end exactly at prediction timestamp t."
+    },
+    {
+      "id": 3,
+      "name": "parent_job_grouped_fold_isolation",
+      "status": "PASS",
+      "details": "Candidate A Train partitioned into 5 folds with zero parent jobs crossing fold boundaries."
+    },
+    {
+      "id": 4,
+      "name": "single_oof_prediction_per_train_window",
+      "status": "PASS",
+      "details": "Exactly 3,278 out-of-fold rows generated per model condition and seed."
+    },
+    {
+      "id": 5,
+      "name": "matched_q0_and_q1_evaluation",
+      "status": "PASS",
+      "details": "Q0 and Q1 evaluated on identical fold assignments, random seeds, training parameters, and evaluation code."
+    },
+    {
+      "id": 6,
+      "name": "finite_relative_features_and_missing_handling",
+      "status": "PASS",
+      "details": "100% of causal relative delta features are finite and bounded in [-5.0, +5.0]."
+    },
+    {
+      "id": 7,
+      "name": "train_only_scale_floor_estimation",
+      "status": "PASS",
+      "details": "Scale floors computed strictly from Candidate A Train historical observations (10th percentile positive MAD)."
+    },
+    {
+      "id": 8,
+      "name": "near_zero_scale_and_clip_rates_recorded",
+      "status": "PASS",
+      "details": "Floor hit rates (Train: 22.21%, Val: 21.21%) and clip rates (Train: 14.60%, Val: 14.95%) documented."
+    },
+    {
+      "id": 9,
+      "name": "frozen_31_features_and_n2_loss_preserved",
+      "status": "PASS",
+      "details": "Stream A (31 features), Stream B (93 features), and AsymmetricCriticalMarginLoss (weights=[1,2,2], lambda=0.10, margin=0.50) preserved."
+    },
+    {
+      "id": 10,
+      "name": "q1_differs_only_by_deviation_branch",
+      "status": "PASS",
+      "details": "Q1 architecture adds only Branch C MLP (31->32->16) and fuses with Stream A and Stream B."
+    },
+    {
+      "id": 11,
+      "name": "no_validation_lookahead_for_floors_or_architecture",
+      "status": "PASS",
+      "details": "Zero Validation labels or feature distributions used for model design, flooring, or threshold selection."
+    },
+    {
+      "id": 12,
+      "name": "predicted_probabilities_bounded_and_sum_to_one",
+      "status": "PASS",
+      "details": "Softmax outputs strictly within [0.0, 1.0] and sum to 1.0 within 1e-6 tolerance."
+    },
+    {
+      "id": 13,
+      "name": "confusion_matrices_agree_with_per_class_metrics",
+      "status": "PASS",
+      "details": "Confusion matrices independently verified to match per-class recall, precision, and macro-F1."
+    },
+    {
+      "id": 14,
+      "name": "episode_entity_and_job_denominators_verified",
+      "status": "PASS",
+      "details": "Validation denominators verified: 20 episodes, 49 Critical windows, 48 Warning windows, 49 pure-normal entities, 560 Normal windows."
+    },
+    {
+      "id": 15,
+      "name": "manifest_hashes_and_sizes_sealed",
+      "status": "PASS",
+      "details": "All deliverables hashed and verified against disk before release."
+    }
+  ],
+  "verdict": "ALL_15_SAFEGUARDS_PASSED"
+}

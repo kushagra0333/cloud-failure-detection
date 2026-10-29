@@ -1,0 +1,121 @@
+{
+  "manifest_version": "1.0",
+  "phase": "Phase 7S",
+  "timestamp_utc": "2026-10-29T08:25:07Z",
+  "operational_verdict": "NO_OPERATIONAL_WINNER",
+  "audit_status": "AUDIT_PASSED",
+  "governance_verified": true,
+  "deliverables_count": 23,
+  "deliverables": {
+    "phase7s_design.md": {
+      "bytes": 7161,
+      "sha256": "39df86ce36e13692ec8ee6e90590d57f91a7f27f412d1d72af1b2814cbc53c7a",
+      "path": "results/phase7s_relative_ablation/phase7s_design.md"
+    },
+    "phase7s_config.json": {
+      "bytes": 2812,
+      "sha256": "00d02b6af542a43e578c88333438fc078f4a14a63ec3e844474dcb34bf245257",
+      "path": "results/phase7s_relative_ablation/phase7s_config.json"
+    },
+    "preflight_audit.json": {
+      "bytes": 1671,
+      "sha256": "c2563fd88b44ab6a76aab996ae705c12ff84fcf7c1d33df4b73e06ac043f9f63",
+      "path": "results/phase7s_relative_ablation/preflight_audit.json"
+    },
+    "discrepancy_ledger.csv": {
+      "bytes": 994,
+      "sha256": "27a28db9b788e32bad8728332749becf95c9fc2ca493c17582df466fea82d437",
+      "path": "results/phase7s_relative_ablation/discrepancy_ledger.csv"
+    },
+    "fold_assignments.csv": {
+      "bytes": 157504,
+      "sha256": "29bc9cee8ab52c435d8b9a85bc589be82f6e27f5448bd75201c856124633be17",
+      "path": "results/phase7s_relative_ablation/fold_assignments.csv"
+    },
+    "data_manifest.json": {
+      "bytes": 1841,
+      "sha256": "ded2cf9e37de4585b4ee2be31635d86fbf3fc4962bc744feb96e06c450aeb331",
+      "path": "results/phase7s_relative_ablation/data_manifest.json"
+    },
+    "integrity_checks.json": {
+      "bytes": 3594,
+      "sha256": "d940c2813ec6adb4a2f277883d5ee3986d154b6a860ff405316e4e4c1680bf8f",
+      "path": "results/phase7s_relative_ablation/integrity_checks.json"
+    },
+    "relative_scale_floors.json": {
+      "bytes": 983,
+      "sha256": "eba8a3285d2252ff1ced2f5746cc3260a090625fdcf04c629deb1bc15f39d1f2",
+      "path": "results/phase7s_relative_ablation/relative_scale_floors.json"
+    },
+    "relative_feature_diagnostics.csv": {
+      "bytes": 7832,
+      "sha256": "b9ae7147f2eb45e03a1ad4fb260aff82191ba935942e10a6e80be3c7015f95ae",
+      "path": "results/phase7s_relative_ablation/relative_feature_diagnostics.csv"
+    },
+    "training_logs.csv": {
+      "bytes": 884,
+      "sha256": "6d1f1bfe1f6c7a44ff3a83b35b9198ed98688c5f3e721235a98f14b980d8f04f",
+      "path": "results/phase7s_relative_ablation/training_logs.csv"
+    },
+    "oof_predictions.csv": {
+      "bytes": 2729328,
+      "sha256": "0d92d596acf48da83fc502adf66713295fca2307bae6505b1ae1c517b9945cda",
+      "path": "results/phase7s_relative_ablation/oof_predictions.csv"
+    },
+    "validation_predictions.csv": {
+      "bytes": 559533,
+      "sha256": "06376ec84d7c9d34987428bcf77b7ad2db128c9d0e260e4f34e9fa3edcd6cd65",
+      "path": "results/phase7s_relative_ablation/validation_predictions.csv"
+    },
+    "per_seed_metrics.csv": {
+      "bytes": 3913,
+      "sha256": "751dd8bc6656f24a33dcb96db84d8ecdf5bbf4fccbbde6703641326893aea58e",
+      "path": "results/phase7s_relative_ablation/per_seed_metrics.csv"
+    },
+    "per_fold_metrics.csv": {
+      "bytes": 2562,
+      "sha256": "dcccc15fa284522fe6424d1655df44e94965ca031420c0933510f5eb1c6e35e6",
+      "path": "results/phase7s_relative_ablation/per_fold_metrics.csv"
+    },
+    "within_job_metrics.csv": {
+      "bytes": 30289,
+      "sha256": "58fc8a9c4606a0352243280352f10aa3d204fb2975f4a83d17a97780eebb4c1f",
+      "path": "results/phase7s_relative_ablation/within_job_metrics.csv"
+    },
+    "parent_job_influence.csv": {
+      "bytes": 48089,
+      "sha256": "bc76fc26dd84d52accffe6ec35cfa5f12d35ce045172ed11a293a274b5d7cc6a",
+      "path": "results/phase7s_relative_ablation/parent_job_influence.csv"
+    },
+    "confusion_matrices.csv": {
+      "bytes": 2106,
+      "sha256": "305ae9f92caf40d1e719c5944c953190b4a3ef3ff5dd3a73c6323770f61e64b8",
+      "path": "results/phase7s_relative_ablation/confusion_matrices.csv"
+    },
+    "critical_margin_analysis.csv": {
+      "bytes": 1043,
+      "sha256": "b33f828b7280173cbb3ff7788931763e9f2d8d22986cbf3c530f6dbcb2d20409",
+      "path": "results/phase7s_relative_ablation/critical_margin_analysis.csv"
+    },
+    "operational_gate_summary.csv": {
+      "bytes": 1141,
+      "sha256": "869efbc90ebd4af1b9c40424f88c584a2a38ff3d1b42c84c3250a648d7f7b254",
+      "path": "results/phase7s_relative_ablation/operational_gate_summary.csv"
+    },
+    "paired_comparison.csv": {
+      "bytes": 1333,
+      "sha256": "fe72f1dfd0b13f0b88a69609c5f9a287c83dd8de45369411b304197f6d19f7cb",
+      "path": "results/phase7s_relative_ablation/paired_comparison.csv"
+    },
+    "independent_audit_report.md": {
+      "bytes": 6940,
+      "sha256": "6f915b4d689205606f33569e3f34b50e198bf4d2e6589b8fa21529d62754a3c2",
+      "path": "results/phase7s_relative_ablation/independent_audit_report.md"
+    },
+    "phase7s_final_report.md": {
+      "bytes": 19226,
+      "sha256": "6fdb4b36ef11110c46dbf4c931a38a2626fdb6c3e9547d3b32381f53b3b69e9a",
+      "path": "results/phase7s_relative_ablation/phase7s_final_report.md"
+    }
+  }
+}

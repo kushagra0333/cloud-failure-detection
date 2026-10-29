@@ -1,0 +1,8 @@
+{
+  "model_type": "RepresentationHybridClassifier",
+  "backbone": "CompactTemporalTransformer (frozen best checkpoint)",
+  "fusion": "Concat(H_temp[64], X_tabular[31]) -> Z[95]",
+  "classifier": "Class-Weighted Random Forest (n_estimators=100, max_depth=12)",
+  "training_runtime_seconds": 0.6142256259918213,
+  "trained_strictly_on_training_set": true
+}

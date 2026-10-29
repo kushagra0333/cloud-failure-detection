@@ -1,0 +1,28 @@
+{
+  "amendment_id": "PROTOCOL-AMENDMENT-PHASE7F-01",
+  "title": "Protocol Amendment: Focal Loss Formulation and Causal Task-Relative Telemetry Normalization",
+  "timestamp_iso": "2026-10-28T14:25:00Z",
+  "objective": "Investigate failure separation mechanisms on Candidate A Validation data to test whether Focal Loss (modulating factor (1-p)^gamma) and causal task-relative baseline normalization can separate genuine failure degradation from background normal workload variations.",
+  "safeguards": {
+    "test_split_status": "Candidate A Test split is STRICTLY EXCLUDED and remains unaccessed.",
+    "holdout_status": "Quarantined historical Phase 6 holdout is STRICTLY QUARANTINED and unaccessed.",
+    "historical_artifacts": "Phase 7B, 7D, and 7E results remain unchanged.",
+    "causality_invariant": "Zero access to future measurements or complete task lifecycles; running baselines must use only observations strictly <= t_pred."
+  },
+  "experimental_conditions": {
+    "step_2_focal_loss": {
+      "baseline_architecture": "CompactTemporalTransformer (d_model=32, nhead=4, d_ff=64, layers=2, seq_len=5)",
+      "baseline_weights": "Inverse-frequency weights from Candidate A Train: [1.0000, 11.4631, 11.8017]",
+      "focal_parameters": [
+        {"name": "gamma_0_baseline", "gamma": 0.0, "note": "Equivalent to Phase 7E Condition C weighted cross-entropy"},
+        {"name": "gamma_1_moderate", "gamma": 1.0, "note": "Linear modulation by (1-p)"},
+        {"name": "gamma_2_standard", "gamma": 2.0, "note": "Quadratic modulation by (1-p)^2 to heavily suppress easy normal windows"}
+      ],
+      "early_stopping_metric": "val_macro_f1 (max, patience=10, max_epochs=35)"
+    },
+    "step_3_task_relative_normalization": {
+      "baseline": "Original Phase 7C fitted robust scaler",
+      "investigation_requirement": "Assess historical observation depth per task before transformation; define minimum history threshold (K_min=6 steps = 30 min) with fallback to cluster training scaler; strictly backward-looking cumulative running statistics."
+    }
+  }
+}

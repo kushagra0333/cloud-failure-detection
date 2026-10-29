@@ -1,0 +1,16 @@
+run_tag,seed,fold,best_epoch,best_val_loss,checkpoint_path
+N2_seed42_fold0,42,0,3,0.242495749484409,ckpt_N2_seed42_fold0.pt
+N2_seed42_fold1,42,1,4,2.6628534346818924,ckpt_N2_seed42_fold1.pt
+N2_seed42_fold2,42,2,7,0.8054967582225799,ckpt_N2_seed42_fold2.pt
+N2_seed42_fold3,42,3,7,0.8318996797315776,ckpt_N2_seed42_fold3.pt
+N2_seed42_fold4,42,4,2,0.6310099186375737,ckpt_N2_seed42_fold4.pt
+N2_seed123_fold0,123,0,6,0.3024820509282025,ckpt_N2_seed123_fold0.pt
+N2_seed123_fold1,123,1,1,2.4948166832327843,ckpt_N2_seed123_fold1.pt
+N2_seed123_fold2,123,2,9,0.8382302284240722,ckpt_N2_seed123_fold2.pt
+N2_seed123_fold3,123,3,2,0.8063369477167726,ckpt_N2_seed123_fold3.pt
+N2_seed123_fold4,123,4,4,0.666295257396996,ckpt_N2_seed123_fold4.pt
+N2_seed456_fold0,456,0,8,0.35283235663717444,ckpt_N2_seed456_fold0.pt
+N2_seed456_fold1,456,1,3,2.5990072041749954,ckpt_N2_seed456_fold1.pt
+N2_seed456_fold2,456,2,4,0.7475478425621986,ckpt_N2_seed456_fold2.pt
+N2_seed456_fold3,456,3,7,0.7986377314664423,ckpt_N2_seed456_fold3.pt
+N2_seed456_fold4,456,4,2,0.6462240181863308,ckpt_N2_seed456_fold4.pt

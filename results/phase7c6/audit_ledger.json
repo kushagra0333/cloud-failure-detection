@@ -1,0 +1,200 @@
+{
+  "audit_metadata": {
+    "phase": "Phase 7C.6",
+    "title": "Independent Scientific Verification Gate",
+    "timestamp_utc": "2026-10-28T16:55:00Z",
+    "auditor": "Senior ML Research Auditor & Data Pipeline Specialist",
+    "governing_split": {
+      "path": "results/phase7a_4/candidate_a_job_grouped_split.csv",
+      "sha256": "f84bc4fe54f8e0583e2ee52f49b2fbe8e6fcafb4f020c656985a1acc31bb4946",
+      "verified": true
+    },
+    "governing_protocol": {
+      "path": "results/phase7b_1/phase7b_evaluation_protocol_v2.json",
+      "sha256": "f919cbb6d79ee790e6686e584f33b1e32d169c9eb38c92a6fa292728f3ea7044",
+      "verified": true
+    }
+  },
+  "executive_verdict": {
+    "status": "PASS",
+    "readiness_decision": "READY FOR SEPARATE TRAINING APPROVAL",
+    "summary": "Core raw data reconstruction, label causality, Policy A post-failure masking, leakage-free preprocessing, and Candidate A split integrity have been independently verified against raw Borg trace records. Zero critical or high-risk integrity defects identified."
+  },
+  "findings_summary": {
+    "critical": 0,
+    "high": 0,
+    "medium": 1,
+    "low": 2,
+    "informational": 1
+  },
+  "findings": [
+    {
+      "id": "FINDING-7C6-01",
+      "severity": "LOW",
+      "category": "Methodological Preprocessing Nuance",
+      "title": "Window-Flattened Multiplicity in Training Scaler Population",
+      "description": "The scaler fitting population in prepare_phase7c_leakage_free_data.py flattens X_train_raw (3,278 windows x 5 steps = 16,390 observation steps). Because sliding windows advance by 300s with sequence length 5, interior steps appear up to 5 times (mean multiplicity 3.71x).",
+      "evidence": {
+        "total_window_steps": 16390,
+        "unique_physical_steps": 4414,
+        "mean_multiplicity": 3.713185,
+        "leakage_risk": "NONE (Population is 100% within Candidate A Train)",
+        "impact": "Shifts near-zero feature means slightly (cpu_trend_slope_6 shifts from -0.00006 to +0.00028) while utilization features vary by < 5%."
+      },
+      "remediation": "No code change required for frozen data; document window-weighted sampling explicitly in experimental protocol."
+    },
+    {
+      "id": "FINDING-7C6-02",
+      "severity": "LOW",
+      "category": "Cluster Environment Colocation",
+      "title": "Minimal Machine ID Overlap Across Parent-Job Partitions",
+      "description": "While parent jobs and entities are 100% disjoint, Candidate A tasks in a shared Borg cluster occasionally execute on the same physical machines.",
+      "evidence": {
+        "unique_machines_train": 461,
+        "unique_machines_val": 97,
+        "unique_machines_test": 121,
+        "machine_overlap_train_val": 3,
+        "machine_overlap_train_val_pct": 3.09278,
+        "machine_overlap_train_test": 3,
+        "machine_overlap_train_test_pct": 2.47934
+      },
+      "remediation": "Document machine isolation rate (~97%) as part of Candidate A single-cluster evaluation scope."
+    },
+    {
+      "id": "FINDING-7C6-03",
+      "severity": "MEDIUM",
+      "category": "Test Suite Rigor",
+      "title": "Weak Assertions in Two Phase 7C Test Suite Cases",
+      "description": "Test 5 (test_feature_timestamps_do_not_exceed_prediction_timestamp) asserts only (prediction_timestamp > 0) rather than verifying historical steps. Test 10 (test_missing_or_duplicate_join_keys_cause_explicit_failure) tests a 2-row toy mock DataFrame rather than the candidate join routine.",
+      "evidence": {
+        "file": "tests/test_phase7c_raw_reconstruction_and_preprocessing.py",
+        "lines": [126, 130, 197, 203],
+        "underlying_data_status": "VERIFIED INDEPENDENTLY (All 4,960 sequences verified to have exact 5.00 min step deltas and exact key matches in independent probe)."
+      },
+      "remediation": "Strengthen test assertions in future test suite refactor; does not invalidate Phase 7C dataset."
+    },
+    {
+      "id": "FINDING-7C6-04",
+      "severity": "INFORMATIONAL",
+      "category": "Verified Core Strengths",
+      "title": "Complete Removal of Legacy Contamination & Verified Raw Provenance",
+      "description": "All 4,960 development windows were reconstructed with 100% precision from raw Borg traces. Genuine missing values (MAI) preserved as NaN in unscaled arrays. The legacy 2.5 imputation constant has been completely purged.",
+      "evidence": {
+        "cand_a_reconstructed_windows": 4960,
+        "cand_a_expected_windows": 4960,
+        "missing_keys": 0,
+        "excess_keys": 0,
+        "label_mismatches": 0,
+        "post_failure_windows": 0,
+        "processed_array_non_finite_count": 0
+      },
+      "remediation": "None. Benchmark data is clean and ready."
+    }
+  ],
+  "verification_ledger": {
+    "file_hashes": {
+      "X_train.npy": {
+        "path": "data/processed/phase7c/X_train.npy",
+        "size_bytes": 2032488,
+        "sha256": "6d3a7aca61f847321e1d09e51ae68e82a0b171f9cf5be8805f1cfc0f6558296a"
+      },
+      "y_train.npy": {
+        "path": "data/processed/phase7c/y_train.npy",
+        "size_bytes": 26352,
+        "sha256": "355ca59b16097801dfb00ee123c50953a9634e8b35dc49f57297e283296c05fa"
+      },
+      "train_metadata.csv": {
+        "path": "data/processed/phase7c/train_metadata.csv",
+        "size_bytes": 164062,
+        "sha256": "0180ade409871168f185ef37651a2575f0a6d0c41d1a66a6a9be8709ca66a1dc"
+      },
+      "X_val.npy": {
+        "path": "data/processed/phase7c/X_val.npy",
+        "size_bytes": 407468,
+        "sha256": "ce25dc6e5783730d1ff69e7f5394032d169213fb38f5f45889fc5c7923485ba5"
+      },
+      "y_val.npy": {
+        "path": "data/processed/phase7c/y_val.npy",
+        "size_bytes": 5384,
+        "sha256": "eb968a74ae86dcc571a3e617dbf9a1c1d8848d7be88bbd0705a9ee95b6cb1f09"
+      },
+      "val_metadata.csv": {
+        "path": "data/processed/phase7c/val_metadata.csv",
+        "size_bytes": 32677,
+        "sha256": "8d22193f11d671dc1c1f51cb3e1c667a4d656910da1ca8dd936d542e7d7a31ff"
+      },
+      "X_test.npy": {
+        "path": "data/processed/phase7c/X_test.npy",
+        "size_bytes": 635628,
+        "sha256": "1199fce77261166ad2b992f39221295fcfa204e38c5b058a748cbb5927ad6a0c"
+      },
+      "y_test.npy": {
+        "path": "data/processed/phase7c/y_test.npy",
+        "size_bytes": 8328,
+        "sha256": "c073fe6854001772594a101f3db823439401732e7fca6a157a95aa527b10a40f"
+      },
+      "test_metadata.csv": {
+        "path": "data/processed/phase7c/test_metadata.csv",
+        "size_bytes": 55645,
+        "sha256": "5bf69371833c4b901a88dfb6a55543bbff6854129b01ae02f1025d506934c9c2"
+      },
+      "fitted_scaler_phase7c.json": {
+        "path": "configs/phase7c/fitted_scaler_phase7c.json",
+        "size_bytes": 5468,
+        "sha256": "1170ef8689ec64594874f502d7b7ff5c3f195e188244d21cc8f975e31a0db5fb"
+      },
+      "X_train_raw.npy": {
+        "path": "data/processed/phase7c/raw_unscaled/X_train_raw.npy",
+        "size_bytes": 2032488,
+        "sha256": "d8561f50206a8dcd13f66c0d8b3cfeb334ff90033d5f84d0b2f56f19bca01217"
+      },
+      "X_val_raw.npy": {
+        "path": "data/processed/phase7c/raw_unscaled/X_val_raw.npy",
+        "size_bytes": 407468,
+        "sha256": "f5f586d6192ee0a7b4831beec176985a19ce5ebc83758b29fdf32f1ea203b8e7"
+      },
+      "X_test_raw.npy": {
+        "path": "data/processed/phase7c/raw_unscaled/X_test_raw.npy",
+        "size_bytes": 635628,
+        "sha256": "0692d48095a79c298fe26733ec6b107e3ea595d2c676ebf45869a842b03fa723"
+      }
+    },
+    "split_isolation": {
+      "parent_job_overlap": {
+        "train_val": 0,
+        "train_test": 0,
+        "val_test": 0
+      },
+      "entity_overlap": {
+        "train_val": 0,
+        "train_test": 0,
+        "val_test": 0
+      },
+      "machine_overlap": {
+        "train_val": 3,
+        "train_test": 3
+      }
+    },
+    "partition_counts": {
+      "train": {"windows": 3278, "entities": 284, "parent_jobs": 51, "X_shape": [3278, 5, 31]},
+      "val": {"windows": 657, "entities": 69, "parent_jobs": 12, "X_shape": [657, 5, 31]},
+      "test": {"windows": 1025, "entities": 59, "parent_jobs": 11, "X_shape": [1025, 5, 31]}
+    },
+    "class_counts": {
+      "train": {"normal_0": 2797, "warning_1": 244, "critical_2": 237},
+      "val": {"normal_0": 560, "warning_1": 48, "critical_2": 49},
+      "test": {"normal_0": 921, "warning_1": 49, "critical_2": 55}
+    },
+    "scaler_recomputation_discrepancy": {
+      "median_max_diff": 0.0,
+      "mean_max_diff": 0.0,
+      "std_max_diff": 3.814697265625e-06
+    },
+    "sequence_step_contiguity": {
+      "mean_delta_minutes": 5.0,
+      "min_delta_minutes": 5.0,
+      "max_delta_minutes": 5.0,
+      "strictly_monotonic_age": true
+    }
+  }
+}

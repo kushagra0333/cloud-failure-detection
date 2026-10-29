@@ -1,0 +1,216 @@
+{
+  "audit_date": "2026-10-26",
+  "phase": "Phase 3C.1",
+  "gate_decision": "PASS",
+  "decision_rationale": "Methodology verified. The entity-level cluster bootstrap preserves clustering and paired differences; false-alarm denominators (48, 42, 80, 864) are mathematically reconciled; episode detection enforces post-failure exclusion; and 196,507 untouched telemetry entities (including 394 failure entities) are confirmed available in raw shards for Phase 5 confirmatory testing. The existing test set is reclassified as an exploratory development benchmark.",
+  "bootstrap_audit": {
+    "method": "Entity-level cluster bootstrap (non-parametric empirical percentile)",
+    "n_replicates": 1000,
+    "random_seed": 42,
+    "unit_of_resampling": "entity_id (clusters all sequential windows and episodes)",
+    "duplicate_draw_handling": "Each drawn entity instance contributes full window history and failure episodes independently",
+    "paired_replicate_matching": true,
+    "paired_delta_direction": "LSTM - RF",
+    "metrics": {
+      "window_macro_f1": {
+        "rf_mean": 0.5701,
+        "rf_ci_95": [0.4731, 0.6777],
+        "lstm_mean": 0.4541,
+        "lstm_ci_95": [0.4074, 0.5093],
+        "delta_mean": -0.1160,
+        "delta_ci_95": [-0.1986, -0.0404],
+        "statistically_significant_at_0_05": true,
+        "interpretation": "Random Forest is significantly superior to Temporal LSTM on window-level macro-F1."
+      },
+      "window_accuracy": {
+        "rf_mean": 0.8662,
+        "rf_ci_95": [0.8134, 0.9180],
+        "lstm_mean": 0.7722,
+        "lstm_ci_95": [0.6914, 0.8509],
+        "delta_mean": -0.0940,
+        "delta_ci_95": [-0.1458, -0.0465],
+        "statistically_significant_at_0_05": true,
+        "interpretation": "Random Forest is significantly superior on window-level classification accuracy."
+      },
+      "warning_recall": {
+        "rf_mean": 0.2472,
+        "rf_ci_95": [0.1126, 0.4001],
+        "lstm_mean": 0.4080,
+        "lstm_ci_95": [0.2250, 0.6141],
+        "delta_mean": 0.1609,
+        "delta_ci_95": [0.0400, 0.3078],
+        "statistically_significant_at_0_05": true,
+        "interpretation": "Temporal LSTM is significantly superior on Warning class recall (early failure anticipation)."
+      },
+      "critical_recall": {
+        "rf_mean": 0.4466,
+        "rf_ci_95": [0.2771, 0.6251],
+        "lstm_mean": 0.2113,
+        "lstm_ci_95": [0.0735, 0.3562],
+        "delta_mean": -0.2353,
+        "delta_ci_95": [-0.4923, 0.0139],
+        "statistically_significant_at_0_05": false,
+        "interpretation": "RF has higher sample critical recall, but paired difference is not statistically significant at 0.05 level (CI upper bound crosses 0)."
+      },
+      "episode_detection_rate_pct": {
+        "rf_mean": 63.50,
+        "rf_ci_95": [48.36, 79.41],
+        "lstm_mean": 69.25,
+        "lstm_ci_95": [51.51, 86.37],
+        "delta_mean": 5.75,
+        "delta_ci_95": [-9.69, 21.06],
+        "statistically_significant_at_0_05": false,
+        "interpretation": "Temporal LSTM has a higher point estimate (+5.75%), but the difference is NOT statistically significant because the 95% CI spans zero [-9.69%, +21.06%]."
+      },
+      "pure_normal_far_pct": {
+        "rf_mean": 10.32,
+        "rf_ci_95": [2.17, 20.01],
+        "lstm_mean": 8.28,
+        "lstm_ci_95": [1.89, 17.39],
+        "delta_mean": -2.04,
+        "delta_ci_95": [-6.67, 0.00],
+        "statistically_significant_at_0_05": false,
+        "interpretation": "Temporal LSTM point FAR is lower, but paired difference touches zero."
+      }
+    }
+  },
+  "false_alarm_denominators_audit": {
+    "pure_normal_far_test": {
+      "numerator_rf": 5,
+      "numerator_lstm": 4,
+      "denominator": 48,
+      "rf_rate_pct": 10.42,
+      "lstm_rate_pct": 8.33,
+      "eligibility": "Test entities with zero failure events across the entire observation trace",
+      "alert_definition": "Any window with predicted_label in {1, 2}",
+      "multiple_alerts_policy": "Counted once per entity (binary flag)"
+    },
+    "pure_normal_far_validation": {
+      "numerator_rf": 3,
+      "numerator_lstm": 3,
+      "denominator": 42,
+      "rf_rate_pct": 7.14,
+      "lstm_rate_pct": 7.14,
+      "eligibility": "Validation entities with zero failure events across the entire trace (78 total - 36 failing)",
+      "alert_definition": "Any window with predicted_label in {1, 2}",
+      "multiple_alerts_policy": "Counted once per entity (binary flag)"
+    },
+    "all_entity_normal_period_far_test": {
+      "numerator_rf": 12,
+      "numerator_lstm": 14,
+      "denominator": 80,
+      "rf_rate_pct": 15.00,
+      "lstm_rate_pct": 17.50,
+      "eligibility": "All 80 test entities evaluated strictly during normal operating windows (label == 0, t_pred < T_fail - 30m)",
+      "alert_definition": "Any window with predicted_label in {1, 2} during normal period",
+      "multiple_alerts_policy": "Counted once per entity (binary flag)"
+    },
+    "window_fpr_test": {
+      "numerator_rf": 45,
+      "numerator_lstm": 133,
+      "denominator": 864,
+      "rf_rate_pct": 5.21,
+      "lstm_rate_pct": 15.39,
+      "eligibility": "All test sliding windows with ground-truth label == 0",
+      "alert_definition": "predicted_label in {1, 2}",
+      "multiple_alerts_policy": "Every false positive window counted"
+    },
+    "reconciliation_of_denominators": {
+      "denom_48": "48 pure-normal entities in test partition (80 total entities - 32 failing entities)",
+      "denom_42": "42 pure-normal entities in validation partition (78 total entities - 36 failing entities)",
+      "denom_80": "80 total entities in test partition evaluated during normal operating windows",
+      "denom_864": "864 total ground-truth normal windows across all 80 test entities"
+    }
+  },
+  "episode_detection_lead_time_audit": {
+    "total_episodes": 36,
+    "rf_detected_episodes": 23,
+    "rf_missed_episodes": 13,
+    "rf_detection_rate_pct": 63.89,
+    "rf_lead_time_minutes": {
+      "mean": 16.08,
+      "median": 14.65,
+      "min": 4.56,
+      "max": 28.89,
+      "std": 7.96,
+      "sample_count": 23
+    },
+    "lstm_detected_episodes": 25,
+    "lstm_missed_episodes": 11,
+    "lstm_detection_rate_pct": 69.44,
+    "lstm_lead_time_minutes": {
+      "mean": 19.34,
+      "median": 19.62,
+      "min": 3.41,
+      "max": 29.64,
+      "std": 9.06,
+      "sample_count": 25
+    },
+    "joint_detection": {
+      "both_detected": 20,
+      "rf_only_detected": 3,
+      "lstm_only_detected": 5,
+      "both_missed": 8,
+      "oracle_union_count": 28,
+      "oracle_union_pct": 77.78,
+      "formula": "len(set(detected_rf) | set(detected_lstm))"
+    },
+    "post_failure_exclusion_verified": true,
+    "min_time_to_failure_seconds": 0.9708,
+    "max_time_to_failure_seconds": 1778.61,
+    "operational_rule_consistency": "Identical: first qualifying alert where predicted_label in {1, 2} and t_pred < T_fail",
+    "deployable_hybrid_distinction": "Oracle union (77.8%) reflects theoretical upper bound of complementary coverage, not deployable performance. Deployable hybrid requires trained online gating."
+  },
+  "comparative_error_analysis_audit": {
+    "alignment_rows": 1003,
+    "agreement_breakdown": {
+      "both_correct": 748,
+      "both_correct_pct": 74.58,
+      "rf_only_correct": 120,
+      "rf_only_correct_pct": 11.96,
+      "lstm_only_correct": 26,
+      "lstm_only_correct_pct": 2.59,
+      "both_wrong": 109,
+      "both_wrong_pct": 10.87
+    },
+    "warning_windows": {
+      "total": 68,
+      "rf_hits": 17,
+      "lstm_hits": 28,
+      "both_hit": 16,
+      "lstm_only_hit": 12,
+      "rf_only_hit": 1,
+      "both_missed": 39
+    },
+    "critical_windows": {
+      "total": 71,
+      "rf_hits": 32,
+      "lstm_hits": 15,
+      "lstm_pred_warning": 31,
+      "lstm_pred_normal": 25,
+      "rf_pred_warning": 8,
+      "rf_pred_normal": 31,
+      "lstm_any_alert_on_critical": 46,
+      "lstm_any_alert_pct": 64.79
+    },
+    "false_alarm_overlap": {
+      "pure_normal_rf_entities": 5,
+      "pure_normal_lstm_entities": 4,
+      "pure_normal_overlap": 4,
+      "pure_normal_rf_only": 1,
+      "pure_normal_lstm_only": 0,
+      "all_entity_normal_period_rf": 12,
+      "all_entity_normal_period_lstm": 14,
+      "all_entity_overlap": 10
+    }
+  },
+  "confirmatory_data_feasibility": {
+    "status": "FEASIBLE_UNTOUCHED_DATA_AVAILABLE",
+    "raw_shard_analyzed": "data/raw/sample_task_usage.csv.gz",
+    "total_telemetry_entities_raw": 197032,
+    "entities_used_in_development": 525,
+    "untouched_telemetry_entities": 196507,
+    "untouched_failing_entities_with_telemetry": 394,
+    "recommendation": "Reserve 100 unused failing entities and 200 unused normal entities from sample_task_usage.csv.gz as untouched Confirmatory Test Set (Phase 5). For external validity, cross-validate on Alibaba Cluster Trace 2018/2021."
+  }
+}

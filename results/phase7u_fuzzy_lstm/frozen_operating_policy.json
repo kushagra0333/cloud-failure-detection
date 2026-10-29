@@ -1,0 +1,33 @@
+{
+  "policy_id": "PHASE7U_FROZEN_OPERATING_POLICY_V1",
+  "creation_timestamp_utc": "2026-10-29T09:02:33Z",
+  "inference_system": "Type-1 Mamdani Min-Max Centroid",
+  "input_breakpoints": {
+    "R_rel": {
+      "q20": 0.092291516,
+      "q50": 0.182063795,
+      "q80": 0.32295263
+    },
+    "R_abs": {
+      "q20": 0.096816158,
+      "q50": 0.26665084,
+      "q80": 0.62482592
+    }
+  },
+  "operating_threshold": 1.0,
+  "policy_status": "SUCCESS",
+  "historical_diagnostic_threshold": 0.5,
+  "critical_margin_threshold": 0.5,
+  "critical_margin_source": "S2",
+  "eligibility_constraints": {
+    "pure_normal_entity_far_max": 10.0,
+    "normal_window_fpr_max": 5.0,
+    "cohort": "Train_OOF_only"
+  },
+  "tie_breaking_rules": [
+    "1. Maximize mean Episode Recall across seeds",
+    "2. Maximize mean Genuine Critical Recall across seeds",
+    "3. Choose largest tau (conservative tie-break)"
+  ],
+  "validation_leakage_safeguard": "CONFIRMED: Operating policy selected strictly from Train-OOF predictions before evaluating Candidate A Validation outcomes."
+}

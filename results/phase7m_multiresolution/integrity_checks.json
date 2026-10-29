@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-10-29T01:25:00+05:30",
+  "auditor": "Antigravity Senior Research Engineer Subsystem",
+  "checks": {
+    "candidate_a_split_verified": true,
+    "candidate_a_test_quarantined": true,
+    "phase_6_holdout_quarantined": true,
+    "train_window_count_verified": 3278,
+    "val_window_count_verified": 657,
+    "val_labels_match_reconciled": true,
+    "stream_a_bit_for_bit_match_l5": true,
+    "stream_a_temporal_window": "t - 20m to t (5 steps)",
+    "stream_b_temporal_window": "t - 55m to t - 25m (7 steps)",
+    "temporal_overlap_between_streams": "NONE (disjoint boundary: Stream B ends at t-25m, Stream A starts at t-20m)",
+    "temporal_causality_violations": 0,
+    "preprocessing_fitted_on_train_only": true,
+    "validation_leakage_detected": false,
+    "all_tensors_finite": true
+  }
+}

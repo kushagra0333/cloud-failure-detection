@@ -1,0 +1,13 @@
+model,seed,cohort,cm_00,cm_01,cm_02,cm_10,cm_11,cm_12,cm_20,cm_21,cm_22,crit_to_warn_confusion,crit_to_norm_confusion
+Q0,42,Validation_FixedPolicy,391,51,118,38,1,9,39,1,9,1,39
+Q0,42,Validation_ArgmaxDiagnostic,409,25,126,39,0,9,39,1,9,1,39
+Q0,123,Validation_FixedPolicy,361,128,71,39,2,7,40,2,7,2,40
+Q0,123,Validation_ArgmaxDiagnostic,392,68,100,39,1,8,42,1,6,1,42
+Q0,456,Validation_FixedPolicy,349,76,135,37,0,11,39,1,9,1,39
+Q0,456,Validation_ArgmaxDiagnostic,390,30,140,37,0,11,39,1,9,1,39
+Q1,42,Validation_FixedPolicy,368,70,122,40,4,4,40,2,7,2,40
+Q1,42,Validation_ArgmaxDiagnostic,371,61,128,40,1,7,40,2,7,2,40
+Q1,123,Validation_FixedPolicy,411,61,88,42,4,2,40,3,6,3,40
+Q1,123,Validation_ArgmaxDiagnostic,426,48,86,43,2,3,40,2,7,2,40
+Q1,456,Validation_FixedPolicy,391,73,96,38,2,8,38,3,8,3,38
+Q1,456,Validation_ArgmaxDiagnostic,402,61,97,39,1,8,38,2,9,2,38

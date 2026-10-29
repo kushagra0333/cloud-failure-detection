@@ -1,0 +1,16 @@
+{
+  "tests": {
+    "check_01_candidate_a_test_unaccessed_in_phase7y": true,
+    "check_02_phase6_confirmatory_holdouts_unaccessed_in_phase7y": true,
+    "check_03_zero_model_training_executed": true,
+    "check_04_zero_threshold_tuning_executed": true,
+    "check_05_auth_blocker_empirically_tested_and_documented": true,
+    "check_06_synthetic_pilot_data_not_manufactured": true,
+    "check_07_borg2019_v3_schema_discrepancies_corrected": true,
+    "check_08_hard_budget_cap_enforced_in_protocol": true,
+    "check_09_provisional_estimates_explicitly_distinguished_from_service_data": true,
+    "check_10_deterministic_manifest_verification": true
+  },
+  "all_passed": true,
+  "timestamp_utc": "2026-10-29T10:12:24Z"
+}

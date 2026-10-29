@@ -1,0 +1,37 @@
+{
+  "review_phase": "Phase 7B.1 Evaluation Protocol Review",
+  "timestamp_iso": "2026-10-27T23:55:00+05:30",
+  "resolved_issues": [
+    {
+      "issue_id": "TEST_SET_MODEL_SELECTION_LEAKAGE",
+      "status": "RESOLVED",
+      "original_flaw": "Protocol v1 evaluated all 4 models on Test and picked winner with highest Test Macro-F1 among those passing Test gates, leaking test data for model selection.",
+      "resolution": "Implemented 3-stage architecture: Model selection and operational gates occur strictly on Validation split. Exactly one model (M*) is frozen as Validated Operational Candidate before test unblinding. Test evaluation is strictly confirmatory for M*."
+    },
+    {
+      "issue_id": "PARENT_JOB_FAR_GATE_INCONSISTENCY",
+      "status": "RESOLVED",
+      "original_flaw": "Parent-job FAR (<=15%) was listed in metrics hierarchy but omitted from Gate 2 acceptance definition.",
+      "resolution": "Audited denominators: Test has only 3 pure-normal jobs; Val has only 4. A single false alarm causes Job FAR to jump to 33.3% (Test) or 25.0% (Val). Job FAR is formally designated as a Secondary Diagnostic Metric with integer reporting, while Entity FAR (<=10%) and Window FPR (<=5%) form Gate 2."
+    },
+    {
+      "issue_id": "EPISODE_DETECTION_AMBIGUITY",
+      "status": "RESOLVED",
+      "original_flaw": "Matching algorithm was described in high-level prose without handling repeated alerts, repeated failures, or post-failure exclusion.",
+      "resolution": "Formally specified matching algorithm on pre-failure windows (y in {1, 2}), single-credit counting, lead-time formula, and provided 4-scenario hand-checkable walkthrough."
+    },
+    {
+      "issue_id": "CLUSTER_BOOTSTRAP_STABILITY_ON_11_CLUSTERS",
+      "status": "RESOLVED",
+      "original_flaw": "Bootstrap was proposed without addressing small cluster count (J=11), job size skew (job 6127642779 has 660 of 1025 windows), or undefined denominators.",
+      "resolution": "Simulated 1,000 cluster replicates: proved 0% missing classes, 3.1% missing pure-normal jobs. Defined explicit NaN-replicate exclusion and mandated dual reporting (cluster bootstrap CIs + entity-level CIs + point estimates)."
+    },
+    {
+      "issue_id": "FEATURE_PREPROCESSING_SCALER_ALIGNMENT",
+      "status": "RESOLVED",
+      "original_flaw": "Unclear whether features were normalized using old entity split scaler or new Candidate A training scaler.",
+      "resolution": "Verified that features can be scaled cleanly using Candidate A training split statistics; verified GroupBy('entity_id') prevents cross-entity leakage; documented 81.3% CPI missingness and lag initialization."
+    }
+  ],
+  "verdict": "PROTOCOL READY FOR TRAINING APPROVAL"
+}

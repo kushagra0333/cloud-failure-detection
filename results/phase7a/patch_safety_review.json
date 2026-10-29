@@ -1,0 +1,113 @@
+{
+  "safety_review_metadata": {
+    "phase": "Phase 7A.1 — Resolve Patch Safety Questions Before Authorization",
+    "date": "2026-10-27",
+    "status": "COMPLETED_AUDIT_NO_CODE_MODIFIED",
+    "overall_recommendation": "SAFE_AFTER_SPECIFIED_CHANGES"
+  },
+  "count_reconciliation": {
+    "summary": "All reported counts are verified as exact, mutually exclusive partitions across cohorts.",
+    "total_affected_windows": 2052,
+    "breakdown_by_split": {
+      "train": {
+        "total_windows": 4798,
+        "affected_windows": 1403,
+        "post_all_failure_normal": 1130,
+        "between_failures_cross_history_normal": 40,
+        "between_failures_clean_history_normal": 59,
+        "between_failures_warning": 32,
+        "between_failures_critical": 142,
+        "clean_pre_failure_normal": 2959,
+        "source_file": "data/processed/l5/train_metadata.csv"
+      },
+      "val": {
+        "total_windows": 1015,
+        "affected_windows": 237,
+        "post_all_failure_normal": 197,
+        "between_failures_cross_history_normal": 0,
+        "between_failures_clean_history_normal": 0,
+        "between_failures_warning": 0,
+        "between_failures_critical": 40,
+        "clean_pre_failure_normal": 643,
+        "source_file": "data/processed/l5/val_metadata.csv"
+      },
+      "test": {
+        "total_windows": 1003,
+        "affected_windows": 216,
+        "post_all_failure_normal": 145,
+        "between_failures_cross_history_normal": 8,
+        "between_failures_clean_history_normal": 35,
+        "between_failures_warning": 14,
+        "between_failures_critical": 14,
+        "clean_pre_failure_normal": 676,
+        "source_file": "data/processed/l5/test_metadata.csv"
+      },
+      "confirmatory": {
+        "total_windows": 5511,
+        "affected_windows": 196,
+        "post_all_failure_normal": 149,
+        "between_failures_cross_history_normal": 7,
+        "between_failures_clean_history_normal": 0,
+        "between_failures_warning": 14,
+        "between_failures_critical": 26,
+        "clean_pre_failure_normal": 140,
+        "pure_normal_control": 4515,
+        "source_file": "results/phase6/confirmatory_predictions_l5.csv"
+      }
+    },
+    "key_constants_explained": {
+      "1621_post_failure_normal": "Sum of post-all-failure Normal windows across all 4 splits: 1130 (train) + 197 (val) + 145 (test) + 149 (confirmatory) = 1621.",
+      "149_confirmatory_post_failure_normal": "Windows labeled Normal in confirmatory holdout occurring after all failures of an entity (41 entities).",
+      "7_cross_history_normal": "Windows labeled Normal in confirmatory holdout occurring between failures in tasks 6224307516_2 (4 windows) and 6224307516_3 (3 windows) whose 5-step trailing history spans across failure 1.",
+      "156_confirmatory_contaminated_normal": "Sum of 149 post-all-failure Normal + 7 cross-history Normal = 156.",
+      "196_confirmatory_affected_all_labels": "All windows in confirmatory holdout occurring after at least one failure event: 149 (post-fail normal) + 7 (cross-history normal) + 14 (warning) + 26 (critical) = 196."
+    }
+  },
+  "patch_verification_code_audit": {
+    "event_classifier_v2_v3": "VERIFIED_CORRECT. Uses self.event_cls.FAIL which resolves to 3 in 2011 trace and 5 in 2019 trace.",
+    "null_nan_safety": "VERIFIED_CORRECT. Adds explicit guard: if pd.isna(t) or not np.isfinite(t): return FailureLabel.UNKNOWN, None.",
+    "boundary_collision_t_equals_fail": "VERIFIED_CORRECT. Uses time_sec <= t, correctly marking concurrent failure (tau=0.0s) as UNKNOWN (-1).",
+    "preservation_of_valid_prefailure": "VERIFIED_CORRECT. For t < T_fail, prior_fails is empty, preserving all Critical, Warning, Normal, Finish, Kill, Evict semantics.",
+    "pipeline_exclusion_mechanism": "VERIFIED_CORRECT. In WindowGenerator(exclude_unknown=True), line 80 checks target_label == FailureLabel.UNKNOWN and continues, excluding the window from X, y, and metadata."
+  },
+  "repeated_failures_policy_audit": {
+    "policy_a_terminal_entity": {
+      "definition": "Any observation timestamp t >= T_fail_1 is permanently censored as FailureLabel.UNKNOWN (-1).",
+      "source_text": "Protocol Amendment 2.1 line 201 ('post-failure step -> label -1 (strictly excluded)'); cohort_verification.json line 92; reports/phase6_1_cohort_verification.md line 93.",
+      "implication": "Mathematically guarantees that zero windows cross a failure event, because any window with history crossing a failure must have t_pred >= T_fail and is therefore dropped.",
+      "confirmatory_impact": "196 windows excluded; 5,315 clean windows retained."
+    },
+    "policy_b_segmented_episodes": {
+      "definition": "Permits pre-failure alerts for subsequent failure episodes (T_fail_2) if an explicit scheduler restart occurred and the trailing 5-step history does not cross T_fail_1.",
+      "limitation_in_current_code": "WindowGenerator does NOT check history labels. If an endpoint is given label 1 or 2, WindowGenerator will construct the window even if its history crosses an earlier failure. Implementing Policy B requires modifying WindowGenerator to check history spans.",
+      "confirmatory_impact": "156 windows excluded; 5,355 clean windows retained (the Phase 6.8 Scenario 3 cohort)."
+    }
+  },
+  "regression_tests_validation": {
+    "test_file": "tests/test_phase7a_labeling_repair.py",
+    "scenarios_count": 15,
+    "production_execution": "CONFIRMED. Imports TargetLabelGenerator directly from src.labeling.target_generator.",
+    "results_against_unpatched_code": "11 passed, 4 failed (scenarios 9, 10, 11, 12).",
+    "results_against_patched_code": "15 passed, 0 failed (100% pass rate)."
+  },
+  "wider_pipeline_dependencies": {
+    "window_generator": {
+      "endpoint_check": "Checks target_label == FailureLabel.UNKNOWN at line 80.",
+      "history_check": "DOES NOT CHECK history labels. Under Policy A, this is safe because no post-failure step can be an endpoint. Under Policy B, WindowGenerator would need a history-crossing guard."
+    },
+    "feature_engineer": {
+      "operators": "Strictly trailing operators (shift, diff, rolling.mean, slope). Zero forward-looking operators.",
+      "leakage_to_prefailure": "ZERO. Pre-failure feature values at t < T_fail are mathematically identical whether post-failure telemetry exists or is removed.",
+      "regeneration_required": "Features do not need formula re-engineering. Only WindowGenerator must be re-run on corrected labels to generate clean X and y arrays."
+    }
+  },
+  "recommendations": {
+    "verdict": "SAFE_AFTER_SPECIFIED_CHANGES",
+    "required_specifications_before_patching": [
+      "Explicitly ratify Policy A (Terminal Entity Lifecycle) as the governing policy for Phase 7A diagnostic datasets.",
+      "Do NOT overwrite data/processed/l5/ or results/phase6/. All corrected outputs must be written to data/processed/phase7a_diagnostic/ and results/phase7a/.",
+      "Update tests/test_phase7a_labeling_repair.py to test both unit-level TargetLabelGenerator and tensor-level WindowGenerator history invariants.",
+      "Preserve historical Phase 6.4 evaluation verdict as permanently NO_OPERATIONAL_WINNER."
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "timestamp_utc": "2026-10-29T08:48:29Z",
+  "protocol_version": "2.0-REVISED-FROZEN",
+  "protocol_sha256": "f919cbb6d79ee790b41eb08cd1b023f1ea5f887390eaef39f8bdac94bc0e9dab",
+  "folds_sha256": "29bc9cee8ab52c435d8b9a85bc589be82f6e27f5448bd75201c856124633be17",
+  "folds_match_phase7q": true,
+  "fold_window_distribution": {
+    "0": 725,
+    "1": 440,
+    "2": 418,
+    "3": 433,
+    "4": 1262
+  },
+  "instantiated_model_parameters": 67027,
+  "checkpoint_s0_parameters": 67027,
+  "checkpoint_s2_parameters": 67027,
+  "auc_complement_identity_holds": true,
+  "preflight_status": "AUDIT_PASSED"
+}

@@ -1,0 +1,69 @@
+{
+  "experiment_name": "Phase 7L Controlled Longer-Temporal-Context Experiment",
+  "research_question": "Does increasing the causal input sequence length from L=5 steps (25 minutes) to L=12 steps (60 minutes) improve validation failure-prediction performance?",
+  "conditions": {
+    "baseline": {
+      "name": "Baseline_L5",
+      "seq_len": 5,
+      "temporal_span_minutes": 25.0,
+      "temporal_span_seconds": 1500.0,
+      "feature_dim": 31
+    },
+    "treatment": {
+      "name": "Treatment_L12",
+      "seq_len": 12,
+      "temporal_span_minutes": 60.0,
+      "temporal_span_seconds": 3600.0,
+      "feature_dim": 31
+    }
+  },
+  "loss_weighting_conditions": {
+    "cond_B": {
+      "name": "Moderate [1,2,2] (Pre-declared Primary Baseline)",
+      "weights": [
+        1.0,
+        2.0,
+        2.0
+      ]
+    },
+    "cond_A": {
+      "name": "Unweighted [1,1,1] (Reference Baseline)",
+      "weights": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    }
+  },
+  "seeds": [
+    42,
+    123,
+    456
+  ],
+  "hyperparameters": {
+    "architecture": "TemporalLSTMClassifier (2-layer LSTM)",
+    "hidden_dim": 64,
+    "num_layers": 2,
+    "num_classes": 3,
+    "dropout": 0.2,
+    "optimizer": "Adam",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "batch_size": 64,
+    "max_epochs": 25,
+    "checkpoint_selection": "Minimum validation loss"
+  },
+  "evaluation_protocol": {
+    "threshold_steps": 201,
+    "threshold_range": [
+      0.0,
+      1.0
+    ],
+    "operational_gates": {
+      "gate_1a_episode_recall": ">= 70.0%",
+      "gate_1b_critical_recall": ">= 50.0%",
+      "gate_2a_entity_far": "<= 10.0%",
+      "gate_2b_window_fpr": "<= 5.0%"
+    }
+  }
+}

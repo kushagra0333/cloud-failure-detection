@@ -1,0 +1,60 @@
+{
+  "manifest_name": "phase7l_manifest",
+  "phase": "Phase 7L",
+  "timestamp": "2026-10-29T01:00:00+05:30",
+  "project_root": "C:\\Users\\hp\\Desktop\\Research project",
+  "artifacts": {
+    "results/phase7l_longer_context/phase7l_report.md": {
+      "size_bytes": 21030,
+      "sha256": "f8d432d6e76d3b1e71b744dee8751fa89f089ae774469617364c1bae20ef9c03"
+    },
+    "results/phase7l_longer_context/phase7l_data_manifest.json": {
+      "size_bytes": 2012,
+      "sha256": "5be22e02b85d64186150cd8c1f02360add02237be7d0b3bbc5f442dba22e271e"
+    },
+    "results/phase7l_longer_context/phase7l_experiment_config.json": {
+      "size_bytes": 1749,
+      "sha256": "04e8924388fa19b0fd30f0883012ea29a1e861942fa06750cb798da9b0e8b2db"
+    },
+    "results/phase7l_longer_context/fitted_preprocessors_manifest.json": {
+      "size_bytes": 3483,
+      "sha256": "f4ce7315501dc9ad292957cb393d7fe7417c4f60b373adf8fc9967a312ab3b67"
+    },
+    "results/phase7l_longer_context/training_logs.csv": {
+      "size_bytes": 24852,
+      "sha256": "3616cec2936fcb9f2276dc70d4532965109048407e37dae8180a884d776893fa"
+    },
+    "results/phase7l_longer_context/validation_predictions.csv": {
+      "size_bytes": 377954,
+      "sha256": "f2347b5f1b6ae0a92e73b9f3e8bce5294d8535b2973572c31c953817ce75c410"
+    },
+    "results/phase7l_longer_context/threshold_sweep_metrics.csv": {
+      "size_bytes": 671675,
+      "sha256": "ad5ae9900dd9f190e51e35abb08f730c534fc8ad3a0b0da662614c47fcc5dd7a"
+    },
+    "results/phase7l_longer_context/gate_summary.csv": {
+      "size_bytes": 3916,
+      "sha256": "6c1242ea06d053d27b3eaa7b81af2a4f97c45f470b215c8c5a9d67b3a4ec1df2"
+    },
+    "results/phase7l_longer_context/cross_seed_aggregate.csv": {
+      "size_bytes": 1745,
+      "sha256": "c14fa9259f1e6dc730262235379e63cbe41c259a9f132d1766f02e762a1b1d05"
+    },
+    "results/phase7l_longer_context/causality_integrity_audit.json": {
+      "size_bytes": 2458,
+      "sha256": "5a2831eaab35c0c7641763010ba2fccff8593964fbee4785ff5d66822aca0206"
+    },
+    "results/phase7l_longer_context/independent_reproduction_metrics.csv": {
+      "size_bytes": 671832,
+      "sha256": "d36f390563fa28d81bd56043f4d3032c56f43bf7dca5e91082b2931969bc00a9"
+    },
+    "results/phase7l_longer_context/discrepancy_register.csv": {
+      "size_bytes": 1492,
+      "sha256": "01f78090d5df4bb937f824663b02b8caa7c3fae18b4295b4e61a00ad8d3d2af3"
+    },
+    "reports/phase7l_longer_context/phase7l_report.md": {
+      "size_bytes": 21030,
+      "sha256": "f8d432d6e76d3b1e71b744dee8751fa89f089ae774469617364c1bae20ef9c03"
+    }
+  }
+}

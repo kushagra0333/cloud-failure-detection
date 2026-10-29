@@ -1,0 +1,366 @@
+{
+  "audit_version": "Phase 4.1 Independent Scientific Audit",
+  "date": "2026-10-26",
+  "auditor_verdict": "PASS",
+  "verdict_rationale": "All validation metrics for all 4 models replicate with 0.00 difference against saved comparison artifacts. All denominators (1,015 windows, 840 normal, 72 warning, 103 critical, 78 entities, 42 pure-normal, 61 episodes) are verified exact. Episode deduplication and post-failure exclusion (min TTF = 0.88s > 0) are strictly intact. Alert policies are uniformly argmax without validation threshold gaming. Hybrid training strictly isolates training and validation data with zero leakage. Confirmatory protocol remains 100% untouched and quarantined.",
+  "denominators": {
+    "validation_windows": 1015,
+    "normal_windows": 840,
+    "warning_windows": 72,
+    "critical_windows": 103,
+    "total_entities": 78,
+    "pure_normal_entities": 42,
+    "failure_episodes": 61
+  },
+  "post_failure_exclusion": {
+    "verified": true,
+    "min_time_to_failure_seconds": 1.959867999999915,
+    "max_time_to_failure_seconds": 1797.46555
+  },
+  "recomputed_metrics": {
+    "Random Forest": {
+      "macro_f1": 0.7048614720252862,
+      "accuracy": 0.9014778325123153,
+      "class_metrics": {
+        "normal": {
+          "precision": 0.9137168141592921,
+          "recall": 0.9833333333333333,
+          "f1": 0.9472477064220184
+        },
+        "warning": {
+          "precision": 0.6571428571428571,
+          "recall": 0.3194444444444444,
+          "f1": 0.42990654205607476,
+          "pr_auc": 0.46602357348645645
+        },
+        "critical": {
+          "precision": 0.868421052631579,
+          "recall": 0.6407766990291263,
+          "f1": 0.7374301675977654,
+          "pr_auc": 0.7886369372288139
+        }
+      },
+      "confusion_matrix": [
+        [
+          826,
+          10,
+          4
+        ],
+        [
+          43,
+          23,
+          6
+        ],
+        [
+          35,
+          2,
+          66
+        ]
+      ],
+      "episode_detection": {
+        "detected_count": 47,
+        "total_episodes": 61,
+        "detection_rate_pct": 77.04918032786885
+      },
+      "lead_time_distribution_minutes": {
+        "detected_count": 47,
+        "total_episodes": 61,
+        "mean_min": 10.015027910992911,
+        "median_min": 5.592195616666671,
+        "min_min": 0.8849886833333281,
+        "max_min": 29.76631048333332,
+        "std_min": 9.413987045982722
+      },
+      "false_alarm_metrics": {
+        "window_fpr": {
+          "false_positive_windows": 14,
+          "total_normal_windows": 840,
+          "fpr_pct": 1.6666666666666667
+        },
+        "pure_normal_entity_far": {
+          "false_alarm_entities": 2,
+          "total_pure_normal_entities": 42,
+          "far_pct": 4.761904761904762
+        },
+        "all_entity_normal_period_far": {
+          "false_alarm_entities": 8,
+          "total_entities": 78,
+          "far_pct": 10.256410256410255
+        }
+      }
+    },
+    "Temporal LSTM": {
+      "macro_f1": 0.5959013218963002,
+      "accuracy": 0.8226600985221675,
+      "class_metrics": {
+        "normal": {
+          "precision": 0.9491740787801779,
+          "recall": 0.8892857142857142,
+          "f1": 0.9182544560540873
+        },
+        "warning": {
+          "precision": 0.272,
+          "recall": 0.4722222222222222,
+          "f1": 0.34517766497461927,
+          "pr_auc": 0.369860767079411
+        },
+        "critical": {
+          "precision": 0.5242718446601942,
+          "recall": 0.5242718446601942,
+          "f1": 0.5242718446601942,
+          "pr_auc": 0.6935911411601592
+        }
+      },
+      "confusion_matrix": [
+        [
+          747,
+          58,
+          35
+        ],
+        [
+          24,
+          34,
+          14
+        ],
+        [
+          16,
+          33,
+          54
+        ]
+      ],
+      "episode_detection": {
+        "detected_count": 52,
+        "total_episodes": 61,
+        "detection_rate_pct": 85.24590163934425
+      },
+      "lead_time_distribution_minutes": {
+        "detected_count": 52,
+        "total_episodes": 61,
+        "mean_min": 12.446688806089742,
+        "median_min": 6.110792383333335,
+        "min_min": 0.8849886833333281,
+        "max_min": 29.957759166666666,
+        "std_min": 10.534486830369003
+      },
+      "false_alarm_metrics": {
+        "window_fpr": {
+          "false_positive_windows": 93,
+          "total_normal_windows": 840,
+          "fpr_pct": 11.071428571428571
+        },
+        "pure_normal_entity_far": {
+          "false_alarm_entities": 4,
+          "total_pure_normal_entities": 42,
+          "far_pct": 9.523809523809524
+        },
+        "all_entity_normal_period_far": {
+          "false_alarm_entities": 18,
+          "total_entities": 78,
+          "far_pct": 23.076923076923077
+        }
+      }
+    },
+    "Compact Temporal Transformer": {
+      "macro_f1": 0.5900663409886583,
+      "accuracy": 0.8078817733990148,
+      "class_metrics": {
+        "normal": {
+          "precision": 0.9579500657030223,
+          "recall": 0.8678571428571429,
+          "f1": 0.9106808244846971
+        },
+        "warning": {
+          "precision": 0.25,
+          "recall": 0.5416666666666666,
+          "f1": 0.34210526315789475,
+          "pr_auc": 0.30657967391628577
+        },
+        "critical": {
+          "precision": 0.5306122448979592,
+          "recall": 0.5048543689320388,
+          "f1": 0.5174129353233831,
+          "pr_auc": 0.674092492522657
+        }
+      },
+      "confusion_matrix": [
+        [
+          729,
+          77,
+          34
+        ],
+        [
+          21,
+          39,
+          12
+        ],
+        [
+          11,
+          40,
+          52
+        ]
+      ],
+      "episode_detection": {
+        "detected_count": 56,
+        "total_episodes": 61,
+        "detection_rate_pct": 91.80327868852459
+      },
+      "lead_time_distribution_minutes": {
+        "detected_count": 56,
+        "total_episodes": 61,
+        "mean_min": 12.976501674107144,
+        "median_min": 6.700053333333343,
+        "min_min": 0.8849886833333281,
+        "max_min": 29.957759166666666,
+        "std_min": 10.61701368516871
+      },
+      "false_alarm_metrics": {
+        "window_fpr": {
+          "false_positive_windows": 111,
+          "total_normal_windows": 840,
+          "fpr_pct": 13.214285714285715
+        },
+        "pure_normal_entity_far": {
+          "false_alarm_entities": 7,
+          "total_pure_normal_entities": 42,
+          "far_pct": 16.666666666666664
+        },
+        "all_entity_normal_period_far": {
+          "false_alarm_entities": 23,
+          "total_entities": 78,
+          "far_pct": 29.48717948717949
+        }
+      }
+    },
+    "Representation Hybrid": {
+      "macro_f1": 0.6517621283255086,
+      "accuracy": 0.8738916256157635,
+      "class_metrics": {
+        "normal": {
+          "precision": 0.9236111111111112,
+          "recall": 0.95,
+          "f1": 0.9366197183098591
+        },
+        "warning": {
+          "precision": 0.41509433962264153,
+          "recall": 0.3055555555555556,
+          "f1": 0.352,
+          "pr_auc": 0.36050698906048717
+        },
+        "critical": {
+          "precision": 0.6836734693877551,
+          "recall": 0.6504854368932039,
+          "f1": 0.6666666666666666,
+          "pr_auc": 0.7351880281636353
+        }
+      },
+      "confusion_matrix": [
+        [
+          798,
+          22,
+          20
+        ],
+        [
+          39,
+          22,
+          11
+        ],
+        [
+          27,
+          9,
+          67
+        ]
+      ],
+      "episode_detection": {
+        "detected_count": 50,
+        "total_episodes": 61,
+        "detection_rate_pct": 81.9672131147541
+      },
+      "lead_time_distribution_minutes": {
+        "detected_count": 50,
+        "total_episodes": 61,
+        "mean_min": 10.791539067333334,
+        "median_min": 5.901405133333332,
+        "min_min": 0.8849886833333281,
+        "max_min": 29.76631048333332,
+        "std_min": 9.692022838614584
+      },
+      "false_alarm_metrics": {
+        "window_fpr": {
+          "false_positive_windows": 42,
+          "total_normal_windows": 840,
+          "fpr_pct": 5.0
+        },
+        "pure_normal_entity_far": {
+          "false_alarm_entities": 4,
+          "total_pure_normal_entities": 42,
+          "far_pct": 9.523809523809524
+        },
+        "all_entity_normal_period_far": {
+          "false_alarm_entities": 17,
+          "total_entities": 78,
+          "far_pct": 21.794871794871796
+        }
+      }
+    }
+  },
+  "model_complexity": {
+    "Random Forest": {
+      "type": "Tree Ensemble",
+      "trees": 100,
+      "decision_nodes": 35054,
+      "trainable_neural_parameters": 0,
+      "serialized_size_kb": 91.8
+    },
+    "Temporal LSTM": {
+      "type": "Recurrent Deep Neural Network",
+      "layers": 2,
+      "hidden_dim": 64,
+      "trainable_neural_parameters": 62467,
+      "decision_nodes": 0,
+      "checkpoint_size_kb": 249.6
+    },
+    "Compact Temporal Transformer": {
+      "type": "Self-Attention Transformer Encoder",
+      "layers": 2,
+      "attention_heads": 4,
+      "d_model": 64,
+      "trainable_neural_parameters": 73475,
+      "decision_nodes": 0,
+      "checkpoint_size_kb": 304.6
+    },
+    "Representation Hybrid": {
+      "type": "Representation-Fused Neural-Tree Hybrid",
+      "temporal_backbone_neural_params": 73475,
+      "tree_decision_nodes": 35116,
+      "fused_feature_dimension": 95
+    }
+  },
+  "methodology_and_policy_audits": {
+    "decision_thresholding": {
+      "method": "Argmax (standard Bayes decision rule: class = argmax_c P(y=c))",
+      "validation_threshold_tuning": false,
+      "alert_rule": "predicted_label in {1, 2} (any WARNING or CRITICAL prediction)",
+      "operational_consistency": "Identical operational alert and episode-detection rules applied across all 4 models"
+    },
+    "class_weighting_comparability": {
+      "random_forest": "class_weight='balanced' (scikit-learn inverse frequency)",
+      "neural_models": "Explicit cross-entropy weights w_c = N / (C * N_c) computed strictly on training set: [0.3819, 6.4750, 4.4059]",
+      "mathematical_equivalence": "Genuinely comparable: both implement inverse-frequency class balancing strictly on training labels"
+    },
+    "hybrid_methodology_audit": {
+      "backbone_training_isolation": "Fitted strictly on X_train, y_train. No validation examples in gradient updates.",
+      "second_stage_rf_isolation": "Fitted strictly on Z_train = [H_train; X_train[:, -1, :]] and y_train.",
+      "validation_leakage_status": "Zero validation labels or feature transformations entered hybrid fitting.",
+      "inference_consistency": "Z_val constructed identically via backbone.get_embedding(X_val) in eval mode.",
+      "target_leakage_status": "Zero future, oracle, or target-derived features in input.",
+      "in_sample_representation_limitation": "The Random Forest is fitted on in-sample training embeddings H_train, which may be more cleanly separable than out-of-fold embeddings because the Transformer backbone optimized training loss. While this does NOT cause validation leakage (validation data remains untouched), in-sample embedding fitting can lead to mild overfitting of the second-stage classifier on training representations."
+    },
+    "confirmatory_data_quarantine": {
+      "protocol_file": "results/phase4/confirmatory_protocol.json",
+      "frozen_status": "FROZEN_PRE_REGISTERED_UNTOUCHED",
+      "phase4_access": "STRICTLY_QUARANTINED",
+      "evaluation_executed": false,
+      "overlap_with_development_entities": 0
+    }
+  }
+}

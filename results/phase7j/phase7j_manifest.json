@@ -1,0 +1,51 @@
+{
+  "manifest_version": "1.0",
+  "phase": "Phase 7J \u2014 Validation-Only Decision Threshold and Operating-Point Investigation",
+  "timestamp_iso": "2026-10-28T22:15:00+05:30",
+  "protocol_id": "PROTOCOL-PHASE-7J-01",
+  "safeguards_verification": {
+    "candidate_a_test_accessed": false,
+    "phase6_confirmatory_holdout_accessed": false,
+    "existing_artifacts_overwritten": false,
+    "new_models_trained": false,
+    "confirmatory_testing_authorized": false
+  },
+  "summary_findings": {
+    "policyA_passing_operating_points": 0,
+    "policyB_passing_operating_points": 0,
+    "operational_winner": null,
+    "verdict": "NO OPERATIONAL WINNER"
+  },
+  "artifacts": {
+    "phase7j_gate_summary.csv": {
+      "path": "results/phase7j/phase7j_gate_summary.csv",
+      "size_bytes": 1648,
+      "sha256": "e81e4ba795cb3ac6dbf24b407c5ac700a9251d281b2fa11974966e2390dc677d"
+    },
+    "phase7j_integrity_report.json": {
+      "path": "results/phase7j/phase7j_integrity_report.json",
+      "size_bytes": 1338,
+      "sha256": "c895484cdaa4e1db6015aa00964efb2f8cfe8f48d2f5434d9a60bd1aab0941d4"
+    },
+    "phase7j_protocol.json": {
+      "path": "results/phase7j/phase7j_protocol.json",
+      "size_bytes": 7174,
+      "sha256": "42110140e2a62576a5f019e8369c8dbe8ec2c15c870d896d9ffeaaf4d4948350"
+    },
+    "phase7j_report.md": {
+      "path": "results/phase7j/phase7j_report.md",
+      "size_bytes": 18533,
+      "sha256": "64fa03427de5bd6bc6a38fa2ef4997b643cc009e157f4815951a5a09c85e71c1"
+    },
+    "phase7j_threshold_curves.json": {
+      "path": "results/phase7j/phase7j_threshold_curves.json",
+      "size_bytes": 472488,
+      "sha256": "06d01b0398fa76b61c6236f93d179a932d97ec2c3c2a94c27363085165affa86"
+    },
+    "phase7j_threshold_metrics.csv": {
+      "path": "results/phase7j/phase7j_threshold_metrics.csv",
+      "size_bytes": 285078,
+      "sha256": "0329aecd78ac67cd7400d3d4e3b9d2c8cfab9251b2a8b3c2b2ca43ef281f4b48"
+    }
+  }
+}

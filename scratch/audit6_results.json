@@ -1,0 +1,82 @@
+{
+  "audit_title": "Phase 7H-A Audit 6: Candidate A Test Split Size & Provenance Reconciliation",
+  "verified_split_sizes": {
+    "candidate_a_train": 3278,
+    "candidate_a_val": 657,
+    "candidate_a_test": 1025,
+    "candidate_a_total": 4960
+  },
+  "reported_discrepancy": {
+    "reported_in_phase7f_7g_7h": 824,
+    "actual_dataset_count": 1025,
+    "discrepancy_delta": -201,
+    "origin_of_824": "Clerical error originating in Phase 7F report (reports/phase7f/phase7f_failure_separation_report.md, lines 42 and 264), subsequently copied into Phase 7G and Phase 7H reports without opening the quarantined test files. Exhaustive search confirmed no file, tensor, split, or metadata table in the repository has 824 rows."
+  },
+  "quarantine_and_inspection_distinction": {
+    "accessed_in_phase7h": false,
+    "accessed_in_phase7g": false,
+    "accessed_in_phase7f": false,
+    "accessed_in_phase7e": false,
+    "previously_inspected_in_project": true,
+    "previous_inspection_evidence": [
+      {
+        "phase": "Phase 7D",
+        "script": "scripts/train_and_evaluate_phase7d.py",
+        "prediction_artifact": "results/phase7d/test_predictions.csv",
+        "prediction_artifact_rows": 1025,
+        "report": "reports/phase7d/phase7d_retraining_and_evaluation_report.md",
+        "finding": "Candidate A Test split was unblinded and evaluated during Phase 7D. Therefore, Candidate A Test is NOT a pristine holdout."
+      }
+    ]
+  },
+  "authoritative_manifest_evidence": [
+    {
+      "file": "results/phase7a_4/candidate_a_job_grouped_split.csv",
+      "test_rows_recorded": 1025,
+      "sha256": "f84bc4fe54f8e0583e2ee52f49b2fbe8e6fcafb4f020c656985a1acc31bb4946",
+      "status": "MATCH"
+    },
+    {
+      "file": "results/phase7a_5/candidate_a_preapproval_audit.json",
+      "test_rows_recorded": 1025,
+      "sha256": "8824304935453e48c05beea095ee80ea3a0814c3e5edcdea707cf56c74eaba08",
+      "status": "MATCH"
+    },
+    {
+      "file": "data/processed/phase7c/test_metadata.csv",
+      "test_rows_recorded": 1025,
+      "sha256": "5bf69371833c4b90558afaf0f445244252bc6a6cc5a368cc2cc027d8a38fb4cf",
+      "status": "MATCH"
+    },
+    {
+      "file": "results/phase7d/test_predictions.csv",
+      "test_rows_recorded": 1025,
+      "sha256": "6ceb6d87e83fd14ab9c69fe11ce335ffb8d3055558e5bdd1436f2967324432e1",
+      "status": "MATCH"
+    }
+  ],
+  "protected_test_files_metadata_without_data_inspection": [
+    {
+      "file": "data/processed/phase7c/X_test.npy",
+      "size_bytes": 635628,
+      "last_modified": "2026-10-28 14:38:09",
+      "sha256": "1199fce77261166a19f8885b9d92f34fadf308af85b05f43dd55b6c67984ea14",
+      "header_shape": [
+        1025,
+        5,
+        31
+      ],
+      "header_dtype": "float32"
+    },
+    {
+      "file": "data/processed/phase7c/y_test.npy",
+      "size_bytes": 8328,
+      "last_modified": "2026-10-28 14:38:09",
+      "sha256": "c073fe68540017728fd2ddde25bf7334c3b95cdcc760cd556764ca23a0c307b0",
+      "header_shape": [
+        1025
+      ],
+      "header_dtype": "int64"
+    }
+  ]
+}

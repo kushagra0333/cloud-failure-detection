@@ -1,0 +1,57 @@
+{
+  "manifest_version": "5.0_optimization_audit",
+  "phase": "Phase 7Y \u2014 Query Optimization and Dry-Run-Only Audit",
+  "timestamp_utc": "2026-10-29T12:50:54.279110+00:00",
+  "active_project": "canvas-advice-464215-n1",
+  "telemetry_pilot_verdict": "NO_OPTIMIZATION_WITHIN_BUDGET",
+  "alternative_event_pilot_verdict": "OPTIMIZATION_CANDIDATE_WITHIN_BUDGET_FOR_REVIEW",
+  "primary_operational_verdict": "OPTIMIZATION_CANDIDATE_WITHIN_BUDGET_FOR_REVIEW",
+  "historical_manifest_references": [
+    "results/phase7y_borg2019_pilot/phase7y_manifest.json",
+    "results/phase7y_borg2019_pilot/phase7y_continuation_manifest.json",
+    "results/phase7y_borg2019_pilot/phase7y_dry_run_manifest.json"
+  ],
+  "optimization_deliverables_count": 8,
+  "optimization_deliverables": {
+    "phase7y_candidate_a_projection_reduction.sql": {
+      "bytes": 2992,
+      "sha256": "33fa4a6968f47b9f8fe269ceb7adf1f72c4356292708f986a1f14e5ef82d09c4",
+      "path": "results/phase7y_borg2019_pilot/phase7y_candidate_a_projection_reduction.sql"
+    },
+    "phase7y_candidate_b_source_scan_reduction.sql": {
+      "bytes": 2888,
+      "sha256": "cdd35681e4c336fa2e27ce4c267b72b07ed44b37a8144cc4f172be845823a3db",
+      "path": "results/phase7y_borg2019_pilot/phase7y_candidate_b_source_scan_reduction.sql"
+    },
+    "phase7y_candidate_c_bounded_pilot_scope.sql": {
+      "bytes": 3060,
+      "sha256": "fc50770cd8427c7233633da3abfb9f559303d1b0355403d037d5ea75fbc73785",
+      "path": "results/phase7y_borg2019_pilot/phase7y_candidate_c_bounded_pilot_scope.sql"
+    },
+    "phase7y_candidate_d_alternative_source.sql": {
+      "bytes": 2135,
+      "sha256": "fa1d7c501a39cc48b6d9ece45f86242469bf36e572adbb84ded4a4fa5b623e4c",
+      "path": "results/phase7y_borg2019_pilot/phase7y_candidate_d_alternative_source.sql"
+    },
+    "phase7y_optimization_dry_run_evidence.json": {
+      "bytes": 5563,
+      "sha256": "a6e0237ffc54b5e4f973d5c0b86ee4ec15f7d241b5e9eefb38b7ec935db45753",
+      "path": "results/phase7y_borg2019_pilot/phase7y_optimization_dry_run_evidence.json"
+    },
+    "phase7y_optimization_budget_audit.json": {
+      "bytes": 2585,
+      "sha256": "f9e954e389207a967713429403776b1582323f67ff01ef5612790e7320aec4dd",
+      "path": "results/phase7y_borg2019_pilot/phase7y_optimization_budget_audit.json"
+    },
+    "phase7y_optimization_governance_checks.json": {
+      "bytes": 1128,
+      "sha256": "0b475cf2d48de6417784fb3a860d126e1f58b56653f293db062173a7f281548c",
+      "path": "results/phase7y_borg2019_pilot/phase7y_optimization_governance_checks.json"
+    },
+    "phase7y_optimization_audit_report.md": {
+      "bytes": 8843,
+      "sha256": "4cb7696bcd744dcf1be4ed5a97a98770e33e9e68279bb76a5da472a60103b9f8",
+      "path": "results/phase7y_borg2019_pilot/phase7y_optimization_audit_report.md"
+    }
+  }
+}

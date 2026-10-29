@@ -1,0 +1,387 @@
+{
+  "task_a": {
+    "candidate_a_hash": "f84bc4fe54f8e0583e2ee52f49b2fbe8e6fcafb4f020c656985a1acc31bb4946",
+    "candidate_a_hash_verified": true,
+    "file_hashes": {
+      "X_train.npy": {
+        "path": "c:\\Users\\hp\\Desktop\\Research project\\data\\processed\\phase7c\\X_train.npy",
+        "sha256": "6d3a7aca61f84732da301ede11c276afeafd7cbf863b2ce3b5ba4e71e843702d",
+        "size_bytes": 2032488
+      },
+      "y_train.npy": {
+        "path": "c:\\Users\\hp\\Desktop\\Research project\\data\\processed\\phase7c\\y_train.npy",
+        "sha256": "355ca59b1609780181fabe8f06c6ab51cc5c53cfbec91cb822d76b8e373fab1e",
+        "size_bytes": 26352
+      },
+      "train_metadata.csv": {
+        "path": "c:\\Users\\hp\\Desktop\\Research project\\data\\processed\\phase7c\\train_metadata.csv",
+        "sha256": "0180ade4098711680c44bbd2ca8c3c5d85834a86042546cc9300b00f1df725ce",
+        "size_bytes": 164062
+      },
+      "X_val.npy": {
+        "path": "c:\\Users\\hp\\Desktop\\Research project\\data\\processed\\phase7c\\X_val.npy",
+        "sha256": "ce25dc6e5783730db200ef7c3ee85b9023be76b344f2982347ff28fb6bf7479e",
+        "size_bytes": 407468
+      },
+      "y_val.npy": {
+        "path": "c:\\Users\\hp\\Desktop\\Research project\\data\\processed\\phase7c\\y_val.npy",
+        "sha256": "eb968a74ae86dcc574f3341055ff45ca9fcf77ec5a1b4cee5ad8cb4c1e2631b9",
+        "size_bytes": 5384
+      },
+      "val_metadata.csv": {
+        "path": "c:\\Users\\hp\\Desktop\\Research project\\data\\processed\\phase7c\\val_metadata.csv",
+        "sha256": "8d22193f11d671dc570d29abf9255d06386880d49c5de83c68d6404a8b41b956",
+        "size_bytes": 32677
+      },
+      "X_test.npy": {
+        "path": "c:\\Users\\hp\\Desktop\\Research project\\data\\processed\\phase7c\\X_test.npy",
+        "sha256": "1199fce77261166a19f8885b9d92f34fadf308af85b05f43dd55b6c67984ea14",
+        "size_bytes": 635628
+      },
+      "y_test.npy": {
+        "path": "c:\\Users\\hp\\Desktop\\Research project\\data\\processed\\phase7c\\y_test.npy",
+        "sha256": "c073fe68540017728fd2ddde25bf7334c3b95cdcc760cd556764ca23a0c307b0",
+        "size_bytes": 8328
+      },
+      "test_metadata.csv": {
+        "path": "c:\\Users\\hp\\Desktop\\Research project\\data\\processed\\phase7c\\test_metadata.csv",
+        "sha256": "5bf69371833c4b90558afaf0f445244252bc6a6cc5a368cc2cc027d8a38fb4cf",
+        "size_bytes": 55645
+      },
+      "fitted_scaler_phase7c.json": {
+        "path": "c:\\Users\\hp\\Desktop\\Research project\\configs\\phase7c\\fitted_scaler_phase7c.json",
+        "sha256": "1170ef8689ec64594874f502d7b7ff5c3f195e188244d21cc8f975e31a0db5fb",
+        "size_bytes": 5468
+      },
+      "X_train_raw.npy": {
+        "path": "c:\\Users\\hp\\Desktop\\Research project\\data\\processed\\phase7c\\raw_unscaled\\X_train_raw.npy",
+        "sha256": "d8561f50206a8dcd40df6d3f7ee618bbea359921237c7fb84e22faf458f3d2e0",
+        "size_bytes": 2032488
+      },
+      "X_val_raw.npy": {
+        "path": "c:\\Users\\hp\\Desktop\\Research project\\data\\processed\\phase7c\\raw_unscaled\\X_val_raw.npy",
+        "sha256": "f5f586d6192ee0a7730af0e3833eba71a0288b8a5aeeb65ef7f87e1b1c60a751",
+        "size_bytes": 407468
+      },
+      "X_test_raw.npy": {
+        "path": "c:\\Users\\hp\\Desktop\\Research project\\data\\processed\\phase7c\\raw_unscaled\\X_test_raw.npy",
+        "sha256": "0692d48095a79c29c68fdb61876699a4f5dc1b6703b65cd6c188604babccb2c3",
+        "size_bytes": 635628
+      }
+    },
+    "shapes": {
+      "train": {
+        "X": [
+          3278,
+          5,
+          31
+        ],
+        "y": [
+          3278
+        ],
+        "meta_rows": 3278
+      },
+      "val": {
+        "X": [
+          657,
+          5,
+          31
+        ],
+        "y": [
+          657
+        ],
+        "meta_rows": 657
+      },
+      "test": {
+        "X": [
+          1025,
+          5,
+          31
+        ],
+        "y": [
+          1025
+        ],
+        "meta_rows": 1025
+      }
+    }
+  },
+  "task_b": {
+    "cand_keys_count": 4960,
+    "recon_keys_count": 4960,
+    "exact_key_match": true,
+    "missing_keys": 0,
+    "excess_keys": 0,
+    "label_mismatches": 0
+  },
+  "task_c": {
+    "feature_count": 31,
+    "non_finite_counts": {
+      "train": 0,
+      "val": 0,
+      "test": 0
+    },
+    "entities_with_failures": 79,
+    "post_failure_violations": 0,
+    "class_distributions": {
+      "train": {
+        "0": 2797,
+        "1": 244,
+        "2": 237
+      },
+      "val": {
+        "0": 560,
+        "2": 49,
+        "1": 48
+      },
+      "test": {
+        "0": 921,
+        "2": 55,
+        "1": 49
+      }
+    }
+  },
+  "task_d": {
+    "raw_nan_counts": {
+      "train": {
+        "cpu_utilization": 0,
+        "memory_utilization": 0,
+        "assigned_memory": 0,
+        "disk_io_time": 0,
+        "cycles_per_instruction": 0,
+        "memory_accesses_per_instruction": 1670,
+        "cpu_utilization_lag_1": 0,
+        "memory_utilization_lag_1": 0,
+        "cpu_utilization_lag_2": 0,
+        "memory_utilization_lag_2": 0,
+        "cpu_utilization_lag_3": 0,
+        "memory_utilization_lag_3": 0,
+        "cpu_utilization_lag_6": 0,
+        "memory_utilization_lag_6": 0,
+        "cpu_diff_1": 0,
+        "cpu_rel_change_1": 0,
+        "memory_diff_1": 0,
+        "cpu_rolling_mean_3": 0,
+        "cpu_rolling_std_3": 0,
+        "cpu_rolling_range_3": 0,
+        "memory_rolling_mean_3": 0,
+        "cpu_rolling_mean_6": 0,
+        "cpu_rolling_std_6": 0,
+        "cpu_rolling_range_6": 0,
+        "memory_rolling_mean_6": 0,
+        "cpu_trend_slope_6": 0,
+        "cpu_exceed_85": 0,
+        "cpu_exceed_fraction_6": 0,
+        "memory_to_assigned_ratio": 0,
+        "task_age_minutes": 0,
+        "cpi_missing_fraction_6": 0
+      },
+      "val": {
+        "cpu_utilization": 0,
+        "memory_utilization": 0,
+        "assigned_memory": 0,
+        "disk_io_time": 0,
+        "cycles_per_instruction": 0,
+        "memory_accesses_per_instruction": 205,
+        "cpu_utilization_lag_1": 0,
+        "memory_utilization_lag_1": 0,
+        "cpu_utilization_lag_2": 0,
+        "memory_utilization_lag_2": 0,
+        "cpu_utilization_lag_3": 0,
+        "memory_utilization_lag_3": 0,
+        "cpu_utilization_lag_6": 0,
+        "memory_utilization_lag_6": 0,
+        "cpu_diff_1": 0,
+        "cpu_rel_change_1": 0,
+        "memory_diff_1": 0,
+        "cpu_rolling_mean_3": 0,
+        "cpu_rolling_std_3": 0,
+        "cpu_rolling_range_3": 0,
+        "memory_rolling_mean_3": 0,
+        "cpu_rolling_mean_6": 0,
+        "cpu_rolling_std_6": 0,
+        "cpu_rolling_range_6": 0,
+        "memory_rolling_mean_6": 0,
+        "cpu_trend_slope_6": 0,
+        "cpu_exceed_85": 0,
+        "cpu_exceed_fraction_6": 0,
+        "memory_to_assigned_ratio": 0,
+        "task_age_minutes": 0,
+        "cpi_missing_fraction_6": 0
+      },
+      "test": {
+        "cpu_utilization": 0,
+        "memory_utilization": 0,
+        "assigned_memory": 0,
+        "disk_io_time": 0,
+        "cycles_per_instruction": 0,
+        "memory_accesses_per_instruction": 240,
+        "cpu_utilization_lag_1": 0,
+        "memory_utilization_lag_1": 0,
+        "cpu_utilization_lag_2": 0,
+        "memory_utilization_lag_2": 0,
+        "cpu_utilization_lag_3": 0,
+        "memory_utilization_lag_3": 0,
+        "cpu_utilization_lag_6": 0,
+        "memory_utilization_lag_6": 0,
+        "cpu_diff_1": 0,
+        "cpu_rel_change_1": 0,
+        "memory_diff_1": 0,
+        "cpu_rolling_mean_3": 0,
+        "cpu_rolling_std_3": 0,
+        "cpu_rolling_range_3": 0,
+        "memory_rolling_mean_3": 0,
+        "cpu_rolling_mean_6": 0,
+        "cpu_rolling_std_6": 0,
+        "cpu_rolling_range_6": 0,
+        "memory_rolling_mean_6": 0,
+        "cpu_trend_slope_6": 0,
+        "cpu_exceed_85": 0,
+        "cpu_exceed_fraction_6": 0,
+        "memory_to_assigned_ratio": 0,
+        "task_age_minutes": 0,
+        "cpi_missing_fraction_6": 0
+      }
+    },
+    "max_scaler_recomputation_diff": {
+      "median": 0.0,
+      "mean": 0.0,
+      "std": 3.814697265625e-06
+    },
+    "window_overlap": {
+      "total_window_steps": 16390,
+      "unique_physical_steps": 4414,
+      "multiplicity_ratio": 3.713185319438151,
+      "top_differences": {
+        "cpu_trend_slope_6": {
+          "window_mean": 0.00027549880906008184,
+          "unique_mean": -6.351138290483505e-05,
+          "mean_rel_diff": 5.255044562678388,
+          "window_std": 0.003468510927632451,
+          "unique_std": 0.004052215721458197,
+          "std_rel_diff": 0.14401029551315128,
+          "window_med": 2.477142743373406e-06,
+          "unique_med": 2.6142856768274214e-07
+        },
+        "cpu_diff_1": {
+          "window_mean": 0.00012349312601145357,
+          "unique_mean": -7.119372457964346e-05,
+          "mean_rel_diff": 2.6967281675060315,
+          "window_std": 0.011200656183063984,
+          "unique_std": 0.011576761491596699,
+          "std_rel_diff": 0.03248514912020751,
+          "window_med": 0.0,
+          "unique_med": -9.249999948224286e-07
+        },
+        "memory_diff_1": {
+          "window_mean": 5.896352377021685e-05,
+          "unique_mean": 4.0415114199277014e-05,
+          "mean_rel_diff": 0.44786571109500023,
+          "window_std": 0.0013619206147268414,
+          "unique_std": 0.0017412215238437057,
+          "std_rel_diff": 0.21771106826877384,
+          "window_med": 0.0,
+          "unique_med": 0.0
+        },
+        "cpu_rel_change_1": {
+          "window_mean": 0.7714280486106873,
+          "unique_mean": 1.3319567441940308,
+          "mean_rel_diff": 0.42083068928175354,
+          "window_std": 20.334850311279297,
+          "unique_std": 38.59169387817383,
+          "std_rel_diff": 0.47307700852547924,
+          "window_med": 0.0,
+          "unique_med": -0.0015531978569924831
+        },
+        "cpi_missing_fraction_6": {
+          "window_mean": 0.0003457393031567335,
+          "unique_mean": 0.0004908624105155468,
+          "mean_rel_diff": 0.2950481765961789,
+          "window_std": 0.007803414482623339,
+          "unique_std": 0.009703384712338448,
+          "std_rel_diff": 0.1957847185612324,
+          "window_med": 0.0,
+          "unique_med": 0.0
+        }
+      }
+    }
+  },
+  "task_e": {
+    "job_overlap": {
+      "train_val": 0,
+      "train_test": 0,
+      "val_test": 0
+    },
+    "entity_overlap": {
+      "train_val": 0,
+      "train_test": 0,
+      "val_test": 0
+    },
+    "temporal_spans": {
+      "train": [
+        5100.0,
+        10800.0
+      ],
+      "val": [
+        5100.0,
+        10800.0
+      ],
+      "test": [
+        5100.0,
+        10800.0
+      ]
+    },
+    "machine_overlap": {
+      "unique_machines": {
+        "train": 461,
+        "val": 97,
+        "test": 121
+      },
+      "train_val_overlap": 3,
+      "train_test_overlap": 3
+    }
+  },
+  "task_f": {
+    "test_evaluations": {
+      "test_raw_missing_values_remain_nan_in_unscaled_arrays": {
+        "verdict": "RIGOROUS",
+        "reason": "Directly loads saved raw unscaled .npy arrays and asserts genuine NaNs exist in memory_accesses_per_instruction across train, val, and test."
+      },
+      "test_imputation_and_scaling_statistics_derived_exclusively_from_train": {
+        "verdict": "RIGOROUS",
+        "reason": "Independently computes medians, means, and stds from X_train_raw and verifies np.isclose against configs/phase7c/fitted_scaler_phase7c.json."
+      },
+      "test_val_test_data_cannot_influence_preprocessing_state": {
+        "verdict": "RIGOROUS",
+        "reason": "Tests LeakageSafeScaler behavior by passing extreme outlier val data to transform and verifying internal medians, means, and stds remain unchanged."
+      },
+      "test_entity_grouping_prevents_lag_or_rolling_cross_contamination": {
+        "verdict": "RIGOROUS",
+        "reason": "Constructs synthetic multi-entity DataFrame with boundary step and asserts lag features do not bleed across entity boundaries."
+      },
+      "test_feature_timestamps_do_not_exceed_prediction_timestamp": {
+        "verdict": "WEAK",
+        "reason": "Claims to verify all historical steps within sliding window are <= prediction timestamp, but implementation only asserts (meta_df['prediction_timestamp'] > 0).all()."
+      },
+      "test_policy_a_strictly_excludes_post_failure_observations": {
+        "verdict": "RIGOROUS",
+        "reason": "Tests TargetLabelGenerator directly on synthetic failure event at t=5000s; verifies t=5000s and t=5300s yield UNKNOWN (-1) and t=4500s yields CRITICAL."
+      },
+      "test_no_parent_job_overlap_among_candidate_a_partitions": {
+        "verdict": "RIGOROUS",
+        "reason": "Extracts parent_job_id from train, val, and test metadata and verifies pairwise intersections are strictly empty."
+      },
+      "test_processed_arrays_are_completely_finite": {
+        "verdict": "RIGOROUS",
+        "reason": "Directly tests X_train.npy, X_val.npy, X_test.npy for np.isfinite and absence of NaNs."
+      },
+      "test_feature_label_metadata_alignment": {
+        "verdict": "RIGOROUS",
+        "reason": "Verifies shapes (N, 5, 31) and confirms y array equals metadata['label'].values row-for-row across all partitions."
+      },
+      "test_missing_or_duplicate_join_keys_cause_explicit_failure": {
+        "verdict": "WEAK",
+        "reason": "Uses a mock toy DataFrame with 2 keys instead of testing the actual reconstruct_phase7c_raw_features.py joining logic on actual candidate split."
+      }
+    }
+  }
+}

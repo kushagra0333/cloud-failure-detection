@@ -1,0 +1,70 @@
+{
+  "phase": "Phase 7R",
+  "title": "Failure-Score Direction, Label-Semantics, and Cross-Job Signal Forensics",
+  "timestamp_utc": "2026-10-29T13:25:00Z",
+  "project_root": "C:/Users/hp/Desktop/Research project",
+  "seeds": [42, 123, 456],
+  "authorized_partitions": {
+    "train": {
+      "name": "Candidate A Train",
+      "windows": 3278,
+      "entities": 284,
+      "parent_jobs": 51,
+      "labels": {
+        "0": 2797,
+        "1": 244,
+        "2": 237
+      },
+      "failure_windows": 481,
+      "failure_prevalence": 0.14673581452104942
+    },
+    "validation": {
+      "name": "Candidate A Validation",
+      "windows": 657,
+      "entities": 69,
+      "parent_jobs": 12,
+      "labels": {
+        "0": 560,
+        "1": 48,
+        "2": 49
+      },
+      "failure_windows": 97,
+      "failure_prevalence": 0.14764079147640793,
+      "episodes": 20,
+      "pure_normal_entities": 49
+    }
+  },
+  "prohibited_partitions": [
+    "Candidate A Test",
+    "Phase 6 Confirmatory Holdout"
+  ],
+  "workstreams": {
+    "workstream_a": "Audit target labels, timestamps, metadata, and probability arithmetic",
+    "workstream_b": "Independently recompute failure-ranking metrics and prevalence baselines",
+    "workstream_c": "Score-direction diagnostic and mathematical relationship",
+    "workstream_d": "Cross-job and fold forensics, Simpson's paradox decomposition",
+    "workstream_e": "Verify N2 training loss, auxiliary margin, and checkpoint reproducibility",
+    "workstream_f": "Interpretable linear baseline (Logistic Regression) on recent telemetry"
+  },
+  "baseline_logistic_regression": {
+    "model": "LogisticRegression",
+    "features": "Recent 5-step causal telemetry (31 features at current timestamp t)",
+    "penalty": "l2",
+    "C": 1.0,
+    "solver": "lbfgs",
+    "max_iter": 1000,
+    "scaler": "StandardScaler (fitted strictly on training fold)"
+  },
+  "frozen_operating_policy": {
+    "score_definition": "P_fail = P1 + P2",
+    "threshold": 0.5,
+    "margin_definition": "z2 - z1",
+    "critical_margin_threshold": 0.5
+  },
+  "operational_gates": {
+    "gate_1a_episode_recall_min": 70.0,
+    "gate_1b_critical_recall_min": 50.0,
+    "gate_2a_entity_far_max": 10.0,
+    "gate_2b_window_fpr_max": 5.0
+  }
+}

@@ -1,0 +1,353 @@
+{
+  "transformer_condC_baseline_gamma0": {
+    "condition": "Phase 7E Baseline: Weighted Cross-Entropy (gamma=0.0, alpha=InvFreq)",
+    "gamma": 0.0,
+    "metrics": {
+      "macro_f1": 0.3463150628348979,
+      "accuracy": 0.69558599695586,
+      "balanced_accuracy": 0.3604875283446712,
+      "class_metrics": {
+        "NORMAL": {
+          "precision": 0.8585271317829457,
+          "recall": 0.7910714285714285,
+          "f1": 0.8234200743494424,
+          "support": 560
+        },
+        "WARNING": {
+          "precision": 0.09401709401709402,
+          "recall": 0.22916666666666666,
+          "f1": 0.13333333333333333,
+          "support": 48
+        },
+        "CRITICAL": {
+          "precision": 0.125,
+          "recall": 0.061224489795918366,
+          "f1": 0.0821917808219178,
+          "support": 49
+        }
+      },
+      "warning_recall": 0.22916666666666666,
+      "critical_recall": 0.061224489795918366,
+      "confusion_matrix": [
+        [
+          443,
+          96,
+          21
+        ],
+        [
+          37,
+          11,
+          0
+        ],
+        [
+          36,
+          10,
+          3
+        ]
+      ],
+      "pr_auc": {
+        "pr_auc_warning": 0.07935538484099634,
+        "pr_auc_critical": 0.10709519050429347
+      },
+      "total_windows": 657,
+      "episode_metrics": {
+        "total_episodes": 20,
+        "detected_episodes": 6,
+        "episode_recall_pct": 30.0,
+        "lead_time_mean_sec": 1349.2666666666667,
+        "lead_time_mean_min": 22.487777777777776,
+        "episodes_detail": [
+          {
+            "entity_id": "6127571078_0",
+            "fail_timestamp": 6652.7,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6177502198_0",
+            "fail_timestamp": 8277.9,
+            "total_windows": 6,
+            "detected": true,
+            "lead_time_sec": 1677.8999999999996
+          },
+          {
+            "entity_id": "6233966714_0",
+            "fail_timestamp": 6351.8,
+            "total_windows": 5,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6237552348_11",
+            "fail_timestamp": 7963.9,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6237552348_12",
+            "fail_timestamp": 9257.3,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6237552348_13",
+            "fail_timestamp": 8493.9,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6237552348_14",
+            "fail_timestamp": 8275.0,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6237552348_15",
+            "fail_timestamp": 10014.0,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6237552348_3",
+            "fail_timestamp": 8240.9,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6237552348_5",
+            "fail_timestamp": 9186.1,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6237552348_6",
+            "fail_timestamp": 5262.1,
+            "total_windows": 1,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6238836357_111",
+            "fail_timestamp": 8916.6,
+            "total_windows": 6,
+            "detected": true,
+            "lead_time_sec": 1716.6000000000004
+          },
+          {
+            "entity_id": "6238836357_173",
+            "fail_timestamp": 11856.7,
+            "total_windows": 3,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6238836357_86",
+            "fail_timestamp": 5724.9,
+            "total_windows": 3,
+            "detected": true,
+            "lead_time_sec": 624.8999999999996
+          },
+          {
+            "entity_id": "6238840043_40",
+            "fail_timestamp": 8968.9,
+            "total_windows": 6,
+            "detected": true,
+            "lead_time_sec": 1768.8999999999996
+          },
+          {
+            "entity_id": "6238842343_126",
+            "fail_timestamp": 6347.7,
+            "total_windows": 5,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6238842343_189",
+            "fail_timestamp": 11753.7,
+            "total_windows": 3,
+            "detected": true,
+            "lead_time_sec": 1553.7000000000007
+          },
+          {
+            "entity_id": "6238842343_37",
+            "fail_timestamp": 9139.0,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6238842343_76",
+            "fail_timestamp": 6153.6,
+            "total_windows": 4,
+            "detected": true,
+            "lead_time_sec": 753.6000000000004
+          },
+          {
+            "entity_id": "698645235_0",
+            "fail_timestamp": 12345.6,
+            "total_windows": 1,
+            "detected": false,
+            "lead_time_sec": null
+          }
+        ]
+      },
+      "window_fpr": {
+        "false_positive_windows": 117,
+        "denominator_windows": 560,
+        "fpr_pct": 20.892857142857142
+      },
+      "entity_far": {
+        "false_alarm_entities": 14,
+        "denominator_entities": 49,
+        "far_pct": 28.57142857142857
+      },
+      "parent_job_far": {
+        "false_alarm_jobs": 3,
+        "denominator_jobs": 4,
+        "far_pct": 75.0
+      }
+    }
+  },
+  "transformer_focal_gamma1": {
+    "condition": "Focal Loss (gamma=1.0, alpha=InvFreq)",
+    "gamma": 1.0,
+    "metrics": {
+      "macro_f1": 0.3505486802194518,
+      "accuracy": 0.4733637747336377,
+      "balanced_accuracy": 0.43526077097505667,
+      "class_metrics": {
+        "NORMAL": {
+          "precision": 0.8713826366559485,
+          "recall": 0.48392857142857143,
+          "f1": 0.6222732491389208,
+          "support": 560
+        },
+        "WARNING": {
+          "precision": 0.05531914893617021,
+          "recall": 0.2708333333333333,
+          "f1": 0.09187279151943463,
+          "support": 48
+        },
+        "CRITICAL": {
+          "precision": 0.24324324324324326,
+          "recall": 0.5510204081632653,
+          "f1": 0.3375,
+          "support": 49
+        }
+      },
+      "warning_recall": 0.2708333333333333,
+      "critical_recall": 0.5510204081632653,
+      "confusion_matrix": [
+        [
+          271,
+          219,
+          70
+        ],
+        [
+          21,
+          13,
+          14
+        ],
+        [
+          19,
+          3,
+          27
+        ]
+      ],
+      "episode_recall_pct": 75.0,
+      "detected_episodes": 15,
+      "total_episodes": 20,
+      "lead_time_mean_sec": 1353.4266666666667,
+      "window_fpr_pct": 51.60714285714286,
+      "fp_windows": 289,
+      "normal_windows": 560,
+      "entity_far_pct": 51.02040816326531,
+      "fa_entities": 25,
+      "pure_normal_entities": 49,
+      "parent_job_far_pct": 75.0,
+      "fa_jobs": 3,
+      "pure_normal_jobs": 4,
+      "gate_1_pass": true,
+      "gate_2_pass": false,
+      "both_gates_pass": false
+    },
+    "best_epoch": 6,
+    "training_duration_seconds": 12.833354234695435,
+    "checkpoint_path": "C:\\Users\\hp\\Desktop\\Research project\\models\\checkpoints_phase7f\\transformer_focal_gamma1.pt"
+  },
+  "transformer_focal_gamma2": {
+    "condition": "Focal Loss (gamma=2.0, alpha=InvFreq)",
+    "gamma": 2.0,
+    "metrics": {
+      "macro_f1": 0.3288790322613637,
+      "accuracy": 0.4444444444444444,
+      "balanced_accuracy": 0.36808390022675735,
+      "class_metrics": {
+        "NORMAL": {
+          "precision": 0.867109634551495,
+          "recall": 0.4660714285714286,
+          "f1": 0.6062717770034843,
+          "support": 560
+        },
+        "WARNING": {
+          "precision": 0.045454545454545456,
+          "recall": 0.2708333333333333,
+          "f1": 0.07784431137724551,
+          "support": 48
+        },
+        "CRITICAL": {
+          "precision": 0.2571428571428571,
+          "recall": 0.3673469387755102,
+          "f1": 0.3025210084033613,
+          "support": 49
+        }
+      },
+      "warning_recall": 0.2708333333333333,
+      "critical_recall": 0.3673469387755102,
+      "confusion_matrix": [
+        [
+          261,
+          262,
+          37
+        ],
+        [
+          20,
+          13,
+          15
+        ],
+        [
+          20,
+          11,
+          18
+        ]
+      ],
+      "episode_recall_pct": 75.0,
+      "detected_episodes": 15,
+      "total_episodes": 20,
+      "lead_time_mean_sec": 1313.4266666666667,
+      "window_fpr_pct": 53.39285714285714,
+      "fp_windows": 299,
+      "normal_windows": 560,
+      "entity_far_pct": 57.14285714285714,
+      "fa_entities": 28,
+      "pure_normal_entities": 49,
+      "parent_job_far_pct": 75.0,
+      "fa_jobs": 3,
+      "pure_normal_jobs": 4,
+      "gate_1_pass": false,
+      "gate_2_pass": false,
+      "both_gates_pass": false
+    },
+    "best_epoch": 5,
+    "training_duration_seconds": 8.670866250991821,
+    "checkpoint_path": "C:\\Users\\hp\\Desktop\\Research project\\models\\checkpoints_phase7f\\transformer_focal_gamma2.pt"
+  }
+}

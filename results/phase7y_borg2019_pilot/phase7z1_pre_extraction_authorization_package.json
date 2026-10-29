@@ -1,0 +1,232 @@
+{
+  "metadata": {
+    "phase": "Phase 7Z.1",
+    "title": "Borg 2019 Pre-Extraction Authorization Package",
+    "timestamp_utc": "2026-10-29T13:24:08.940496+00:00",
+    "project_root": "C:\\Users\\hp\\Desktop\\Research project",
+    "investigation_type": "PRE_EXTRACTION_AUTHORIZATION_PACKAGE_ONLY",
+    "verdict": "READY_FOR_OWNER_AUTHORIZATION_REVIEW"
+  },
+  "query_identity": {
+    "file_name": "phase7y_candidate_a_projection_reduction.sql",
+    "relative_path": "results/phase7y_borg2019_pilot/phase7y_candidate_a_projection_reduction.sql",
+    "file_exists": true,
+    "byte_size": 2993,
+    "actual_sha256": "8abdbd8bdf20444f1282a82e01b30de0f8b9182c1d706a94b940c5c054ee395e",
+    "historical_prompt_sha256": "33fa4a6968f447743d56d4001fb177fa95d36e2f69466eb85584bfcf4eb9a695",
+    "historical_phase7y_sha256": "33fa4a6968f47b9f8fe269ceb7adf1f72c4356292708f986a1f14e5ef82d09c4",
+    "hash_comparison_analysis": "The current file on disk has 2,993 bytes (SHA-256: 8abdbd8bdf20444f1282a82e01b30de0f8b9182c1d706a94b940c5c054ee395e). The Phase 7Y optimization report recorded 2,992 bytes (SHA-256: 33fa4a6968f47b9f8fe269ceb7adf1f72c4356292708f986a1f14e5ef82d09c4), differing by a single trailing newline. The user prompt stated historical prefix 33fa4a6968f4... with altered suffix. An authenticated BigQuery dry run was re-executed on the exact current file on disk, confirming exact byte scan parity (418,578,205,568 bytes).",
+    "source_tables_referenced": [
+      {
+        "table": "google.com:google-cluster-data.clusterdata_2019_a.instance_events",
+        "columns": [
+          "collection_id (INT64)",
+          "instance_index (INT64)",
+          "time (INT64)",
+          "type (INT64)"
+        ],
+        "purpose": "Filter scheduled task attempts and identify earliest future terminal failure events."
+      },
+      {
+        "table": "google.com:google-cluster-data.clusterdata_2019_a.instance_usage",
+        "columns": [
+          "collection_id (INT64)",
+          "instance_index (INT64)",
+          "start_time (INT64)",
+          "end_time (INT64)",
+          "average_usage.cpus (FLOAT64)",
+          "average_usage.memory (FLOAT64)"
+        ],
+        "purpose": "Extract 5-minute continuous bivariate container telemetry."
+      }
+    ],
+    "output_columns": [
+      "collection_id (INT64)",
+      "instance_index (INT64)",
+      "window_start_us (INT64)",
+      "window_end_us (INT64)",
+      "cpu_avg_usage (FLOAT64)",
+      "memory_canonical_usage (FLOAT64)",
+      "terminal_event_timestamp_us (INT64, NULLABLE)",
+      "terminal_type_code (INT64, NULLABLE)",
+      "terminal_status (STRING, NULLABLE)"
+    ],
+    "script_side_effects_check": "PASS. No automated scripts exist that execute data-returning queries or write export tables for Candidate A."
+  },
+  "service_dry_run_evidence": {
+    "service_validation_status": "VALIDATED_BY_SERVICE",
+    "active_client_project": "canvas-advice-464215-n1",
+    "dry_run_flag_verified": true,
+    "total_bytes_processed": 418578205568,
+    "total_bytes_processed_readable": "418,578,205,568 bytes (389.83 GiB / 418.58 GB)",
+    "tib_processed": 0.380695,
+    "estimated_on_demand_cost_usd": 2.3793,
+    "on_demand_rate_applied": "$6.25 per TiB (1,099,511,627,776 bytes)",
+    "job_id": null
+  },
+  "gcp_environment_and_billing": {
+    "active_client_project": "canvas-advice-464215-n1",
+    "gcloud_configured_project": "canvas-advice-464215-n1",
+    "account_identity": "kushagrapandey0333@gmail.com",
+    "dataset_location": "US",
+    "billing_enabled": false,
+    "billing_account_name": "",
+    "bigquery_sandbox_status": "ACTIVE_SANDBOX (Zero billing risk; queries draw exclusively from monthly 1 TiB free quota)",
+    "monthly_free_tier_quota_gib": 1024.0,
+    "consumed_free_tier_quota_gib": 389.83,
+    "free_tier_utilization_pct": 38.07,
+    "past_executed_jobs_count": 0,
+    "remaining_free_tier_quota_status": "VERIFIED_SUFFICIENT (0 past executed jobs in project; full 1,024 GiB available)",
+    "cost_disambiguation": {
+      "nominal_on_demand_estimate_usd": 2.3793,
+      "expected_billed_financial_charge_usd": 0.0,
+      "billing_risk": "ZERO (Project has no billing account attached; queries physically cannot incur financial charges)"
+    }
+  },
+  "budget_analysis": {
+    "proposed_limits": {
+      "proposed_scan_cap_bytes": 450000000000,
+      "proposed_scan_cap_readable": "450,000,000,000 bytes (450.0 GB / 419.10 GiB)",
+      "proposed_cost_cap_usd": 2.5,
+      "candidate_a_scan_utilization_pct": 93.02,
+      "candidate_a_cost_utilization_pct": 95.17,
+      "within_proposed_limits": true
+    },
+    "historical_controls": {
+      "previous_scan_cap_bytes": 21000000000,
+      "previous_scan_cap_readable": "21,000,000,000 bytes (21.0 GB)",
+      "previous_cost_cap_usd": 0.125,
+      "scan_cap_multiple": 19.93,
+      "cost_cap_multiple": 19.03,
+      "within_historical_controls": false
+    },
+    "downstream_costs": {
+      "cloud_storage_cost_usd": 0.0,
+      "local_storage_footprint_mb": "~500 MB to 1,500 MB compressed Parquet/CSV",
+      "compute_cost_usd": 0.0
+    }
+  },
+  "query_semantics_and_scientific_validity": {
+    "observation_unit": "5-minute sliding telemetry windows of container instances (collection_id, instance_index, start_time)",
+    "sampling_cadence": "300,000,000 microseconds (5 minutes)",
+    "telemetry_modality": "Bivariate continuous series (average_usage.cpus, average_usage.memory)",
+    "hardware_counters_note": "CPI, MAI, and page cache were dropped to minimize column scans; bivariate signals evaluate CPU and memory crash signatures.",
+    "join_keys": "(collection_id, instance_index)",
+    "terminal_event_matching": "te.terminal_time >= u.end_time with ROW_NUMBER() ... ORDER BY te.terminal_time ASC (earliest valid subsequent terminal event)",
+    "duplicate_window_risk": "ZERO (PARTITION BY collection_id, instance_index, start_time with rn = 1 eliminates duplicates)",
+    "label_horizons": {
+      "class_2_critical": "0 < tau <= 300 s (0 to 5 minutes)",
+      "class_1_warning": "600 < tau <= 1500 s (10 to 25 minutes)",
+      "transition_buffer": "300 < tau <= 600 s (5 to 10 minutes, excluded from training)",
+      "class_0_normal": "tau > 1500 s or confirmed normal FINISH with >= 25 min survival",
+      "censored_unknown": "tau is NULL and remaining trace time < 1500 s (marked -1 UNKNOWN, excluded from training)"
+    },
+    "feature_leakage_safeguards": "PASS. Future terminal event fields are strictly isolated into labels; model input features contain only past/current telemetry.",
+    "operational_gates_support": {
+      "episode_recall_ge_70": "SUPPORTED (Sequences of consecutive pre-failure windows)",
+      "genuine_critical_recall_ge_50": "SUPPORTED (Windows observed within 5 min of verified FAIL)",
+      "pure_normal_entity_far_le_10": "SUPPORTED (Collections completing with 100% FINISH tasks)",
+      "normal_window_fpr_le_5": "SUPPORTED (Sliding non-failure windows across active tasks)"
+    },
+    "cross_cluster_boundary": "STRICTLY BOUNDED TO CELL 'A'. Single-cluster evaluation; cross-cluster generalization cannot be claimed without querying disjoint cells."
+  },
+  "protected_holdouts_status": {
+    "candidate_a_test_accessed": false,
+    "phase6_confirmatory_accessed": false,
+    "status": "PROTECTED_UNACCESSED"
+  },
+  "checklist": [
+    {
+      "item": "1. SQL File Existence & Readability",
+      "status": "PASS",
+      "evidence": "File exists at results/phase7y_borg2019_pilot/phase7y_candidate_a_projection_reduction.sql (2993 bytes)."
+    },
+    {
+      "item": "2. Actual Checksum Calculation",
+      "status": "PASS",
+      "evidence": "SHA-256 computed on disk: 8abdbd8bdf20444f1282a82e01b30de0f8b9182c1d706a94b940c5c054ee395e."
+    },
+    {
+      "item": "3. Historical Checksum Reconciliation",
+      "status": "PASS",
+      "evidence": "Historical whitespace/newline variations documented; BigQuery service re-dry-run confirmed identical AST and scan volume."
+    },
+    {
+      "item": "4. Service Dry Run Verification",
+      "status": "PASS",
+      "evidence": "BigQuery service dry run validated: 418,578,205,568 bytes processed ($2.3793 USD)."
+    },
+    {
+      "item": "5. Automated Scripts Side-Effect Check",
+      "status": "PASS",
+      "evidence": "Inspected all repository scripts; no script executes data-returning queries or automated table materialization."
+    },
+    {
+      "item": "6. SQL Semantic & Join Correctness",
+      "status": "PASS",
+      "evidence": "Event window join anchors te.terminal_time >= u.end_time; ROW_NUMBER selects earliest future terminal event; rn=1 eliminates duplicates."
+    },
+    {
+      "item": "7. Label Horizon & Buffer Integrity",
+      "status": "PASS",
+      "evidence": "Critical (0-5 min), Warning (10-25 min), Buffer (5-10 min excluded), and Right-Censoring correctly defined."
+    },
+    {
+      "item": "8. Feature Leakage Prevention",
+      "status": "PASS",
+      "evidence": "Terminal event fields strictly isolated from model input features; only past/current telemetry is used in feature vectors."
+    },
+    {
+      "item": "9. Operational Gates Evaluatability",
+      "status": "PASS",
+      "evidence": "All 4 Phase 7B operational gates (Episode Recall, Critical Recall, Entity FAR, Window FPR) are evaluatable on Candidate A schema."
+    },
+    {
+      "item": "10. Application Default Credentials Check",
+      "status": "PASS",
+      "evidence": "ADC initialized successfully for account kushagrapandey0333@gmail.com without credential logging."
+    },
+    {
+      "item": "11. Active GCP Project Verification",
+      "status": "PASS",
+      "evidence": "Client project and gcloud core/project verified as canvas-advice-464215-n1."
+    },
+    {
+      "item": "12. Dataset Location & Accessibility",
+      "status": "PASS",
+      "evidence": "Target dataset google.com:google-cluster-data.clusterdata_2019_a verified in location US."
+    },
+    {
+      "item": "13. Billing Account Status Verification",
+      "status": "PASS",
+      "evidence": "gcloud billing projects describe confirmed billingEnabled: false; project has no billing account attached."
+    },
+    {
+      "item": "14. BigQuery Sandbox Status Verification",
+      "status": "PASS",
+      "evidence": "BigQuery Sandbox active. Zero billing risk; queries draw exclusively from monthly 1 TiB free quota."
+    },
+    {
+      "item": "15. Monthly Free-Tier Quota Availability",
+      "status": "PASS",
+      "evidence": "client.list_jobs() verified 0 past executed jobs in project this month; full 1,024 GiB free quota available."
+    },
+    {
+      "item": "16. Proposed Ceiling Budget Compliance",
+      "status": "PASS",
+      "evidence": "Candidate A utilizes 93.02% of proposed 450 GB scan cap and 95.17% of proposed $2.50 USD cap."
+    },
+    {
+      "item": "17. Protected Partitions Non-Contamination",
+      "status": "PASS",
+      "evidence": "Candidate A Test and Phase 6 Confirmatory holdouts remain strictly untouched and unaccessed."
+    }
+  ],
+  "unresolved_questions": [
+    "1. Owner Quota Authorization: Does the research owner explicitly approve consuming 38.07% (389.83 GiB) of the project's monthly 1 TiB BigQuery free-tier quota?",
+    "2. Bivariate Telemetry Approval: Does the research owner accept evaluating bivariate telemetry (average CPU and average memory) for the initial 2019 pilot, reserving higher-column queries for later stages?",
+    "3. Extraction Format Approval: Does the research owner approve streaming extracted records directly to local compressed Parquet (e.g. data/raw/borg2019_pilot/) to avoid staging table costs?"
+  ],
+  "explicit_decision_required": "The research owner must decide whether to grant formal extraction authorization for Candidate A (418.58 GB scan, consuming 38.07% of the monthly Sandbox free tier quota at $0.00 marginal financial cost). This package prepares and verifies all technical, scientific, and cost parameters, but does NOT authorize extraction.",
+  "mandatory_safety_statement": "No Borg 2019 data extraction, export, staging-table population, pilot dataset creation, model training, or protected holdout access was authorized or performed during this pre-extraction review. Any subsequent extraction requires a separate explicit authorization after the research owner reviews this package."
+}

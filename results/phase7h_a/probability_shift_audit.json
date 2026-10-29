@@ -1,0 +1,700 @@
+{
+  "audit_metadata": {
+    "phase": "Phase 7H-A \u2014 Metric, Normalization, and Provenance Verification",
+    "audit_id": "AUDIT-4-PROBABILITY-SHIFT-EXPLANATION-TEST",
+    "timestamp": "2026-10-28T21:18:00+05:30",
+    "scope": "Controlled comparisons across unweighted, ad-hoc, and inverse-frequency loss weighting"
+  },
+  "scientific_fact_vs_hypothesis_labeling": {
+    "verified_facts": [
+      "In Phase 7E (fixed features, architecture, seed), changing cross-entropy weights from [1,1,1] to [1, 11.46, 11.80] reduced mean P(Normal) on Normal windows from 0.7799 to 0.4499, increased Window FPR from 4.82% to 20.89%, and increased Entity FAR from 12.24% to 28.57%.",
+      "In Phase 7H (floored and robust hierarchical features), inverse-frequency weights pushed mean P(Normal) on Normal windows down to 0.3519 (Ablation B) and 0.3650 (Ablation C).",
+      "Under default argmax, when P(Normal) is close to 0.333, random workload fluctuations push P(Warning) or P(Critical) above P(Normal), causing Entity FAR to surge to 91.84%\u201395.92%.",
+      "Brier score degrades from 0.3067 (unweighted) to 0.5308 (Phase 7E inv-freq) to 0.6425 (Phase 7H Ablation B)."
+    ],
+    "hypotheses": [
+      "Hypothesis: The exact degree to which feature bounding interacts with logit inflation requires retraining an unweighted cross-entropy model on the floored hierarchical features as an ablation control.",
+      "Hypothesis: Intermediate loss weights (e.g., w in [2.0, 5.0]) or cost-sensitive threshold tuning can decouple the Critical Recall gains (34%) from the 95% false-alarm explosion."
+    ]
+  },
+  "model_evaluations": {
+    "Phase 7E Cond A (Unweighted CE [1,1,1])": {
+      "calibration": {
+        "expected_calibration_error_ece": 0.06336034458695354,
+        "brier_score": 0.30672044687177985,
+        "negative_log_likelihood": 0.5862121951196996
+      },
+      "false_alarm_metrics": {
+        "window_fpr_pct": 4.821428571428572,
+        "entity_far_pct": 12.244897959183673
+      },
+      "true_normal_windows": {
+        "P_Normal": {
+          "mean": 0.7799310655892857,
+          "std": 0.1778919026117733,
+          "median": 0.795175675,
+          "p25": 0.6890614349999999,
+          "p75": 0.93068685,
+          "min": 0.15940297,
+          "max": 0.9816961
+        },
+        "P_Warning": {
+          "mean": 0.11015617204821429,
+          "std": 0.08263966926773346,
+          "median": 0.0997105075,
+          "p25": 0.04725549275,
+          "p75": 0.1482299525,
+          "min": 0.01179504,
+          "max": 0.38055506
+        },
+        "P_Critical": {
+          "mean": 0.10991276305589286,
+          "std": 0.09676130654995665,
+          "median": 0.10271958,
+          "p25": 0.0231005845,
+          "p75": 0.1635167875,
+          "min": 0.0065088505,
+          "max": 0.47819972
+        },
+        "mean_logits": {
+          "logit_Normal": 1.5348241856849894,
+          "logit_Warning": -0.6591585700061858,
+          "logit_Critical": -0.8756656156788036
+        }
+      },
+      "true_warning_windows": {
+        "P_Normal": {
+          "mean": 0.7805009366666665,
+          "std": 0.11179271592592356,
+          "median": 0.743475865,
+          "p25": 0.695780335,
+          "p75": 0.8807896500000001,
+          "min": 0.6059295,
+          "max": 0.9622664
+        },
+        "P_Warning": {
+          "mean": 0.10638538908333332,
+          "std": 0.047502637969856175,
+          "median": 0.11704667199999999,
+          "p25": 0.07043387175,
+          "p75": 0.14245961000000001,
+          "min": 0.024535134,
+          "max": 0.18704034
+        },
+        "P_Critical": {
+          "mean": 0.11311368279166667,
+          "std": 0.06487360209719212,
+          "median": 0.139467435,
+          "p25": 0.042028017,
+          "p75": 0.162551565,
+          "min": 0.013198535,
+          "max": 0.20703012
+        },
+        "mean_logits": {
+          "logit_Normal": 1.4443717752987038,
+          "logit_Warning": -0.6734900263643508,
+          "logit_Critical": -0.7708817489343529
+        }
+      },
+      "true_critical_windows": {
+        "P_Normal": {
+          "mean": 0.7305129695918368,
+          "std": 0.16410591302760838,
+          "median": 0.7245848,
+          "p25": 0.6786523,
+          "p75": 0.8190844,
+          "min": 0.178069,
+          "max": 0.9718541
+        },
+        "P_Warning": {
+          "mean": 0.12666312640816327,
+          "std": 0.06807310021874649,
+          "median": 0.12891671,
+          "p25": 0.086203754,
+          "p75": 0.14846244,
+          "min": 0.01769968,
+          "max": 0.34817797
+        },
+        "P_Critical": {
+          "mean": 0.14282390309183673,
+          "std": 0.0974196215914986,
+          "median": 0.15034588,
+          "p25": 0.095787995,
+          "p75": 0.17288521,
+          "min": 0.0104462635,
+          "max": 0.49137565
+        },
+        "mean_logits": {
+          "logit_Normal": 1.2434142628829006,
+          "logit_Warning": -0.6219989632400125,
+          "logit_Critical": -0.6214152996428879
+        }
+      }
+    },
+    "Phase 7E Cond B (Ad-hoc CE [1, 1.5, 2])": {
+      "calibration": {
+        "expected_calibration_error_ece": 0.1850793150406832,
+        "brier_score": 0.4411721233850872,
+        "negative_log_likelihood": 0.8712710895888325
+      },
+      "false_alarm_metrics": {
+        "window_fpr_pct": 7.857142857142857,
+        "entity_far_pct": 22.448979591836736
+      },
+      "true_normal_windows": {
+        "P_Normal": {
+          "mean": 0.6985087137607143,
+          "std": 0.2727583285596382,
+          "median": 0.7957175949999999,
+          "p25": 0.469684,
+          "p75": 0.9393413625,
+          "min": 0.024832418,
+          "max": 0.99216545
+        },
+        "P_Warning": {
+          "mean": 0.14172757509589287,
+          "std": 0.11776801782268043,
+          "median": 0.10588012499999999,
+          "p25": 0.0357388595,
+          "p75": 0.24886619999999998,
+          "min": 0.0038808875,
+          "max": 0.5267037
+        },
+        "P_Critical": {
+          "mean": 0.15976371226196429,
+          "std": 0.1724241622628889,
+          "median": 0.09475286499999999,
+          "p25": 0.018920003249999998,
+          "p75": 0.290171845,
+          "min": 0.00350584,
+          "max": 0.7534504
+        },
+        "mean_logits": {
+          "logit_Normal": 1.3708143871266822,
+          "logit_Warning": -0.6192071277743973,
+          "logit_Critical": -0.7516072593522848
+        }
+      },
+      "true_warning_windows": {
+        "P_Normal": {
+          "mean": 0.8359871395833333,
+          "std": 0.179382585242266,
+          "median": 0.906556245,
+          "p25": 0.7740007525,
+          "p75": 0.9655465249999999,
+          "min": 0.3528871,
+          "max": 0.9878263
+        },
+        "P_Warning": {
+          "mean": 0.07561805550416667,
+          "std": 0.08594357164697698,
+          "median": 0.038736425500000005,
+          "p25": 0.013998726,
+          "p75": 0.109431782,
+          "min": 0.0054724114,
+          "max": 0.3071988
+        },
+        "P_Critical": {
+          "mean": 0.08839479616666666,
+          "std": 0.09686172942773948,
+          "median": 0.048576862,
+          "p25": 0.02113164,
+          "p75": 0.11676379125,
+          "min": 0.006400572,
+          "max": 0.3485028
+        },
+        "mean_logits": {
+          "logit_Normal": 1.9619219020545646,
+          "logit_Warning": -1.0835032031416703,
+          "logit_Critical": -0.8784186989128946
+        }
+      },
+      "true_critical_windows": {
+        "P_Normal": {
+          "mean": 0.7766708996938776,
+          "std": 0.2289397373178416,
+          "median": 0.8691773,
+          "p25": 0.7208411,
+          "p75": 0.9194808,
+          "min": 0.099374615,
+          "max": 0.98189133
+        },
+        "P_Warning": {
+          "mean": 0.08070234688979591,
+          "std": 0.07510955804512806,
+          "median": 0.04674047,
+          "p25": 0.028211595,
+          "p75": 0.101802595,
+          "min": 0.0076529738,
+          "max": 0.2759534
+        },
+        "P_Critical": {
+          "mean": 0.14262674320408164,
+          "std": 0.16294718001400413,
+          "median": 0.07831171,
+          "p25": 0.046378717,
+          "p75": 0.1628959,
+          "min": 0.010455717,
+          "max": 0.73138225
+        },
+        "mean_logits": {
+          "logit_Normal": 1.5908853439098372,
+          "logit_Warning": -1.0309995940996615,
+          "logit_Critical": -0.5598857498101758
+        }
+      }
+    },
+    "Phase 7E Cond C (Inv-Freq CE [1, 11.46, 11.80])": {
+      "calibration": {
+        "expected_calibration_error_ece": 0.2135012898962787,
+        "brier_score": 0.5307606023370282,
+        "negative_log_likelihood": 0.9287378280807892
+      },
+      "false_alarm_metrics": {
+        "window_fpr_pct": 20.892857142857142,
+        "entity_far_pct": 28.57142857142857
+      },
+      "true_normal_windows": {
+        "P_Normal": {
+          "mean": 0.4499395503964286,
+          "std": 0.1424335120921963,
+          "median": 0.443995115,
+          "p25": 0.37430418,
+          "p75": 0.546756165,
+          "min": 0.08190836,
+          "max": 0.7515271
+        },
+        "P_Warning": {
+          "mean": 0.2975223710178571,
+          "std": 0.0734423750051467,
+          "median": 0.297893505,
+          "p25": 0.24062243,
+          "p75": 0.3436993025,
+          "min": 0.1388652,
+          "max": 0.48152512
+        },
+        "P_Critical": {
+          "mean": 0.25253807777857146,
+          "std": 0.07436537095958781,
+          "median": 0.25492194,
+          "p25": 0.2141306375,
+          "p75": 0.2877684025,
+          "min": 0.10858145,
+          "max": 0.50909674
+        },
+        "mean_logits": {
+          "logit_Normal": 0.3068984484529563,
+          "logit_Warning": -0.06556710954091598,
+          "logit_Critical": -0.24133133891204028
+        }
+      },
+      "true_warning_windows": {
+        "P_Normal": {
+          "mean": 0.4350472347916667,
+          "std": 0.10013975021696757,
+          "median": 0.47293341,
+          "p25": 0.3997860125,
+          "p75": 0.505327875,
+          "min": 0.15550433,
+          "max": 0.5530362
+        },
+        "P_Warning": {
+          "mean": 0.2987055114583333,
+          "std": 0.06731566292301125,
+          "median": 0.26652863000000004,
+          "p25": 0.25258913,
+          "p75": 0.341600715,
+          "min": 0.23569226,
+          "max": 0.45964128
+        },
+        "P_Critical": {
+          "mean": 0.26624724437499997,
+          "std": 0.03940450207554097,
+          "median": 0.25379124,
+          "p25": 0.24184939249999998,
+          "p75": 0.2904795775,
+          "min": 0.19497655,
+          "max": 0.38485432
+        },
+        "mean_logits": {
+          "logit_Normal": 0.2764325303042116,
+          "logit_Warning": -0.08675303596346369,
+          "logit_Critical": -0.18967949434074796
+        }
+      },
+      "true_critical_windows": {
+        "P_Normal": {
+          "mean": 0.4176941275510203,
+          "std": 0.1342784111574192,
+          "median": 0.4806818,
+          "p25": 0.34300804,
+          "p75": 0.51830816,
+          "min": 0.109348886,
+          "max": 0.5496577
+        },
+        "P_Warning": {
+          "mean": 0.30076642591836733,
+          "std": 0.07538680717390019,
+          "median": 0.26306263,
+          "p25": 0.2516599,
+          "p75": 0.345367,
+          "min": 0.22843751,
+          "max": 0.4581151
+        },
+        "P_Critical": {
+          "mean": 0.28153945040816325,
+          "std": 0.0646049508893322,
+          "median": 0.25265163,
+          "p25": 0.23777875,
+          "p75": 0.31069732,
+          "min": 0.20012927,
+          "max": 0.46797964
+        },
+        "mean_logits": {
+          "logit_Normal": 0.2054929103505938,
+          "logit_Warning": -0.07195399717333037,
+          "logit_Critical": -0.13353891317726352
+        }
+      }
+    },
+    "Phase 7H Ablation A (Unfloored Baseline, Inv-Freq)": {
+      "calibration": {
+        "expected_calibration_error_ece": 0.2977408420493466,
+        "brier_score": 0.5476291739739577,
+        "negative_log_likelihood": 0.9351105681714786
+      },
+      "false_alarm_metrics": {
+        "window_fpr_pct": 18.21428571428571,
+        "entity_far_pct": 26.53061224489796
+      },
+      "true_normal_windows": {
+        "P_Normal": {
+          "mean": 0.4201003399464286,
+          "std": 0.09337301618514289,
+          "median": 0.41923326,
+          "p25": 0.37193738249999997,
+          "p75": 0.48606826000000003,
+          "min": 0.13110565,
+          "max": 0.616236
+        },
+        "P_Warning": {
+          "mean": 0.299369687125,
+          "std": 0.060165468186260625,
+          "median": 0.29967008500000003,
+          "p25": 0.24796630749999998,
+          "p75": 0.34220034,
+          "min": 0.19092835,
+          "max": 0.48311016
+        },
+        "P_Critical": {
+          "mean": 0.28052997410714287,
+          "std": 0.0502800573888009,
+          "median": 0.27468804,
+          "p25": 0.2616668125,
+          "p75": 0.2861901375,
+          "min": 0.18563683,
+          "max": 0.51290476
+        },
+        "mean_logits": {
+          "logit_Normal": 0.23955248622960787,
+          "logit_Warning": -0.09051496422413814,
+          "logit_Critical": -0.14903752200546969
+        }
+      },
+      "true_warning_windows": {
+        "P_Normal": {
+          "mean": 0.35946425729166664,
+          "std": 0.07709937815583458,
+          "median": 0.34958849999999997,
+          "p25": 0.31590650000000003,
+          "p75": 0.392513815,
+          "min": 0.21699657,
+          "max": 0.5208855
+        },
+        "P_Warning": {
+          "mean": 0.34940522708333327,
+          "std": 0.060493950934885216,
+          "median": 0.35877123499999997,
+          "p25": 0.32390571,
+          "p75": 0.390278205,
+          "min": 0.22362708,
+          "max": 0.4622545
+        },
+        "P_Critical": {
+          "mean": 0.29113051895833336,
+          "std": 0.025140018313449905,
+          "median": 0.28441907499999997,
+          "p25": 0.2778616225,
+          "p75": 0.2934700425,
+          "min": 0.25405315,
+          "max": 0.36390033
+        },
+        "mean_logits": {
+          "logit_Normal": 0.0704062573834847,
+          "logit_Warning": 0.04957868715832944,
+          "logit_Critical": -0.11998494454181413
+        }
+      },
+      "true_critical_windows": {
+        "P_Normal": {
+          "mean": 0.3952669863265306,
+          "std": 0.07204405807853462,
+          "median": 0.401877,
+          "p25": 0.36458054,
+          "p75": 0.42720914,
+          "min": 0.19408016,
+          "max": 0.5414485
+        },
+        "P_Warning": {
+          "mean": 0.31622653877551016,
+          "std": 0.05779932508968332,
+          "median": 0.31820628,
+          "p25": 0.28363392,
+          "p75": 0.34382856,
+          "min": 0.20545773,
+          "max": 0.48118022
+        },
+        "P_Critical": {
+          "mean": 0.28850647306122446,
+          "std": 0.025535328721812002,
+          "median": 0.28489202,
+          "p25": 0.2814266,
+          "p75": 0.29261425,
+          "min": 0.23407964,
+          "max": 0.42193034
+        },
+        "mean_logits": {
+          "logit_Normal": 0.17340051572005172,
+          "logit_Warning": -0.04765028586064377,
+          "logit_Critical": -0.12575022985940795
+        }
+      }
+    },
+    "Phase 7H Ablation B (Floored sigma=0.05, Inv-Freq)": {
+      "calibration": {
+        "expected_calibration_error_ece": 0.16644100042601956,
+        "brier_score": 0.6425488496951137,
+        "negative_log_likelihood": 1.0640803297581058
+      },
+      "false_alarm_metrics": {
+        "window_fpr_pct": 40.35714285714286,
+        "entity_far_pct": 95.91836734693877
+      },
+      "true_normal_windows": {
+        "P_Normal": {
+          "mean": 0.35191075148214285,
+          "std": 0.04305402536863476,
+          "median": 0.35509831000000003,
+          "p25": 0.3264982125,
+          "p75": 0.38251250000000003,
+          "min": 0.25016552,
+          "max": 0.45060056
+        },
+        "P_Warning": {
+          "mean": 0.32395268571428576,
+          "std": 0.03903010062496257,
+          "median": 0.31240405,
+          "p25": 0.29649876,
+          "p75": 0.3584795675,
+          "min": 0.22524685,
+          "max": 0.4494963
+        },
+        "P_Critical": {
+          "mean": 0.32413656041071426,
+          "std": 0.026112121824884996,
+          "median": 0.32750022,
+          "p25": 0.304450625,
+          "p75": 0.3410798725,
+          "min": 0.25815123,
+          "max": 0.4018981
+        },
+        "mean_logits": {
+          "logit_Normal": 0.053229469915233626,
+          "logit_Warning": -0.02885246368089424,
+          "logit_Critical": -0.02437700623433939
+        }
+      },
+      "true_warning_windows": {
+        "P_Normal": {
+          "mean": 0.352107459375,
+          "std": 0.03700644455363144,
+          "median": 0.348008335,
+          "p25": 0.326610985,
+          "p75": 0.36884853500000003,
+          "min": 0.28356954,
+          "max": 0.446659
+        },
+        "P_Warning": {
+          "mean": 0.31447406875,
+          "std": 0.03188760720806985,
+          "median": 0.30417143,
+          "p25": 0.2907667775,
+          "p75": 0.33330907499999995,
+          "min": 0.25903642,
+          "max": 0.38951984
+        },
+        "P_Critical": {
+          "mean": 0.33341848249999995,
+          "std": 0.029571597784035564,
+          "median": 0.334301665,
+          "p25": 0.3109215675,
+          "p75": 0.3608077175,
+          "min": 0.27865565,
+          "max": 0.37911645
+        },
+        "mean_logits": {
+          "logit_Normal": 0.05526977020901594,
+          "logit_Warning": -0.05734348954075966,
+          "logit_Critical": 0.0020737193317436897
+        }
+      },
+      "true_critical_windows": {
+        "P_Normal": {
+          "mean": 0.36846185591836733,
+          "std": 0.04803224773071575,
+          "median": 0.35875776,
+          "p25": 0.34197646,
+          "p75": 0.3819101,
+          "min": 0.2601717,
+          "max": 0.48985824
+        },
+        "P_Warning": {
+          "mean": 0.2987918075510204,
+          "std": 0.03895719306851563,
+          "median": 0.29514524,
+          "p25": 0.288876,
+          "p75": 0.31790698,
+          "min": 0.20828454,
+          "max": 0.42001522
+        },
+        "P_Critical": {
+          "mean": 0.3327463320408164,
+          "std": 0.02616998985503457,
+          "median": 0.3365662,
+          "p25": 0.31162205,
+          "p75": 0.35021034,
+          "min": 0.2695894,
+          "max": 0.3813913
+        },
+        "mean_logits": {
+          "logit_Normal": 0.10222633998650638,
+          "logit_Warning": -0.10758575715373174,
+          "logit_Critical": 0.005359417167225329
+        }
+      }
+    },
+    "Phase 7H Ablation C (Robust Scaled, Inv-Freq)": {
+      "calibration": {
+        "expected_calibration_error_ece": 0.26140136038242023,
+        "brier_score": 0.6184276316848833,
+        "negative_log_likelihood": 1.0274171476885914
+      },
+      "false_alarm_metrics": {
+        "window_fpr_pct": 29.642857142857142,
+        "entity_far_pct": 91.83673469387756
+      },
+      "true_normal_windows": {
+        "P_Normal": {
+          "mean": 0.3650030611071428,
+          "std": 0.02670389967189314,
+          "median": 0.36454208499999996,
+          "p25": 0.34902003,
+          "p75": 0.38345370749999996,
+          "min": 0.28851378,
+          "max": 0.4302603
+        },
+        "P_Warning": {
+          "mean": 0.3153706087857143,
+          "std": 0.02860815435128593,
+          "median": 0.310268,
+          "p25": 0.294158425,
+          "p75": 0.3346763575,
+          "min": 0.26189014,
+          "max": 0.38915846
+        },
+        "P_Critical": {
+          "mean": 0.3196263312321429,
+          "std": 0.0259315521221595,
+          "median": 0.321448325,
+          "p25": 0.303658345,
+          "p75": 0.339059685,
+          "min": 0.24771418,
+          "max": 0.37764618
+        },
+        "mean_logits": {
+          "logit_Normal": 0.09364737456848819,
+          "logit_Warning": -0.05384279431267468,
+          "logit_Critical": -0.03980458025581353
+        }
+      },
+      "true_warning_windows": {
+        "P_Normal": {
+          "mean": 0.3547846329166667,
+          "std": 0.020518158308644053,
+          "median": 0.353864105,
+          "p25": 0.341891505,
+          "p75": 0.3645210175,
+          "min": 0.30321577,
+          "max": 0.41368517
+        },
+        "P_Warning": {
+          "mean": 0.309781029375,
+          "std": 0.021776805029088228,
+          "median": 0.30591044,
+          "p25": 0.2892042075,
+          "p75": 0.327191815,
+          "min": 0.27582288,
+          "max": 0.3529187
+        },
+        "P_Critical": {
+          "mean": 0.3354343375,
+          "std": 0.02509547872843944,
+          "median": 0.333204675,
+          "p25": 0.312277665,
+          "p75": 0.3554906425,
+          "min": 0.29406008,
+          "max": 0.3756333
+        },
+        "mean_logits": {
+          "logit_Normal": 0.0645648230364219,
+          "logit_Warning": -0.07190007837701383,
+          "logit_Critical": 0.007335255340591963
+        }
+      },
+      "true_critical_windows": {
+        "P_Normal": {
+          "mean": 0.347050010612245,
+          "std": 0.02657669323146976,
+          "median": 0.34509656,
+          "p25": 0.3259982,
+          "p75": 0.37062606,
+          "min": 0.29290625,
+          "max": 0.39803213
+        },
+        "P_Warning": {
+          "mean": 0.31131235653061223,
+          "std": 0.02465174595883664,
+          "median": 0.30901188,
+          "p25": 0.29234284,
+          "p75": 0.324764,
+          "min": 0.27257827,
+          "max": 0.3695
+        },
+        "P_Critical": {
+          "mean": 0.3416376314285715,
+          "std": 0.022671215719053915,
+          "median": 0.33946693,
+          "p25": 0.3220078,
+          "p75": 0.3535343,
+          "min": 0.30147254,
+          "max": 0.39264584
+        },
+        "mean_logits": {
+          "logit_Normal": 0.041232069436238354,
+          "logit_Warning": -0.06753768660370313,
+          "logit_Critical": 0.026305617167464747
+        }
+      }
+    }
+  }
+}

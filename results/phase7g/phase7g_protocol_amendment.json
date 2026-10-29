@@ -1,0 +1,67 @@
+{
+  "amendment_id": "PROTOCOL-AMENDMENT-PHASE7G-01",
+  "parent_protocol": "PROTOCOL-AMENDMENT-PHASE7F-01",
+  "date": "2026-10-28",
+  "author": "Antigravity Research Team",
+  "status": "RATIFIED_PRE_EXPERIMENT",
+  "objective": "Investigate whether parent-job-aware historical context improves failure detection and false-alarm control in the Google Borg workload prediction project without leaking future or sibling runtime state.",
+  "safeguards": {
+    "candidate_a_test_access": "FORBIDDEN",
+    "phase6_confirmatory_holdout_access": "FORBIDDEN",
+    "historical_artifacts_overwrite": "FORBIDDEN",
+    "training_partition": "Candidate A Train (N=3,278 windows across 51 parent jobs)",
+    "validation_partition": "Candidate A Validation (N=657 windows across 12 parent jobs)",
+    "causality_enforcement": "Strictly prior observations (t_prior < t_pred) within the respective job/entity. No concurrent or future telemetry."
+  },
+  "experiments": {
+    "experiment_a": {
+      "id": "transformer_job_relative",
+      "name": "Parent-Job Historical Baseline (CE Loss, alpha=InvFreq, gamma=0)",
+      "baseline_definition": "For each window at t_pred, compute baseline (mean, std) from all prior observations across the parent job strictly before t_pred (t_prior < t_pred). If K_job >= 2, apply normalization. Otherwise, fall back to frozen Phase 7C cluster scaler.",
+      "loss": "CrossEntropyLoss with training-only inverse-frequency weights w = [1.0, 11.464, 11.796]"
+    },
+    "experiment_b": {
+      "id": "transformer_hierarchical",
+      "name": "Hierarchical Causal Baseline (CE Loss, alpha=InvFreq, gamma=0)",
+      "baseline_definition": "For each window at t_pred: (1) If current task has K_task >= 2 prior windows (t_prior < t_pred), use task baseline; (2) Else if parent job has K_job >= 2 prior windows across any entity in the job (t_prior < t_pred), use parent-job baseline; (3) Else fall back to frozen Phase 7C cluster scaler.",
+      "loss": "CrossEntropyLoss with training-only inverse-frequency weights w = [1.0, 11.464, 11.796]"
+    },
+    "experiment_c": {
+      "id": "transformer_hierarchical_focal",
+      "name": "Best Baseline (A or B) + Focal Loss (gamma=1.0, alpha=InvFreq)",
+      "baseline_definition": "Input tensor constructed using the best-justified baseline from Experiment A or B.",
+      "loss": "MultiClassFocalLoss with alpha = [1.0, 11.464, 11.796] and gamma = 1.0"
+    }
+  },
+  "model_architecture": {
+    "class": "CompactTemporalTransformer",
+    "input_dim": 31,
+    "d_model": 32,
+    "nhead": 4,
+    "num_layers": 2,
+    "dim_feedforward": 64,
+    "num_classes": 3,
+    "dropout": 0.1,
+    "max_seq_len": 5,
+    "random_seed": 42,
+    "optimizer": "AdamW",
+    "learning_rate": 0.0005,
+    "weight_decay": 0.0001,
+    "batch_size": 64,
+    "max_epochs": 40,
+    "early_stopping_patience": 10
+  },
+  "operational_acceptance_gates": {
+    "gate_1": {
+      "description": "Failure Detection Sensitivity",
+      "episode_recall_min_pct": 70.0,
+      "critical_recall_min": 0.50
+    },
+    "gate_2": {
+      "description": "False Alarm Control",
+      "pure_normal_entity_far_max_pct": 10.0,
+      "normal_window_fpr_max_pct": 5.0
+    },
+    "eligibility_rule": "A model is operationally eligible ONLY if it satisfies BOTH Gate 1 and Gate 2 simultaneously. Higher Macro-F1 alone does not qualify it."
+  }
+}

@@ -1,0 +1,13 @@
+feature_id,name,source,type,unit,imputation,timing
+P01,cpu_avg_usage,average_usage.cpus,float,Normalized cores,Forward fill / 0.0,Available at t_cutoff
+P02,cpu_max_usage,maximum_usage.cpus,float,Normalized cores,Equal to cpu_avg,Available at t_cutoff
+P03,cpu_burstiness,"derived: max / max(avg, 1e-5)",float,Ratio,1.0,Available at t_cutoff
+P04,memory_canonical,average_usage.memory,float,Normalized bytes,Training median,Available at t_cutoff
+P05,memory_assigned,assigned_memory,float,Normalized bytes,Training median,Available at t_cutoff
+P06,memory_page_cache,page_cache_memory,float,Normalized bytes,0.0,Available at t_cutoff
+P07,memory_headroom_ratio,"derived: canonical / max(assigned, 1e-5)",float,Ratio,0.5,Available at t_cutoff
+P08,cpu_rolling_mean_3,derived: 3-step rolling mean,float,Normalized cores,Current cpu_avg,Available at t_cutoff
+P09,cpu_rolling_std_3,derived: 3-step rolling std,float,Normalized cores,0.0,Available at t_cutoff
+P10,cpu_slope_3,derived: 3-step linear slope,float,Cores / 5-min step,0.0,Available at t_cutoff
+P11,memory_rolling_mean_3,derived: 3-step rolling mean,float,Normalized bytes,Current memory,Available at t_cutoff
+P12,task_age_minutes,derived: (t_cutoff - t_schedule) / 60e6,float,Minutes,5.0 min,Available at t_cutoff

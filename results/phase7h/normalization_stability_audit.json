@@ -1,0 +1,123 @@
+{
+  "tensor_percentiles": {
+    "Phase 7C Cluster Scaler": {
+      "min": -1.2140942811965942,
+      "p01": -1.199783444404602,
+      "p05": -0.8630603551864624,
+      "p50": -0.02131539396941662,
+      "p95": 5.217554569244385,
+      "p99": 6.586467742919922,
+      "p999": 7.5559492111206055,
+      "max": 7.976171016693115,
+      "count_gt_10": 0,
+      "count_gt_50": 0,
+      "count_gt_100": 0
+    },
+    "Phase 7G Parent-Job Relative": {
+      "min": -9.61703872680664,
+      "p01": -2.735292911529541,
+      "p05": -1.3431055545806885,
+      "p50": -0.08414453268051147,
+      "p95": 2.233232259750366,
+      "p99": 5.046660423278809,
+      "p999": 14.739300727844238,
+      "max": 2751.486328125,
+      "count_gt_10": 19,
+      "count_gt_50": 8,
+      "count_gt_100": 4
+    },
+    "Phase 7G Hierarchical Relative": {
+      "min": -252.9382781982422,
+      "p01": -3.437375783920288,
+      "p05": -1.680200457572937,
+      "p50": -0.011780494824051857,
+      "p95": 2.769345283508301,
+      "p99": 6.204669952392578,
+      "p999": 143.50511169433594,
+      "max": 12905.5859375,
+      "count_gt_10": 58,
+      "count_gt_50": 22,
+      "count_gt_100": 16
+    }
+  },
+  "feature_extremes": {
+    "cpu_utilization": {
+      "min": -23.307838439941406,
+      "p50": -0.13403727114200592,
+      "p99": 4.350801467895508,
+      "max": 2222.0859375,
+      "count_gt_10": 10,
+      "count_gt_50": 4
+    },
+    "memory_utilization": {
+      "min": -252.9382781982422,
+      "p50": 0.0,
+      "p99": 6.504431247711182,
+      "max": 8768.546875,
+      "count_gt_10": 16,
+      "count_gt_50": 2
+    },
+    "assigned_memory": {
+      "min": -88.13113403320312,
+      "p50": 0.0,
+      "p99": 6.586467742919922,
+      "max": 12905.5859375,
+      "count_gt_10": 17,
+      "count_gt_50": 5
+    },
+    "disk_io_time": {
+      "min": -9.621349334716797,
+      "p50": -0.1655654013156891,
+      "p99": 6.765183448791504,
+      "max": 2751.486328125,
+      "count_gt_10": 15,
+      "count_gt_50": 11
+    }
+  },
+  "historical_stds": {
+    "cpu_utilization": {
+      "task_std_median": 0.28063833713531494,
+      "task_std_min": 0.00016508379485458136,
+      "job_std_median": 2.1331729888916016,
+      "job_std_min": 0.16369858384132385,
+      "baselines_near_zero_sigma_1e3": 15,
+      "pct_near_zero": 2.4875621890547266
+    },
+    "memory_utilization": {
+      "task_std_median": 0.03134090453386307,
+      "task_std_min": 0.0,
+      "job_std_median": 0.07824977487325668,
+      "job_std_min": 0.008049950003623962,
+      "baselines_near_zero_sigma_1e3": 36,
+      "pct_near_zero": 5.970149253731343
+    },
+    "assigned_memory": {
+      "task_std_median": 0.025618940591812134,
+      "task_std_min": 0.0,
+      "job_std_median": 0.0857374370098114,
+      "job_std_min": 0.006691667251288891,
+      "baselines_near_zero_sigma_1e3": 84,
+      "pct_near_zero": 13.930348258706468
+    },
+    "disk_io_time": {
+      "task_std_median": 0.046575747430324554,
+      "task_std_min": 9.053390385815874e-05,
+      "job_std_median": 0.5239333510398865,
+      "job_std_min": 0.005781021900475025,
+      "baselines_near_zero_sigma_1e3": 50,
+      "pct_near_zero": 8.291873963515755
+    }
+  },
+  "false_alarm_correlation": {
+    "normal_windows_count": 560,
+    "fa_windows_count": 102,
+    "fa_max_z_mean": 2.092578411102295,
+    "fa_max_z_median": 1.9524176120758057,
+    "fa_max_z_max": 5.933575630187988,
+    "non_fa_max_z_mean": 47.366268157958984,
+    "non_fa_max_z_median": 2.609144687652588,
+    "windows_with_z_gt_50": 13,
+    "fa_fraction_on_z_gt_50": 0.0
+  },
+  "verdict": "CRITICAL NUMERICAL INSTABILITY CONFIRMED: epsilon=1e-5 allows division by near-zero variance, exploding z-scores to >12,000. Features disk_io_time and assigned_memory frequently have near-zero variance, and windows with max |z| > 50 have a high false alarm rate. Controlled variance flooring is strictly required."
+}

@@ -1,0 +1,86 @@
+{
+  "phase": "Phase 7Q",
+  "description": "Authorized input datasets and temporal feature tensors for Phase 7Q",
+  "timestamp_utc": "2026-10-29T07:24:34Z",
+  "inputs": [
+    {
+      "file": "results/phase7a_4/candidate_a_job_grouped_split.csv",
+      "sha256": "f84bc4fe54f8e0583e2ee52f49b2fbe8e6fcafb4f020c656985a1acc31bb4946",
+      "description": "Frozen Candidate A job-grouped split definition"
+    },
+    {
+      "file": "results/phase7m_multiresolution/processed_data/X_train_stream_A.npy",
+      "shape": [
+        3278,
+        5,
+        31
+      ],
+      "sha256": "9a365b605e2d43978f1237475968bf350e66b5025eca10b984eaa151b0720522",
+      "description": "Recent 5-step high-resolution telemetry (Stream A Train)"
+    },
+    {
+      "file": "results/phase7m_multiresolution/processed_data/X_val_stream_A.npy",
+      "shape": [
+        657,
+        5,
+        31
+      ],
+      "sha256": "febd37288cdab554d91efe0b5f78cc2e77cde95d07f61f1390761df36e1f4f67",
+      "description": "Recent 5-step high-resolution telemetry (Stream A Val)"
+    },
+    {
+      "file": "results/phase7m_multiresolution/processed_data/X_train_stream_B.npy",
+      "shape": [
+        3278,
+        93
+      ],
+      "sha256": "cdbd65bbbf9d5f5a08fecb2dede9b457ff4215be8f9741bd9da5478fb4f9e834",
+      "description": "Historical 7-step causal trend summaries (Stream B Train)"
+    },
+    {
+      "file": "results/phase7m_multiresolution/processed_data/X_val_stream_B.npy",
+      "shape": [
+        657,
+        93
+      ],
+      "sha256": "77ee274430c1b511ce35331a240930bff5d01be46476dafaa7a8cc9602e0d550",
+      "description": "Historical 7-step causal trend summaries (Stream B Val)"
+    },
+    {
+      "file": "results/phase7l_longer_context/standardized_data/X_train_l12.npy",
+      "shape": [
+        3278,
+        12,
+        31
+      ],
+      "sha256": "fb206d610772704c58ce8b5675d648172a05205f9abd7476cb825799b6874bd1",
+      "description": "Underlying 12-step causal telemetry sequences (Train)"
+    },
+    {
+      "file": "results/phase7l_longer_context/standardized_data/X_val_l12.npy",
+      "shape": [
+        657,
+        12,
+        31
+      ],
+      "sha256": "56edfd3b58e87ff5357a4f330ca711f7f983e7d7dda4fb70efc0862e6e96e795",
+      "description": "Underlying 12-step causal telemetry sequences (Val)"
+    },
+    {
+      "file": "results/phase7m_multiresolution/processed_data/y_train.npy",
+      "shape": [
+        3278
+      ],
+      "sha256": "355ca59b1609780181fabe8f06c6ab51cc5c53cfbec91cb822d76b8e373fab1e",
+      "description": "Candidate A Train frozen labels (0=Normal, 1=Warning, 2=Critical)"
+    },
+    {
+      "file": "results/phase7m_multiresolution/processed_data/y_val.npy",
+      "shape": [
+        657
+      ],
+      "sha256": "eb968a74ae86dcc574f3341055ff45ca9fcf77ec5a1b4cee5ad8cb4c1e2631b9",
+      "description": "Candidate A Validation frozen labels (0=Normal, 1=Warning, 2=Critical)"
+    }
+  ]
+}

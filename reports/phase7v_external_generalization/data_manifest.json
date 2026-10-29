@@ -1,0 +1,21 @@
+{
+  "phase": "Phase 7V",
+  "timestamp_utc": "2026-10-29T09:15:34Z",
+  "verdict": "NO_INDEPENDENT_COHORT_AVAILABLE",
+  "audited_cohorts_count": 14,
+  "prohibited_partitions_confirmed_unaccessed": [
+    "data/processed/phase7c/test_metadata.csv",
+    "data/processed/phase7c/X_test.npy",
+    "data/processed/phase7c/y_test.npy",
+    "data/processed/confirmatory/confirmatory_metadata.csv",
+    "data/processed/confirmatory_l5/confirmatory_l5_metadata.csv"
+  ],
+  "frozen_model_checkpoints": {
+    "phase7s_s2_seed42": "c4ec0b97d1ec677b8f59e50b9b0c23856b25a32f1a31b29fde2eb16827b03c50",
+    "phase7s_s2_seed123": "24fe11ebdacb5b30b90b1d36434a771d82b930ae0edbc7c5eaa5d419463200f4",
+    "phase7s_s2_seed456": "1df76162a7f417f7fd056edbaa12a7ee00f4ff37091443cd694332e151724497",
+    "phase7q_q0_seed42": "52da1bfbc7b8a9e0c9c00728c56170cbc0b98ff2947aee3cec5884b26f2529d6",
+    "phase7q_q0_seed123": "8dca5d612c15fcfe4c7e16541fda7aaadf55d3219ba9829bd436737ca19bdb08",
+    "phase7q_q0_seed456": "28703f971bedf5fc681f3aa28fda8e0735e8d18b61811ece9df2236150482173"
+  }
+}

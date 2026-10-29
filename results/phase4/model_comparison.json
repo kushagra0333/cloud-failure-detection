@@ -1,0 +1,315 @@
+{
+  "metadata": {
+    "evaluation_partition": "validation (Primary Entity-Grouped Split, N=1,015 windows, 78 entities, 61 episodes)",
+    "primary_selection_metric": "Validation Macro-F1",
+    "operational_constraint": "Pure-Normal Entity FAR <= 12.0%",
+    "confirmatory_data_status": "Strictly Quarantined (Phase 5 Only)",
+    "date": "2026-10-26"
+  },
+  "models": {
+    "Random Forest": {
+      "architecture": "Class-Weighted Random Forest (n_estimators=100, max_depth=12, tabular features=31)",
+      "parameter_count": 35054,
+      "training_runtime_seconds": 0.3308572769165039,
+      "metrics": {
+        "macro_f1": 0.7048614720252862,
+        "accuracy": 0.9014778325123153,
+        "class_metrics": {
+          "normal": {
+            "precision": 0.9137168141592921,
+            "recall": 0.9833333333333333,
+            "f1": 0.9472477064220184
+          },
+          "warning": {
+            "precision": 0.6571428571428571,
+            "recall": 0.3194444444444444,
+            "f1": 0.42990654205607476,
+            "pr_auc": 0.46602357348645645
+          },
+          "critical": {
+            "precision": 0.868421052631579,
+            "recall": 0.6407766990291263,
+            "f1": 0.7374301675977654,
+            "pr_auc": 0.7886369372288139
+          }
+        },
+        "confusion_matrix": [
+          [
+            826,
+            10,
+            4
+          ],
+          [
+            43,
+            23,
+            6
+          ],
+          [
+            35,
+            2,
+            66
+          ]
+        ],
+        "episode_detection": {
+          "detected_count": 47,
+          "total_episodes": 61,
+          "detection_rate_pct": 77.04918032786885
+        },
+        "lead_time_distribution_minutes": {
+          "detected_count": 47,
+          "total_episodes": 61,
+          "mean_min": 10.015027910992911,
+          "median_min": 5.592195616666671,
+          "min_min": 0.8849886833333281,
+          "max_min": 29.76631048333332,
+          "std_min": 9.413987045982722
+        },
+        "false_alarm_metrics": {
+          "window_fpr": {
+            "false_positive_windows": 14,
+            "total_normal_windows": 840,
+            "fpr_pct": 1.6666666666666667
+          },
+          "pure_normal_entity_far": {
+            "false_alarm_entities": 2,
+            "total_pure_normal_entities": 42,
+            "far_pct": 4.761904761904762
+          },
+          "all_entity_normal_period_far": {
+            "false_alarm_entities": 8,
+            "total_entities": 78,
+            "far_pct": 10.256410256410255
+          }
+        }
+      }
+    },
+    "Temporal LSTM": {
+      "architecture": "2-Layer Causal LSTM (hidden_dim=64, dropout=0.2, input_dim=31)",
+      "parameter_count": 62467,
+      "training_runtime_seconds": 15.0,
+      "metrics": {
+        "macro_f1": 0.5959013218963002,
+        "accuracy": 0.8226600985221675,
+        "class_metrics": {
+          "normal": {
+            "precision": 0.9491740787801779,
+            "recall": 0.8892857142857142,
+            "f1": 0.9182544560540873
+          },
+          "warning": {
+            "precision": 0.272,
+            "recall": 0.4722222222222222,
+            "f1": 0.34517766497461927,
+            "pr_auc": 0.369860767079411
+          },
+          "critical": {
+            "precision": 0.5242718446601942,
+            "recall": 0.5242718446601942,
+            "f1": 0.5242718446601942,
+            "pr_auc": 0.6935911411601592
+          }
+        },
+        "confusion_matrix": [
+          [
+            747,
+            58,
+            35
+          ],
+          [
+            24,
+            34,
+            14
+          ],
+          [
+            16,
+            33,
+            54
+          ]
+        ],
+        "episode_detection": {
+          "detected_count": 52,
+          "total_episodes": 61,
+          "detection_rate_pct": 85.24590163934425
+        },
+        "lead_time_distribution_minutes": {
+          "detected_count": 52,
+          "total_episodes": 61,
+          "mean_min": 12.446688806089742,
+          "median_min": 6.110792383333335,
+          "min_min": 0.8849886833333281,
+          "max_min": 29.957759166666666,
+          "std_min": 10.534486830369003
+        },
+        "false_alarm_metrics": {
+          "window_fpr": {
+            "false_positive_windows": 93,
+            "total_normal_windows": 840,
+            "fpr_pct": 11.071428571428571
+          },
+          "pure_normal_entity_far": {
+            "false_alarm_entities": 4,
+            "total_pure_normal_entities": 42,
+            "far_pct": 9.523809523809524
+          },
+          "all_entity_normal_period_far": {
+            "false_alarm_entities": 18,
+            "total_entities": 78,
+            "far_pct": 23.076923076923077
+          }
+        }
+      }
+    },
+    "Compact Temporal Transformer": {
+      "architecture": "2-Layer Compact TransformerEncoder (d_model=64, nhead=4, d_ff=128, dropout=0.2)",
+      "parameter_count": 73475,
+      "training_runtime_seconds": 58.75,
+      "metrics": {
+        "macro_f1": 0.5900663409886583,
+        "accuracy": 0.8078817733990148,
+        "class_metrics": {
+          "normal": {
+            "precision": 0.9579500657030223,
+            "recall": 0.8678571428571429,
+            "f1": 0.9106808244846971
+          },
+          "warning": {
+            "precision": 0.25,
+            "recall": 0.5416666666666666,
+            "f1": 0.34210526315789475,
+            "pr_auc": 0.30657967391628577
+          },
+          "critical": {
+            "precision": 0.5306122448979592,
+            "recall": 0.5048543689320388,
+            "f1": 0.5174129353233831,
+            "pr_auc": 0.674092492522657
+          }
+        },
+        "confusion_matrix": [
+          [
+            729,
+            77,
+            34
+          ],
+          [
+            21,
+            39,
+            12
+          ],
+          [
+            11,
+            40,
+            52
+          ]
+        ],
+        "episode_detection": {
+          "detected_count": 56,
+          "total_episodes": 61,
+          "detection_rate_pct": 91.80327868852459
+        },
+        "lead_time_distribution_minutes": {
+          "detected_count": 56,
+          "total_episodes": 61,
+          "mean_min": 12.976501674107144,
+          "median_min": 6.700053333333343,
+          "min_min": 0.8849886833333281,
+          "max_min": 29.957759166666666,
+          "std_min": 10.61701368516871
+        },
+        "false_alarm_metrics": {
+          "window_fpr": {
+            "false_positive_windows": 111,
+            "total_normal_windows": 840,
+            "fpr_pct": 13.214285714285715
+          },
+          "pure_normal_entity_far": {
+            "false_alarm_entities": 7,
+            "total_pure_normal_entities": 42,
+            "far_pct": 16.666666666666664
+          },
+          "all_entity_normal_period_far": {
+            "false_alarm_entities": 23,
+            "total_entities": 78,
+            "far_pct": 29.48717948717949
+          }
+        }
+      }
+    },
+    "Representation Hybrid": {
+      "architecture": "Representation Fusion: Concat(Transformer_Embedding[64], Tabular[31]) -> Class-Weighted RF",
+      "parameter_count": 108591,
+      "training_runtime_seconds": 0.6142256259918213,
+      "metrics": {
+        "macro_f1": 0.6517621283255086,
+        "accuracy": 0.8738916256157635,
+        "class_metrics": {
+          "normal": {
+            "precision": 0.9236111111111112,
+            "recall": 0.95,
+            "f1": 0.9366197183098591
+          },
+          "warning": {
+            "precision": 0.41509433962264153,
+            "recall": 0.3055555555555556,
+            "f1": 0.352,
+            "pr_auc": 0.36050698906048717
+          },
+          "critical": {
+            "precision": 0.6836734693877551,
+            "recall": 0.6504854368932039,
+            "f1": 0.6666666666666666,
+            "pr_auc": 0.7351880281636353
+          }
+        },
+        "confusion_matrix": [
+          [
+            798,
+            22,
+            20
+          ],
+          [
+            39,
+            22,
+            11
+          ],
+          [
+            27,
+            9,
+            67
+          ]
+        ],
+        "episode_detection": {
+          "detected_count": 50,
+          "total_episodes": 61,
+          "detection_rate_pct": 81.9672131147541
+        },
+        "lead_time_distribution_minutes": {
+          "detected_count": 50,
+          "total_episodes": 61,
+          "mean_min": 10.791539067333334,
+          "median_min": 5.901405133333332,
+          "min_min": 0.8849886833333281,
+          "max_min": 29.76631048333332,
+          "std_min": 9.692022838614584
+        },
+        "false_alarm_metrics": {
+          "window_fpr": {
+            "false_positive_windows": 42,
+            "total_normal_windows": 840,
+            "fpr_pct": 5.0
+          },
+          "pure_normal_entity_far": {
+            "false_alarm_entities": 4,
+            "total_pure_normal_entities": 42,
+            "far_pct": 9.523809523809524
+          },
+          "all_entity_normal_period_far": {
+            "false_alarm_entities": 17,
+            "total_entities": 78,
+            "far_pct": 21.794871794871796
+          }
+        }
+      }
+    }
+  }
+}

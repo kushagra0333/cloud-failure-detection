@@ -1,0 +1,78 @@
+{
+  "timestamp_utc": "2026-10-29T07:57:57Z",
+  "checks": [
+    {
+      "check_id": "CHK-01",
+      "name": "prohibited_partition_isolation",
+      "status": "PASS",
+      "details": "Zero access to Candidate A Test or Phase 6 Confirmatory Holdout."
+    },
+    {
+      "check_id": "CHK-02",
+      "name": "train_label_agreement",
+      "status": "PASS",
+      "details": "Train y_true exactly matches data/processed/phase7c/y_train.npy (3278 windows)."
+    },
+    {
+      "check_id": "CHK-03",
+      "name": "val_label_agreement",
+      "status": "PASS",
+      "details": "Validation y_true exactly matches data/processed/phase7c/y_val.npy (657 windows)."
+    },
+    {
+      "check_id": "CHK-04",
+      "name": "row_alignment_exactness",
+      "status": "PASS",
+      "details": "Row-by-row entity_id and prediction_timestamp diff = 0.000000."
+    },
+    {
+      "check_id": "CHK-05",
+      "name": "time_to_failure_horizons",
+      "status": "PASS",
+      "details": "Critical in (0, 900s], Warning in (900, 1800s], Normal > 1800s strictly verified."
+    },
+    {
+      "check_id": "CHK-06",
+      "name": "probability_sum_unity",
+      "status": "PASS",
+      "details": "P0 + P1 + P2 = 1.0 within numerical tolerance (max diff 1.57e-7)."
+    },
+    {
+      "check_id": "CHK-07",
+      "name": "pfail_definition_consistency",
+      "status": "PASS",
+      "details": "P_fail = P1 + P2 and P_fail = 1 - P0 verified across all models (max diff 1.60e-7)."
+    },
+    {
+      "check_id": "CHK-08",
+      "name": "score_inversion_mathematical_identity",
+      "status": "PASS",
+      "details": "AUC_raw + AUC_inv = 1.0 within 7.43e-7 on OOF and 2.48e-3 on Val."
+    },
+    {
+      "check_id": "CHK-09",
+      "name": "checkpoint_inference_reproducibility",
+      "status": "PASS",
+      "details": "Inference on saved N2 checkpoints matches serialized predictions within 1e-6."
+    },
+    {
+      "check_id": "CHK-10",
+      "name": "clean_room_metric_reproduction",
+      "status": "PASS",
+      "details": "Clean-room independent metric calculation matches reported metrics exactly."
+    },
+    {
+      "check_id": "CHK-11",
+      "name": "operational_gate_preservation",
+      "status": "PASS",
+      "details": "All 4 operational gates evaluated under frozen primary policy (P_fail >= 0.50, margin >= 0.50)."
+    },
+    {
+      "check_id": "CHK-12",
+      "name": "historical_artifact_preservation",
+      "status": "PASS",
+      "details": "Zero overwriting of prior phase directories (7b, 7c, 7d, 7e, 7f, 7g, 7h, 7i, 7j, 7k, 7l, 7m, 7n, 7p, 7q)."
+    }
+  ],
+  "all_checks_passed": true
+}

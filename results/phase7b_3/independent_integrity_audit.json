@@ -1,0 +1,282 @@
+{
+  "audit_metadata": {
+    "phase": "Phase 7B.3 \u2014 Independent Results, Preprocessing, and Metric Integrity Audit",
+    "timestamp_utc": "2026-10-28T08:45:00Z",
+    "target_report": "reports/phase7b/phase7b_retraining_and_evaluation_report.md",
+    "target_results_dir": "results/phase7b",
+    "final_verdict": "METRICS REPRODUCED \u2014 PREPROCESSING CONTAMINATION RISK",
+    "verdict_alternatives_evaluated": {
+      "RESULTS REPRODUCED \u2014 PREPROCESSING ISOLATION VERIFIED": "REJECTED (Preprocessing isolation breached: Phase 2 median imputation carries parent-job overlap)",
+      "METRICS REPRODUCED \u2014 PREPROCESSING CONTAMINATION RISK": "ADOPTED (Primary scientific finding: test metrics 100% reproduced, but data carries preprocessing contamination)",
+      "METRIC OR PROTOCOL DISCREPANCY FOUND": "DOCUMENTED AS SECONDARY (Report Table 5.1 has transcription typo 66.67% vs 100.0% for Job FAR)",
+      "INSUFFICIENT EVIDENCE TO VALIDATE RESULTS": "REJECTED (Complete execution logs, bit-for-bit checkpoints, and full test predictions exist)"
+    }
+  },
+  "audit_a_run_and_artifact_provenance": {
+    "script_hash": {
+      "file": "scripts/train_and_evaluate_phase7b.py",
+      "sha256": "3a9895101d87f24e18e6194fdb42d2b9125650ac545d005fd5686ac5025bc331"
+    },
+    "execution_provenance": {
+      "run_identification": "task-3577 (clean retrain & evaluation run)",
+      "execution_start": "2026-10-28 00:26:04 UTC",
+      "execution_end": "2026-10-28 00:27:11 UTC",
+      "duration_seconds": 58.5,
+      "exit_code": 0,
+      "hardware": "cpu",
+      "random_seed": 42,
+      "log_path": "C:\\Users\\hp\\.gemini\\antigravity-ide\\brain\\93852725-b55d-4e97-951f-5978ff186a69\\.system_generated\\tasks\\task-3577.log",
+      "prior_runs": [
+        {
+          "run_id": "task-3491",
+          "status": "INTERRUPTED",
+          "start": "2026-10-28 00:05:15 UTC",
+          "end": "2026-10-28 00:16:08 UTC",
+          "reason": "Killed during slow unvectorized cluster bootstrap; no final files serialized in results/phase7b/"
+        },
+        {
+          "run_id": "task-3567",
+          "status": "CRASHED",
+          "start": "2026-10-28 00:24:13 UTC",
+          "end": "2026-10-28 00:25:20 UTC",
+          "reason": "Crashed on line 896 due to key mismatch ('entity_far_pct' vs 'far_pct') during print statement; no files serialized in results/phase7b/"
+        }
+      ],
+      "provenance_conclusion": "VERIFIED: All files in results/phase7b/ were generated exclusively by task-3577."
+    },
+    "checkpoints": {
+      "random_forest": {
+        "checkpoint_file": "random_forest_phase7b.joblib",
+        "disk_sha256": "3dcd7704bab47790c7e360902767d41458f7c976b77f55b7d4f96556a67510b3",
+        "manifest_sha256": "3dcd7704bab47790c7e360902767d41458f7c976b77f55b7d4f96556a67510b3",
+        "match": true
+      },
+      "temporal_lstm": {
+        "checkpoint_file": "best_lstm_checkpoint_phase7b.pt",
+        "disk_sha256": "bdb5083b2f9efac08170966fc61c8d62e5278b954156e884870e9c513f51118e",
+        "manifest_sha256": "bdb5083b2f9efac08170966fc61c8d62e5278b954156e884870e9c513f51118e",
+        "match": true
+      },
+      "compact_transformer": {
+        "checkpoint_file": "best_transformer_checkpoint_phase7b.pt",
+        "disk_sha256": "54267c7b9daaedf167a9990f11895e6dcb116baafa86304b8e7aa88262b973db",
+        "manifest_sha256": "54267c7b9daaedf167a9990f11895e6dcb116baafa86304b8e7aa88262b973db",
+        "match": true
+      },
+      "representation_hybrid": {
+        "checkpoint_file": "representation_hybrid_phase7b.joblib",
+        "disk_sha256": "e3ae8bcbb92a643c0f6adf668f11aa8cc7b5be96def25fad07dd3b7f49df7f84",
+        "manifest_sha256": "e3ae8bcbb92a643c0f6adf668f11aa8cc7b5be96def25fad07dd3b7f49df7f84",
+        "match": true
+      }
+    },
+    "results_files_hashes": {
+      "bootstrap_ci.json": "42fe753408a5cbfb80008985405b356d07318854d6f8eb953a7bd90efa69e677",
+      "phase7b_evaluation_protocol.json": "f1361ca531fa5733dd79a901f392909ad75f23ff9355fc2bd7b39f3363161a16",
+      "pretraining_pipeline_checks.json": "cf87bf5056dc51d282e67bf982d547c43d4036d1c4c68a99624bb77869058a71",
+      "scaler_manifest.json": "1eea546915910946a9094bc563d514eba1383806625137a4fa951f0597faf7f6",
+      "test_episode_metrics.csv": "6423570bfca9d6cec96fe723f6c081016d69b0ee09e9d3ae770143f82d765850",
+      "test_evaluation_results.json": "484b5ff28ca6ce23d3f0514475b9239dc6031328426ab8fbbf35f11c2214dc8c",
+      "test_predictions.csv": "d344c8eed680d46bc9e311f136a0d8ad61c8f6d3a1596f632de7fd8b13319fc3",
+      "training_manifest.json": "a25217c4bfd35167dc7f40b54394871f6bdf3d41aa47890abd2f9523572ba3ee",
+      "validation_metrics.json": "c1162a3432650170b112ea005c72ecef3c3f3101d7cba4aba5c412397aab9f4a"
+    },
+    "dataset_files_hashes": {
+      "test_metadata.csv": "3e3958cef76b78691f9c0b6682ceff2809ccd80d551b57a8eb3093069f6e8dfe",
+      "train_metadata.csv": "b4484d64190843a85766222d18c496b698015f910f56f3fc3966a8ed0b13ec8c",
+      "val_metadata.csv": "995a748ba6aecadeece64b633fb9c2ca94dfa49257cb9b3cd9bcaff4089f84d6",
+      "X_test.npy": "9c66ac3657453df0c355e6202cce086e634ff571e1135187e954ed1c938cee09",
+      "X_train.npy": "ce1acdd2771745f8a487e55a1f53c631890971022d4694d94b2e33ef78636cf1",
+      "X_val.npy": "3dd35cc58497710d8d7cbcb9983f176d1e560566688b5aa866945846eba84b9a",
+      "y_test.npy": "511964b124f7b6719da1b94c8f91e069e9c91f8d612acedd4f309d371e5d19aa",
+      "y_train.npy": "da8f7731767eac3750a0281824c16f4a2411c16b66b6b8d2c6db8ae8253b9ee0",
+      "y_val.npy": "2527024a14eb15db060ab9ec1f13bad810a211653c3029d08dcc280a516e206b"
+    },
+    "scaler_hash": {
+      "file": "configs/fitted_scaler_phase7b.json",
+      "sha256": "a4af2a776cdb552a6de7a2f1f2cb469929ed485dbafa9bf60f8b87225413a6ae"
+    }
+  },
+  "audit_b_preprocessing_contamination_risk": {
+    "status": "ISSUE FOUND",
+    "finding": "Preprocessing contamination risk verified. Features in data/processed/phase7b/ retain legacy Phase 2 median imputation values fitted on entities and parent jobs now assigned to Candidate A Validation and Test.",
+    "provenance_chain": [
+      "1. Raw Borg trace shards (sample_task_usage.csv.gz, sample_task_events.csv.gz)",
+      "2. Feature engineering (src/features/engineer.py) produced trailing features with np.nan for CPI (81.3% missing) and early lag steps",
+      "3. Phase 2 legacy pipeline (scripts/run_phase2_pipeline.py) split entities randomly and fitted configs/fitted_scaler.json strictly on legacy train split (4,798 windows, 367 entities, 81 jobs)",
+      "4. Phase 2 imputation: Missing CPI values were imputed with training median a_old = 2.500000, and standardized as z = (x - mu_old) / (std_old + eps)",
+      "5. Phase 7A diagnostic data sliced these scaled arrays",
+      "6. Phase 7B preparation (scripts/prepare_phase7b_scaler_and_data.py) inverted scaling linearly: x_raw = z * (std_old + eps) + mu_old",
+      "7. Linear inversion recovered 2.500000 for previously missing slots, NOT np.nan",
+      "8. Candidate A scaler (configs/fitted_scaler_phase7b.json) was fitted over arrays where missing values were already pre-filled with 2.500000"
+    ],
+    "legacy_phase2_overlap_statistics": {
+      "candidate_a_val": {
+        "total_entities": 69,
+        "entities_in_phase2_train": 52,
+        "entity_overlap_pct": 75.36231884057972,
+        "total_parent_jobs": 12,
+        "parent_jobs_in_phase2_train": 12,
+        "parent_job_overlap_pct": 100.0
+      },
+      "candidate_a_test": {
+        "total_entities": 59,
+        "entities_in_phase2_train": 37,
+        "entity_overlap_pct": 62.71186440677966,
+        "total_parent_jobs": 11,
+        "parent_jobs_in_phase2_train": 11,
+        "parent_job_overlap_pct": 100.0
+      }
+    },
+    "feature_statistics_comparison": {
+      "cycles_per_instruction": {
+        "phase2_legacy_scaler": {
+          "median": 2.5,
+          "mean": 3.5775766372680664,
+          "std": 6.452630043029785
+        },
+        "phase7b_scaler": {
+          "median": 2.4670000076293945,
+          "mean": 2.863588809967041,
+          "std": 2.383657455444336
+        }
+      }
+    },
+    "raw_pipeline_rebuildability": {
+      "raw_source_available": true,
+      "feature_engineer_available": true,
+      "quarantined_holdout_touched": false,
+      "isolation_achievable": true,
+      "corrective_procedure": [
+        "1. Extract raw trailing features using src/features/engineer.py directly from sample_task_usage.csv.gz for Candidate A tasks.",
+        "2. Retain np.nan in all unobserved positions (CPI and early lag steps). Do NOT perform any pre-split imputation.",
+        "3. Partition the raw feature DataFrame strictly by Candidate A train/val/test job assignments.",
+        "4. Fit LeakageSafeScaler strictly on Candidate A training rows, calculating medians and means ignoring np.nan.",
+        "5. Apply scaler.transform() to Candidate A train, val, and test, imputing missing values strictly using Candidate A training medians.",
+        "6. Save the resulting standardized arrays to data/processed/phase7b/."
+      ]
+    }
+  },
+  "audit_c_independent_metric_recomputation": {
+    "status": "VERIFIED WITH REPORTING DISCREPANCY",
+    "recomputed_metrics_random_forest": {
+      "macro_f1": {
+        "recomputed": 0.3964509691650961,
+        "saved_json": 0.3964509691650961,
+        "diff": 0.0
+      },
+      "accuracy": {
+        "recomputed": 0.8390243902439024,
+        "saved_json": 0.8390243902439024,
+        "diff": 0.0
+      },
+      "warning_recall": {
+        "recomputed": 0.061224489795918366,
+        "saved_json": 0.061224489795918366,
+        "numerator": 49,
+        "diff": 0.0
+      },
+      "critical_recall": {
+        "recomputed": 0.2,
+        "saved_json": 0.2,
+        "numerator": 55,
+        "diff": 0.0
+      },
+      "episode_recall_pct": {
+        "recomputed": 38.095238095238095,
+        "saved_json": 38.095238095238095,
+        "detected": 8,
+        "total": 21
+      },
+      "window_fpr_pct": {
+        "recomputed": 8.143322475570033,
+        "saved_json": 8.143322475570033,
+        "numerator": 75,
+        "denominator": 921
+      },
+      "entity_far_pct": {
+        "recomputed": 44.73684210526316,
+        "saved_json": 44.73684210526316,
+        "numerator": 17,
+        "denominator": 38
+      },
+      "parent_job_far_pct": {
+        "recomputed": 100.0,
+        "saved_json": 100.0,
+        "numerator": 3,
+        "denominator": 3
+      }
+    },
+    "episode_invariants_verification": {
+      "total_test_episodes": 21,
+      "min_lead_time_sec": 143.79999999999927,
+      "max_lead_time_sec": 1797.5,
+      "mean_lead_time_sec": 1187.8625,
+      "median_lead_time_sec": 1391.6,
+      "post_failure_windows_excluded": true,
+      "duplicate_episode_credit_prevented": true
+    },
+    "parent_job_far_investigation": {
+      "reported_in_report_table_5_1": "66.67% (2/3 jobs)",
+      "reported_in_report_table_8_1": "66.67% | 95% CI: [100.00%, 100.00%]",
+      "saved_in_test_evaluation_results_json": "100.0% (3/3 jobs)",
+      "recomputed_from_test_predictions_csv": "100.0% (3/3 jobs)",
+      "root_cause_categorization": "REPORTING ERROR (Markdown Table Transcription Typo)",
+      "explanation": "In test_predictions.csv, exactly 3 parent jobs in the Test set are pure-normal (jobs 5633011295, 6127642779, 6251639598). Random Forest generated false alarms on ALL 3 jobs (2 alerts on 5633011295, 21 alerts on 6127642779, 11 alerts on 6251639598), resulting in FAR = 3/3 = 100.00%. The test_evaluation_results.json file correctly records 100.0%, and the bootstrap CI is correctly [100.0%, 100.0%] because every valid resample containing at least one pure-normal job has FAR = 100.0%. However, Representation Hybrid had FAR = 66.67% (2/3 jobs). When drafting Table 5.1 and Table 8.1 in the report, the author accidentally copied the figure 66.67% (2/3 jobs) from the Representation Hybrid row into the Random Forest row. There is no coding error or bootstrap anomaly in the Python scripts or JSON deliverables.",
+      "pure_normal_jobs_breakdown": {
+        "5633011295": {
+          "windows": 20,
+          "rf_alerts": 2,
+          "rf_false_alarm": true,
+          "hybrid_alerts": 0,
+          "hybrid_false_alarm": false
+        },
+        "6127642779": {
+          "windows": 660,
+          "rf_alerts": 21,
+          "rf_false_alarm": true,
+          "hybrid_alerts": 46,
+          "hybrid_false_alarm": true
+        },
+        "6251639598": {
+          "windows": 40,
+          "rf_alerts": 11,
+          "rf_false_alarm": true,
+          "hybrid_alerts": 16,
+          "hybrid_false_alarm": true
+        }
+      }
+    },
+    "candidate_selection_isolation": {
+      "verified": true,
+      "evidence": "Inspected scripts/train_and_evaluate_phase7b.py lines 659-753 and task-3577.log lines 45-60. Random Forest (M*) was selected based strictly on Validation Macro-F1 (0.3527) and permanently frozen into validation_metrics.json before any test split tensor was loaded or evaluated."
+    }
+  },
+  "audit_d_protocol_consistency": {
+    "status": "VERIFIED",
+    "protocol_reference": "results/phase7b_1/phase7b_evaluation_protocol_v2.json",
+    "test_gate_verification": {
+      "test_gate_1": {
+        "requirement": "Episode Recall >= 70.0% AND Critical Recall >= 50.0%",
+        "actual_episode_recall": "38.10%",
+        "actual_critical_recall": "20.00%",
+        "status": "FAIL"
+      },
+      "test_gate_2": {
+        "requirement": "Pure-Normal Entity FAR <= 10.0% AND Normal-Window FPR <= 5.0%",
+        "actual_entity_far": "44.74%",
+        "actual_window_fpr": "8.14%",
+        "status": "FAIL"
+      }
+    },
+    "operational_verdict": {
+      "protocol_mandated_verdict": "NO_OPERATIONAL_WINNER",
+      "reported_verdict": "NO_OPERATIONAL_WINNER",
+      "concordance": "PERFECT MATCH"
+    },
+    "descriptive_models_containment": {
+      "verified": true,
+      "detail": "Representation Hybrid achieved 80.95% Episode Recall on Test, but failed Test Gate 2 (55.26% Entity FAR) and was strictly firewalled from model selection under Protocol v2.0."
+    }
+  }
+}

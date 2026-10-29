@@ -1,0 +1,92 @@
+{
+  "phase": "Phase 7P",
+  "description": "Essential controls against overfitting and data leakage",
+  "timestamp": "2026-10-29T12:01:14+05:30",
+  "checks": [
+    {
+      "id": 1,
+      "name": "no_candidate_a_test_or_phase6_access",
+      "status": "PASS",
+      "details": "Zero access, reads, transforms, or evaluations on Candidate A Test or Phase 6 holdout."
+    },
+    {
+      "id": 2,
+      "name": "no_validation_outcomes_used_for_calibrator_fitting",
+      "status": "PASS",
+      "details": "Platt calibrator parameters (a, b) fitted exclusively on 3,278 Train OOF predictions."
+    },
+    {
+      "id": 3,
+      "name": "no_validation_outcomes_used_for_threshold_selection",
+      "status": "PASS",
+      "details": "Operating threshold tau=0.2250 selected on Train OOF candidate grid (201 points) before policy freeze."
+    },
+    {
+      "id": 4,
+      "name": "parent_job_separation_across_folds",
+      "status": "PASS",
+      "details": "Candidate A Train partitioned into 5 folds with zero parent job overlap across training and held-out folds."
+    },
+    {
+      "id": 5,
+      "name": "single_oof_prediction_per_train_window",
+      "status": "PASS",
+      "details": "Exactly 3,278 out-of-fold rows generated per seed with unique fold identifiers."
+    },
+    {
+      "id": 6,
+      "name": "consistent_fold_ids_and_entity_grouping",
+      "status": "PASS",
+      "details": "Fold assignments sealed in fold_assignments.csv and reused across all three random seeds."
+    },
+    {
+      "id": 7,
+      "name": "preprocessing_fit_discipline",
+      "status": "PASS",
+      "details": "Multi-resolution causal feature representation frozen from Phase 7N without re-normalization or leakage."
+    },
+    {
+      "id": 8,
+      "name": "frozen_model_architecture_and_margin_rule",
+      "status": "PASS",
+      "details": "MultiResolutionLSTMClassifier with AsymmetricCriticalMarginLoss (weights=[1,2,2], lambda=0.10, margin=0.50) preserved."
+    },
+    {
+      "id": 9,
+      "name": "finite_and_bounded_calibrator_outputs",
+      "status": "PASS",
+      "details": "All q_fail values strictly within [0.0, 1.0], no NaN, Inf, or negative probabilities."
+    },
+    {
+      "id": 10,
+      "name": "metric_label_and_denominator_integrity",
+      "status": "PASS",
+      "details": "Denominators verified: 20 episodes, 49 Critical windows, 48 Warning windows, 49 pure-normal entities, 560 Normal windows."
+    },
+    {
+      "id": 11,
+      "name": "policy_freeze_prior_to_validation_evaluation",
+      "status": "PASS",
+      "details": "frozen_operating_policy.json sealed with SHA-256 before computing Candidate A Validation metrics."
+    },
+    {
+      "id": 12,
+      "name": "deterministic_policy_reproducibility",
+      "status": "PASS",
+      "details": "Re-applying frozen decision rule produces identical classifications (0 discrepancy across 657 rows)."
+    },
+    {
+      "id": 13,
+      "name": "prediction_window_alignment",
+      "status": "PASS",
+      "details": "validation_predictions.csv maps 1-to-1 with Candidate A Validation metadata timestamps and entity IDs."
+    },
+    {
+      "id": 14,
+      "name": "no_post_hoc_threshold_modification",
+      "status": "PASS",
+      "details": "Policy threshold remained strictly tau=0.2250; no threshold search or tuning performed on Validation."
+    }
+  ],
+  "verdict": "ALL_14_CONTROLS_PASSED"
+}

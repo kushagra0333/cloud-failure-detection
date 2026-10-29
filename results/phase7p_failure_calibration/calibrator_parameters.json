@@ -1,0 +1,35 @@
+{
+  "seed_42": {
+    "platt": {
+      "a_slope": -0.12049299478530884,
+      "b_intercept": -1.9524142742156982,
+      "formula": "q_fail = 1 / (1 + exp(-(a * logit(clip(P_fail, 1e-6, 1-1e-6)) + b)))",
+      "epsilon": 1e-06
+    },
+    "isotonic": {
+      "n_thresholds": 12
+    }
+  },
+  "seed_123": {
+    "platt": {
+      "a_slope": -0.14431409537792206,
+      "b_intercept": -1.9683456420898438,
+      "formula": "q_fail = 1 / (1 + exp(-(a * logit(clip(P_fail, 1e-6, 1-1e-6)) + b)))",
+      "epsilon": 1e-06
+    },
+    "isotonic": {
+      "n_thresholds": 14
+    }
+  },
+  "seed_456": {
+    "platt": {
+      "a_slope": -0.14888589084148407,
+      "b_intercept": -1.9935024976730347,
+      "formula": "q_fail = 1 / (1 + exp(-(a * logit(clip(P_fail, 1e-6, 1-1e-6)) + b)))",
+      "epsilon": 1e-06
+    },
+    "isotonic": {
+      "n_thresholds": 12
+    }
+  }
+}

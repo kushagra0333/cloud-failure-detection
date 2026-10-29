@@ -1,0 +1,87 @@
+{
+  "preflight_metadata": {
+    "phase": "Phase 7D Preflight",
+    "title": "Scaler Methodology and Diagnostic Protocol Preflight",
+    "timestamp_utc": "2026-10-28T17:20:00Z",
+    "analyst": "Senior ML Research Engineer & Data-Pipeline Auditor",
+    "verdict": "READY FOR TRAINING APPROVAL"
+  },
+  "task_1_scaler_weighting": {
+    "fitting_population": {
+      "training_windows": 3278,
+      "sequence_length": 5,
+      "total_window_step_observations": 16390,
+      "unique_physical_telemetry_steps": 4414,
+      "mean_step_multiplicity": 3.713185319438151
+    },
+    "multiplicity_distribution": {
+      "1x": {"physical_steps": 622, "percentage": 14.0915},
+      "2x": {"physical_steps": 552, "percentage": 12.5057},
+      "3x": {"physical_steps": 528, "percentage": 11.9619},
+      "4x": {"physical_steps": 480, "percentage": 10.8745},
+      "5x": {"physical_steps": 2232, "percentage": 50.5664}
+    },
+    "parameter_shift_summary": {
+      "mean_absolute_mean_shift": 0.10501,
+      "mean_absolute_std_shift": 0.71027,
+      "mean_absolute_median_shift": 0.03569,
+      "mean_standardized_z_score_discrepancy": 0.0321
+    },
+    "top_z_score_shifts": [
+      {"feature": "task_age_minutes", "mean_z_diff": 0.1215, "max_z_diff": 0.2851, "p95_z_diff": 0.2472},
+      {"feature": "cpu_trend_slope_6", "mean_z_diff": 0.1185, "max_z_diff": 2.5358, "p95_z_diff": 0.2778},
+      {"feature": "memory_diff_1", "mean_z_diff": 0.0871, "max_z_diff": 6.9986, "p95_z_diff": 0.3381},
+      {"feature": "cpu_rolling_std_6", "mean_z_diff": 0.0812, "max_z_diff": 2.3024, "p95_z_diff": 0.2930},
+      {"feature": "cpu_rolling_range_6", "mean_z_diff": 0.0798, "max_z_diff": 1.6925, "p95_z_diff": 0.2832}
+    ],
+    "leakage_assessment": "ZERO LEAKAGE (Both populations are 100% strictly within Candidate A Train)",
+    "recommendation": "Retain frozen Phase 7C scaler (configs/phase7c/fitted_scaler_phase7c.json) for Phase 7D primary diagnostic experiment to maintain comparability with Phase 7B."
+  },
+  "task_2_diagnostic_experiment_lock": {
+    "primary_hypothesis": "Hypothesis H1: Legacy preprocessing contamination (2.5 constant and parent-job overlap in Phase 7B) caused or materially contributed to Random Forest's operational failure on Candidate A.",
+    "null_hypothesis": "Hypothesis H0: Random Forest's failure on Candidate A is predominantly driven by parent-job distribution shift, and will persist despite clean, leakage-free reconstruction.",
+    "governing_protocol": {
+      "path": "results/phase7b_1/phase7b_evaluation_protocol_v2.json",
+      "sha256": "f919cbb6d79ee790e6686e584f33b1e32d169c9eb38c92a6fa292728f3ea7044",
+      "version": "2.0-REVISED-FROZEN"
+    },
+    "frozen_split": {
+      "path": "results/phase7a_4/candidate_a_job_grouped_split.csv",
+      "sha256": "f84bc4fe54f8e0583e2ee52f49b2fbe8e6fcafb4f020c656985a1acc31bb4946",
+      "train_windows": 3278,
+      "val_windows": 657,
+      "test_windows": 1025
+    },
+    "baseline_model": {
+      "name": "Random Forest Classifier",
+      "architecture": "RandomForestClassifier(n_estimators=100, max_depth=15, class_weight='balanced', random_state=42, n_jobs=-1)",
+      "input_dimension": "x_last in R^31"
+    },
+    "gates_specification": {
+      "gate_1": "Episode Recall >= 70.0% AND Critical Window Recall >= 50.0%",
+      "gate_2": "Pure-Normal Entity FAR <= 10.0% AND Normal-Window FPR <= 5.0%",
+      "secondary_diagnostic": "Pure-Normal Parent-Job FAR (N=3 in Test)"
+    },
+    "selection_rule": "Highest Validation Macro-F1 among models passing both validation gates; if none pass, highest Validation Macro-F1 selects M*.",
+    "random_seed": 42
+  },
+  "task_3_implementation_readiness": {
+    "input_tensors": {
+      "train": {"X_shape": [3278, 5, 31], "y_shape": [3278], "finite": true, "path": "data/processed/phase7c/X_train.npy"},
+      "val": {"X_shape": [657, 5, 31], "y_shape": [657], "finite": true, "path": "data/processed/phase7c/X_val.npy"},
+      "test": {"X_shape": [1025, 5, 31], "y_shape": [1025], "finite": true, "path": "data/processed/phase7c/X_test.npy"}
+    },
+    "class_distribution": {
+      "train": {"0": 2797, "1": 244, "2": 237},
+      "val": {"0": 560, "1": 48, "2": 49},
+      "test": {"0": 921, "1": 49, "2": 55}
+    },
+    "active_scaler_config": "configs/phase7c/fitted_scaler_phase7c.json",
+    "quarantined_holdout_access": false,
+    "destination_directories": {
+      "results": "results/phase7d/",
+      "reports": "reports/phase7d/",
+      "models": "models/checkpoints_phase7d/"
+    }
+  }
+}

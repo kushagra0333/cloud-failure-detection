@@ -1,0 +1,206 @@
+{
+  "metadata": {
+    "phase": "Phase 7Z.2",
+    "title": "Independent Final Authorization Readiness Audit",
+    "timestamp_utc": "2026-10-29T13:34:48.169029+00:00",
+    "auditor": "Independent ML Research Auditor & Scientific Governance Reviewer",
+    "project_root": "C:\\Users\\hp\\Desktop\\Research project",
+    "audit_type": "INDEPENDENT_FINAL_AUTHORIZATION_READINESS_AUDIT",
+    "final_audit_verdict": "NOT_READY_BILLING_OR_QUOTA_UNVERIFIED",
+    "alternative_verdict_analysis": {
+      "conditional_status": "READY_FOR_OWNER_EXTRACTION_DECISION",
+      "condition": "Once the research owner manually confirms remaining Sandbox quota in the Google Cloud Console and establishes the repository .gitignore file, the package transitions to READY_FOR_OWNER_EXTRACTION_DECISION."
+    }
+  },
+  "query_verification": {
+    "file": "results/phase7y_borg2019_pilot/phase7y_candidate_a_projection_reduction.sql",
+    "actual_byte_size": 2993,
+    "actual_sha256": "8abdbd8bdf20444f1282a82e01b30de0f8b9182c1d706a94b940c5c054ee395e",
+    "phase7z1_reported_sha256": "8abdbd8bdf20444f1282a82e01b30de0f8b9182c1d706a94b940c5c054ee395e",
+    "matches_phase7z1": true,
+    "dry_run_service_status": "VALIDATED_BY_SERVICE",
+    "total_bytes_processed": 418578205568,
+    "total_bytes_processed_readable": "418,578,205,568 bytes (389.83 GiB / 418.58 GB)",
+    "estimated_on_demand_cost_usd": 2.3793
+  },
+  "sandbox_and_quota_audit": {
+    "billing_enabled": false,
+    "billing_account_name": "",
+    "sandbox_active": true,
+    "monthly_free_tier_quota_gib": 1024.0,
+    "query_scan_gib": 389.83,
+    "free_tier_quota_consumption_pct": 38.07,
+    "quota_verification_limitation": "BigQuery Sandbox quota balance cannot be queried via Google Cloud Python Client API. Job history (client.list_jobs()) showing 0 jobs is necessary but insufficient proof of global quota balance.",
+    "manual_verification_step_for_owner": "Visit: https://console.cloud.google.com/bigquery?project=canvas-advice-464215-n1 or https://console.cloud.google.com/apis/api/bigquery.googleapis.com/quotas?project=canvas-advice-464215-n1 to confirm that the monthly query usage has not exceeded 634 GiB."
+  },
+  "scientific_semantics_audit": {
+    "source_tables_and_columns": {
+      "instance_events": [
+        "collection_id",
+        "instance_index",
+        "time",
+        "type"
+      ],
+      "instance_usage": [
+        "collection_id",
+        "instance_index",
+        "start_time",
+        "end_time",
+        "average_usage.cpus",
+        "average_usage.memory"
+      ],
+      "final_projection": [
+        "collection_id",
+        "instance_index",
+        "window_start_us",
+        "window_end_us",
+        "cpu_avg_usage",
+        "memory_canonical_usage",
+        "terminal_event_timestamp_us",
+        "terminal_type_code",
+        "terminal_status"
+      ]
+    },
+    "temporal_causal_soundness": "PASS. Event window join ensures observation windows strictly precede terminal events.",
+    "deduplication_soundness": "PASS. ROW_NUMBER over (collection_id, instance_index, start_time) ORDER BY terminal_time ASC selects earliest terminal event.",
+    "label_horizons_soundness": "PASS. Critical (0-5 min), Warning (10-25 min), Buffer (5-10 min excluded), and Right-Censoring match protocol.",
+    "leakage_isolation": "PASS. Future terminal fields are isolated from model input features.",
+    "gates_support": "PASS. All 4 Phase 7B operational gates are supported."
+  },
+  "extraction_safeguards_audit": {
+    "proposed_destination": "data/raw/borg2019_pilot/",
+    "destination_exists": false,
+    "c_drive_free_gb": 61.2,
+    "disk_space_sufficient": true,
+    "gitignore_exists": false,
+    "gitignore_deficiency": true,
+    "required_safeguards_prior_to_extraction": [
+      "1. Create .gitignore with entries for data/raw/ and *.parquet.",
+      "2. Enforce maximum_bytes_billed = 450000000000 in QueryJobConfig.",
+      "3. Stream query results atomically to temporary file before final rename.",
+      "4. Compute SHA-256 checksum and reconcile row counts upon completion.",
+      "5. Verify that Candidate A Test and Phase 6 Confirmatory holdouts remain untouched."
+    ]
+  },
+  "reconciliation_of_evidence": {
+    "total_checkpoints": 18,
+    "pass_count": 16,
+    "fail_count": 0,
+    "unverified_count": 2,
+    "unsupported_assertions_in_phase7z1": [
+      "Checkpoint 15 (Remaining Quota Availability): Phase 7Z.1 asserted PASS based on client.list_jobs() == 0. This audit finds that client job history is an incomplete proxy that does not prove central Google Cloud quota state. Downgraded from PASS to UNVERIFIED.",
+      "Extraction Safeguards: Phase 7Z.1 did not audit repository .gitignore status. This audit revealed that .gitignore is missing, creating a risk of accidental raw data commits."
+    ]
+  },
+  "checkpoints": [
+    {
+      "checkpoint_id": "CHK-01",
+      "name": "SQL File Existence and Integrity",
+      "status": "PASS",
+      "evidence": "File verified on disk at results/phase7y_borg2019_pilot/phase7y_candidate_a_projection_reduction.sql (2993 bytes)."
+    },
+    {
+      "checkpoint_id": "CHK-02",
+      "name": "SQL SHA-256 Checksum Verification",
+      "status": "PASS",
+      "evidence": "Current SHA-256 verified as 8abdbd8bdf20444f1282a82e01b30de0f8b9182c1d706a94b940c5c054ee395e. Reconciled with Phase 7Z.1 report (exact match)."
+    },
+    {
+      "checkpoint_id": "CHK-03",
+      "name": "Genuine BigQuery Service Dry Run",
+      "status": "PASS",
+      "evidence": "Dry-run job validated by BigQuery service: 418,578,205,568 bytes processed (389.83 GiB / 418.58 GB). Job ID is None (zero data returned)."
+    },
+    {
+      "checkpoint_id": "CHK-04",
+      "name": "GCP Account & Project Configuration",
+      "status": "PASS",
+      "evidence": "ADC active for kushagrapandey0333@gmail.com; active client project and gcloud project verified as canvas-advice-464215-n1."
+    },
+    {
+      "checkpoint_id": "CHK-05",
+      "name": "Billing Account Absence Verification",
+      "status": "PASS",
+      "evidence": "gcloud billing projects describe confirmed billingEnabled: false; project has no billing account attached."
+    },
+    {
+      "checkpoint_id": "CHK-06",
+      "name": "BigQuery Sandbox Applicability",
+      "status": "PASS",
+      "evidence": "Google Cloud Quotas API returned ineligibilityReason: NO_VALID_BILLING_ACCOUNT; BigQuery Sandbox is active."
+    },
+    {
+      "checkpoint_id": "CHK-07",
+      "name": "Monthly Free-Tier Query Quota Allocation",
+      "status": "PASS",
+      "evidence": "Standard BigQuery Sandbox policy grants 1 TiB (1,024 GiB / 1,099,511,627,776 bytes) of query capacity per calendar month."
+    },
+    {
+      "checkpoint_id": "CHK-08",
+      "name": "Remaining Free-Tier Quota Balance",
+      "status": "UNVERIFIED",
+      "evidence": "UNVERIFIED from client API. In Phase 7Z.1, this was asserted as PASS based on len(client.list_jobs()) == 0. However, client job history only covers local submissions and does not query Google Cloud's central quota tracking system. Google BigQuery does not expose a programmatic remaining_free_quota API endpoint without Cloud Monitoring Metrics. The research owner must manually inspect https://console.cloud.google.com/bigquery?project=canvas-advice-464215-n1 to confirm remaining quota."
+    },
+    {
+      "checkpoint_id": "CHK-09",
+      "name": "Marginal Financial Cost Disambiguation",
+      "status": "PASS",
+      "evidence": "Verified zero billing risk. Because billingEnabled is false, Google cannot bill a credit card. Nominal on-demand cost is $2.3793 USD, but actual billed charge is $0.00 USD under Sandbox free tier."
+    },
+    {
+      "checkpoint_id": "CHK-10",
+      "name": "SQL Source Tables & Columns Audit",
+      "status": "PASS",
+      "evidence": "Queries 6 leaf columns from instance_usage and 4 leaf columns from instance_events. Matches report claims exactly."
+    },
+    {
+      "checkpoint_id": "CHK-11",
+      "name": "Event Window Join & Temporal Causal Order",
+      "status": "PASS",
+      "evidence": "Join condition te.terminal_time >= u.end_time strictly enforces that observation windows precede terminal events. No post-event telemetry can be joined."
+    },
+    {
+      "checkpoint_id": "CHK-12",
+      "name": "ROW_NUMBER Deduplication & Earliest Terminal Matching",
+      "status": "PASS",
+      "evidence": "PARTITION BY collection_id, instance_index, start_time ORDER BY te.terminal_time ASC with rn = 1 guarantees exactly one observation row per window and selects earliest outcome."
+    },
+    {
+      "checkpoint_id": "CHK-13",
+      "name": "Label Horizons & Ambiguity Buffer Alignment",
+      "status": "PASS",
+      "evidence": "Critical (0-5 min), Warning (10-25 min), Buffer (5-10 min excluded), and Right-Censoring match Phase 7B protocol definitions exactly."
+    },
+    {
+      "checkpoint_id": "CHK-14",
+      "name": "Feature Leakage Isolation",
+      "status": "PASS",
+      "evidence": "Future fields (terminal_time, terminal_type_code, terminal_status) are excluded from model input features and used only for label generation."
+    },
+    {
+      "checkpoint_id": "CHK-15",
+      "name": "Operational Gates Compatibility",
+      "status": "PASS",
+      "evidence": "All 4 Phase 7B operational gates (Episode Recall >=70%, Critical Recall >=50%, Entity FAR <=10%, Window FPR <=5%) can be calculated from Candidate A schema."
+    },
+    {
+      "checkpoint_id": "CHK-16",
+      "name": "Local Disk Space Sufficiency",
+      "status": "PASS",
+      "evidence": "C: drive has 61.2 GB free space. Proposed pilot Parquet extraction (~500 MB to 1.5 GB) requires < 2.5% of free space."
+    },
+    {
+      "checkpoint_id": "CHK-17",
+      "name": "Repository .gitignore Extraction Safeguard",
+      "status": "UNVERIFIED",
+      "evidence": "DEFICIENCY IDENTIFIED: .gitignore does not currently exist in the repository root. Before extracting data into data/raw/borg2019_pilot/, a .gitignore file must be created to ignore data/raw/ and *.parquet files, preventing accidental git commits of large raw datasets."
+    },
+    {
+      "checkpoint_id": "CHK-18",
+      "name": "Protected Holdouts Quarantine",
+      "status": "PASS",
+      "evidence": "Candidate A Test (1,025 windows) and Phase 6 Confirmatory holdouts are strictly untouched and unaccessed (PROTECTED_UNACCESSED)."
+    }
+  ],
+  "mandatory_safety_statement": "No data-returning query, extraction, export, staging operation, pilot dataset creation, model training, or protected holdout access was authorized or performed during this audit. A separate explicit owner decision is required before any extraction."
+}

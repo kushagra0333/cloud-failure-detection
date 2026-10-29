@@ -1,0 +1,410 @@
+{
+  "transformer_job_relative": {
+    "model_name": "Experiment A: Parent-Job Baseline (CE)",
+    "total_critical_windows": 49,
+    "correct_critical": 5,
+    "critical_recall": 0.10204081632653061,
+    "critical_to_warning": 3,
+    "critical_to_warning_pct": 6.122448979591836,
+    "critical_to_normal": 41,
+    "critical_to_normal_pct": 83.6734693877551,
+    "failure_interception_rate_pct": 16.3265306122449,
+    "critical_episodes_total": 17,
+    "critical_episodes_intercepted": 6,
+    "critical_episode_interception_pct": 35.294117647058826,
+    "probability_summary": {
+      "p_normal": {
+        "mean": 0.39038587306122446,
+        "median": 0.39401108,
+        "std": 0.04822156416570155,
+        "min": 0.26466396,
+        "max": 0.52340883
+      },
+      "p_warning": {
+        "mean": 0.32078000122448974,
+        "median": 0.32517555,
+        "std": 0.031808784142537426,
+        "min": 0.21145898,
+        "max": 0.39459735
+      },
+      "p_critical": {
+        "mean": 0.2888341257142857,
+        "median": 0.2796755,
+        "std": 0.027383167705168732,
+        "min": 0.26513222,
+        "max": 0.37313145
+      }
+    },
+    "parent_job_breakdown": {
+      "6127571078": {
+        "total_critical_windows": 3,
+        "correct_critical": 0,
+        "critical_to_warning": 1,
+        "critical_to_normal": 2,
+        "mean_p_critical": 0.27875108666666665,
+        "mean_p_warning": 0.33514764999999996,
+        "mean_p_normal": 0.38610125666666667
+      },
+      "6177502198": {
+        "total_critical_windows": 3,
+        "correct_critical": 0,
+        "critical_to_warning": 0,
+        "critical_to_normal": 3,
+        "mean_p_critical": 0.28218675666666665,
+        "mean_p_warning": 0.29437137333333335,
+        "mean_p_normal": 0.4234418766666667
+      },
+      "6233966714": {
+        "total_critical_windows": 3,
+        "correct_critical": 0,
+        "critical_to_warning": 2,
+        "critical_to_normal": 1,
+        "mean_p_critical": 0.29708940666666667,
+        "mean_p_warning": 0.34021537333333335,
+        "mean_p_normal": 0.36269521666666665
+      },
+      "6237552348": {
+        "total_critical_windows": 22,
+        "correct_critical": 0,
+        "critical_to_warning": 0,
+        "critical_to_normal": 22,
+        "mean_p_critical": 0.27539819818181815,
+        "mean_p_warning": 0.3241325890909091,
+        "mean_p_normal": 0.4004692059090909
+      },
+      "6238836357": {
+        "total_critical_windows": 6,
+        "correct_critical": 2,
+        "critical_to_warning": 0,
+        "critical_to_normal": 4,
+        "mean_p_critical": 0.31230116333333335,
+        "mean_p_warning": 0.33769229166666664,
+        "mean_p_normal": 0.35000657499999993
+      },
+      "6238840043": {
+        "total_critical_windows": 3,
+        "correct_critical": 0,
+        "critical_to_warning": 0,
+        "critical_to_normal": 3,
+        "mean_p_critical": 0.29813414999999993,
+        "mean_p_warning": 0.30617189333333333,
+        "mean_p_normal": 0.3956939133333333
+      },
+      "6238842343": {
+        "total_critical_windows": 9,
+        "correct_critical": 3,
+        "critical_to_warning": 0,
+        "critical_to_normal": 6,
+        "mean_p_critical": 0.3057578466666666,
+        "mean_p_warning": 0.30371449777777776,
+        "mean_p_normal": 0.3905276677777778
+      }
+    }
+  },
+  "transformer_hierarchical": {
+    "model_name": "Experiment B: Hierarchical Baseline (CE)",
+    "total_critical_windows": 49,
+    "correct_critical": 1,
+    "critical_recall": 0.02040816326530612,
+    "critical_to_warning": 8,
+    "critical_to_warning_pct": 16.3265306122449,
+    "critical_to_normal": 40,
+    "critical_to_normal_pct": 81.63265306122449,
+    "failure_interception_rate_pct": 18.367346938775512,
+    "critical_episodes_total": 17,
+    "critical_episodes_intercepted": 11,
+    "critical_episode_interception_pct": 64.70588235294117,
+    "probability_summary": {
+      "p_normal": {
+        "mean": 0.3952669863265306,
+        "median": 0.401877,
+        "std": 0.07279064856902123,
+        "min": 0.19408016,
+        "max": 0.5414485
+      },
+      "p_warning": {
+        "mean": 0.31622653877551016,
+        "median": 0.31820628,
+        "std": 0.05839829782413788,
+        "min": 0.20545773,
+        "max": 0.48118022
+      },
+      "p_critical": {
+        "mean": 0.28850647306122446,
+        "median": 0.28489202,
+        "std": 0.025799950594921545,
+        "min": 0.23407964,
+        "max": 0.42193034
+      }
+    },
+    "parent_job_breakdown": {
+      "6127571078": {
+        "total_critical_windows": 3,
+        "correct_critical": 0,
+        "critical_to_warning": 2,
+        "critical_to_normal": 1,
+        "mean_p_critical": 0.28265540666666666,
+        "mean_p_warning": 0.3453600233333333,
+        "mean_p_normal": 0.37198456
+      },
+      "6177502198": {
+        "total_critical_windows": 3,
+        "correct_critical": 0,
+        "critical_to_warning": 0,
+        "critical_to_normal": 3,
+        "mean_p_critical": 0.27513520999999996,
+        "mean_p_warning": 0.2510819,
+        "mean_p_normal": 0.4737829033333334
+      },
+      "6233966714": {
+        "total_critical_windows": 3,
+        "correct_critical": 0,
+        "critical_to_warning": 2,
+        "critical_to_normal": 1,
+        "mean_p_critical": 0.30803725,
+        "mean_p_warning": 0.35052565333333335,
+        "mean_p_normal": 0.34143707999999995
+      },
+      "6237552348": {
+        "total_critical_windows": 22,
+        "correct_critical": 0,
+        "critical_to_warning": 1,
+        "critical_to_normal": 21,
+        "mean_p_critical": 0.28415542636363633,
+        "mean_p_warning": 0.32850476,
+        "mean_p_normal": 0.3873398040909091
+      },
+      "6238836357": {
+        "total_critical_windows": 6,
+        "correct_critical": 0,
+        "critical_to_warning": 2,
+        "critical_to_normal": 4,
+        "mean_p_critical": 0.29983942166666666,
+        "mean_p_warning": 0.3363524383333334,
+        "mean_p_normal": 0.3638081633333334
+      },
+      "6238840043": {
+        "total_critical_windows": 3,
+        "correct_critical": 0,
+        "critical_to_warning": 0,
+        "critical_to_normal": 3,
+        "mean_p_critical": 0.25122442333333334,
+        "mean_p_warning": 0.21774649666666668,
+        "mean_p_normal": 0.5310290566666667
+      },
+      "6238842343": {
+        "total_critical_windows": 9,
+        "correct_critical": 1,
+        "critical_to_warning": 1,
+        "critical_to_normal": 7,
+        "mean_p_critical": 0.30391159999999995,
+        "mean_p_warning": 0.3061932033333334,
+        "mean_p_normal": 0.38989520666666666
+      }
+    }
+  },
+  "transformer_hierarchical_focal": {
+    "model_name": "Experiment C: Hierarchical + Focal (gamma=1.0)",
+    "total_critical_windows": 49,
+    "correct_critical": 1,
+    "critical_recall": 0.02040816326530612,
+    "critical_to_warning": 13,
+    "critical_to_warning_pct": 26.53061224489796,
+    "critical_to_normal": 35,
+    "critical_to_normal_pct": 71.42857142857143,
+    "failure_interception_rate_pct": 28.57142857142857,
+    "critical_episodes_total": 17,
+    "critical_episodes_intercepted": 13,
+    "critical_episode_interception_pct": 76.47058823529412,
+    "probability_summary": {
+      "p_normal": {
+        "mean": 0.37036929836734694,
+        "median": 0.37755197,
+        "std": 0.06021462440398627,
+        "min": 0.20097013,
+        "max": 0.4899991
+      },
+      "p_warning": {
+        "mean": 0.3253248542857143,
+        "median": 0.32882747,
+        "std": 0.050328522981225025,
+        "min": 0.22290973,
+        "max": 0.46229988
+      },
+      "p_critical": {
+        "mean": 0.30430583877551026,
+        "median": 0.30178908,
+        "std": 0.021664654131852996,
+        "min": 0.26643696,
+        "max": 0.41300356
+      }
+    },
+    "parent_job_breakdown": {
+      "6127571078": {
+        "total_critical_windows": 3,
+        "correct_critical": 0,
+        "critical_to_warning": 2,
+        "critical_to_normal": 1,
+        "mean_p_critical": 0.2979398166666667,
+        "mean_p_warning": 0.3539062833333333,
+        "mean_p_normal": 0.34815387999999997
+      },
+      "6177502198": {
+        "total_critical_windows": 3,
+        "correct_critical": 0,
+        "critical_to_warning": 0,
+        "critical_to_normal": 3,
+        "mean_p_critical": 0.2969978633333334,
+        "mean_p_warning": 0.27172994333333333,
+        "mean_p_normal": 0.43127218666666667
+      },
+      "6233966714": {
+        "total_critical_windows": 3,
+        "correct_critical": 0,
+        "critical_to_warning": 2,
+        "critical_to_normal": 1,
+        "mean_p_critical": 0.3223438533333333,
+        "mean_p_warning": 0.34693697333333334,
+        "mean_p_normal": 0.33071917
+      },
+      "6237552348": {
+        "total_critical_windows": 22,
+        "correct_critical": 0,
+        "critical_to_warning": 6,
+        "critical_to_normal": 16,
+        "mean_p_critical": 0.2987150009090909,
+        "mean_p_warning": 0.3363189986363636,
+        "mean_p_normal": 0.36496599136363633
+      },
+      "6238836357": {
+        "total_critical_windows": 6,
+        "correct_critical": 0,
+        "critical_to_warning": 2,
+        "critical_to_normal": 4,
+        "mean_p_critical": 0.31392534,
+        "mean_p_warning": 0.3472134816666666,
+        "mean_p_normal": 0.3388611916666667
+      },
+      "6238840043": {
+        "total_critical_windows": 3,
+        "correct_critical": 0,
+        "critical_to_warning": 0,
+        "critical_to_normal": 3,
+        "mean_p_critical": 0.2786058466666666,
+        "mean_p_warning": 0.23482275333333336,
+        "mean_p_normal": 0.48657143666666663
+      },
+      "6238842343": {
+        "total_critical_windows": 9,
+        "correct_critical": 1,
+        "critical_to_warning": 1,
+        "critical_to_normal": 7,
+        "mean_p_critical": 0.31867132222222216,
+        "mean_p_warning": 0.3151590155555556,
+        "mean_p_normal": 0.36616962666666664
+      }
+    }
+  },
+  "transformer_job_relative_focal": {
+    "model_name": "Experiment C-alt: Parent-Job + Focal (gamma=1.0)",
+    "total_critical_windows": 49,
+    "correct_critical": 4,
+    "critical_recall": 0.08163265306122448,
+    "critical_to_warning": 6,
+    "critical_to_warning_pct": 12.244897959183673,
+    "critical_to_normal": 39,
+    "critical_to_normal_pct": 79.59183673469387,
+    "failure_interception_rate_pct": 20.408163265306122,
+    "critical_episodes_total": 17,
+    "critical_episodes_intercepted": 6,
+    "critical_episode_interception_pct": 35.294117647058826,
+    "probability_summary": {
+      "p_normal": {
+        "mean": 0.3728301510204081,
+        "median": 0.3816842,
+        "std": 0.0455644288885976,
+        "min": 0.26349616,
+        "max": 0.47202855
+      },
+      "p_warning": {
+        "mean": 0.3260556112244898,
+        "median": 0.33050615,
+        "std": 0.03096312069082236,
+        "min": 0.23237088,
+        "max": 0.40938434
+      },
+      "p_critical": {
+        "mean": 0.30111423816326527,
+        "median": 0.29324308,
+        "std": 0.025293336562790494,
+        "min": 0.27687046,
+        "max": 0.3859569
+      }
+    },
+    "parent_job_breakdown": {
+      "6127571078": {
+        "total_critical_windows": 3,
+        "correct_critical": 0,
+        "critical_to_warning": 1,
+        "critical_to_normal": 2,
+        "mean_p_critical": 0.2922667966666667,
+        "mean_p_warning": 0.34117356000000004,
+        "mean_p_normal": 0.36655965333333335
+      },
+      "6177502198": {
+        "total_critical_windows": 3,
+        "correct_critical": 0,
+        "critical_to_warning": 0,
+        "critical_to_normal": 3,
+        "mean_p_critical": 0.29567463,
+        "mean_p_warning": 0.30591143,
+        "mean_p_normal": 0.3984139266666667
+      },
+      "6233966714": {
+        "total_critical_windows": 3,
+        "correct_critical": 0,
+        "critical_to_warning": 2,
+        "critical_to_normal": 1,
+        "mean_p_critical": 0.30515342,
+        "mean_p_warning": 0.35706046666666663,
+        "mean_p_normal": 0.3377861233333333
+      },
+      "6237552348": {
+        "total_critical_windows": 22,
+        "correct_critical": 0,
+        "critical_to_warning": 0,
+        "critical_to_normal": 22,
+        "mean_p_critical": 0.2894733649999999,
+        "mean_p_warning": 0.32436173045454547,
+        "mean_p_normal": 0.38616490590909097
+      },
+      "6238836357": {
+        "total_critical_windows": 6,
+        "correct_critical": 1,
+        "critical_to_warning": 2,
+        "critical_to_normal": 3,
+        "mean_p_critical": 0.32143040833333336,
+        "mean_p_warning": 0.3512251883333333,
+        "mean_p_normal": 0.3273443833333334
+      },
+      "6238840043": {
+        "total_critical_windows": 3,
+        "correct_critical": 0,
+        "critical_to_warning": 1,
+        "critical_to_normal": 2,
+        "mean_p_critical": 0.3069323766666667,
+        "mean_p_warning": 0.31576295666666665,
+        "mean_p_normal": 0.3773046533333333
+      },
+      "6238842343": {
+        "total_critical_windows": 9,
+        "correct_critical": 3,
+        "critical_to_warning": 0,
+        "critical_to_normal": 6,
+        "mean_p_critical": 0.3175021688888889,
+        "mean_p_warning": 0.3081878344444444,
+        "mean_p_normal": 0.3743100111111111
+      }
+    }
+  }
+}

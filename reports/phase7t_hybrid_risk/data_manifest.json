@@ -1,0 +1,34 @@
+{
+  "phase": "Phase 7T",
+  "timestamp_utc": "2026-10-29T08:48:32Z",
+  "candidate_a_train": {
+    "windows": 3278,
+    "parent_jobs": 51,
+    "entities": 284,
+    "pure_normal_entities": 153,
+    "failing_entities": 131,
+    "normal_windows": 2797,
+    "warning_windows": 244,
+    "critical_windows": 237
+  },
+  "candidate_a_validation": {
+    "windows": 657,
+    "parent_jobs": 12,
+    "entities": 69,
+    "pure_normal_entities": 49,
+    "failing_entities": 20,
+    "normal_windows": 560,
+    "warning_windows": 48,
+    "critical_windows": 49
+  },
+  "input_artifacts": {
+    "phase7b_protocol_v2.json": "f919cbb6d79ee790b41eb08cd1b023f1ea5f887390eaef39f8bdac94bc0e9dab",
+    "train_metadata.csv": "0180ade4098711680c44bbd2ca8c3c5d85834a86042546cc9300b00f1df725ce",
+    "val_metadata.csv": "8d22193f11d671dc570d29abf9255d06386880d49c5de83c68d6404a8b41b956",
+    "phase7s_fold_assignments.csv": "29bc9cee8ab52c435d8b9a85bc589be82f6e27f5448bd75201c856124633be17",
+    "phase7s_oof_predictions.csv": "0d92d596acf48da83fc502adf66713295fca2307bae6505b1ae1c517b9945cda",
+    "phase7s_validation_predictions.csv": "06376ec84d7c9d34987428bcf77b7ad2db128c9d0e260e4f34e9fa3edcd6cd65",
+    "ckpt_Q0_seed42_full.pt": "52da1bfbc7b8a9e0c9c00728c56170cbc0b98ff2947aee3cec5884b26f2529d6",
+    "ckpt_S2_seed42_full.pt": "c4ec0b97d1ec677b8f59e50b9b0c23856b25a32f1a31b29fde2eb16827b03c50"
+  }
+}

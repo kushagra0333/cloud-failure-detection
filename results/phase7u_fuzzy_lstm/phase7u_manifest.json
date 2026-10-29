@@ -1,0 +1,116 @@
+{
+  "manifest_version": "1.0",
+  "phase": "Phase 7U",
+  "timestamp_utc": "2026-10-29T09:04:20Z",
+  "operational_verdict": "NO_OPERATIONAL_WINNER",
+  "audit_status": "AUDIT_PASSED",
+  "governance_verified": true,
+  "deliverables_count": 22,
+  "deliverables": {
+    "phase7u_design.md": {
+      "bytes": 2943,
+      "sha256": "0795d95138fb62e6ff7b8522f7b660fe280d313356308db2bea229c99ecd9bea",
+      "path": "results/phase7u_fuzzy_lstm/phase7u_design.md"
+    },
+    "phase7u_config.json": {
+      "bytes": 794,
+      "sha256": "2b522dca9728d4bdab2522b9fe612db08b7b99ff602042fb7eaf02112f709a8c",
+      "path": "results/phase7u_fuzzy_lstm/phase7u_config.json"
+    },
+    "preflight_audit.json": {
+      "bytes": 397,
+      "sha256": "fc278b2ab7c233c7dacff669171e8e4252be197b5e5612f7f6e53eb64acba1a8",
+      "path": "results/phase7u_fuzzy_lstm/preflight_audit.json"
+    },
+    "discrepancy_ledger.csv": {
+      "bytes": 1268,
+      "sha256": "d3d63c6ee245dcef80451abae1a9d2e7b5ddc4646a4be84d05e0a4423723a931",
+      "path": "results/phase7u_fuzzy_lstm/discrepancy_ledger.csv"
+    },
+    "data_manifest.json": {
+      "bytes": 769,
+      "sha256": "56838991d6cecab26a57f6abd8455b77b9acdad53c584aefd9bfcdaa515d1c39",
+      "path": "results/phase7u_fuzzy_lstm/data_manifest.json"
+    },
+    "integrity_checks.json": {
+      "bytes": 942,
+      "sha256": "2838138b9feff03be0a90425df65a2e0ccfaf40a2d99289b040b35b47d32622e",
+      "path": "results/phase7u_fuzzy_lstm/integrity_checks.json"
+    },
+    "fuzzy_membership_functions.json": {
+      "bytes": 1523,
+      "sha256": "a0cd6d4a615897cbaa4c9e2eedc97cc6c8cdd6c30d5a6c8e38225cece47e9565",
+      "path": "results/phase7u_fuzzy_lstm/fuzzy_membership_functions.json"
+    },
+    "fuzzy_rule_base.json": {
+      "bytes": 2098,
+      "sha256": "dbfa50e389fac6e625aaa1acf0f7b5ff66720a47434c82377bb2d337746fa641",
+      "path": "results/phase7u_fuzzy_lstm/fuzzy_rule_base.json"
+    },
+    "fuzzy_unit_test_results.json": {
+      "bytes": 2931,
+      "sha256": "1e7aa16dfc24f6dd884b0e60967f526f09678fc3320dd7a0cc964b2207e4ef21",
+      "path": "results/phase7u_fuzzy_lstm/fuzzy_unit_test_results.json"
+    },
+    "oof_fuzzy_predictions.csv": {
+      "bytes": 3509844,
+      "sha256": "06efd61b62e4657b3c7c087bb3f5ec94a73e8898d8bbd55a6fa5d629e737fbb3",
+      "path": "results/phase7u_fuzzy_lstm/oof_fuzzy_predictions.csv"
+    },
+    "frozen_operating_policy.json": {
+      "bytes": 1091,
+      "sha256": "3a472ead1108a3530b0f690d787e297918bb487de854a73bce762782f771f603",
+      "path": "results/phase7u_fuzzy_lstm/frozen_operating_policy.json"
+    },
+    "threshold_selection_results.csv": {
+      "bytes": 51828,
+      "sha256": "b3ecff7f1fc782e8113f22af99666466bf6f6abcadab4b5a08dc1ceccab46203",
+      "path": "results/phase7u_fuzzy_lstm/threshold_selection_results.csv"
+    },
+    "validation_fuzzy_predictions.csv": {
+      "bytes": 701265,
+      "sha256": "b83c270fb8a2602c4e3d8111b203e5628207bbc3ff55eefa51385cb0f3753bec",
+      "path": "results/phase7u_fuzzy_lstm/validation_fuzzy_predictions.csv"
+    },
+    "per_seed_metrics.csv": {
+      "bytes": 5790,
+      "sha256": "bcc14f23a71ab36fd7e1fb10f4e3150bae498c0ebf580ca00cc55281d0e7916b",
+      "path": "results/phase7u_fuzzy_lstm/per_seed_metrics.csv"
+    },
+    "confusion_matrices.csv": {
+      "bytes": 3316,
+      "sha256": "19871badf7e50204f6deab318d7665c22d44686ae2e45280f50c947fafb577b9",
+      "path": "results/phase7u_fuzzy_lstm/confusion_matrices.csv"
+    },
+    "operational_gate_summary.csv": {
+      "bytes": 1848,
+      "sha256": "27e5e14d36376e6d29bba5bc11403d301a1cb809639a0eda024eec1486c6f125",
+      "path": "results/phase7u_fuzzy_lstm/operational_gate_summary.csv"
+    },
+    "fuzzy_rule_explanations.csv": {
+      "bytes": 842,
+      "sha256": "427877b84925e21f2da40618a36221ae478c473126df50bf3cb8bcb812d4b109",
+      "path": "results/phase7u_fuzzy_lstm/fuzzy_rule_explanations.csv"
+    },
+    "parent_job_influence.csv": {
+      "bytes": 1292,
+      "sha256": "10ce5475d19ed0270877622c469d9eb34c903f91d312a5cfcd602e2879e926d2",
+      "path": "results/phase7u_fuzzy_lstm/parent_job_influence.csv"
+    },
+    "paired_comparison.csv": {
+      "bytes": 2036,
+      "sha256": "e175942422fafb7c1104736e02f127ae0e01c2bd99e158b90c42cf8101bdbce6",
+      "path": "results/phase7u_fuzzy_lstm/paired_comparison.csv"
+    },
+    "independent_audit_report.md": {
+      "bytes": 7354,
+      "sha256": "6282272717eafcad6478a9bac1718283d2a0396f2b14eb4015d00541a0fd2397",
+      "path": "results/phase7u_fuzzy_lstm/independent_audit_report.md"
+    },
+    "phase7u_final_report.md": {
+      "bytes": 21043,
+      "sha256": "6aeb3e248071d9931d0136d96f5cd53c644a1cd4330820f38b5d2c6f3af2f5d9",
+      "path": "results/phase7u_fuzzy_lstm/phase7u_final_report.md"
+    }
+  }
+}

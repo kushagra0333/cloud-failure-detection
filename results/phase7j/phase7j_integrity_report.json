@@ -1,0 +1,29 @@
+{
+  "report_id": "INTEGRITY-REPORT-PHASE-7J",
+  "timestamp_iso": "2026-10-28T22:05:00+05:30",
+  "status": "PASSED_ALL_CHECKS",
+  "audit_verifications": {
+    "candidate_a_test_accessed": false,
+    "phase6_confirmatory_holdout_accessed": false,
+    "models_retrained": false,
+    "models_altered": false,
+    "previous_artifacts_overwritten": false,
+    "confirmatory_testing_authorized": false,
+    "predictions_source": "results/phase7i/phase7i_validation_predictions.csv",
+    "metadata_source": "data/processed/phase7c/val_metadata.csv",
+    "validation_windows_count": 657,
+    "probabilities_finite_and_bounded": true,
+    "row_sums_approx_one": true,
+    "max_row_sum_error": 1.360000000394379e-07,
+    "ties_p1_equal_p2_count": 0,
+    "total_evaluated_operating_points": 804,
+    "predeclared_threshold_grid_preserved": true
+  },
+  "input_hashes": {
+    "phase7i_validation_predictions": "9e405514b98e043409585b3e2b1120a68d75afcb10d982667bd6b20661d6f1fc",
+    "val_metadata": "8d22193f11d671dc570d29abf9255d06386880d49c5de83c68d6404a8b41b956",
+    "train_metadata": "0180ade4098711680c44bbd2ca8c3c5d85834a86042546cc9300b00f1df725ce",
+    "y_val": "eb968a74ae86dcc574f3341055ff45ca9fcf77ec5a1b4cee5ad8cb4c1e2631b9",
+    "y_train": "355ca59b1609780181fabe8f06c6ab51cc5c53cfbec91cb822d76b8e373fab1e"
+  }
+}

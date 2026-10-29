@@ -1,0 +1,24 @@
+{
+  "timestamp_utc": "2026-10-29T09:15:34Z",
+  "audited_partitions_count": 14,
+  "trace_identity": "Google Borg Cluster Trace (May 2011, 29 days)",
+  "candidate_a_train_val": {
+    "windows": 3935,
+    "unique_entities": 353,
+    "unique_parent_jobs": 63,
+    "status": "Repeatedly used for model fitting, feature scaling, and threshold selection through Phase 7U"
+  },
+  "alternative_partitions_summary": {
+    "candidate_b": "100% entity (412/412) and parent-job (74/74) overlap with Candidate A development pool. Not independent.",
+    "chronological_partitions": "Extracted from the same May 2011 Borg trace. Contains 171 to 240 entities overlapping with Candidate A Dev. Not independent.",
+    "historical_phase1_5_partitions": "Random entity split of the same Borg trace. Contains 53 to 245 entities overlapping with Candidate A Dev. Not independent.",
+    "synthetic_benchmark": "Directory exists but contains 0 files. No synthetic benchmark data available.",
+    "raw_data": "Contains sample task usage and event logs for the same Borg trace. Not an independent cluster."
+  },
+  "prohibited_partitions_summary": {
+    "candidate_a_test": "1,025 windows across 59 entities and 11 parent jobs. Inspected in Phase 7D. Prohibited by Phase 7B Evaluation Protocol v2.1.",
+    "phase6_confirmatory_holdouts": "Designated as virgin confirmatory holdouts in Phase 6. Strictly prohibited from inspection or evaluation."
+  },
+  "external_cluster_traces_present": false,
+  "eligible_independent_cohorts_found": 0
+}

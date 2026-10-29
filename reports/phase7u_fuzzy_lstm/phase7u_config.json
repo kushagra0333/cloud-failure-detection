@@ -1,0 +1,32 @@
+{
+  "phase": "Phase 7U",
+  "system": "Interpretable Fuzzy Inference for LSTM-Based Failure Prediction",
+  "inputs": [
+    "R_rel (S2)",
+    "R_abs (S0)"
+  ],
+  "critical_margin_source": "S2",
+  "critical_margin_threshold": 0.5,
+  "input_breakpoints": {
+    "R_rel": {
+      "q20": 0.092291516,
+      "q50": 0.182063795,
+      "q80": 0.32295263
+    },
+    "R_abs": {
+      "q20": 0.096816158,
+      "q50": 0.26665084,
+      "q80": 0.62482592
+    }
+  },
+  "rules_count": 9,
+  "inference_engine": "Mamdani Min-Max Centroid",
+  "threshold_grid_steps": 201,
+  "selected_threshold": 1.0,
+  "operational_gates": {
+    "gate_1a_episode_recall_min": 70.0,
+    "gate_1b_critical_recall_min": 50.0,
+    "gate_2a_entity_far_max": 10.0,
+    "gate_2b_window_fpr_max": 5.0
+  }
+}

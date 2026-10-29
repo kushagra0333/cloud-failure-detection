@@ -1,0 +1,303 @@
+{
+  "evaluation_partition": "Development Validation Set (m_val, N=1,015)",
+  "disclaimer": "Development-validation results only. These do NOT represent confirmatory holdout performance.",
+  "date_evaluated": "2026-10-27",
+  "models": {
+    "random_forest": {
+      "macro_f1": 0.717406574275175,
+      "accuracy": 0.9123152709359605,
+      "warning_recall": 0.2916666666666667,
+      "critical_recall": 0.6504854368932039,
+      "class_metrics": {
+        "NORMAL": {
+          "precision": 0.9128540305010894,
+          "recall": 0.9976190476190476,
+          "f1": 0.9533560864618885,
+          "support": 840
+        },
+        "WARNING": {
+          "precision": 0.875,
+          "recall": 0.2916666666666667,
+          "f1": 0.4375,
+          "support": 72
+        },
+        "CRITICAL": {
+          "precision": 0.9178082191780822,
+          "recall": 0.6504854368932039,
+          "f1": 0.7613636363636364,
+          "support": 103
+        }
+      },
+      "confusion_matrix": [
+        [
+          838,
+          2,
+          0
+        ],
+        [
+          45,
+          21,
+          6
+        ],
+        [
+          35,
+          1,
+          67
+        ]
+      ],
+      "pr_auc": {
+        "pr_auc_warning": 0.4695638222717289,
+        "pr_auc_warning_is_prevalence": false,
+        "pr_auc_critical": 0.7812316363631459,
+        "pr_auc_critical_is_prevalence": false
+      },
+      "episode_metrics": {
+        "total_episodes": 61,
+        "detected_episodes": 46,
+        "detection_rate_pct": 75.40983606557377,
+        "lead_time_mean_sec": 576.204347826087,
+        "lead_time_mean_min": 9.60340579710145,
+        "lead_time_median_sec": 331.14999999999964,
+        "lead_time_median_min": 5.519166666666661,
+        "lead_time_min_sec": 53.100000000000364,
+        "lead_time_max_sec": 1786.0,
+        "total_pure_normal_entities": 42,
+        "false_alarm_entities": 0,
+        "false_alarm_entity_rate_pct": 0.0
+      },
+      "window_fpr": {
+        "false_positive_windows": 2,
+        "denominator_windows": 840,
+        "fpr_pct": 0.2380952380952381
+      },
+      "entity_far": {
+        "false_alarm_entities": 0,
+        "denominator_entities": 42,
+        "far_pct": 0.0
+      },
+      "total_evaluated_windows": 1015
+    },
+    "temporal_lstm": {
+      "macro_f1": 0.6364591716293794,
+      "accuracy": 0.8886699507389163,
+      "warning_recall": 0.18055555555555555,
+      "critical_recall": 0.6407766990291263,
+      "class_metrics": {
+        "NORMAL": {
+          "precision": 0.9103982300884956,
+          "recall": 0.9797619047619047,
+          "f1": 0.9438073394495413,
+          "support": 840
+        },
+        "WARNING": {
+          "precision": 0.5416666666666666,
+          "recall": 0.18055555555555555,
+          "f1": 0.2708333333333333,
+          "support": 72
+        },
+        "CRITICAL": {
+          "precision": 0.7586206896551724,
+          "recall": 0.6407766990291263,
+          "f1": 0.6947368421052632,
+          "support": 103
+        }
+      },
+      "confusion_matrix": [
+        [
+          823,
+          7,
+          10
+        ],
+        [
+          48,
+          13,
+          11
+        ],
+        [
+          33,
+          4,
+          66
+        ]
+      ],
+      "pr_auc": {
+        "pr_auc_warning": 0.33275079622752896,
+        "pr_auc_warning_is_prevalence": false,
+        "pr_auc_critical": 0.7407886329433546,
+        "pr_auc_critical_is_prevalence": false
+      },
+      "episode_metrics": {
+        "total_episodes": 61,
+        "detected_episodes": 47,
+        "detection_rate_pct": 77.04918032786885,
+        "lead_time_mean_sec": 564.4106382978722,
+        "lead_time_mean_min": 9.406843971631202,
+        "lead_time_median_sec": 335.5,
+        "lead_time_median_min": 5.591666666666667,
+        "lead_time_min_sec": 53.100000000000364,
+        "lead_time_max_sec": 1786.0,
+        "total_pure_normal_entities": 42,
+        "false_alarm_entities": 2,
+        "false_alarm_entity_rate_pct": 4.761904761904762
+      },
+      "window_fpr": {
+        "false_positive_windows": 17,
+        "denominator_windows": 840,
+        "fpr_pct": 2.0238095238095237
+      },
+      "entity_far": {
+        "false_alarm_entities": 2,
+        "denominator_entities": 42,
+        "far_pct": 4.761904761904762
+      },
+      "total_evaluated_windows": 1015
+    },
+    "compact_transformer": {
+      "macro_f1": 0.6400851305710756,
+      "accuracy": 0.8886699507389163,
+      "warning_recall": 0.20833333333333334,
+      "critical_recall": 0.6213592233009708,
+      "class_metrics": {
+        "NORMAL": {
+          "precision": 0.9144444444444444,
+          "recall": 0.9797619047619047,
+          "f1": 0.9459770114942528,
+          "support": 840
+        },
+        "WARNING": {
+          "precision": 0.5172413793103449,
+          "recall": 0.20833333333333334,
+          "f1": 0.297029702970297,
+          "support": 72
+        },
+        "CRITICAL": {
+          "precision": 0.7441860465116279,
+          "recall": 0.6213592233009708,
+          "f1": 0.6772486772486772,
+          "support": 103
+        }
+      },
+      "confusion_matrix": [
+        [
+          823,
+          6,
+          11
+        ],
+        [
+          46,
+          15,
+          11
+        ],
+        [
+          31,
+          8,
+          64
+        ]
+      ],
+      "pr_auc": {
+        "pr_auc_warning": 0.2790684535687019,
+        "pr_auc_warning_is_prevalence": false,
+        "pr_auc_critical": 0.7472983645460876,
+        "pr_auc_critical_is_prevalence": false
+      },
+      "episode_metrics": {
+        "total_episodes": 61,
+        "detected_episodes": 48,
+        "detection_rate_pct": 78.68852459016394,
+        "lead_time_mean_sec": 561.7458333333333,
+        "lead_time_mean_min": 9.362430555555555,
+        "lead_time_median_sec": 331.14999999999964,
+        "lead_time_median_min": 5.519166666666661,
+        "lead_time_min_sec": 53.100000000000364,
+        "lead_time_max_sec": 1786.0,
+        "total_pure_normal_entities": 42,
+        "false_alarm_entities": 1,
+        "false_alarm_entity_rate_pct": 2.380952380952381
+      },
+      "window_fpr": {
+        "false_positive_windows": 17,
+        "denominator_windows": 840,
+        "fpr_pct": 2.0238095238095237
+      },
+      "entity_far": {
+        "false_alarm_entities": 1,
+        "denominator_entities": 42,
+        "far_pct": 2.380952380952381
+      },
+      "total_evaluated_windows": 1015
+    },
+    "representation_hybrid": {
+      "macro_f1": 0.6459576673212992,
+      "accuracy": 0.8758620689655172,
+      "warning_recall": 0.25,
+      "critical_recall": 0.6601941747572816,
+      "class_metrics": {
+        "NORMAL": {
+          "precision": 0.9156214367160775,
+          "recall": 0.955952380952381,
+          "f1": 0.9353523587652883,
+          "support": 840
+        },
+        "WARNING": {
+          "precision": 0.391304347826087,
+          "recall": 0.25,
+          "f1": 0.3050847457627119,
+          "support": 72
+        },
+        "CRITICAL": {
+          "precision": 0.7391304347826086,
+          "recall": 0.6601941747572816,
+          "f1": 0.6974358974358974,
+          "support": 103
+        }
+      },
+      "confusion_matrix": [
+        [
+          803,
+          24,
+          13
+        ],
+        [
+          43,
+          18,
+          11
+        ],
+        [
+          31,
+          4,
+          68
+        ]
+      ],
+      "pr_auc": {
+        "pr_auc_warning": 0.30562053539676837,
+        "pr_auc_warning_is_prevalence": false,
+        "pr_auc_critical": 0.7513442998892756,
+        "pr_auc_critical_is_prevalence": false
+      },
+      "episode_metrics": {
+        "total_episodes": 61,
+        "detected_episodes": 49,
+        "detection_rate_pct": 80.32786885245902,
+        "lead_time_mean_sec": 597.1489795918367,
+        "lead_time_mean_min": 9.952482993197277,
+        "lead_time_median_sec": 335.5,
+        "lead_time_median_min": 5.591666666666667,
+        "lead_time_min_sec": 53.100000000000364,
+        "lead_time_max_sec": 1786.0,
+        "total_pure_normal_entities": 42,
+        "false_alarm_entities": 3,
+        "false_alarm_entity_rate_pct": 7.142857142857142
+      },
+      "window_fpr": {
+        "false_positive_windows": 37,
+        "denominator_windows": 840,
+        "fpr_pct": 4.404761904761905
+      },
+      "entity_far": {
+        "false_alarm_entities": 3,
+        "denominator_entities": 42,
+        "far_pct": 7.142857142857142
+      },
+      "total_evaluated_windows": 1015
+    }
+  }
+}

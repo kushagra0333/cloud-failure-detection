@@ -1,0 +1,96 @@
+{
+  "manifest_version": "1.0",
+  "phase": "Phase 7I \u2014 Controlled Loss-Weighting Experiment",
+  "timestamp": "2026-10-28T21:30:00+05:30",
+  "protocol_id": "PROTOCOL-PHASE-7I-01",
+  "safeguards_verification": {
+    "candidate_a_test_accessed": false,
+    "phase6_confirmatory_holdout_accessed": false,
+    "prior_phase_artifacts_overwritten": false,
+    "confirmatory_testing_authorized": false
+  },
+  "conditions": {
+    "condition_A": {
+      "name": "Condition A \u2014 Unweighted baseline",
+      "weights": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "checkpoint": "models/checkpoints_phase7i/transformer_condA_unweighted.pt",
+      "checkpoint_sha256": "5a4a907d4a31891d5ded01a718956b74dccf5e525253501bc9acac270ee975c8"
+    },
+    "condition_B": {
+      "name": "Condition B \u2014 Moderate weighting",
+      "weights": [
+        1.0,
+        2.0,
+        2.0
+      ],
+      "checkpoint": "models/checkpoints_phase7i/transformer_condB_moderate.pt",
+      "checkpoint_sha256": "6461a8b81b9cedfea41b0871ff2e67cf1a0818c3a467c0df19236a8f85600a72"
+    },
+    "condition_C": {
+      "name": "Condition C \u2014 Stronger weighting",
+      "weights": [
+        1.0,
+        3.0,
+        3.0
+      ],
+      "checkpoint": "models/checkpoints_phase7i/transformer_condC_stronger.pt",
+      "checkpoint_sha256": "1329ee91520ac2733a51777cb7e6e83f6f989667e7d3639e1e30cc560e7d56bb"
+    },
+    "condition_D": {
+      "name": "Condition D \u2014 Higher weighting",
+      "weights": [
+        1.0,
+        5.0,
+        5.0
+      ],
+      "checkpoint": "models/checkpoints_phase7i/transformer_condD_higher.pt",
+      "checkpoint_sha256": "3cf9c3b6ba97021d254f1beb6b23b2c9a25324c1c591c0ec7db23a59487e4ef8"
+    }
+  },
+  "artifacts": {
+    "phase7i_calibration_metrics.json": {
+      "path": "results/phase7i/phase7i_calibration_metrics.json",
+      "size_bytes": 5776,
+      "sha256": "78cc1dbfc5f477c6c79776f2703be5d89e036c23292d861082d840337a404eb5"
+    },
+    "phase7i_comparison.csv": {
+      "path": "results/phase7i/phase7i_comparison.csv",
+      "size_bytes": 1226,
+      "sha256": "22967bd649503347369f624f03fc99e0ab9bc55f95b78f9105cd6edd89b4a878"
+    },
+    "phase7i_integrity_report.json": {
+      "path": "results/phase7i/phase7i_integrity_report.json",
+      "size_bytes": 1992,
+      "sha256": "e02301c8d41b90e5077e39524f5dbb328999ddf4d8ef9bd4884adde492eaf9e8"
+    },
+    "phase7i_metrics.json": {
+      "path": "results/phase7i/phase7i_metrics.json",
+      "size_bytes": 13041,
+      "sha256": "8b86329f39385063b4c49f8bb5122fab7e16a1d4f1a54cb8c96cf96fd8761a1c"
+    },
+    "phase7i_per_job_analysis.csv": {
+      "path": "results/phase7i/phase7i_per_job_analysis.csv",
+      "size_bytes": 4410,
+      "sha256": "e2e4d68b6d1c3120d88566f62340a2101567d4ab87f86fec0b6b8c54b1140cbf"
+    },
+    "phase7i_protocol.json": {
+      "path": "results/phase7i/phase7i_protocol.json",
+      "size_bytes": 4082,
+      "sha256": "0b03c7dbf9d9ccb313b36f27777b14674c906bb85b56686ecd119d4cb832445e"
+    },
+    "phase7i_validation_predictions.csv": {
+      "path": "results/phase7i/phase7i_validation_predictions.csv",
+      "size_bytes": 149783,
+      "sha256": "9e405514b98e043409585b3e2b1120a68d75afcb10d982667bd6b20661d6f1fc"
+    },
+    "phase7i_report.md": {
+      "path": "results/phase7i/phase7i_report.md",
+      "size_bytes": 20962,
+      "sha256": "993154521ad72c5149e5def90dab26a40bf7216f9dc709619307ef28cd67bdd2"
+    }
+  }
+}

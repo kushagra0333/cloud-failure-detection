@@ -1,0 +1,10 @@
+policy,policy_name,seed,gate_1a_episode_recall,gate_1a_passed,gate_1b_critical_recall,gate_1b_passed,gate_2a_entity_far,gate_2a_passed,gate_2b_window_fpr,gate_2b_passed,all_4_gates_passed
+V0,Historical Raw Reference (th=0.50),42,0.0,False,0.0,False,0.0,True,0.0,True,False
+V1,Calibrated Primary Treatment (tau),42,0.0,False,0.0,False,0.0,True,0.0,True,False
+V3,Uncalibrated Diagnostic (tau),42,30.0,False,14.285714285714285,False,22.448979591836736,False,23.92857142857143,False,False
+V0,Historical Raw Reference (th=0.50),123,5.0,False,0.0,False,0.0,True,0.5357142857142857,True,False
+V1,Calibrated Primary Treatment (tau),123,0.0,False,0.0,False,0.0,True,0.0,True,False
+V3,Uncalibrated Diagnostic (tau),123,65.0,False,24.489795918367346,False,34.69387755102041,False,46.07142857142857,False,False
+V0,Historical Raw Reference (th=0.50),456,0.0,False,0.0,False,8.16326530612245,True,0.7142857142857143,True,False
+V1,Calibrated Primary Treatment (tau),456,0.0,False,0.0,False,0.0,True,0.0,True,False
+V3,Uncalibrated Diagnostic (tau),456,55.00000000000001,False,24.489795918367346,False,34.69387755102041,False,41.964285714285715,False,False

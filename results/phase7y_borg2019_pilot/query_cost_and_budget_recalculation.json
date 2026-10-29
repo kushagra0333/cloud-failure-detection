@@ -1,0 +1,38 @@
+{
+  "pricing_parameters": {
+    "standard_on_demand_price_per_tib_usd": 6.25,
+    "baseline_price_per_tib_usd": 5.0,
+    "bytes_per_tib": 1099511627776,
+    "strict_monetary_cap_usd": 0.125
+  },
+  "budget_cap_consistency_analysis": {
+    "legacy_cap_bytes": 25000000000,
+    "legacy_cap_cost_at_6_25_usd": 0.1421,
+    "legacy_cap_cost_at_5_00_usd": 0.1137,
+    "legacy_cap_violates_0_125_at_6_25": true,
+    "explanation": "A 25 GB (25,000,000,000 bytes) cap at $6.25/TiB yields $0.1421 USD, exceeding the $0.125 cap by $0.0171 USD (+13.7%)."
+  },
+  "revised_aligned_guardrails": {
+    "exact_theoretical_max_bytes_at_6_25": 21990232555.52,
+    "configured_hard_byte_cap": 21000000000,
+    "configured_hard_byte_cap_readable": "21,000,000,000 bytes (21.0 GB)",
+    "cost_at_6_25_usd": 0.1194,
+    "cost_at_5_00_usd": 0.0955,
+    "within_0_125_budget": true
+  },
+  "sandbox_no_billing_evaluation": {
+    "sandbox_monthly_quota_bytes": 1099511627776,
+    "sandbox_monthly_quota_readable": "1 TiB / calendar month",
+    "revised_cap_quota_utilization_pct": 1.91,
+    "sandbox_remaining_bytes_after_cap": 1078511627776,
+    "sandbox_marginal_cost_usd": 0.0,
+    "quota_exhaustion_governance": "Sandbox queries do not incur paid charges. However, if monthly usage across all sandbox queries exceeds 1 TiB, BigQuery halts execution with QuotaExceededError. Sandbox queries are NOT unconditionally free beyond 1 TiB."
+  },
+  "provisional_estimates_status": {
+    "earlier_estimate_bytes": 18400000000,
+    "earlier_estimate_usd": 0.092,
+    "earlier_estimate_events": 125000,
+    "classification": "PROVISIONAL_THEORETICAL_ESTIMATE",
+    "evidence_basis": "Calculated analytically from uncompressed column widths in protobuf schemas and published daily event volumes for cell_a. MUST NOT be represented as a verified service response. Actual BigQuery service dry run will provide the true billable bytes once credentials are provided."
+  }
+}

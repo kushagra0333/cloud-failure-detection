@@ -1,0 +1,66 @@
+{
+  "manifest_version": "1.0",
+  "phase": "Phase 7V",
+  "timestamp_utc": "2026-10-29T09:15:34Z",
+  "operational_verdict": "NO_INDEPENDENT_COHORT_AVAILABLE",
+  "audit_status": "AUDIT_PASSED",
+  "governance_verified": true,
+  "deliverables_count": 12,
+  "deliverables": {
+    "phase7v_design.md": {
+      "bytes": 2301,
+      "sha256": "f5e663c6468cfb844cc50410b3c846452fb25fd4d00f76184e930c2d954f1c10",
+      "path": "results/phase7v_external_generalization/phase7v_design.md"
+    },
+    "phase7v_config.json": {
+      "bytes": 587,
+      "sha256": "f66388dc78213085c83e3ac498c16c0b4b68534de0ec2551f32bfc17805ce6fa",
+      "path": "results/phase7v_external_generalization/phase7v_config.json"
+    },
+    "cohort_inventory.csv": {
+      "bytes": 3435,
+      "sha256": "f9a22dd51db35c59cc2c813c0b21fe3605c5a8aff00a717a4349c9c0533a5cdf",
+      "path": "results/phase7v_external_generalization/cohort_inventory.csv"
+    },
+    "cohort_provenance_audit.json": {
+      "bytes": 1533,
+      "sha256": "d861a419a8c88f40f0756060c7b2803bb80b1351d156295fb312c213678d7fa9",
+      "path": "results/phase7v_external_generalization/cohort_provenance_audit.json"
+    },
+    "independence_decision.json": {
+      "bytes": 1098,
+      "sha256": "369d9de696f14de2f62ec163bdc3559f61ae6333a7e78ed688ec057aa5ea3575",
+      "path": "results/phase7v_external_generalization/independence_decision.json"
+    },
+    "frozen_artifact_compatibility.csv": {
+      "bytes": 1482,
+      "sha256": "585dc9396c6fa28048b1ec46967b2a2e0616dcd9baef08652f823d29fc37db77",
+      "path": "results/phase7v_external_generalization/frozen_artifact_compatibility.csv"
+    },
+    "evaluation_protocol.json": {
+      "bytes": 2103,
+      "sha256": "064b4edfbd8cf2a9fce0d89206a4aca126f6d23dad55ba3f64d59e021c797f8e",
+      "path": "results/phase7v_external_generalization/evaluation_protocol.json"
+    },
+    "data_manifest.json": {
+      "bytes": 1077,
+      "sha256": "9eeb4505c388f9b9502da6ec0e113fce412c5ca7fc02cc0620f8fc599a5de3a4",
+      "path": "results/phase7v_external_generalization/data_manifest.json"
+    },
+    "integrity_checks.json": {
+      "bytes": 653,
+      "sha256": "ac2112bfc651afe986ddc1bbdacaaf9354f1e8d9f64b09558b9595e1f98d84c9",
+      "path": "results/phase7v_external_generalization/integrity_checks.json"
+    },
+    "generalization_audit.md": {
+      "bytes": 8973,
+      "sha256": "00d94dcdc0e7efcf1183741b5bcb86d4952d2d338b50515cfd76c3852cecb632",
+      "path": "results/phase7v_external_generalization/generalization_audit.md"
+    },
+    "phase7v_final_report.md": {
+      "bytes": 11091,
+      "sha256": "b71d55b32f6dfeb378b6f7bb764d09f60c53a7557815ae82dca2612c4a3e55b6",
+      "path": "results/phase7v_external_generalization/phase7v_final_report.md"
+    }
+  }
+}

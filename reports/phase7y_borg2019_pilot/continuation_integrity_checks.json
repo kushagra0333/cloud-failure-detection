@@ -1,0 +1,24 @@
+{
+  "timestamp_utc": "2026-10-29T10:40:04.920672+00:00",
+  "candidate_a_test_protected": true,
+  "phase6_confirmatory_protected": true,
+  "zero_model_training_enforced": true,
+  "zero_synthetic_data_generated": true,
+  "zero_fabricated_service_responses": true,
+  "historical_7y_files_preserved_intact": true,
+  "historical_files_checked_count": 15,
+  "protected_paths_audit": [
+    {
+      "path": "C:\\Users\\hp\\Desktop\\Research project\\data\\processed\\candidate_a_test_windows.parquet",
+      "exists": false
+    },
+    {
+      "path": "C:\\Users\\hp\\Desktop\\Research project\\data\\processed\\test_windows.parquet",
+      "exists": false
+    },
+    {
+      "path": "C:\\Users\\hp\\Desktop\\Research project\\results\\phase6_confirmatory",
+      "exists": false
+    }
+  ]
+}

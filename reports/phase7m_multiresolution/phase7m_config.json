@@ -1,0 +1,91 @@
+{
+  "experiment_name": "Phase 7M Multi-Resolution Temporal Redesign and Critical-Failure Detection",
+  "research_question": "Can a multi-resolution temporal model preserve short-term signals associated with imminent failures while incorporating longer-term trends, improving genuine Critical Recall and episode interception without violating existing false-alarm limits?",
+  "hypothesis": "A model that separately represents recent fine-grained telemetry and longer-term causal trends may improve Critical-event discrimination compared with a flat long-sequence LSTM, because the recent and historical signals can contribute different information.",
+  "models": {
+    "M0": {
+      "name": "M0_Baseline_L5",
+      "description": "Historical Phase 7L baseline 2-layer LSTM on recent L=5 steps (25 min)",
+      "param_count": 61955,
+      "stream_A": "Recent 5 steps (25 min)",
+      "stream_B": "None"
+    },
+    "M1": {
+      "name": "M1_Recent_Only_Control",
+      "description": "Recent 5-step control with unified multi-resolution architecture (history omitted)",
+      "param_count": 62467,
+      "stream_A": "Recent 5 steps (25 min)",
+      "stream_B": "None"
+    },
+    "M2": {
+      "name": "M2_Multi_Resolution_Treatment",
+      "description": "Multi-resolution treatment combining Stream A (recent 5 steps) and Stream B (93 historical summary features from 35-min history)",
+      "param_count": 67027,
+      "stream_A": "Recent 5 steps (25 min)",
+      "stream_B": "93 causal summary features (mean, std, trend) from 7 historical steps (35 min)"
+    }
+  },
+  "temporal_streams": {
+    "stream_A": {
+      "name": "Recent Telemetry",
+      "steps": 5,
+      "span_minutes": 25.0,
+      "span_seconds": 1500.0,
+      "relative_window": "t - 20m to t",
+      "features_per_step": 31
+    },
+    "stream_B": {
+      "name": "Historical Trend Summaries",
+      "steps": 7,
+      "span_minutes": 35.0,
+      "span_seconds": 2100.0,
+      "relative_window": "t - 55m to t - 25m",
+      "summary_features": 93,
+      "summary_definitions": [
+        "hist_mean_all: Mean across 7 historical steps (31 dims)",
+        "hist_std_all: Standard deviation across 7 historical steps (31 dims)",
+        "hist_trend_delta: Late history mean (steps 4..6) minus Early history mean (steps 0..3) (31 dims)"
+      ]
+    }
+  },
+  "conditions": {
+    "cond_B": {
+      "name": "Moderate [1,2,2] (Pre-declared Primary Baseline)",
+      "weights": [1.0, 2.0, 2.0]
+    },
+    "cond_A": {
+      "name": "Unweighted [1,1,1] (Reference Baseline)",
+      "weights": [1.0, 1.0, 1.0]
+    }
+  },
+  "seeds": [42, 123, 456],
+  "hyperparameters": {
+    "lstm_input_dim": 31,
+    "lstm_hidden_dim": 64,
+    "lstm_num_layers": 2,
+    "hist_input_dim": 93,
+    "hist_hidden_dim": 32,
+    "hist_out_dim": 16,
+    "classifier_hidden_dim": 64,
+    "num_classes": 3,
+    "dropout": 0.2,
+    "optimizer": "Adam",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "batch_size": 64,
+    "max_epochs": 25,
+    "checkpoint_selection": "Minimum validation loss"
+  },
+  "evaluation_protocol": {
+    "predeclared_primary_threshold": 0.50,
+    "threshold_steps": 201,
+    "threshold_range": [0.0, 1.0],
+    "exploratory_margin_grid": [-0.10, -0.05, -0.02, 0.0, 0.02, 0.05, 0.10],
+    "operational_gates": {
+      "gate_1a_episode_recall": ">= 70.0%",
+      "gate_1b_critical_recall": ">= 50.0%",
+      "gate_2a_entity_far": "<= 10.0%",
+      "gate_2b_window_fpr": "<= 5.0%"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "protocol_name": "Phase 7X Cell-Aware Independent Group Split",
+  "version": "1.0-FROZEN",
+  "timestamp_utc": "2026-10-29T09:46:38Z",
+  "design_principle": "Deterministic cell-level allocation guaranteeing zero entity, task, or collection leakage across partitions.",
+  "cell_allocations": {
+    "training_cells": {
+      "cells": [
+        "clusterdata_2019_a",
+        "clusterdata_2019_b",
+        "clusterdata_2019_c",
+        "clusterdata_2019_d"
+      ],
+      "role": "Model training and representation learning",
+      "cell_fraction": 0.5
+    },
+    "validation_cells": {
+      "cells": [
+        "clusterdata_2019_e",
+        "clusterdata_2019_f"
+      ],
+      "role": "Hyperparameter tuning, threshold calibration, and architecture selection",
+      "cell_fraction": 0.25
+    },
+    "test_cells": {
+      "cells": [
+        "clusterdata_2019_g",
+        "clusterdata_2019_h"
+      ],
+      "role": "One-shot confirmatory test evaluation; permanently sealed during development",
+      "cell_fraction": 0.25
+    }
+  },
+  "leakage_safeguards": [
+    "1. Cell partitioning strictly prevents machine, task, and alloc overlap across Train, Val, and Test.",
+    "2. Within-cell parent jobs (collection_id) are strictly contained within their originating cell.",
+    "3. Global composite key (cell_id + collection_id + instance_index) prevents cross-cell ID collision.",
+    "4. Scaler fitting policy: All feature standardizers, rolling transforms, and imputation medians fitted strictly on training cells."
+  ],
+  "generalization_scope_qualification": "Generalization across held-out cells represents 'within-source held-out-cell generalization' across Google production infrastructure, not universal cross-provider generalization."
+}

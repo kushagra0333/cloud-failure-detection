@@ -1,0 +1,85 @@
+{
+  "phase": "Phase 7Q",
+  "title": "Cross-Job Predictive Signal Audit and Causal Workload-Relative Features",
+  "governing_protocol": "results/phase7b_1/phase7b_evaluation_protocol_v2.json",
+  "random_seeds": [42, 123, 456],
+  "authorized_data": {
+    "train_split": "results/phase7a_4/candidate_a_job_grouped_split.csv",
+    "train_windows": 3278,
+    "train_parent_jobs": 51,
+    "val_windows": 657,
+    "val_episodes": 20,
+    "val_pure_normal_entities": 49,
+    "val_critical_windows": 49,
+    "val_warning_windows": 48,
+    "val_normal_windows": 560
+  },
+  "prohibited_data": [
+    "Candidate A Test",
+    "Phase 6 Holdout"
+  ],
+  "workstream_a": {
+    "focus": "Predictive signal audit and Phase 7P calibration re-audit",
+    "train_failure_prevalence": 0.146736,
+    "val_failure_prevalence": 0.147641,
+    "constant_prevalence_brier": 0.125844,
+    "audit_verdict": "RANKING_SIGNAL_WEAK_OR_INCONSISTENT"
+  },
+  "workstream_b": {
+    "q0_model": {
+      "name": "Matched N2 Multi-Resolution Baseline",
+      "architecture": "MultiResolutionLSTMClassifier",
+      "stream_A_dim": 31,
+      "stream_A_seq_len": 5,
+      "stream_B_dim": 93,
+      "lstm_hidden": 64,
+      "lstm_layers": 2,
+      "dropout": 0.2,
+      "total_parameters": 67027
+    },
+    "q1_model": {
+      "name": "Causal Workload-Relative Deviation Treatment",
+      "architecture": "MultiResolutionRelativeLSTMClassifier",
+      "stream_A_dim": 31,
+      "stream_A_seq_len": 5,
+      "stream_B_dim": 93,
+      "branch_C_dim": 31,
+      "branch_C_mlp": [32, 16],
+      "clipping_bounds": [-5.0, 5.0],
+      "scale_floor_source": "Candidate A Train 10th percentile positive historical scale",
+      "lstm_hidden": 64,
+      "lstm_layers": 2,
+      "dropout": 0.2,
+      "total_parameters": 69603,
+      "parameter_delta": 2576
+    },
+    "training": {
+      "optimizer": "Adam",
+      "learning_rate": 0.001,
+      "weight_decay": 0.0001,
+      "batch_size": 64,
+      "max_epochs": 25,
+      "loss_function": "AsymmetricCriticalMarginLoss",
+      "loss_class_weights": [1.0, 2.0, 2.0],
+      "auxiliary_margin": 0.50,
+      "lambda_crit": 0.10
+    },
+    "fold_strategy": {
+      "n_folds": 5,
+      "grouping_field": "parent_job_id",
+      "target_jobs_per_fold": "10-11",
+      "leakage_constraint": "Zero parent job overlap across training and validation folds"
+    },
+    "fixed_operating_policy": {
+      "failure_threshold": 0.50,
+      "critical_margin_threshold": 0.50,
+      "decision_rule": "If P_fail < 0.50 -> Normal (0); Else if z2 - z1 >= 0.50 -> Critical (2); Else -> Warning (1)"
+    }
+  },
+  "operational_gates": {
+    "gate_1a_episode_recall_min": 70.0,
+    "gate_1b_critical_recall_min": 50.0,
+    "gate_2a_pure_normal_entity_far_max": 10.0,
+    "gate_2b_normal_window_fpr_max": 5.0
+  }
+}

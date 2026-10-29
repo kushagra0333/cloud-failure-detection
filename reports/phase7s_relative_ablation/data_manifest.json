@@ -1,0 +1,48 @@
+{
+  "manifest_version": "1.0",
+  "phase": "Phase 7S",
+  "timestamp_utc": "2026-10-29T08:22:18Z",
+  "governance": {
+    "candidate_a_test_accessed": false,
+    "phase6_holdout_accessed": false,
+    "validation_used_for_tuning": false
+  },
+  "input_artifacts": {
+    "data/processed/phase7c/train_metadata.csv": {
+      "bytes": 164062,
+      "sha256": "0180ade4098711680c44bbd2ca8c3c5d85834a86042546cc9300b00f1df725ce"
+    },
+    "data/processed/phase7c/val_metadata.csv": {
+      "bytes": 32677,
+      "sha256": "8d22193f11d671dc570d29abf9255d06386880d49c5de83c68d6404a8b41b956"
+    },
+    "data/processed/phase7c/y_train.npy": {
+      "bytes": 26352,
+      "sha256": "355ca59b1609780181fabe8f06c6ab51cc5c53cfbec91cb822d76b8e373fab1e"
+    },
+    "data/processed/phase7c/y_val.npy": {
+      "bytes": 5384,
+      "sha256": "eb968a74ae86dcc574f3341055ff45ca9fcf77ec5a1b4cee5ad8cb4c1e2631b9"
+    },
+    "results/phase7l_longer_context/standardized_data/X_train_l12.npy": {
+      "bytes": 4877792,
+      "sha256": "fb206d610772704c58ce8b5675d648172a05205f9abd7476cb825799b6874bd1"
+    },
+    "results/phase7l_longer_context/standardized_data/X_val_l12.npy": {
+      "bytes": 977744,
+      "sha256": "56edfd3b58e87ff5357a4f330ca711f7f983e7d7dda4fb70efc0862e6e96e795"
+    },
+    "results/phase7q_signal_audit/fold_assignments.csv": {
+      "bytes": 157504,
+      "sha256": "29bc9cee8ab52c435d8b9a85bc589be82f6e27f5448bd75201c856124633be17"
+    },
+    "results/phase7q_signal_audit/oof_predictions.csv": {
+      "bytes": 1875072,
+      "sha256": "c4a35638e44d70152505f0c63c80a032a1403c7fa362ab1b503cce4de362f3e5"
+    },
+    "results/phase7q_signal_audit/validation_predictions.csv": {
+      "bytes": 399019,
+      "sha256": "b1518822153264f1ac0b35f140f2a4d2daa01a69354a960da5e543a5bc2da151"
+    }
+  }
+}

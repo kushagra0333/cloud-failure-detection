@@ -1,0 +1,346 @@
+{
+  "investigation_metadata": {
+    "phase": "Phase 7Z",
+    "title": "External Container Telemetry Access Feasibility",
+    "timestamp_utc": "2026-10-29T13:14:58.898593+00:00",
+    "project_root": "C:\\Users\\hp\\Desktop\\Research project",
+    "investigation_type": "FEASIBILITY_INVESTIGATION_ONLY",
+    "governing_rules": {
+      "zero_data_extraction": true,
+      "zero_model_training": true,
+      "zero_table_materialization": true,
+      "protected_holdouts_accessed": false,
+      "budget_increased": false
+    }
+  },
+  "query_checksums": {
+    "candidate_a_sql_sha256": "8abdbd8bdf20444f1282a82e01b30de0f8b9182c1d706a94b940c5c054ee395e",
+    "original_baseline_sql_sha256": "889e2841f0983248a9f1d4c2f4f917ae7733b2038f7b939a66e098f60699a8e6",
+    "candidate_d_sql_sha256": "0476eefca0076cf7ac18d571160b7060a8dbbee29951746eafda5955837dec14"
+  },
+  "current_caps": {
+    "scan_cap_bytes": 21000000000,
+    "scan_cap_readable": "21,000,000,000 bytes (21.0 GB)",
+    "budget_cap_usd": 0.125,
+    "on_demand_rate_usd_per_tib": 6.25
+  },
+  "candidate_sources_inventory": [
+    {
+      "source_id": "google_borg_2019",
+      "name": "Google Borg ClusterData 2019 (v3)",
+      "data_owner": "Google LLC / Google Research (Wilkes et al.)",
+      "distribution_platform": "Google BigQuery (`google.com:google-cluster-data`)",
+      "storage_type": "Cloud-native columnar BigQuery tables (8 cells: clusterdata_2019_a to h)",
+      "gcs_bucket_status": "No public open flat-file GCS bucket; trace is distributed exclusively via BigQuery",
+      "access_permissions": "Publicly queryable with Google Cloud ADC (authenticated under project canvas-advice-464215-n1)",
+      "licensing": "Creative Commons Attribution 4.0 International (CC-BY 4.0)",
+      "runtime_telemetry": {
+        "available": true,
+        "metrics": [
+          "average_usage.cpus (mean core utilization)",
+          "maximum_usage.cpus (peak core utilization)",
+          "average_usage.memory (canonical RAM bytes)",
+          "assigned_memory (allocation limit)",
+          "page_cache_memory (kernel page cache)",
+          "cycles_per_instruction (CPI histogram)"
+        ],
+        "temporal_resolution": "5-minute periodic aggregated windows (300,000,000 us)",
+        "cadence_regularity": "Regular 300-second intervals"
+      },
+      "lifecycle_linkage": {
+        "available": true,
+        "join_key": "(collection_id, instance_index)",
+        "target_events": "type=5 (FAIL), type=6 (FINISH), type=4 (EVICT), type=7 (KILL), type=8 (LOST)",
+        "event_timestamp_resolution": "Microseconds (64-bit integer)"
+      },
+      "scientific_comparability": {
+        "task_comparability": "HIGH. Supports identical sequential container runtime failure prediction.",
+        "supports_3class_labels": true,
+        "supports_operational_gates": true,
+        "limitations": "Unpartitioned tables in BigQuery require 418.58 GB scan per telemetry query."
+      },
+      "external_provenance": "HIGH. May 2019 production cells across multiple data centers, completely independent of 2011 trace."
+    },
+    {
+      "source_id": "google_borg_2011",
+      "name": "Google Borg ClusterData 2011 (v2.1)",
+      "data_owner": "Google LLC / Google Research (Reiss et al.)",
+      "distribution_platform": "Google Cloud Storage (`gs://clusterdata-2011-2/`)",
+      "storage_type": "Flat gzip CSV shards (500 shards each for task_usage and task_events)",
+      "gcs_bucket_status": "Publicly accessible GCS bucket with requester-pays / public read",
+      "access_permissions": "Publicly readable via gsutil / python storage client",
+      "licensing": "Creative Commons Attribution 4.0 International (CC-BY 4.0)",
+      "runtime_telemetry": {
+        "available": true,
+        "metrics": [
+          "cpu_rate",
+          "canonical_memory_usage",
+          "assigned_memory_usage",
+          "unmapped_page_cache",
+          "total_page_cache",
+          "cycles_per_instruction",
+          "memory_accesses_per_instruction",
+          "disk_io_time"
+        ],
+        "temporal_resolution": "5-minute periodic aggregated windows (300 seconds)",
+        "cadence_regularity": "Exact 300.00s in 99.56% of windows"
+      },
+      "lifecycle_linkage": {
+        "available": true,
+        "join_key": "(job_id, task_index)",
+        "target_events": "event_type=3 (FAIL), event_type=4 (FINISH), event_type=2 (EVICT), event_type=5 (KILL)",
+        "event_timestamp_resolution": "Microseconds"
+      },
+      "scientific_comparability": {
+        "task_comparability": "Identical schema to existing research.",
+        "supports_3class_labels": true,
+        "supports_operational_gates": true,
+        "limitations": "CRITICAL VALIDITY LIMITATION: Borg 2011 is a single 12,500-machine cluster. Candidate A, B, C, D and Phase 6 Confirmatory holdouts were all drawn from this same trace. Sourcing additional shards from 2011 does NOT provide an independent external cluster/workload cohort."
+      },
+      "external_provenance": "NONE. Identical 2011 single-cell source; violates external cohort independence."
+    },
+    {
+      "source_id": "alibaba_cluster_trace_2018",
+      "name": "Alibaba Cluster Trace 2018 (v2018)",
+      "data_owner": "Alibaba Group (Alibaba System Software Team)",
+      "distribution_platform": "GitHub (`alibaba/clusterdata`) and OSS HTTP mirrors",
+      "storage_type": "Compressed CSV files (~50 GB compressed)",
+      "gcs_bucket_status": "Not hosted on GCS; distributed via Aliyun OSS / GitHub releases",
+      "access_permissions": "Public download via HTTP without authentication",
+      "licensing": "Mulan Permissive Software License / Academic Research Agreement",
+      "runtime_telemetry": {
+        "available": true,
+        "metrics": [
+          "cpu_utilization_pct",
+          "memory_utilization_pct"
+        ],
+        "temporal_resolution": "Variable / heterogeneous (10s to 5-minute sampling)",
+        "cadence_regularity": "Irregular; requires extensive binning and forward-fill imputation"
+      },
+      "lifecycle_linkage": {
+        "available": true,
+        "join_key": "(instance_name, task_name)",
+        "target_events": "status=Failed, status=Terminated, status=Cancelled, status=Interrupted",
+        "event_timestamp_resolution": "Seconds"
+      },
+      "scientific_comparability": {
+        "task_comparability": "MODERATE. Focuses on Fuxi DAG batch jobs colocated with Sigma containers.",
+        "supports_3class_labels": true,
+        "supports_operational_gates": "Partial (requires temporal binning and synthetic window alignment).",
+        "limitations": "Missing hardware counters (no CPI or MAI); irregular sampling cadence; DAG failure dynamics differ from Borg long-running services."
+      },
+      "external_provenance": "VERY HIGH. Independent cloud provider, independent software stack, independent hardware."
+    },
+    {
+      "source_id": "azure_vm_traces",
+      "name": "Microsoft Azure Public Dataset (VM Traces 2017/2019/2021)",
+      "data_owner": "Microsoft Azure Research",
+      "distribution_platform": "GitHub (`Azure/AzurePublicDataset`) / Azure Open Datasets",
+      "storage_type": "CSV / Parquet files",
+      "gcs_bucket_status": "Not on GCS; hosted on Azure Blob Storage",
+      "access_permissions": "Publicly downloadable",
+      "licensing": "Open Data / MIT License",
+      "runtime_telemetry": {
+        "available": true,
+        "metrics": [
+          "min_cpu",
+          "max_cpu",
+          "avg_cpu"
+        ],
+        "temporal_resolution": "5-minute binned intervals",
+        "cadence_regularity": "Regular"
+      },
+      "lifecycle_linkage": {
+        "available": false,
+        "join_key": "vm_id",
+        "target_events": "FATAL DEFECT: Only records vm_created and vm_deleted. No failure reasons or exit codes.",
+        "event_timestamp_resolution": "Seconds"
+      },
+      "scientific_comparability": {
+        "task_comparability": "DISQUALIFIED. Conflates normal customer deallocations, autoscaling, and crashes. Violates Rules 2 & 3.",
+        "supports_3class_labels": false,
+        "supports_operational_gates": false,
+        "limitations": "Cannot be used without fraudulently treating routine VM deletions as failures."
+      },
+      "external_provenance": "VERY HIGH, but disqualified due to lack of ground-truth failure labels."
+    },
+    {
+      "source_id": "lanl_cfdr",
+      "name": "Los Alamos National Laboratory Computer Failure Data Repository",
+      "data_owner": "Los Alamos National Laboratory / USENIX",
+      "distribution_platform": "CFDR public archive",
+      "storage_type": "Text incident logs and CSV records",
+      "gcs_bucket_status": "Not on GCS",
+      "access_permissions": "Public download",
+      "licensing": "Public Domain / Open Access",
+      "runtime_telemetry": {
+        "available": false,
+        "metrics": [],
+        "temporal_resolution": "None (Discrete incident intervals)",
+        "cadence_regularity": "N/A"
+      },
+      "lifecycle_linkage": {
+        "available": false,
+        "join_key": "node_id",
+        "target_events": "Administrative trouble ticket logs",
+        "event_timestamp_resolution": "Minutes/Hours"
+      },
+      "scientific_comparability": {
+        "task_comparability": "DISQUALIFIED. Administrative remedy incident logs, zero continuous container telemetry time-series.",
+        "supports_3class_labels": false,
+        "supports_operational_gates": false,
+        "limitations": "Incompatible with temporal sequence models."
+      },
+      "external_provenance": "VERY HIGH, but modality incompatible."
+    },
+    {
+      "source_id": "ornl_clusterwise_summit",
+      "name": "Oak Ridge National Laboratory ClusterWise (Summit Supercomputer)",
+      "data_owner": "Oak Ridge National Laboratory / US DOE",
+      "distribution_platform": "ORNL data repository",
+      "storage_type": "Parquet archives (>500 GB)",
+      "gcs_bucket_status": "Not on GCS",
+      "access_permissions": "Public research access",
+      "licensing": "Open Government Data License",
+      "runtime_telemetry": {
+        "available": true,
+        "metrics": [
+          "node_power",
+          "gpu_temperature",
+          "hbm_utilization"
+        ],
+        "temporal_resolution": "1-second to 1-minute telemetry",
+        "cadence_regularity": "Regular"
+      },
+      "lifecycle_linkage": {
+        "available": false,
+        "join_key": "node_id / gpu_id",
+        "target_events": "Hardware node outages and thermal throttling",
+        "event_timestamp_resolution": "Seconds"
+      },
+      "scientific_comparability": {
+        "task_comparability": "DISQUALIFIED. Physical supercomputing hardware and GPU thermal modeling, not cloud container task failure.",
+        "supports_3class_labels": false,
+        "supports_operational_gates": false,
+        "limitations": "Completely disparate workload and target domain."
+      },
+      "external_provenance": "VERY HIGH, but domain incompatible."
+    }
+  ],
+  "storage_and_cost_options_audit": {
+    "approach_a_prefiltered_subset": {
+      "name": "Approach A: Prefiltered Telemetry Subset",
+      "feasibility": "INFEASIBLE_NONEXISTENT",
+      "evidence": "Forensic audit of Google's public repositories, BigQuery datasets, and official documentation confirms that Google does not host a pre-filtered or sampled sub-table of instance_usage. The public distribution contains only the full 2.4 TiB multi-cell dataset.",
+      "assumptions": "Assumes a third-party or official pre-sliced subset exists. Disproven.",
+      "estimated_cost_usd": 0.0,
+      "limitations": "No legitimate prefiltered subset exists in the public domain.",
+      "required_approvals": "None (nonexistent)."
+    },
+    "approach_b_partitioned_clustered_source": {
+      "name": "Approach B: Documented Partitioned/Clustered Source",
+      "feasibility": "INFEASIBLE_NONEXISTENT",
+      "evidence": "Direct BigQuery API inspection (client.get_table) confirms table `google.com:google-cluster-data.clusterdata_2019_a.instance_usage` has `time_partitioning: None` and `clustering_fields: None`. All 8 cells (a through h) follow this identical unpartitioned schema.",
+      "assumptions": "Assumes public table supports partition pruning. Disproven.",
+      "estimated_cost_usd": 2.3793,
+      "limitations": "Columnar scan must scan all 7.575 billion rows for every projected column (60.6 GB per 8-byte column).",
+      "required_approvals": "None (unpartitioned table exists, but costs $2.38 USD)."
+    },
+    "approach_c_scientifically_defensible_sampling": {
+      "name": "Approach C: Sampling Without Scanning Entire Unpartitioned Source",
+      "feasibility": "TECHNICALLY_INEFFECTIVE",
+      "evidence": "Empirically verified by Candidate C dry run (SHA-256: fc50770cd8427c7233633da3abfb9f559303d1b0355403d037d5ea75fbc73785): adding `WHERE collection_id IN (5 jobs) AND time <= 3.6e9 us` resulted in exactly 418,578,205,568 bytes scanned (0.0% reduction). BigQuery TABLESAMPLE SYSTEM is block-based and destroys continuous temporal sequences (L=12 windows cannot be reconstructed from random block rows).",
+      "assumptions": "Assumes BigQuery row filters reduce scanned bytes on unpartitioned tables. Disproven.",
+      "estimated_cost_usd": 2.3793,
+      "limitations": "Row filters prune zero bytes in BigQuery on-demand; block sampling destroys time-series continuity.",
+      "required_approvals": "None."
+    },
+    "approach_d_authorized_partitioned_staging": {
+      "name": "Approach D: Authorized Partitioned Staging Workflow",
+      "feasibility": "FEASIBLE_WITH_STAGING_INGESTION_BUDGET",
+      "architecture": "Execute a one-time DDL query to extract a 1-day slice into a user-owned partitioned table `canvas-advice-464215-n1.borg2019_staging.instance_usage_partitioned` partitioned by `TIMESTAMP_TRUNC(start_time, DAY)`.",
+      "costs": {
+        "initial_ingestion_scan_bytes": 418578205568,
+        "initial_ingestion_cost_usd": 2.3793,
+        "storage_size_gb": 25.0,
+        "monthly_storage_cost_usd": 0.5,
+        "subsequent_query_scan_bytes": 14000000000,
+        "subsequent_query_cost_usd": 0.083
+      },
+      "assumptions": "Initial ingestion query is funded ($2.38 USD) or absorbed by Sandbox free tier quota. User project has BigQuery dataset creation permissions.",
+      "limitations": "Initial staging query still incurs the 418.58 GB scan; introduces ongoing GCP active storage maintenance.",
+      "required_approvals": "Financial authorization for $2.38 initial scan + $0.50/mo storage, or Sandbox quota authorization + table creation authorization."
+    },
+    "approach_e_bigquery_budget_amendment": {
+      "name": "Approach E: Formally Approved BigQuery Budget Amendment",
+      "feasibility": "DIRECTLY_ACTIONABLE_RECOMMENDED",
+      "architecture": "Formally amend the project's scan cap from 21 GB to 450 GB (or 0.45 TB) and monetary budget from $0.125 USD to $2.50 USD, or authorize execution under BigQuery Sandbox / Free Tier (consuming 38.1% of the monthly 1 TiB free allocation at $0.00 marginal cost). Directly executes Candidate A ([phase7y_candidate_a_projection_reduction.sql](file:///C:/Users/hp/Desktop/Research%20project/results/phase7y_borg2019_pilot/phase7y_candidate_a_projection_reduction.sql)).",
+      "costs": {
+        "measured_dry_run_scan_bytes": 418578205568,
+        "measured_dry_run_scan_readable": "418,578,205,568 bytes (389.83 GiB / 418.58 GB)",
+        "estimated_cost_usd_at_6_25": 2.3793,
+        "marginal_cost_under_sandbox_free_tier": 0.0,
+        "sandbox_monthly_quota_fraction_pct": 38.07
+      },
+      "assumptions": "Governing project authority formally approves $2.50 USD budget amendment or approves 418.58 GB consumption of user's BigQuery monthly 1 TiB free tier.",
+      "limitations": "Exceeds historical $0.125 cap by 19.03x.",
+      "required_approvals": "Formal project budget amendment and data extraction authorization from principal investigator / user."
+    }
+  },
+  "scientific_equivalence_audit": {
+    "prediction_task": "Imminent container runtime failure prediction using sequential sliding telemetry windows (L=12 steps / 60 minutes).",
+    "label_equivalence": {
+      "class_0_normal": "Entity active with no failure in (t, t + 25 min].",
+      "class_1_warning": "Imminent failure within 10 to 25 minutes (600 < tau <= 1500 s).",
+      "class_2_critical": "Imminent failure within 0 to 5 minutes (0 < tau <= 300 s).",
+      "status": "FULLY_COMPATIBLE on Google Borg 2019 (instance_usage + instance_events)."
+    },
+    "operational_gates_compatibility": {
+      "episode_recall_ge_70": {
+        "threshold": ">= 70%",
+        "supported_on_borg_2019": true,
+        "mechanism": "Consecutive pre-failure telemetry window sequences define failure episodes."
+      },
+      "genuine_critical_recall_ge_50": {
+        "threshold": ">= 50%",
+        "supported_on_borg_2019": true,
+        "mechanism": "Evaluated on windows observed within 5 minutes of verified FAIL event."
+      },
+      "pure_normal_entity_far_le_10": {
+        "threshold": "<= 10%",
+        "supported_on_borg_2019": true,
+        "mechanism": "Evaluated on purely successful collection/job entities."
+      },
+      "normal_window_fpr_le_5": {
+        "threshold": "<= 5%",
+        "supported_on_borg_2019": true,
+        "mechanism": "Evaluated across all non-failure sliding windows."
+      }
+    },
+    "single_cluster_generalization_boundary": "A pilot extracted from cell 'a' constitutes a single-cluster evaluation. Per governing rules, cross-cluster or cross-datacenter generalization CANNOT be claimed from a single cell. Cross-cell generalization requires evaluating across disjoint cells (e.g., train on cell 'a', validate on cell 'b')."
+  },
+  "validation_and_leakage_safeguards": {
+    "temporal_ordering": "Strict chronological split: e.g., Day 1 00:00-18:00 UTC (Train/Val) and 18:00-24:00 UTC (Test holdout).",
+    "group_separation": "Group by parent_collection_id (or collection_id) to eliminate co-occurrence leakage between splits.",
+    "join_semantics": "Event window join: earliest terminal event occurring strictly after window end_time (time >= end_time). Never join future events preceding the window.",
+    "censoring_protocol": "Tasks running past the observation cutoff without terminal events must be marked CENSORED/UNKNOWN and excluded from training failure windows.",
+    "minimum_schema_and_metadata_required_before_extraction": [
+      "1. Verified BigQuery table schema confirming column names and data types (COMPLETED in Phase 7Y).",
+      "2. Pre-extraction SHA-256 checksum verification of SQL query (COMPLETED: Candidate A hash 33fa4a6968f47b9f8fe269ceb7adf1f72c4356292708f986a1f14e5ef82d09c4).",
+      "3. Verified service dry run confirming exact byte count (COMPLETED: 418,578,205,568 bytes).",
+      "4. Formal project budget amendment or Sandbox quota authorization (PENDING USER DECISION)."
+    ],
+    "protected_partitions_status": {
+      "candidate_a_test_accessed": false,
+      "phase6_confirmatory_accessed": false,
+      "status": "PROTECTED_UNACCESSED"
+    }
+  },
+  "risks_and_unresolved_questions": [
+    "1. Quota Consumption: Candidate A consumes 418.58 GB (38.1%) of the user's monthly 1 TiB BigQuery free tier quota. If other projects share this account, quota contention may occur.",
+    "2. Alloc Set Interference: In Borg 2019, tasks in alloc sets share resource reservations. Candidate A filters to non-alloc collections (alloc_collection_id IS NULL OR alloc_collection_id = 0) to avoid shared-resource distortion.",
+    "3. Label Sparsity: Borg task failure rates are historically 1-3%. The pilot cohort must use stratified collection sampling to ensure sufficient positive failure episodes."
+  ],
+  "recommended_next_step": "Present this feasibility report to the user and request a formal project decision: either (1) approve a BigQuery budget amendment to $2.50 USD / 450 GB (or authorize 418.58 GB consumption of Sandbox free tier) to execute Candidate A for container telemetry extraction, or (2) pivot the research to an offline-downloadable alternative such as Alibaba Cluster Trace 2018 (which requires an adapted experimental protocol for irregular sampling).",
+  "final_feasibility_verdict": "BUDGET_AMENDMENT_WOULD_BE_REQUIRED"
+}

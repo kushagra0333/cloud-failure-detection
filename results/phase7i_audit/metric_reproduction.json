@@ -1,0 +1,324 @@
+{
+  "audit_metadata": {
+    "phase": "Phase 7I-A",
+    "description": "Deterministic metric reproduction and discrepancy verification"
+  },
+  "conditions": {
+    "condition_A": {
+      "condition_name": "Condition A (Unweighted [1,1,1])",
+      "confusion_matrix": [
+        [
+          560,
+          0,
+          0
+        ],
+        [
+          48,
+          0,
+          0
+        ],
+        [
+          49,
+          0,
+          0
+        ]
+      ],
+      "classification_metrics": {
+        "accuracy": 0.852359208523592,
+        "balanced_accuracy": 0.3333333333333333,
+        "macro_f1": 0.30676526978909885,
+        "per_class": {
+          "normal": {
+            "precision": 0.852359208523592,
+            "recall": 1.0,
+            "f1": 0.9202958093672966,
+            "support": 560
+          },
+          "warning": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 48
+          },
+          "critical": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 49
+          }
+        }
+      },
+      "operational_metrics": {
+        "episode_recall": {
+          "detected": 0,
+          "total": 20,
+          "percentage": 0.0
+        },
+        "critical_recall": {
+          "correct": 0,
+          "total": 49,
+          "percentage": 0.0
+        },
+        "pure_normal_entity_far": {
+          "fa_entities": 0,
+          "total_entities": 49,
+          "percentage": 0.0
+        },
+        "normal_window_fpr": {
+          "fp_windows": 0,
+          "total_windows": 560,
+          "percentage": 0.0
+        },
+        "pure_normal_parent_job_far": {
+          "fa_jobs": 0,
+          "total_jobs": 4,
+          "percentage": 0.0
+        }
+      },
+      "calibration_metrics": {
+        "brier_score": 0.254436694743209,
+        "negative_log_likelihood": 0.5030542214141447,
+        "ece": 0.07402396922897805
+      },
+      "discrepancies_with_original_report": [],
+      "reproduction_exact_match": true
+    },
+    "condition_B": {
+      "condition_name": "Condition B (Moderate [1,2,2])",
+      "confusion_matrix": [
+        [
+          560,
+          0,
+          0
+        ],
+        [
+          48,
+          0,
+          0
+        ],
+        [
+          49,
+          0,
+          0
+        ]
+      ],
+      "classification_metrics": {
+        "accuracy": 0.852359208523592,
+        "balanced_accuracy": 0.3333333333333333,
+        "macro_f1": 0.30676526978909885,
+        "per_class": {
+          "normal": {
+            "precision": 0.852359208523592,
+            "recall": 1.0,
+            "f1": 0.9202958093672966,
+            "support": 560
+          },
+          "warning": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 48
+          },
+          "critical": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 49
+          }
+        }
+      },
+      "operational_metrics": {
+        "episode_recall": {
+          "detected": 0,
+          "total": 20,
+          "percentage": 0.0
+        },
+        "critical_recall": {
+          "correct": 0,
+          "total": 49,
+          "percentage": 0.0
+        },
+        "pure_normal_entity_far": {
+          "fa_entities": 0,
+          "total_entities": 49,
+          "percentage": 0.0
+        },
+        "normal_window_fpr": {
+          "fp_windows": 0,
+          "total_windows": 560,
+          "percentage": 0.0
+        },
+        "pure_normal_parent_job_far": {
+          "fa_jobs": 0,
+          "total_jobs": 4,
+          "percentage": 0.0
+        }
+      },
+      "calibration_metrics": {
+        "brier_score": 0.2821386410160333,
+        "negative_log_likelihood": 0.5584639455139717,
+        "ece": 0.1348377162390319
+      },
+      "discrepancies_with_original_report": [],
+      "reproduction_exact_match": true
+    },
+    "condition_C": {
+      "condition_name": "Condition C (Stronger [1,3,3])",
+      "confusion_matrix": [
+        [
+          560,
+          0,
+          0
+        ],
+        [
+          48,
+          0,
+          0
+        ],
+        [
+          49,
+          0,
+          0
+        ]
+      ],
+      "classification_metrics": {
+        "accuracy": 0.852359208523592,
+        "balanced_accuracy": 0.3333333333333333,
+        "macro_f1": 0.30676526978909885,
+        "per_class": {
+          "normal": {
+            "precision": 0.852359208523592,
+            "recall": 1.0,
+            "f1": 0.9202958093672966,
+            "support": 560
+          },
+          "warning": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 48
+          },
+          "critical": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 49
+          }
+        }
+      },
+      "operational_metrics": {
+        "episode_recall": {
+          "detected": 0,
+          "total": 20,
+          "percentage": 0.0
+        },
+        "critical_recall": {
+          "correct": 0,
+          "total": 49,
+          "percentage": 0.0
+        },
+        "pure_normal_entity_far": {
+          "fa_entities": 0,
+          "total_entities": 49,
+          "percentage": 0.0
+        },
+        "normal_window_fpr": {
+          "fp_windows": 0,
+          "total_windows": 560,
+          "percentage": 0.0
+        },
+        "pure_normal_parent_job_far": {
+          "fa_jobs": 0,
+          "total_jobs": 4,
+          "percentage": 0.0
+        }
+      },
+      "calibration_metrics": {
+        "brier_score": 0.3276564721321196,
+        "negative_log_likelihood": 0.6283256319538079,
+        "ece": 0.21972989588358022
+      },
+      "discrepancies_with_original_report": [],
+      "reproduction_exact_match": true
+    },
+    "condition_D": {
+      "condition_name": "Condition D (Higher [1,5,5])",
+      "confusion_matrix": [
+        [
+          560,
+          0,
+          0
+        ],
+        [
+          48,
+          0,
+          0
+        ],
+        [
+          49,
+          0,
+          0
+        ]
+      ],
+      "classification_metrics": {
+        "accuracy": 0.852359208523592,
+        "balanced_accuracy": 0.3333333333333333,
+        "macro_f1": 0.30676526978909885,
+        "per_class": {
+          "normal": {
+            "precision": 0.852359208523592,
+            "recall": 1.0,
+            "f1": 0.9202958093672966,
+            "support": 560
+          },
+          "warning": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 48
+          },
+          "critical": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 49
+          }
+        }
+      },
+      "operational_metrics": {
+        "episode_recall": {
+          "detected": 0,
+          "total": 20,
+          "percentage": 0.0
+        },
+        "critical_recall": {
+          "correct": 0,
+          "total": 49,
+          "percentage": 0.0
+        },
+        "pure_normal_entity_far": {
+          "fa_entities": 0,
+          "total_entities": 49,
+          "percentage": 0.0
+        },
+        "normal_window_fpr": {
+          "fp_windows": 0,
+          "total_windows": 560,
+          "percentage": 0.0
+        },
+        "pure_normal_parent_job_far": {
+          "fa_jobs": 0,
+          "total_jobs": 4,
+          "percentage": 0.0
+        }
+      },
+      "calibration_metrics": {
+        "brier_score": 0.41085525657744215,
+        "negative_log_likelihood": 0.744314952143749,
+        "ece": 0.32325574847357347
+      },
+      "discrepancies_with_original_report": [],
+      "reproduction_exact_match": true
+    }
+  }
+}

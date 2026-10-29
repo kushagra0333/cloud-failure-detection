@@ -1,0 +1,59 @@
+{
+  "phase": "Phase 7H \u2014 Critical-Label and Normalization Failure Audit",
+  "timestamp_utc": "2026-10-28T15:33:28.107234+00:00",
+  "environment": {
+    "os": "Windows 11",
+    "python_version": "3.11",
+    "torch_version": "2.14.1+cpu",
+    "numpy_version": "2.4.6",
+    "device": "cpu"
+  },
+  "safeguards_verification": {
+    "candidate_a_test_accessed": false,
+    "confirmatory_phase6_holdout_accessed": false,
+    "phase7b_to_7g_overwritten": false,
+    "quarantine_timestamp_preserved": "2026-10-26T15:06:19"
+  },
+  "protocol_amendment": {
+    "id": "PROTOCOL-AMENDMENT-PHASE7H-01",
+    "file": "results/phase7h/phase7h_protocol_amendment.json",
+    "sha256": "cdedb9ce89322f2ac35f9cff841a76d6625a19df2a66316cb76edbb82c2ff31c"
+  },
+  "audit_outputs": {
+    "critical_class_audit_row_level.csv": "a8efa5921989c60d83f56b85dd464a43a96318d2edf04a949b2cc0335494ae44",
+    "critical_class_audit_summary.json": "14ac7fbe2a42a26d3672f431ffd6a8e248a330dd7981044b56b2aedf40dedb92",
+    "temporal_semantics_audit.json": "cc6202933c9f28e4478a6c6876febc1d89ea136595ac495de6c209f893a39fe4",
+    "normalization_stability_audit.json": "f68c803ad03961b592ad0c0a970e09210465031368f0c4e2d7cc7e142de59026"
+  },
+  "ablation_models": {
+    "transformer_hierarchical_baseline": {
+      "name": "Ablation A: Existing Hierarchical Baseline (unfloored)",
+      "checkpoint": "models/checkpoints_phase7g/transformer_hierarchical.pt",
+      "sha256": "d6a271140810703525e61bcea6305719b6b2ea992729c9de4ae77976d13c84d6"
+    },
+    "transformer_hierarchical_floored": {
+      "name": "Ablation B: Hierarchical with Variance Floor (sigma_floor=0.05)",
+      "checkpoint": "models/checkpoints_phase7h/transformer_hierarchical_floored.pt",
+      "sha256": "b4de84c94ee31dc8ee66589716d45b99d100b279b5448be71f35a07b7b90a83a"
+    },
+    "transformer_hierarchical_robust": {
+      "name": "Ablation C: Robust Scaling (Median, MAD, Soft Tanh)",
+      "checkpoint": "models/checkpoints_phase7h/transformer_hierarchical_robust.pt",
+      "sha256": "36f119085853a88108618d67d39df3779dc3447314384f56b5f8d6249fc1a22d"
+    }
+  },
+  "results_artifacts": {
+    "validation_predictions.csv": "1f97e737afc7822a606229db9adb88460e1960639d779773efb86449ea9cf707",
+    "phase7h_ablation_metrics.json": "6d2e7553132fa1210372075b86105f613a0a1f440b629c1faf4f001d07364e94",
+    "decision_evaluation_results.json": "2fc85237d92e302e51cdaba0fd1aa06cf341280bae5f5825dfe37fd585f75337"
+  },
+  "operational_verdict": {
+    "gate_1_requirement": "Episode Recall >= 70.0% AND Critical Recall >= 50.0%",
+    "gate_2_requirement": "Pure-normal Entity FAR <= 10.0% AND Normal-window FPR <= 5.0%",
+    "gate_1_passed_models": [],
+    "gate_2_passed_models": [],
+    "both_gates_passed_models": [],
+    "test_evaluation_authorized": false,
+    "official_verdict": "NO_OPERATIONAL_WINNER"
+  }
+}

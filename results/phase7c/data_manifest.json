@@ -1,0 +1,64 @@
+{
+  "creation_timestamp_utc": "2026-10-28T09:08:09Z",
+  "duration_seconds": 0.22,
+  "candidate_split": "Candidate A (Seed 48, Job-Grouped)",
+  "features_count": 31,
+  "sequence_length": 5,
+  "scaler_sha256": "1170ef8689ec64594874f502d7b7ff5c3f195e188244d21cc8f975e31a0db5fb",
+  "partitions": {
+    "train": {
+      "windows": 3278,
+      "entities": 284,
+      "parent_jobs": 51,
+      "X_shape": [
+        3278,
+        5,
+        31
+      ],
+      "X_sha256": "6d3a7aca61f84732da301ede11c276afeafd7cbf863b2ce3b5ba4e71e843702d",
+      "y_sha256": "355ca59b1609780181fabe8f06c6ab51cc5c53cfbec91cb822d76b8e373fab1e",
+      "meta_sha256": "0180ade4098711680c44bbd2ca8c3c5d85834a86042546cc9300b00f1df725ce",
+      "class_distribution": {
+        "0": 2797,
+        "1": 244,
+        "2": 237
+      }
+    },
+    "val": {
+      "windows": 657,
+      "entities": 69,
+      "parent_jobs": 12,
+      "X_shape": [
+        657,
+        5,
+        31
+      ],
+      "X_sha256": "ce25dc6e5783730db200ef7c3ee85b9023be76b344f2982347ff28fb6bf7479e",
+      "y_sha256": "eb968a74ae86dcc574f3341055ff45ca9fcf77ec5a1b4cee5ad8cb4c1e2631b9",
+      "meta_sha256": "8d22193f11d671dc570d29abf9255d06386880d49c5de83c68d6404a8b41b956",
+      "class_distribution": {
+        "0": 560,
+        "1": 48,
+        "2": 49
+      }
+    },
+    "test": {
+      "windows": 1025,
+      "entities": 59,
+      "parent_jobs": 11,
+      "X_shape": [
+        1025,
+        5,
+        31
+      ],
+      "X_sha256": "1199fce77261166a19f8885b9d92f34fadf308af85b05f43dd55b6c67984ea14",
+      "y_sha256": "c073fe68540017728fd2ddde25bf7334c3b95cdcc760cd556764ca23a0c307b0",
+      "meta_sha256": "5bf69371833c4b90558afaf0f445244252bc6a6cc5a368cc2cc027d8a38fb4cf",
+      "class_distribution": {
+        "0": 921,
+        "1": 49,
+        "2": 55
+      }
+    }
+  }
+}

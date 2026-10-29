@@ -1,0 +1,13 @@
+run_tag,condition_id,seed,policy,gate_1a_episode_recall,gate_1a_passed,gate_1b_critical_recall,gate_1b_passed,gate_2a_entity_far,gate_2a_passed,gate_2b_window_fpr,gate_2b_passed,all_4_gates_passed
+N0_seed42,N0,42,Predeclared_Primary,0.0,False,0.0,False,2.0408163265306123,True,0.17857142857142858,True,False
+N0_seed123,N0,123,Predeclared_Primary,10.0,False,0.0,False,0.0,True,0.7142857142857143,True,False
+N0_seed456,N0,456,Predeclared_Primary,0.0,False,0.0,False,8.16326530612245,True,0.7142857142857143,True,False
+N1_seed42,N1,42,Predeclared_Primary,0.0,False,0.0,False,12.244897959183673,False,2.142857142857143,True,False
+N1_seed123,N1,123,Predeclared_Primary,15.0,False,0.0,False,12.244897959183673,False,3.214285714285714,True,False
+N1_seed456,N1,456,Predeclared_Primary,0.0,False,0.0,False,12.244897959183673,False,4.285714285714286,True,False
+N2_seed42,N2,42,Predeclared_Primary,0.0,False,0.0,False,0.0,True,0.0,True,False
+N2_seed123,N2,123,Predeclared_Primary,5.0,False,0.0,False,0.0,True,0.5357142857142857,True,False
+N2_seed456,N2,456,Predeclared_Primary,0.0,False,0.0,False,8.16326530612245,True,0.7142857142857143,True,False
+N3_seed42,N3,42,Predeclared_Primary,15.0,False,0.0,False,18.367346938775512,False,7.142857142857142,False,False
+N3_seed123,N3,123,Predeclared_Primary,55.00000000000001,False,0.0,False,24.489795918367346,False,23.57142857142857,False,False
+N3_seed456,N3,456,Predeclared_Primary,25.0,False,0.0,False,28.57142857142857,False,14.642857142857144,False,False

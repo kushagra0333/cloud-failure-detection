@@ -1,0 +1,60 @@
+{
+  "timestamp": "2026-10-29T01:10:00+05:30",
+  "auditor": "Independent ML Research Engineer Subsystem",
+  "governance": {
+    "candidate_a_split_sha256": "f84bc4fe54f8e0583e2ee52f49b2fbe8e6fcafb4f020c656985a1acc31bb4946",
+    "candidate_a_split_verified": true,
+    "candidate_a_test_accessed": false,
+    "candidate_a_test_historical_status": "INSPECTED_IN_PHASE_7D_NON_VIRGIN",
+    "phase_6_holdout_quarantined": true
+  },
+  "tensors": {
+    "train_count": 3278,
+    "val_count": 657,
+    "train_shape_l5": [
+      3278,
+      5,
+      31
+    ],
+    "val_shape_l5": [
+      657,
+      5,
+      31
+    ],
+    "train_shape_l12": [
+      3278,
+      12,
+      31
+    ],
+    "val_shape_l12": [
+      657,
+      12,
+      31
+    ],
+    "max_abs_diff_trailing_5_train": 0.0,
+    "max_abs_diff_trailing_5_val": 0.0,
+    "trailing_5_steps_bit_for_bit_match": true,
+    "train_l5_finite": true,
+    "val_l5_finite": true,
+    "train_l12_finite": true,
+    "val_l12_finite": true
+  },
+  "checkpoints": {
+    "total_checkpoints_verified": 12,
+    "all_epochs_and_losses_match": true
+  },
+  "labels": {
+    "val_counts": {
+      "0": 560,
+      "2": 49,
+      "1": 48
+    },
+    "counts_match_reconciled": true
+  },
+  "preprocessing": {
+    "fitted_split": "Candidate A Train only",
+    "train_window_count": 3278,
+    "feature_count": 31,
+    "validation_leakage": false
+  }
+}

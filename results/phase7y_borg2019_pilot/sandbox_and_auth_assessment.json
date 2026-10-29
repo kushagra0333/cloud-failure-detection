@@ -1,0 +1,35 @@
+{
+  "audit_timestamp_utc": "2026-10-29T10:40:04.916638+00:00",
+  "sdk_status": {
+    "google_cloud_bigquery_installed": true,
+    "version": "3.46.2"
+  },
+  "cli_status": {
+    "gcloud_cli_available": false,
+    "bq_cli_available": false
+  },
+  "environment_variables_detected": {
+    "GOOGLE_APPLICATION_CREDENTIALS": false,
+    "GCLOUD_PROJECT": false,
+    "GOOGLE_CLOUD_PROJECT": false,
+    "CLOUDSDK_CORE_PROJECT": false
+  },
+  "application_default_credentials_file_found": false,
+  "live_client_initialization": {
+    "authenticated": false,
+    "active_project": null,
+    "error_type": "DefaultCredentialsError",
+    "service_exception": "Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information."
+  },
+  "sandbox_evaluation": {
+    "sandbox_concept": "Google Cloud BigQuery Sandbox provides no-cost exploration without a billing account.",
+    "free_query_data_quota_bytes_per_month": 1099511627776,
+    "free_query_data_quota_readable": "1 TiB / calendar month",
+    "free_active_storage_quota_bytes": 10737418240,
+    "table_expiration_days": 60,
+    "unauthenticated_access_permitted": false,
+    "sandbox_authentication_requirement": "CRITICAL: BigQuery Sandbox DOES NOT permit anonymous, unauthenticated API calls. Even in Sandbox mode, all requests to bigquery.googleapis.com require an authenticated Google Cloud Project identifier and OAuth 2.0 / ADC bearer tokens. Without local ADC or service credentials, the BigQuery API client cannot initialize or execute queries.",
+    "quota_overage_behavior": "Queries exceeding 1 TiB/month are blocked with quota errors rather than billed."
+  },
+  "exact_blocker_summary": "Authentication failed via google.auth.exceptions.DefaultCredentialsError. Neither local ADC credentials (gcloud auth application-default login), nor GOOGLE_APPLICATION_CREDENTIALS, nor an authenticated Google Cloud Project ID are present. Because BigQuery Sandbox also enforces authenticated identity, live service query validation cannot be completed without user-provided credentials."
+}

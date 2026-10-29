@@ -1,0 +1,32 @@
+{
+  "scaler_path": "C:\\Users\\hp\\Desktop\\Research project\\configs\\fitted_scaler_phase7b.json",
+  "scaler_sha256": "a4af2a776cdb552a6de7a2f1f2cb469929ed485dbafa9bf60f8b87225413a6ae",
+  "features_count": 31,
+  "train_observations": 16390,
+  "splits": {
+    "train": {
+      "shape": [
+        3278,
+        5,
+        31
+      ],
+      "sha256": "ce1acdd2771745f8a487e55a1f53c631890971022d4694d94b2e33ef78636cf1"
+    },
+    "val": {
+      "shape": [
+        657,
+        5,
+        31
+      ],
+      "sha256": "3dd35cc58497710d8d7cbcb9983f176d1e560566688b5aa866945846eba84b9a"
+    },
+    "test": {
+      "shape": [
+        1025,
+        5,
+        31
+      ],
+      "sha256": "9c66ac3657453df0c355e6202cce086e634ff571e1135187e954ed1c938cee09"
+    }
+  }
+}

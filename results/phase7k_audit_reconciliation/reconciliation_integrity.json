@@ -1,0 +1,58 @@
+{
+  "reconciliation_phase": "Phase 7K-B",
+  "timestamp": "2026-10-29T00:30:00+05:30",
+  "project_root": "C:\\Users\\hp\\Desktop\\Research project",
+  "auditor": "Antigravity Reconciliation and Integrity Subsystem",
+  "governance": {
+    "candidate_a_train_size": 3278,
+    "candidate_a_val_size": 657,
+    "candidate_a_test_accessed": false,
+    "candidate_a_test_historical_status": "INSPECTED_IN_PHASE_7D_NON_VIRGIN",
+    "phase_6_holdout_quarantined": true,
+    "models_retrained": false,
+    "labels_modified": false,
+    "prior_artifacts_preserved": true
+  },
+  "label_reconciliation_verdict": {
+    "phase_7c_frozen_hash": "eb968a74ae86dcc574f3341055ff45ca9fcf77ec5a1b4cee5ad8cb4c1e2631b9",
+    "phase_7k_prediction_label_hash": "e7ae4d7482eecce769ec9e1cfe1199c5c702e986940df8a6de64550453672b32",
+    "total_rows_evaluated": 657,
+    "total_label_transitions": 0,
+    "label_distribution_actual": {
+      "normal_class_0": 560,
+      "warning_class_1": 48,
+      "critical_class_2": 49
+    },
+    "narrative_report_typographical_error": {
+      "reported_distribution": {
+        "normal": 569,
+        "warning": 20,
+        "critical": 68
+      },
+      "root_cause": "Typographical transcription error in scratch/generate_audit_report.py conflating 20 episodes with warning windows and hallucinating 569/20/68. Underlying calculation scripts strictly used 560/48/49.",
+      "impact_on_metric_calculations": "Zero impact. All 6,030 threshold evaluation rows were computed using the authoritative 560/48/49 labels."
+    },
+    "exit_status": "RESOLVED"
+  },
+  "denominator_reconciliation_verdict": {
+    "normal_window_fpr_denominator": 560,
+    "pure_normal_entity_far_denominator": 49,
+    "pure_normal_job_far_denominator": 4,
+    "episode_recall_denominator": 20,
+    "critical_recall_denominator": 49,
+    "warning_recall_denominator": 48,
+    "exit_status": "RESOLVED"
+  },
+  "episode_grouping_verdict": {
+    "episodes_count": 20,
+    "failing_entities_count": 20,
+    "merge_risk": "NONE",
+    "split_risk": "NONE",
+    "exit_status": "RESOLVED"
+  },
+  "phase_7l_gate_status": {
+    "evaluation_semantics_stable": true,
+    "phase_7l_authorized": true,
+    "preservation_of_scientific_verdict": "NO OPERATIONAL WINNER"
+  }
+}

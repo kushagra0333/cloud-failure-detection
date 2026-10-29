@@ -1,0 +1,54 @@
+{
+  "phase": "Phase 7T",
+  "description": "Relative-Primary Hybrid Risk Scoring and Cross-Job Robustness",
+  "formula": {
+    "equation": "R_hybrid = 0.80 * R_S2 + 0.20 * R_S0",
+    "weight_s2": 0.8,
+    "weight_s0": 0.2,
+    "critical_margin_source": "S2",
+    "critical_margin_formula": "z2_S2 - z1_S2",
+    "critical_margin_threshold": 0.5
+  },
+  "threshold_selection": {
+    "cohort": "Train_OOF_only",
+    "grid_start": 0.0,
+    "grid_end": 1.0,
+    "grid_steps": 201,
+    "grid_step_size": 0.005,
+    "eligibility_constraints": {
+      "pure_normal_entity_far_max": 10.0,
+      "normal_window_fpr_max": 5.0,
+      "scope": "all_seeds_must_pass"
+    },
+    "selection_priority": [
+      "1. Maximize mean Episode Recall across seeds",
+      "2. Maximize mean Genuine Critical Recall across seeds",
+      "3. Largest tau (conservative tie-break)"
+    ]
+  },
+  "seeds": [
+    42,
+    123,
+    456
+  ],
+  "cohorts": {
+    "train": {
+      "windows": 3278,
+      "parent_jobs": 51,
+      "entities": 284
+    },
+    "validation": {
+      "windows": 657,
+      "parent_jobs": 12,
+      "entities": 69,
+      "pure_normal_entities": 49,
+      "episodes": 20
+    }
+  },
+  "operational_gates": {
+    "gate_1a_episode_recall_min": 70.0,
+    "gate_1b_critical_recall_min": 50.0,
+    "gate_2a_entity_far_max": 10.0,
+    "gate_2b_window_fpr_max": 5.0
+  }
+}

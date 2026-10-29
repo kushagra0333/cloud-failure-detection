@@ -1,0 +1,10 @@
+{
+  "train_prevalence": 0.14673581452104942,
+  "validation_prevalence": 0.1476407914764079,
+  "constant_train_prev_brier_on_val": 0.1258438071519175,
+  "constant_val_prev_brier_on_val": 0.12584298816862774,
+  "constant_train_prev_nll_on_val": 0.41859814531084305,
+  "constant_val_prev_nll_on_val": 0.4185948802758172,
+  "phase7p_reported_cal_brier_mean": 0.12595513047744022,
+  "is_cal_brier_equal_to_prevalence_baseline": true
+}

@@ -1,0 +1,39 @@
+{
+  "assessment_timestamp_utc": "2026-10-29T09:46:38Z",
+  "target_public_dataset": "google.com:google-cluster-data",
+  "official_repository": "https://github.com/google/cluster-data",
+  "documentation_reference": "Google cluster-usage traces v3 (ClusterData 2019)",
+  "cells_available": [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h"
+  ],
+  "trace_time_span": "May 2019 (31 days)",
+  "total_compressed_scale": "~2.4 TiB",
+  "total_uncompressed_scale": ">10 TiB",
+  "environment_readiness": {
+    "gcp_credentials_configured": false,
+    "gcloud_cli_installed": false,
+    "bq_cli_installed": false,
+    "bigquery_sdk_installed": false
+  },
+  "query_cost_and_resource_estimates": {
+    "on_demand_query_rate_per_tib": "$5.00 USD (standard Google Cloud BigQuery rate)",
+    "free_tier_monthly_quota": "1 TiB / month",
+    "full_dataset_scan_estimate_cost": "$12.00 USD (~2.4 TiB scanned)",
+    "single_cell_pilot_scan_estimate_bytes": 18400000000,
+    "single_cell_pilot_scan_estimate_human": "~18.4 GB",
+    "single_cell_pilot_scan_estimate_cost": "$0.092 USD",
+    "expected_local_storage_raw_pilot": "~15 MB (compressed CSV)"
+  },
+  "blocker_details": {
+    "is_blocked": true,
+    "blocking_reason": "No Google Cloud project credentials or active billing account are configured in the execution environment, and the google-cloud-bigquery client library is not installed in the Python virtual environment.",
+    "protocol_action": "Per Phase 7X Stage A instructions, live query execution is suspended, synthetic data manufacturing is strictly forbidden, and the final operational verdict DATA_ACCESS_BLOCKED is declared."
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "manifest_version": "1.0",
+  "phase": "Phase 7R",
+  "timestamp_utc": "2026-10-29T08:00:54Z",
+  "operational_verdict": "NO_OPERATIONAL_WINNER",
+  "audit_status": "AUDIT_PASSED",
+  "governance_verified": true,
+  "deliverables_count": 22,
+  "deliverables": {
+    "phase7r_design.md": {
+      "bytes": 6655,
+      "sha256": "4e61c5cee89cb7d3dc917dc3207805158f2c1cb7ebf1859b9df236e40732c887",
+      "path": "results/phase7r_score_forensics/phase7r_design.md"
+    },
+    "phase7r_config.json": {
+      "bytes": 2235,
+      "sha256": "1faf6166a6d774f9dc292f5088175760c580a2662d3fffa90090e13943f9a384",
+      "path": "results/phase7r_score_forensics/phase7r_config.json"
+    },
+    "preflight_audit.json": {
+      "bytes": 1799,
+      "sha256": "331dc295cb4bf68ced6d26f7e06f1948e0155fa46787532e6a0798eb9fd6998a",
+      "path": "results/phase7r_score_forensics/preflight_audit.json"
+    },
+    "discrepancy_ledger.csv": {
+      "bytes": 1303,
+      "sha256": "618c80c858f453a1ca1e55eeb6aa363c4c06e1c26e6fe5983fa8759f7dd0077a",
+      "path": "results/phase7r_score_forensics/discrepancy_ledger.csv"
+    },
+    "data_manifest.json": {
+      "bytes": 3121,
+      "sha256": "f6b37ded67a24271ac4cad05219cf75ee2a8d4bda704d4064412617f6a5627f7",
+      "path": "results/phase7r_score_forensics/data_manifest.json"
+    },
+    "integrity_checks.json": {
+      "bytes": 2667,
+      "sha256": "b1c94f3870189033268efc8f3d79b22bc53cf819a8d374aa7bb3a38365dee790",
+      "path": "results/phase7r_score_forensics/integrity_checks.json"
+    },
+    "row_alignment_audit.csv": {
+      "bytes": 598,
+      "sha256": "31d12839470702ac57b79432aa2677bddd54c3fe34cdc04d18e7800c5b8f02a6",
+      "path": "results/phase7r_score_forensics/row_alignment_audit.csv"
+    },
+    "score_semantics_audit.json": {
+      "bytes": 3622,
+      "sha256": "e57dd9154e1718bbb0dbd77b35c9bddf8d70579b4b50ab3810b5e63704f00e75",
+      "path": "results/phase7r_score_forensics/score_semantics_audit.json"
+    },
+    "independent_ranking_metrics.csv": {
+      "bytes": 4122,
+      "sha256": "7ef95011559a08394762a565222b6449ddbf6251a0f611992e75c2d7dd265c52",
+      "path": "results/phase7r_score_forensics/independent_ranking_metrics.csv"
+    },
+    "score_distribution_by_class.csv": {
+      "bytes": 5465,
+      "sha256": "26998bd17cff9c69031e322069e1509e847b9fda7f422fa728dd0261bbed82d0",
+      "path": "results/phase7r_score_forensics/score_distribution_by_class.csv"
+    },
+    "fold_level_forensics.csv": {
+      "bytes": 3946,
+      "sha256": "bed2af591a2571ca5c2680d2409e80a2a797d63c49463643f3550b6805fbe518",
+      "path": "results/phase7r_score_forensics/fold_level_forensics.csv"
+    },
+    "parent_job_influence.csv": {
+      "bytes": 8930,
+      "sha256": "af4148ecef87c3f1ccccbdebc8fb6f4864469301a8246d13d4dd134ba5b420a1",
+      "path": "results/phase7r_score_forensics/parent_job_influence.csv"
+    },
+    "score_direction_diagnostic.csv": {
+      "bytes": 3331,
+      "sha256": "39d97ce771ed546b3148e5a8f26fedb42171a22f40413f4377a43de476ffad7f",
+      "path": "results/phase7r_score_forensics/score_direction_diagnostic.csv"
+    },
+    "n2_objective_audit.json": {
+      "bytes": 2497,
+      "sha256": "96cb5e60948d41fdc88d10941cdafbf410819b476d861e81af813007ff81344b",
+      "path": "results/phase7r_score_forensics/n2_objective_audit.json"
+    },
+    "baseline_oof_predictions.csv": {
+      "bytes": 200544,
+      "sha256": "2b63afe60869f0da1080622afaa49b2b7a3e3e19e7ef0cf2f9296848a2f8df26",
+      "path": "results/phase7r_score_forensics/baseline_oof_predictions.csv"
+    },
+    "baseline_validation_predictions.csv": {
+      "bytes": 42570,
+      "sha256": "501b676a1d255c136bb51fe930642d0f813b417a6e6a8ed9ac0c8b55d575d41a",
+      "path": "results/phase7r_score_forensics/baseline_validation_predictions.csv"
+    },
+    "per_seed_metrics.csv": {
+      "bytes": 1852,
+      "sha256": "a2b80c22ebfb7f0e8f9c65b408c0af38ec8556028c46321d42bf547e66b5751e",
+      "path": "results/phase7r_score_forensics/per_seed_metrics.csv"
+    },
+    "per_fold_metrics.csv": {
+      "bytes": 2677,
+      "sha256": "c3410f3af37fdc531aa506cafc044540ec83e263b5a0084a6122f1170c0f2d71",
+      "path": "results/phase7r_score_forensics/per_fold_metrics.csv"
+    },
+    "operational_gate_summary.csv": {
+      "bytes": 933,
+      "sha256": "e3a519bc6fa43384c3f991afcc1a66ed3689c900d6aa9cedbfb45cbb0ddcd78e",
+      "path": "results/phase7r_score_forensics/operational_gate_summary.csv"
+    },
+    "independent_audit_report.md": {
+      "bytes": 6058,
+      "sha256": "f646f56118e4e5eb876239ade1d4e9efd44226e10e2cb333bf858402c3c5da10",
+      "path": "results/phase7r_score_forensics/independent_audit_report.md"
+    },
+    "phase7r_final_report.md": {
+      "bytes": 23742,
+      "sha256": "10648ce8dc237659c6eab787f1f0845fde15db8a9c62847c068f1a94452740ad",
+      "path": "results/phase7r_score_forensics/phase7r_final_report.md"
+    }
+  }
+}

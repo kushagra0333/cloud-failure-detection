@@ -1,0 +1,99 @@
+{
+  "phase": "Phase 7N",
+  "name": "Critical-Class Separation and Asymmetric Loss Remediation",
+  "project_root": "C:\\Users\\hp\\Desktop\\Research project",
+  "date": "2026-10-29",
+  "governance": {
+    "split_id": "Candidate_A_Job_Grouped_Split",
+    "split_hash": "f84bc4fe54f8e0583e2ee52f49b2fbe8e6fcafb4f020c656985a1acc31bb4946",
+    "authorized_partitions": ["Candidate_A_Train", "Candidate_A_Validation"],
+    "forbidden_partitions": ["Candidate_A_Test", "Phase6_Confirmatory_Holdout"],
+    "train_samples": 3278,
+    "val_samples": 657
+  },
+  "architecture": {
+    "model_name": "MultiResolutionLSTMClassifier",
+    "recent_seq_len": 5,
+    "recent_feat_dim": 31,
+    "lstm_hidden_dim": 64,
+    "lstm_num_layers": 2,
+    "lstm_dropout": 0.2,
+    "historical_seq_len": 7,
+    "historical_summary_dim": 93,
+    "mlp_hidden_dim": 32,
+    "mlp_out_dim": 16,
+    "mlp_dropout": 0.2,
+    "fused_head_in": 80,
+    "fused_head_hidden": 64,
+    "num_classes": 3,
+    "param_count": 67027
+  },
+  "conditions": [
+    {
+      "condition_id": "N0",
+      "name": "Reproduced Phase 7M Baseline",
+      "loss_type": "WeightedCrossEntropy",
+      "class_weights": [1.0, 2.0, 2.0],
+      "auxiliary_margin": false
+    },
+    {
+      "condition_id": "N1",
+      "name": "Critical-Weight Sensitivity",
+      "loss_type": "WeightedCrossEntropy",
+      "class_weights": [1.0, 2.0, 4.0],
+      "auxiliary_margin": false
+    },
+    {
+      "condition_id": "N2",
+      "name": "Asymmetric Critical Margin Loss",
+      "loss_type": "AsymmetricCriticalMarginLoss",
+      "class_weights": [1.0, 2.0, 2.0],
+      "auxiliary_margin": true,
+      "margin_logit_units": 0.5,
+      "lambda_crit": 0.10
+    },
+    {
+      "condition_id": "N3",
+      "name": "Multiclass Focal Loss",
+      "loss_type": "MulticlassFocalLoss",
+      "class_weights": [1.0, 2.0, 2.0],
+      "gamma": 2.0,
+      "auxiliary_margin": false
+    }
+  ],
+  "training": {
+    "seeds": [42, 123, 456],
+    "max_epochs": 25,
+    "batch_size": 64,
+    "optimizer": "Adam",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "checkpoint_metric": "val_loss",
+    "deterministic": true
+  },
+  "decision_policy": {
+    "primary": {
+      "policy_name": "Predeclared_Primary_Logit_Margin",
+      "theta_fail": 0.50,
+      "margin_rule": "logit_2 - logit_1 >= 0.5",
+      "description": "If P_fail < 0.50 -> 0; else if (logit_2 - logit_1 >= 0.5) -> 2; else -> 1"
+    },
+    "secondary": {
+      "policy_name": "Three_Class_Argmax",
+      "description": "argmax(P0, P1, P2)"
+    },
+    "exploratory": {
+      "policy_name": "201_Threshold_Sweep",
+      "theta_min": 0.0,
+      "theta_max": 1.0,
+      "step": 0.005,
+      "deployable": false
+    }
+  },
+  "operational_gates": {
+    "gate_1a": {"name": "Episode Recall", "threshold": 0.70, "comparator": ">="},
+    "gate_1b": {"name": "Genuine Critical Recall", "threshold": 0.50, "comparator": ">="},
+    "gate_2a": {"name": "Pure-Normal Entity FAR", "threshold": 0.10, "comparator": "<="},
+    "gate_2b": {"name": "Normal-Window FPR", "threshold": 0.05, "comparator": "<="}
+  }
+}

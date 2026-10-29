@@ -1,0 +1,59 @@
+{
+  "audit_id": "PHASE-7K-TEMPORAL-CAUSALITY-AUDIT",
+  "timestamp_iso": "2026-10-28T23:25:00+05:30",
+  "status": "PASSED_ALL_CAUSAL_CHECKS",
+  "governing_rules": {
+    "candidate_a_test_accessed": false,
+    "phase6_holdout_accessed": false,
+    "test_status_statement": "Candidate A Test was inspected in Phase 7D (not historically virgin); Phase 6 holdout remains quarantined."
+  },
+  "step1_verification_results": {
+    "check1_usage_timestamp_semantics": {
+      "verified": true,
+      "semantics": "In Google Borg 2011 trace, raw usage records have start_time and end_time in microseconds. Durations are strictly positive (mean: 300.0s). Grid-aligned binning maps to t = end_time_sec, ensuring all measurements in the window are fully completed and observable at or before prediction time t."
+    },
+    "check2_peak_and_cache_measurements_causality": {
+      "verified": true,
+      "semantics": "max_cpu_rate, max_memory, total_page_cache, unmapped_page_cache, local_disk_space, and max_disk_io_time represent aggregations over interval [t - 300s, t] and are fully observable by prediction timestamp t."
+    },
+    "check3_raw_unit_compatibility": {
+      "verified": true,
+      "cpu_burstiness": "max_cpu_rate (core fraction) - cpu_rate (core fraction); strictly >= 0 across 100% of dev records.",
+      "memory_headroom": "assigned_memory (normalized memory fraction) - max_memory (normalized memory fraction); derived from identical raw reference scales before standard scaling."
+    },
+    "check4_static_scheduler_metadata_causality": {
+      "verified": true,
+      "semantics": "scheduling_class, priority, req_cpu, and req_ram are recorded at initial task submission (SUBMIT, event_type=0). In 100% of dev windows (3,935/3,935), submit_time <= prediction_timestamp. Attributes are invariant across the task lifecycle."
+    },
+    "check5_dynamic_preemption_events_causality": {
+      "verified": true,
+      "semantics": "eviction_count_prior and time_since_last_schedule are strictly evaluated on events with time_sec <= t. Zero causal timestamp violations across all 3,935 dev windows."
+    },
+    "check6_terminal_event_leakage_audit": {
+      "verified": true,
+      "semantics": "Zero terminal events (FAIL, FINISH, KILL) occur at or before prediction timestamp t (0/3,935 windows). Policy A excludes all post-failure telemetry. All future terminal timestamps were strictly excluded from feature inputs."
+    }
+  },
+  "feature_groups_evaluated": {
+    "M0": {
+      "name": "M0_baseline",
+      "feature_count": 31
+    },
+    "M1": {
+      "name": "M1_peak_and_headroom",
+      "feature_count": 36
+    },
+    "M2": {
+      "name": "M2_scheduler_metadata",
+      "feature_count": 35
+    },
+    "M3": {
+      "name": "M3_lifecycle_events",
+      "feature_count": 33
+    },
+    "M4": {
+      "name": "M4_combined_eligible",
+      "feature_count": 42
+    }
+  }
+}

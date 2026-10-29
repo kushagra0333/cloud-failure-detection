@@ -1,0 +1,118 @@
+{
+  "candidate_a_train": {
+    "split_name": "Candidate A Train",
+    "n_windows": 3278,
+    "n_entities": 284,
+    "n_parent_jobs": 51,
+    "timestamps": {
+      "is_numeric": true,
+      "min_timestamp": 5100.0,
+      "max_timestamp": 10800.0,
+      "is_strictly_ordered": true
+    },
+    "entity_job_match": true,
+    "job_entity_distribution": {
+      "min_entities_per_job": 1,
+      "median_entities_per_job": 1.0,
+      "mean_entities_per_job": 5.568627450980392,
+      "max_entities_per_job": 75,
+      "jobs_with_multiple_entities": 25,
+      "jobs_with_single_entity": 26
+    },
+    "windows_per_entity": {
+      "min": 1,
+      "median": 11.0,
+      "mean": 11.54225352112676,
+      "max": 20
+    },
+    "window_level_history_k2": {
+      "usable_task_history_k2": 2728,
+      "usable_task_history_k2_pct": 83.22147651006712,
+      "usable_job_history_k2": 2969,
+      "usable_job_history_k2_pct": 90.57352043929225,
+      "usable_sibling_history_k2": 2624,
+      "usable_sibling_history_k2_pct": 80.04881025015254
+    },
+    "window_level_history_k1": {
+      "usable_task_history_k1": 2994,
+      "usable_task_history_k1_pct": 91.33618059792556,
+      "usable_job_history_k1": 2994,
+      "usable_job_history_k1_pct": 91.33618059792556,
+      "usable_sibling_history_k1": 2642,
+      "usable_sibling_history_k1_pct": 80.59792556436852
+    },
+    "hierarchical_routing_k2": {
+      "task_history": 2728,
+      "job_history_fallback": 241,
+      "cluster_scaler_fallback": 309
+    },
+    "hierarchical_routing_k1": {
+      "task_history": 2994,
+      "job_history_fallback": 0,
+      "cluster_scaler_fallback": 284
+    },
+    "entity_first_window_routing_k2": {
+      "task_history": 0,
+      "job_history_available": 0,
+      "cluster_fallback_needed": 284
+    }
+  },
+  "candidate_a_validation": {
+    "split_name": "Candidate A Validation",
+    "n_windows": 657,
+    "n_entities": 69,
+    "n_parent_jobs": 12,
+    "timestamps": {
+      "is_numeric": true,
+      "min_timestamp": 5100.0,
+      "max_timestamp": 10800.0,
+      "is_strictly_ordered": true
+    },
+    "entity_job_match": true,
+    "job_entity_distribution": {
+      "min_entities_per_job": 1,
+      "median_entities_per_job": 3.5,
+      "mean_entities_per_job": 5.75,
+      "max_entities_per_job": 30,
+      "jobs_with_multiple_entities": 7,
+      "jobs_with_single_entity": 5
+    },
+    "windows_per_entity": {
+      "min": 1,
+      "median": 5.0,
+      "mean": 9.521739130434783,
+      "max": 20
+    },
+    "window_level_history_k2": {
+      "usable_task_history_k2": 532,
+      "usable_task_history_k2_pct": 80.97412480974124,
+      "usable_job_history_k2": 603,
+      "usable_job_history_k2_pct": 91.78082191780823,
+      "usable_sibling_history_k2": 549,
+      "usable_sibling_history_k2_pct": 83.56164383561644
+    },
+    "window_level_history_k1": {
+      "usable_task_history_k1": 588,
+      "usable_task_history_k1_pct": 89.49771689497716,
+      "usable_job_history_k1": 608,
+      "usable_job_history_k1_pct": 92.54185692541856,
+      "usable_sibling_history_k1": 551,
+      "usable_sibling_history_k1_pct": 83.86605783866058
+    },
+    "hierarchical_routing_k2": {
+      "task_history": 532,
+      "job_history_fallback": 71,
+      "cluster_scaler_fallback": 54
+    },
+    "hierarchical_routing_k1": {
+      "task_history": 588,
+      "job_history_fallback": 20,
+      "cluster_scaler_fallback": 49
+    },
+    "entity_first_window_routing_k2": {
+      "task_history": 0,
+      "job_history_available": 20,
+      "cluster_fallback_needed": 49
+    }
+  }
+}

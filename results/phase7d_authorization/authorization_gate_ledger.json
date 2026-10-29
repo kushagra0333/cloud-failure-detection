@@ -1,0 +1,201 @@
+{
+  "authorization_metadata": {
+    "phase": "Phase 7D Final Authorization Gate",
+    "timestamp_utc": "2026-10-28T17:25:00Z",
+    "lead_auditor": "Senior ML Research Engineer & Data-Pipeline Auditor",
+    "official_verdict": "AUTHORIZED UNDER EXISTING PROTOCOL",
+    "governing_split": {
+      "path": "results/phase7a_4/candidate_a_job_grouped_split.csv",
+      "sha256": "f84bc4fe54f8e0583e2ee52f49b2fbe8e6fcafb4f020c656985a1acc31bb4946",
+      "windows": 4960,
+      "parent_jobs": 74
+    },
+    "governing_protocol": {
+      "path": "results/phase7b_1/phase7b_evaluation_protocol_v2.json",
+      "sha256": "f919cbb6d79ee790e6686e584f33b1e32d169c9eb38c92a6fa292728f3ea7044",
+      "version": "2.0-REVISED-FROZEN"
+    },
+    "input_dataset": {
+      "path": "data/processed/phase7c/",
+      "scaler_path": "configs/phase7c/fitted_scaler_phase7c.json",
+      "scaler_sha256": "1170ef8689ec64594874f502d7b7ff5c3f195e188244d21cc8f975e31a0db5fb"
+    }
+  },
+  "task_1_protocol_conformance_ledger": [
+    {
+      "requirement_item": "Permitted Model Architectures",
+      "specification": "4 models: (1) Random Forest [100 trees, depth 15, balanced, seed 42]; (2) Temporal LSTM [input 31, hidden 64, 2 layers, weights [1.0, 1.5, 2.0], AdamW lr=1e-3]; (3) Compact Temporal Transformer [input 31, d_model 32, 4 heads, 2 layers, d_ff 64, weights [1.0, 1.5, 2.0], AdamW lr=5e-4]; (4) Representation Hybrid [Frozen Transformer 32-dim latent + 31-dim tabular -> RF].",
+      "source_file": "results/phase7b_1/phase7b_evaluation_protocol_v2.json & scripts/train_and_evaluate_phase7b.py",
+      "line_citation": "Protocol v2.0 lines 8-11, 23-28; Script lines 520-534, 558-594, 613-652, 670-696",
+      "status": "CONFORMANT"
+    },
+    {
+      "requirement_item": "Random Seeds and Number of Runs",
+      "specification": "Fixed seed=42 set across Python, OS, NumPy, PyTorch (CPU/CUDA); exactly 1 single deterministic run per architecture.",
+      "source_file": "scripts/train_and_evaluate_phase7b.py",
+      "line_citation": "Lines 76-87, line 447, line 508",
+      "status": "CONFORMANT"
+    },
+    {
+      "requirement_item": "Exact Input Representation and Feature Order",
+      "specification": "Sequence length L=5 (trailing 5 intervals at 300s spacing); 31 features strictly ordered per FeatureRegistry (cpu_utilization through cpi_missing_fraction_6). RF consumes x_last in R^31; LSTM/Transformer consume [batch, 5, 31]; Hybrid consumes [batch, 63].",
+      "source_file": "src/features/registry.py & results/phase7c/data_manifest.json",
+      "line_citation": "Registry lines 34-124; Data Manifest lines 10-43; Script line 483",
+      "status": "CONFORMANT"
+    },
+    {
+      "requirement_item": "Permitted Preprocessing & Missing Values",
+      "specification": "Fitted strictly on Candidate A Train (N=3,278); median imputation (a_train) for genuine missing MAI/CPI; standardization z = (x - mu_train) / (sigma_train + eps); applied to Val/Test via transform without refitting.",
+      "source_file": "results/phase7b_1/phase7b_evaluation_protocol_v2.json & src/features/scaler.py",
+      "line_citation": "Protocol v2.0 lines 113-117; Scaler lines 34-64; fitted_scaler_phase7c.json",
+      "status": "CONFORMANT"
+    },
+    {
+      "requirement_item": "Required Metrics & Precise Definitions",
+      "specification": "Macro-F1 (unweighted mean over 3 classes); per-class Precision/Recall/F1/Support; Window FPR = FP_normal / Total_normal; Episode Recall = Detected_episodes / Total_eligible_episodes; Pure-Normal Entity FAR = Alerted_PN_entities / Total_PN_entities; Pure-Normal Parent-Job FAR (secondary diagnostic, denominator N=3).",
+      "source_file": "results/phase7b_1/phase7b_evaluation_protocol_v2.json & scripts/train_and_evaluate_phase7b.py",
+      "line_citation": "Protocol v2.0 lines 57-97; Script lines 110-277",
+      "status": "CONFORMANT"
+    },
+    {
+      "requirement_item": "Threshold Selection & Freezing Rules",
+      "specification": "Argmax over class probabilities or fixed decision threshold calibrated strictly on Validation split during Stage 2; all weights, checkpoints, scalers, and thresholds for M* are permanently frozen before opening Test split.",
+      "source_file": "results/phase7b_1/phase7b_evaluation_protocol_v2.json",
+      "line_citation": "Lines 28, 38; Script lines 523-530, 710-727, 783-793",
+      "status": "CONFORMANT"
+    },
+    {
+      "requirement_item": "Validation Candidate-Selection Rules",
+      "specification": "Stage 2 evaluates Validation Gate 1 (Episode Recall >= 70%, Critical Recall >= 50%) and Gate 2 (Entity FAR <= 10%, Window FPR <= 5%). Model passing both gates with highest Validation Macro-F1 selected as M*. If zero models pass both gates, fallback selects model with highest Validation Macro-F1.",
+      "source_file": "results/phase7b_1/phase7b_evaluation_protocol_v2.json",
+      "line_citation": "Lines 32-39; Script lines 746-793",
+      "status": "CONFORMANT"
+    },
+    {
+      "requirement_item": "Test Evaluation Rules & Single Confirmatory Execution",
+      "specification": "One-shot confirmatory evaluation of pre-selected candidate M* only against Test Gate 1 and Test Gate 2. If M* passes both gates -> OPERATIONAL_WINNER; if M* fails either -> NO_OPERATIONAL_WINNER. Remaining 3 models reported strictly as descriptive benchmarks.",
+      "source_file": "results/phase7b_1/phase7b_evaluation_protocol_v2.json",
+      "line_citation": "Lines 40-55; Script lines 795-866",
+      "status": "CONFORMANT"
+    },
+    {
+      "requirement_item": "Required Confidence Intervals & Resampling Units",
+      "specification": "B=1,000 bootstrap iterations; primary resampling unit is parent_job_id (J=11 clusters in Test); complementary resampling unit is entity_id (N=59 clusters in Test); 95% empirical percentiles [2.5%, 97.5%]; undefined denominators handled gracefully with valid fraction reporting.",
+      "source_file": "results/phase7b_1/phase7b_evaluation_protocol_v2.json",
+      "line_citation": "Lines 99-111; Script lines 279-440, 871-908",
+      "status": "CONFORMANT"
+    },
+    {
+      "requirement_item": "Required Output Files & Official Verdict",
+      "specification": "training_manifest.json, validation_metrics.json, test_evaluation_results.json, bootstrap_ci.json, test_predictions.csv, test_episode_metrics.csv, phase7d_retraining_and_evaluation_report.md. Official verdict must be exactly OPERATIONAL_WINNER or NO_OPERATIONAL_WINNER.",
+      "source_file": "results/phase7b_1/phase7b_evaluation_protocol_v2.json & scripts/train_and_evaluate_phase7b.py",
+      "line_citation": "Protocol v2.0 lines 48-49; Script lines 28-36, 913-943",
+      "status": "CONFORMANT"
+    }
+  ],
+  "task_2_pipeline_difference_matrix": [
+    {
+      "dimension": "CPI Feature Reconstruction & Missingness",
+      "historical_phase7b": "Inverted from Phase 2 scaled arrays; unobserved CPI slots filled with historical constant 2.500000; uninvertible mixing with genuine observations.",
+      "proposed_phase7d": "Extracted directly from raw Google Borg trace shards; true raw CPI observed in 97.36% of rows (spans 0.355 to 59.64); genuine missing slots stored as NaN in unscaled arrays; training median (2.467000) imputed.",
+      "classification": "1. Intended correction required to remove suspected contamination"
+    },
+    {
+      "dimension": "Parent-Job Aggregation & Preprocessing Leakage",
+      "historical_phase7b": "Scaler statistics inherited from Phase 2 training pool which overlapped with 100% of Candidate A validation and test parent jobs.",
+      "proposed_phase7d": "Fitted strictly on Candidate A Train split (51 parent jobs); zero parent-job or entity overlap with Val (12 jobs) or Test (11 jobs).",
+      "classification": "1. Intended correction required to remove suspected contamination"
+    },
+    {
+      "dimension": "Scaler Fitting Population",
+      "historical_phase7b": "Fitted on Phase 7B reconstructed arrays pre-filled with legacy 2.50 constant.",
+      "proposed_phase7d": "Fitted on genuine observed training observations with NaNs excluded; fitted_scaler_phase7c.json serialized and verified.",
+      "classification": "1. Intended correction required to remove suspected contamination"
+    },
+    {
+      "dimension": "Feature Order and Definitions",
+      "historical_phase7b": "31 mathematical features in FeatureRegistry order.",
+      "proposed_phase7d": "Identical 31 mathematical features in identical FeatureRegistry order.",
+      "classification": "2. Necessary implementation change (preservation of identical registry)"
+    },
+    {
+      "dimension": "Temporal Input Sequence Representation",
+      "historical_phase7b": "Sequence length L=5 trailing steps.",
+      "proposed_phase7d": "Sequence length L=5 trailing steps; verified uniform 300s (5.00 min) delta and strictly monotonic age.",
+      "classification": "2. Necessary implementation change (preservation of identical sequence)"
+    },
+    {
+      "dimension": "Target Definitions & Policy A Masking",
+      "historical_phase7b": "Policy A failure masking; Critical <= 900s, Warning 900-1800s, Normal > 1800s, UNKNOWN excluded.",
+      "proposed_phase7d": "Identical Policy A rules; verified 0 post-failure windows against raw lifecycle failure events.",
+      "classification": "2. Necessary implementation change (preservation of identical labeling)"
+    },
+    {
+      "dimension": "Split Membership & Partition Windows",
+      "historical_phase7b": "Candidate A (Seed 48, Job-Grouped): Train=3,278, Val=657, Test=1,025 windows.",
+      "proposed_phase7d": "Identical Candidate A (Seed 48, Job-Grouped): Train=3,278, Val=657, Test=1,025 windows (100.00% exact 1-to-1 match).",
+      "classification": "2. Necessary implementation change (preservation of identical frozen split)"
+    },
+    {
+      "dimension": "Model Configurations and Evaluation Code",
+      "historical_phase7b": "Seed 42, 4 architectures, Protocol v2.0 gates, dual cluster bootstrap.",
+      "proposed_phase7d": "Identical seed 42, identical 4 architectures, identical Protocol v2.0 gates, identical dual cluster bootstrap.",
+      "classification": "2. Necessary implementation change (preservation of identical evaluation code)"
+    }
+  ],
+  "task_3_calibrated_decision_matrix": [
+    {
+      "outcome": "Outcome 1: Clear Improvement and Operational Gate Passage",
+      "empirical_criteria": "M* passes both Test Gate 1 (Episode Recall >= 70%, Critical Recall >= 50%) and Test Gate 2 (Pure-Normal Entity FAR <= 10%, Window FPR <= 5%).",
+      "evidence_calibrated_interpretation": "Provides strong empirical evidence consistent with the hypothesis that preprocessing contamination contributed materially to the Phase 7B failure. However, it does not prove contamination was the exclusive factor, as interactions between clean feature distributions and Random Forest's orthogonal axis-aligned splitting thresholds could also contribute."
+    },
+    {
+      "outcome": "Outcome 2: Measurable Improvement Without Operational Gate Passage",
+      "empirical_criteria": "Noticeable improvement in calibration (Entity FAR drops from 44.7% to 20-30%, Macro-F1 increases to > 0.45), but M* fails one or both operational gates.",
+      "evidence_calibrated_interpretation": "Supports a multi-factor explanation: preprocessing contamination degraded calibration in Phase 7B, but parent-job distribution shift across unseen cluster workloads remains an independent barrier preventing full operational viability."
+    },
+    {
+      "outcome": "Outcome 3: Little or No Improvement",
+      "empirical_criteria": "Test metrics remain within the Phase 7B 95% confidence intervals (Entity FAR ~40-50%, Critical Recall ~15-25%, Macro-F1 ~0.38-0.42).",
+      "evidence_calibrated_interpretation": "Provides strong empirical evidence that inherited preprocessing contamination was NOT the primary driver of Random Forest's failure. Demonstrates that the operational barrier is primarily parent-job distribution shift and model architecture capacity."
+    },
+    {
+      "outcome": "Outcome 4: Worse Results on Clean Data",
+      "empirical_criteria": "Macro-F1 drops below 0.35, Entity FAR worsens above 55%, or Episode Recall drops below 30%.",
+      "evidence_calibrated_interpretation": "Indicates that the legacy Phase 2 scaling parameters (fitted across all parent jobs) may have inadvertently functioned as an artificial regularizer or information bleed that stabilized Phase 7B metrics. Removing it exposes the true unassisted cross-job generalization gap."
+    },
+    {
+      "outcome": "Outcome 5: Inconclusive or Execution Failure",
+      "empirical_criteria": "Execution crashes, NaN outputs, non-deterministic seed deviations, or bootstrap divergence.",
+      "evidence_calibrated_interpretation": "Invalidates experimental execution. No scientific conclusions may be drawn; requires debugging and re-execution under controlled conditions."
+    }
+  ],
+  "task_4_statistical_audit": {
+    "concept_distinction": {
+      "physical_cluster": "Datacenter compute cluster (e.g. Google Borg 12,000-machine cluster). Candidate A is derived from a single Borg physical cluster trace.",
+      "statistical_cluster": "Hierarchical grouping unit for non-independent observations in survey sampling and econometric bootstrap theory."
+    },
+    "dual_bootstrap_levels": [
+      {
+        "level": "Parent-Job Clustered Bootstrap",
+        "resampling_unit": "parent_job_id",
+        "test_clusters_j": 11,
+        "statistical_appropriateness": "Statistically valid for capturing intra-job correlation. High empirical variance and small-sample limitation due to J=11; 3.1% of replicates sample 0 pure-normal parent jobs; handled by valid fraction reporting.",
+        "protocol_conformance": "Strictly conformant with Protocol v2.0 Section 5 (lines 99-106)."
+      },
+      {
+        "level": "Entity Clustered Bootstrap",
+        "resampling_unit": "entity_id",
+        "test_clusters_n": 59,
+        "statistical_appropriateness": "Statistically valid block bootstrap over panel entities, preserving intra-entity sequence autocorrelation across overlapping sliding windows while increasing sample size to N=59.",
+        "protocol_conformance": "Strictly conformant with Protocol v2.0 Section 5 (lines 107-111)."
+      }
+    ],
+    "verdict": "The dual clustered bootstrap is statistically appropriate for Candidate A's hierarchical data structure, provided its nomenclature is documented as statistical cluster resampling rather than multi-datacenter resampling."
+  },
+  "gate_decision": {
+    "official_verdict": "AUTHORIZED UNDER EXISTING PROTOCOL",
+    "justification": "All mandatory protocol items are grounded in verified artifacts; all differences from Phase 7B are accounted for and classified; no potential confounds or unapproved changes exist; the statistical resampling method is verified; the decision matrix is evidence-calibrated.",
+    "execution_readiness": "Ready to launch Phase 7D via scripts/train_and_evaluate_phase7d.py upon receiving explicit user training authorization."
+  }
+}

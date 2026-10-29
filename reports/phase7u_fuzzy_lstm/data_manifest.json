@@ -1,0 +1,23 @@
+{
+  "phase": "Phase 7U",
+  "timestamp_utc": "2026-10-29T09:02:34Z",
+  "candidate_a_train": {
+    "windows": 3278,
+    "parent_jobs": 51,
+    "entities": 284,
+    "pure_normal_entities": 153,
+    "failing_entities": 131
+  },
+  "candidate_a_validation": {
+    "windows": 657,
+    "parent_jobs": 12,
+    "entities": 69,
+    "pure_normal_entities": 49,
+    "failing_entities": 20
+  },
+  "input_artifacts": {
+    "phase7t_oof_hybrid_predictions.csv": "e582f8059d7fdad31dd06ee323547dde64132a212412d06d0b652835d6058777",
+    "phase7t_validation_hybrid_predictions.csv": "87cf538e7def6a0e02975ee8fa9d8d742be2382ed9ab32453a9631f92983b910",
+    "phase7t_frozen_operating_policy.json": "5ff07a0d431a58eaa224aecc6c7ef16455a24c69b51295303e3e321767879352"
+  }
+}

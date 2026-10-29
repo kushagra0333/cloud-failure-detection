@@ -1,0 +1,15 @@
+check,expected,observed,status
+Train_row_count,3278,3278,PASS
+Val_row_count,657,657,PASS
+Train_y_true_exact_match,True,True,PASS
+Val_y_true_exact_match,True,True,PASS
+Train_entity_id_exact_match,True,True,PASS
+Val_entity_id_exact_match,True,True,PASS
+Train_timestamp_max_diff,0.0,0.0,PASS
+Val_timestamp_max_diff,0.0,0.0,PASS
+Critical_TTF_horizon,"(0, 900]","[1.0, 899.0]",PASS
+Warning_TTF_horizon,"(900, 1800]","[901.0, 1798.9]",PASS
+Normal_TTF_horizon,>1800,min=1801.0,PASS
+Prob_sum_unity,1.0,1.0,PASS
+P_fail_equals_P1_plus_P2,True,True,PASS
+P_fail_equals_1_minus_P0,True,True,PASS

@@ -1,0 +1,106 @@
+{
+  "phase": "Phase 7F \u2014 Failure Separation Investigation",
+  "timestamp_utc": "2026-10-28T14:34:37.265284+00:00",
+  "environment": {
+    "os": "Windows 11",
+    "python_version": "3.11",
+    "torch_version": "2.14.1+cpu",
+    "numpy_version": "2.4.6",
+    "device": "cpu"
+  },
+  "safeguards_verification": {
+    "candidate_a_test_accessed": false,
+    "confirmatory_phase6_holdout_accessed": false,
+    "phase7b_overwritten": false,
+    "phase7d_overwritten": false,
+    "phase7e_overwritten": false,
+    "quarantine_timestamp_preserved": "2026-10-26T15:06:19"
+  },
+  "protocol_amendment": {
+    "id": "PROTOCOL-AMENDMENT-PHASE7F-01",
+    "file": "results/phase7f/phase7f_protocol_amendment.json",
+    "sha256": "5ebac862c095ba590201d66ddf8ebf9fd9c7b0573bdd6973c6099a946dd00b36"
+  },
+  "training_data": {
+    "split": "Candidate A Train (N=3,278) & Validation (N=657)",
+    "X_train_shape": [
+      3278,
+      5,
+      31
+    ],
+    "X_val_shape": [
+      657,
+      5,
+      31
+    ],
+    "y_train_distribution": {
+      "Normal": 3044,
+      "Warning": 118,
+      "Critical": 116
+    },
+    "y_val_distribution": {
+      "Normal": 560,
+      "Warning": 48,
+      "Critical": 49
+    },
+    "class_weights_inv_freq": [
+      1.0,
+      11.464,
+      11.796
+    ]
+  },
+  "models": {
+    "transformer_condC_baseline": {
+      "architecture": "CompactTemporalTransformer(input_dim=31, d_model=32, nhead=4, num_layers=2, dim_feedforward=64, num_classes=3, dropout=0.1, max_seq_len=5)",
+      "loss": "CrossEntropyLoss (gamma=0.0, alpha=InvFreq [1.0, 11.464, 11.796])",
+      "preprocessing": "Standard Phase 7C Cluster Scaler",
+      "random_seed": 42,
+      "checkpoint": "models/checkpoints_phase7e/transformer_condC_inverse_freq.pt",
+      "sha256": "261c841be3d7db28b611012fcf2b34b10d88137b87d24eb819b79e6552d87e1d"
+    },
+    "transformer_focal_gamma1": {
+      "architecture": "CompactTemporalTransformer(input_dim=31, d_model=32, nhead=4, num_layers=2, dim_feedforward=64, num_classes=3, dropout=0.1, max_seq_len=5)",
+      "loss": "MultiClassFocalLoss (gamma=1.0, alpha=InvFreq [1.0, 11.464, 11.796])",
+      "preprocessing": "Standard Phase 7C Cluster Scaler",
+      "random_seed": 42,
+      "checkpoint": "models/checkpoints_phase7f/transformer_focal_gamma1.pt",
+      "sha256": "255d5ebeb139c5225582ca54b7dd25cc934865460062ef89229e72d851d026d1"
+    },
+    "transformer_focal_gamma2": {
+      "architecture": "CompactTemporalTransformer(input_dim=31, d_model=32, nhead=4, num_layers=2, dim_feedforward=64, num_classes=3, dropout=0.1, max_seq_len=5)",
+      "loss": "MultiClassFocalLoss (gamma=2.0, alpha=InvFreq [1.0, 11.464, 11.796])",
+      "preprocessing": "Standard Phase 7C Cluster Scaler",
+      "random_seed": 42,
+      "checkpoint": "models/checkpoints_phase7f/transformer_focal_gamma2.pt",
+      "sha256": "af8ffef8da7d2b53d36a1f2dd6ec182999cbd82c3b0a98e32c277eb44003e91c"
+    },
+    "transformer_task_relative": {
+      "architecture": "CompactTemporalTransformer(input_dim=31, d_model=32, nhead=4, num_layers=2, dim_feedforward=64, num_classes=3, dropout=0.1, max_seq_len=5)",
+      "loss": "CrossEntropyLoss (gamma=0.0, alpha=InvFreq [1.0, 11.464, 11.796])",
+      "preprocessing": "Causal Running Mean/Std Baseline (K_min=2 prior windows fallback to cluster scaler)",
+      "random_seed": 42,
+      "checkpoint": "models/checkpoints_phase7f/transformer_task_relative.pt",
+      "sha256": "50c0f5dce791143df5a6de0a4e90c78ccae19d65ae1acb6144934eacd936f99a"
+    }
+  },
+  "results_artifacts": {
+    "validation_error_analysis.json": "086e413dbe5001819ff8853e9a0303b87061d84718ba18d9a2bbac5bb2ff09cb",
+    "focal_loss_experiment_results.json": "8a78be974bf41e25fb3c69978244d49fb127e9d65b2fc832a2e06d5f18ab2c0d",
+    "task_relative_experiment_results.json": "12de3cdca8115cd8a0647f23177fa5a3560ebc8a0fd5a78590ada159564b0801",
+    "decision_evaluation_results.json": "e2f6bcdbb3e8468696dedd05767a28e1d2ee0cd4307e644e3aa1e310397877ce",
+    "validation_predictions.csv": "41ebd6e9ad69fefb3327c9ba222de8f6aa1be0395b4148cffab6e20c1f2387dc",
+    "X_train_task_relative.npy": "5b402dc64d9fa1b5802a61b2dc651e40fcc93c51bf52cce183d6a440d8746666",
+    "X_val_task_relative.npy": "7b45bfd0892e8bccdcc27c70c503a636d3adce2de1b9c468baef07d74e70a64d"
+  },
+  "operational_verdict": {
+    "gate_1_requirement": "Episode Recall >= 70.0% AND Critical Recall >= 50.0%",
+    "gate_2_requirement": "Pure-normal Entity FAR <= 10.0% AND Window FPR <= 5.0%",
+    "gate_1_passed_models": [
+      "transformer_focal_gamma1 (Argmax: 75.0% EpRec, 55.1% CritRec)"
+    ],
+    "gate_2_passed_models": [],
+    "both_gates_passed_models": [],
+    "test_evaluation_authorized": false,
+    "recommendation": "Confirmatory test evaluation remains unauthorized. Candidate A Test set remains unblinded and untouched."
+  }
+}

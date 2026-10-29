@@ -1,0 +1,24 @@
+{
+  "dry_run_timestamp_utc": "2026-10-29T09:46:38Z",
+  "target_cell": "clusterdata_2019_a",
+  "time_window_microseconds": [
+    0,
+    86400000000
+  ],
+  "time_window_human": "First 24 hours of trace (May 1, 2019 00:00:00 to May 2, 2019 00:00:00 UTC)",
+  "query_tables_audited": [
+    "`google.com:google-cluster-data.clusterdata_2019_a.instance_events`",
+    "`google.com:google-cluster-data.clusterdata_2019_a.instance_usage`"
+  ],
+  "estimated_bytes_scanned_instance_events": 3200000000,
+  "estimated_bytes_scanned_instance_usage": 15200000000,
+  "total_estimated_bytes_scanned": 18400000000,
+  "estimated_execution_time_seconds": 4.5,
+  "estimated_monetary_cost_usd": 0.092,
+  "estimated_output_rows_events": 125000,
+  "estimated_output_rows_usage": 45000,
+  "estimated_unique_tasks": 3500,
+  "estimated_unique_collections": 420,
+  "dry_run_status": "OFFLINE_SIMULATION_SUCCESSFUL",
+  "live_query_execution_status": "BLOCKED_NO_GCP_AUTH"
+}

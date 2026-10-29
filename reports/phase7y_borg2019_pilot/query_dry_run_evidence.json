@@ -1,0 +1,22 @@
+{
+  "audit_timestamp_utc": "2026-10-29T10:12:24Z",
+  "query_target": "`google.com:google-cluster-data.clusterdata_2019_a`",
+  "sql_sha256": "58e5a2e4d864182f8b38786e356b02572df0a5c7b152a859b0ad093f6951a7bb",
+  "dry_run_execution_attempt": {
+    "attempted_via": "google.cloud.bigquery.Client(dry_run=True)",
+    "auth_prerequisite_met": false,
+    "status": "BLOCKED_AWAITING_USER_ADC",
+    "service_http_response": null,
+    "service_job_id": null,
+    "client_error": "Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information."
+  },
+  "critical_distinction_assertion": "In strict adherence to experimental governance, this phase explicitly distinguishes provisional theoretical estimates from verified service responses. No offline calculation is represented as a verified BigQuery service response.",
+  "provisional_theoretical_estimates": {
+    "estimated_bytes_scanned_lower_bound": 12000000000,
+    "estimated_bytes_scanned_upper_bound": 22000000000,
+    "estimated_monetary_cost_usd_range": "$0.06 - $0.11 USD",
+    "estimated_output_rows": "40,000 - 60,000 5-minute usage windows",
+    "verification_status": "PROVISIONAL_OFFLINE_PROJECTION_ONLY"
+  },
+  "next_step_for_service_verification": "Execute the query dry run using an authenticated Google Cloud SDK session via 'gcloud auth application-default login'."
+}

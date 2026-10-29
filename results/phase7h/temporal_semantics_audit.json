@@ -1,0 +1,37 @@
+{
+  "label_boundaries": {
+    "critical_ttf_range": [
+      24.902283000000352,
+      868.8898069999996
+    ],
+    "warning_ttf_range": [
+      947.7216449999996,
+      1768.8898069999996
+    ],
+    "normal_ttf_min": 1845.1039889999993,
+    "boundaries_conform_to_protocol": true
+  },
+  "episode_structure": {
+    "total_episodes": 20,
+    "windows_per_episode": {
+      "min": 1,
+      "median": 6.0,
+      "max": 6
+    },
+    "critical_windows_per_episode": {
+      "min": 0,
+      "median": 3.0,
+      "max": 3
+    },
+    "warning_windows_per_episode": {
+      "min": 0,
+      "median": 3.0,
+      "max": 3
+    },
+    "episodes_with_zero_critical_windows": 3,
+    "episodes_with_zero_warning_windows": 2
+  },
+  "metric_interaction_finding": {
+    "core_tension": "Episode Recall credits ANY detection (Warning or Critical) across the entire 30-minute pre-failure horizon. Conversely, Gate 1 Critical Recall evaluates ONLY whether window-level class 2 predictions match true class 2 windows (TTF <= 15m). Because accurate early alerts predict Warning during 15m < TTF <= 30m, and neural networks calibrated with cross-entropy often output Warning rather than Critical in the final 15 minutes, Episode Recall can be high (60-70%) while Critical Recall remains near zero (2.0%)."
+  }
+}

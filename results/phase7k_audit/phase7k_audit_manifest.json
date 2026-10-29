@@ -1,0 +1,28 @@
+{
+  "manifest_name": "phase7k_audit_manifest",
+  "audit_phase": "Phase 7K-A",
+  "timestamp": "2026-10-28T23:43:00+05:30",
+  "project_root": "C:\\Users\\hp\\Desktop\\Research project",
+  "audit_artifacts": {
+    "results\\phase7k_audit\\phase7k_audit_report.md": {
+      "size_bytes": 18743,
+      "sha256": "faa3c0e03a69bcc4c74e6695e523f42b8a8e299ee08e4750a2cfcdd852b44409"
+    },
+    "results\\phase7k_audit\\independent_metrics.csv": {
+      "size_bytes": 1727882,
+      "sha256": "082a2fcc6d1ca51a858ab13da189871d99c406c4adab22e747a38f5e211d1b9c"
+    },
+    "results\\phase7k_audit\\discrepancy_register.csv": {
+      "size_bytes": 1499,
+      "sha256": "d7dd5fff1f24d308f7fca2d52964caa3de082e50c8782881c5e6f741ffc7e2b1"
+    },
+    "results\\phase7k_audit\\audit_integrity.json": {
+      "size_bytes": 3723,
+      "sha256": "c3cd8d8c27258273020930a659c7aa5b31d000eac9889fe4d61202e1854be936"
+    },
+    "reports\\phase7k_audit\\phase7k_audit_report.md": {
+      "size_bytes": 18743,
+      "sha256": "faa3c0e03a69bcc4c74e6695e523f42b8a8e299ee08e4750a2cfcdd852b44409"
+    }
+  }
+}

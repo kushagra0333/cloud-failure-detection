@@ -1,0 +1,86 @@
+{
+  "report_id": "PHASE-7J-A-INTEGRITY-AUDIT",
+  "timestamp_iso": "2026-10-28T22:45:00+05:30",
+  "status": "PASSED_ALL_INDEPENDENT_VERIFICATIONS",
+  "executive_verdict": "NO_OPERATIONAL_WINNER_CONFIRMED",
+  "data_access_safeguards": {
+    "candidate_a_test_accessed_in_phase7j": false,
+    "candidate_a_test_accessed_in_phase7j_audit": false,
+    "candidate_a_test_historical_context": "Inspected during Phase 7D (NOT historically untouched or newly blinded)",
+    "phase6_confirmatory_holdout_accessed": false,
+    "phase6_confirmatory_holdout_status": "Strictly quarantined",
+    "models_retrained": false,
+    "models_altered": false,
+    "phase7j_artifacts_overwritten": false,
+    "confirmatory_testing_authorized": false,
+    "split_evaluated": "Candidate A Validation only (N=657 windows)"
+  },
+  "source_inputs": {
+    "predictions_file": {
+      "path": "results/phase7i/phase7i_validation_predictions.csv",
+      "size_bytes": 149783,
+      "row_count": 657,
+      "column_count": 21,
+      "sha256": "9e405514b98e043409585b3e2b1120a68d75afcb10d982667bd6b20661d6f1fc",
+      "class_index_mapping": {
+        "0": "Normal (prob_<cond>_c0)",
+        "1": "Warning (prob_<cond>_c1)",
+        "2": "Critical (prob_<cond>_c2)"
+      }
+    },
+    "validation_metadata_file": {
+      "path": "data/processed/phase7c/val_metadata.csv",
+      "size_bytes": 32677,
+      "row_count": 657,
+      "column_count": 6,
+      "sha256": "8d22193f11d671dc570d29abf9255d06386880d49c5de83c68d6404a8b41b956"
+    },
+    "validation_labels_file": {
+      "path": "data/processed/phase7c/y_val.npy",
+      "size_bytes": 5384,
+      "shape": [
+        657
+      ],
+      "sha256": "eb968a74ae86dcc574f3341055ff45ca9fcf77ec5a1b4cee5ad8cb4c1e2631b9"
+    }
+  },
+  "cohort_alignment_verification": {
+    "total_windows": 657,
+    "class_0_normal_windows": 560,
+    "class_1_warning_windows": 48,
+    "class_2_critical_windows": 49,
+    "pre_failure_windows_total": 97,
+    "total_pre_failure_episodes": 20,
+    "total_failing_entities": 17,
+    "total_pure_normal_entities": 49,
+    "total_entities": 66,
+    "total_pure_normal_parent_jobs": 4,
+    "total_parent_jobs": 8,
+    "row_alignment_accuracy": "100.0% exact match across entity_id, timestamp, time_to_failure, label, parent_job_id"
+  },
+  "reproduction_summary": {
+    "conditions_evaluated": 4,
+    "thresholds_per_condition": 201,
+    "condition_threshold_combinations": 804,
+    "policy_specific_evaluations": 1608,
+    "exact_match_with_saved_phase7j_csv": true,
+    "max_metric_discrepancy": 0.0,
+    "policyA_passing_operating_points": 0,
+    "policyB_passing_operating_points": 0,
+    "all_gates_passing_operating_points": 0
+  },
+  "discrepancies_resolved": {
+    "DISC-01": "RESOLVED: Condition A theta=0.140 preliminary text (85%, 59.2%, 63.3%, 46.6%) was premature ungrounded draft text emitted while task-4902 ran; authoritative completed run produced 85.0%, 53.1%, 98.0%, 68.9%.",
+    "DISC-02": "RESOLVED: Condition A Peak Macro-F1 theta=0.180 (0.4578) was premature text; verified peak is theta=0.205 (0.3923).",
+    "DISC-03": "RESOLVED: Condition B Peak Macro-F1 theta=0.300 (0.4418) was premature text; verified peak is theta=0.325 (0.3792).",
+    "DISC-04": "RESOLVED: Condition C Peak Macro-F1 theta=0.370 (0.4079) was premature text; verified peak is theta=0.410 (0.4129).",
+    "DISC-05": "RESOLVED: Condition D Peak Macro-F1 theta=0.485 (0.3702) was premature text; verified peak is theta=0.510 (0.4287).",
+    "DISC-06": "RESOLVED: 804 refers to condition-threshold rows; 1608 refers to policy-specific evaluations (804 rows x 2 policies)."
+  },
+  "provenance_statement": {
+    "static_code_inspection": "Verified: scripts/run_phase7j_investigation.py, scratch/test_threshold_sweep.py, and scratch/independent_phase7j_reproduction.py load only validation data.",
+    "execution_logs": "Verified: execution outputs confirm zero references to test tensors, test predictions, or Phase 6 holdout.",
+    "retrospective_limitations": "Static code and execution logs establish what code was executed in this environment; they cannot reconstruct lower-level OS reads from prior arbitrary sessions beyond filesystem timestamps and audit logs.",
+    "test_status_clarification": "Candidate A Test was inspected in Phase 7D and must never be described as untouched or newly blinded. Phase 6 holdout remains strictly quarantined."
+  }
+}

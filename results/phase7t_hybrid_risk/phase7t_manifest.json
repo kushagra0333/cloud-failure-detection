@@ -1,0 +1,111 @@
+{
+  "manifest_version": "1.0",
+  "phase": "Phase 7T",
+  "timestamp_utc": "2026-10-29T08:50:36Z",
+  "operational_verdict": "NO_OPERATIONAL_WINNER",
+  "audit_status": "AUDIT_PASSED",
+  "governance_verified": true,
+  "deliverables_count": 21,
+  "deliverables": {
+    "phase7t_design.md": {
+      "bytes": 2172,
+      "sha256": "17def936ae664139a55816019a7bea64d7d5d1a51ced44fd8b5800e22c0a2d33",
+      "path": "results/phase7t_hybrid_risk/phase7t_design.md"
+    },
+    "phase7t_config.json": {
+      "bytes": 1401,
+      "sha256": "076357e6c9d4695f6594f2fde18d1537a1009cb738b445233a70f632199b28db",
+      "path": "results/phase7t_hybrid_risk/phase7t_config.json"
+    },
+    "preflight_audit.json": {
+      "bytes": 615,
+      "sha256": "5dfca78d407991e26b30d322b02cf5ad57f503afe37954b3be715bcbcd641bce",
+      "path": "results/phase7t_hybrid_risk/preflight_audit.json"
+    },
+    "discrepancy_ledger.csv": {
+      "bytes": 1393,
+      "sha256": "65ed43dd48d8150bb15d18d3249b211ecea16e0bcb7833d232302cbcdd9e6f88",
+      "path": "results/phase7t_hybrid_risk/discrepancy_ledger.csv"
+    },
+    "input_artifact_hashes.json": {
+      "bytes": 794,
+      "sha256": "e16eecff0bf7a64ba37f22718afb38401cf4156ec516b39299c1bbf0037dbbf9",
+      "path": "results/phase7t_hybrid_risk/input_artifact_hashes.json"
+    },
+    "data_manifest.json": {
+      "bytes": 1407,
+      "sha256": "49fab20acc601183810cfeef541abb4e72938c1aa5eae507d3fc4a6f8305da1c",
+      "path": "results/phase7t_hybrid_risk/data_manifest.json"
+    },
+    "integrity_checks.json": {
+      "bytes": 910,
+      "sha256": "bbf262404e2caff16422b0709872e38d89797d13666b035fd62221166171852b",
+      "path": "results/phase7t_hybrid_risk/integrity_checks.json"
+    },
+    "oof_hybrid_predictions.csv": {
+      "bytes": 2982841,
+      "sha256": "e582f8059d7fdad31dd06ee323547dde64132a212412d06d0b652835d6058777",
+      "path": "results/phase7t_hybrid_risk/oof_hybrid_predictions.csv"
+    },
+    "frozen_operating_policy.json": {
+      "bytes": 1067,
+      "sha256": "5ff07a0d431a58eaa224aecc6c7ef16455a24c69b51295303e3e321767879352",
+      "path": "results/phase7t_hybrid_risk/frozen_operating_policy.json"
+    },
+    "threshold_selection_results.csv": {
+      "bytes": 52806,
+      "sha256": "3e1fd193c5d7dc42651fdffc31255e164e457b51a485c4dd26158dd085939c94",
+      "path": "results/phase7t_hybrid_risk/threshold_selection_results.csv"
+    },
+    "validation_hybrid_predictions.csv": {
+      "bytes": 621495,
+      "sha256": "87cf538e7def6a0e02975ee8fa9d8d742be2382ed9ab32453a9631f92983b910",
+      "path": "results/phase7t_hybrid_risk/validation_hybrid_predictions.csv"
+    },
+    "per_seed_metrics.csv": {
+      "bytes": 4843,
+      "sha256": "f95a4e2d982f0dcc08e8148b4dc9aeea33333750cfa8344eba5b339e6f742d52",
+      "path": "results/phase7t_hybrid_risk/per_seed_metrics.csv"
+    },
+    "confusion_matrices.csv": {
+      "bytes": 2738,
+      "sha256": "77fdb0b8e45fad3ad95f8a9161f156b107c3eff728e1537becfe3a966b0b23a9",
+      "path": "results/phase7t_hybrid_risk/confusion_matrices.csv"
+    },
+    "operational_gate_summary.csv": {
+      "bytes": 1617,
+      "sha256": "a32b837db6759dfc3328eef2332c026891f11a68facf2426a9a353a937bad50e",
+      "path": "results/phase7t_hybrid_risk/operational_gate_summary.csv"
+    },
+    "calibration_analysis.csv": {
+      "bytes": 2387,
+      "sha256": "075f85106bf2bb8f5f6a5061aac5426de04b8c554ff3d6a08cbff46ecc0d4353",
+      "path": "results/phase7t_hybrid_risk/calibration_analysis.csv"
+    },
+    "parent_job_influence.csv": {
+      "bytes": 1052,
+      "sha256": "fa661c4a1e7f1355f5fe2d8ee207d11bf234305e1040a4a73a90941552bfa505",
+      "path": "results/phase7t_hybrid_risk/parent_job_influence.csv"
+    },
+    "within_job_metrics.csv": {
+      "bytes": 17801,
+      "sha256": "b1a0aa41aea1daeb1ee7b301386c83bc205caa5c637bee7380ba8298b6990de6",
+      "path": "results/phase7t_hybrid_risk/within_job_metrics.csv"
+    },
+    "paired_comparison.csv": {
+      "bytes": 1900,
+      "sha256": "3f44323816d79c72a4f1fa2c37a9dd0875c1ee33a66b843376252b6c0631b1c8",
+      "path": "results/phase7t_hybrid_risk/paired_comparison.csv"
+    },
+    "independent_audit_report.md": {
+      "bytes": 6391,
+      "sha256": "d846d1dff6b72a6b33c42200cb639c4aa5d3bde9973b905adbb93e573aea15b0",
+      "path": "results/phase7t_hybrid_risk/independent_audit_report.md"
+    },
+    "phase7t_final_report.md": {
+      "bytes": 18909,
+      "sha256": "5c0d30165dca69809fafbac70d34436e50ecdc75c01a986752aa592097931788",
+      "path": "results/phase7t_hybrid_risk/phase7t_final_report.md"
+    }
+  }
+}

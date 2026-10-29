@@ -1,0 +1,114 @@
+{
+  "phase": "Phase 7G \u2014 Hierarchical Causal Baseline Investigation",
+  "timestamp_utc": "2026-10-28T15:17:43.150671+00:00",
+  "environment": {
+    "os": "Windows 11",
+    "python_version": "3.11",
+    "torch_version": "2.14.1+cpu",
+    "numpy_version": "2.4.6",
+    "device": "cpu"
+  },
+  "safeguards_verification": {
+    "candidate_a_test_accessed": false,
+    "confirmatory_phase6_holdout_accessed": false,
+    "phase7b_overwritten": false,
+    "phase7d_overwritten": false,
+    "phase7e_overwritten": false,
+    "phase7f_overwritten": false,
+    "quarantine_timestamp_preserved": "2026-10-26T15:06:19"
+  },
+  "protocol_amendment": {
+    "id": "PROTOCOL-AMENDMENT-PHASE7G-01",
+    "file": "results/phase7g/phase7g_protocol_amendment.json",
+    "sha256": "61bb2460209cf3f79d0055aff9e370ce1be1ff8e56101f5c7acf2daf2b4b9ba7"
+  },
+  "training_data": {
+    "split": "Candidate A Train (N=3,278) & Validation (N=657)",
+    "X_train_shape": [
+      3278,
+      5,
+      31
+    ],
+    "X_val_shape": [
+      657,
+      5,
+      31
+    ],
+    "y_train_distribution": {
+      "Normal": 3044,
+      "Warning": 118,
+      "Critical": 116
+    },
+    "y_val_distribution": {
+      "Normal": 560,
+      "Warning": 48,
+      "Critical": 49
+    },
+    "class_weights_inv_freq": [
+      1.0,
+      11.463115692138672,
+      11.801688194274902
+    ]
+  },
+  "models": {
+    "transformer_job_relative": {
+      "name": "Experiment A: Parent-Job Historical Baseline (CE, gamma=0)",
+      "architecture": "CompactTemporalTransformer(input_dim=31, d_model=32, nhead=4, num_layers=2, dim_feedforward=64, num_classes=3, dropout=0.1, max_seq_len=5)",
+      "loss": "CrossEntropyLoss (gamma=0.0, alpha=InvFreq [1.0, 11.463, 11.802])",
+      "preprocessing": "Parent-Job Historical Baseline (K_job >= 2 fallback to cluster scaler)",
+      "random_seed": 42,
+      "checkpoint": "models/checkpoints_phase7g/transformer_job_relative.pt",
+      "sha256": "2b749d5e083383a15fd5b60658646a0bd32a829d473792a1da3e9ec52a1e7920"
+    },
+    "transformer_hierarchical": {
+      "name": "Experiment B: Hierarchical Causal Baseline (CE, gamma=0)",
+      "architecture": "CompactTemporalTransformer(input_dim=31, d_model=32, nhead=4, num_layers=2, dim_feedforward=64, num_classes=3, dropout=0.1, max_seq_len=5)",
+      "loss": "CrossEntropyLoss (gamma=0.0, alpha=InvFreq [1.0, 11.463, 11.802])",
+      "preprocessing": "Hierarchical Causal Baseline (Task K>=2 -> Job K>=2 -> Cluster Scaler)",
+      "random_seed": 42,
+      "checkpoint": "models/checkpoints_phase7g/transformer_hierarchical.pt",
+      "sha256": "d6a271140810703525e61bcea6305719b6b2ea992729c9de4ae77976d13c84d6"
+    },
+    "transformer_hierarchical_focal": {
+      "name": "Experiment C: Hierarchical Causal Baseline + Focal Loss (gamma=1.0)",
+      "architecture": "CompactTemporalTransformer(input_dim=31, d_model=32, nhead=4, num_layers=2, dim_feedforward=64, num_classes=3, dropout=0.1, max_seq_len=5)",
+      "loss": "MultiClassFocalLoss (gamma=1.0, alpha=InvFreq [1.0, 11.463, 11.802])",
+      "preprocessing": "Hierarchical Causal Baseline (Task K>=2 -> Job K>=2 -> Cluster Scaler)",
+      "random_seed": 42,
+      "checkpoint": "models/checkpoints_phase7g/transformer_hierarchical_focal.pt",
+      "sha256": "e6c318e6f13be06a62b02b1031112ce4037fc6d8fe912e3cf459a43387435b1c"
+    },
+    "transformer_job_relative_focal": {
+      "name": "Experiment C-alt: Parent-Job Baseline + Focal Loss (gamma=1.0)",
+      "architecture": "CompactTemporalTransformer(input_dim=31, d_model=32, nhead=4, num_layers=2, dim_feedforward=64, num_classes=3, dropout=0.1, max_seq_len=5)",
+      "loss": "MultiClassFocalLoss (gamma=1.0, alpha=InvFreq [1.0, 11.463, 11.802])",
+      "preprocessing": "Parent-Job Historical Baseline (K_job >= 2 fallback to cluster scaler)",
+      "random_seed": 42,
+      "checkpoint": "models/checkpoints_phase7g/transformer_job_relative_focal.pt",
+      "sha256": "b2ff1a85b8c0ac98dbee802a8ae62314099dfd7a0851e858f7b439f84e74009b"
+    }
+  },
+  "results_artifacts": {
+    "data_availability_audit.json": "dc2de9353c6e56227edf3cad40e90d32fd85f5d8a78e8b03bc71ec3af9e0dcf8",
+    "phase7g_experiment_metrics.json": "ef1a01bd4e3c4577cfceb40b1273e555083fe9ef44ec506fc1e621008857ba67",
+    "decision_evaluation_results.json": "e05ab240d2b9d414d5916f600058590ab0540eb183cdd311858ad17daeb6411b",
+    "validation_predictions.csv": "273f63de6af25bce385a5e08fcd51e30bba9e24dd950d1c4ed5dd8401f07a6fe",
+    "routing_train_hierarchical.csv": "6cc7276d32e1f5295bc1c38bbb4a6bdf2f1845583ed278dca0e13c5a8f14e3d4",
+    "routing_val_hierarchical.csv": "84be869be7bc302523a9cfbf7f2128f46b35a0d77a5fff7ec2cb6a90008de7a8",
+    "routing_train_job_relative.csv": "0743a2ba6ee97e2466373c8f0abbd237dad047cf30579d7fbfe3e9197d5e771c",
+    "routing_val_job_relative.csv": "556d0bc0ff20c37ced42b9997a49788cb2a9e8da59b7c2f29e2941b5fc9195e8",
+    "X_train_hierarchical.npy": "3b6aa0e7400e58afe02f5bd2761cc4343e714543121cb4a11f601202ba6945e5",
+    "X_val_hierarchical.npy": "49b130dff9c93c6371fbbd9012a071df4f31d3c352798c7365b52f0d33c8a6e2",
+    "X_train_job_relative.npy": "c1fe2f92b017d2142a904463acfd621901e60b9647c701f48b8266942c07c555",
+    "X_val_job_relative.npy": "aabafd4abcead61f724ffc30b6b1cb6555234e8699772bd0fbf76d20566b21bd"
+  },
+  "operational_verdict": {
+    "gate_1_requirement": "Episode Recall >= 70.0% AND Critical Recall >= 50.0%",
+    "gate_2_requirement": "Pure-normal Entity FAR <= 10.0% AND Window FPR <= 5.0%",
+    "gate_1_passed_models": [],
+    "gate_2_passed_models": [],
+    "both_gates_passed_models": [],
+    "test_evaluation_authorized": false,
+    "official_recommendation": "Confirmatory test evaluation remains strictly unauthorized. Candidate A Test split and Phase 6 holdout remain quarantined."
+  }
+}

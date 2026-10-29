@@ -1,0 +1,10 @@
+policy,policy_name,seed,cm_00,cm_01,cm_02,cm_10,cm_11,cm_12,cm_20,cm_21,cm_22
+V0,Historical Raw Reference (th=0.50),42,560,0,0,48,0,0,49,0,0
+V1,Calibrated Primary Treatment (tau),42,560,0,0,48,0,0,49,0,0
+V3,Uncalibrated Diagnostic (tau),42,426,104,30,34,8,6,34,8,7
+V0,Historical Raw Reference (th=0.50),123,557,3,0,46,2,0,49,0,0
+V1,Calibrated Primary Treatment (tau),123,560,0,0,48,0,0,49,0,0
+V3,Uncalibrated Diagnostic (tau),123,302,155,103,28,11,9,27,10,12
+V0,Historical Raw Reference (th=0.50),456,556,4,0,48,0,0,49,0,0
+V1,Calibrated Primary Treatment (tau),456,560,0,0,48,0,0,49,0,0
+V3,Uncalibrated Diagnostic (tau),456,325,131,104,28,10,10,30,7,12

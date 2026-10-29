@@ -1,0 +1,15 @@
+{
+  "phase": "Phase 7Y",
+  "description": "BigQuery Access Enablement, Verified Dry Run and Bounded Borg 2019 Pilot",
+  "primary_verdict": "DATA_ACCESS_BLOCKED",
+  "dataset_target": "google.com:google-cluster-data.clusterdata_2019_a",
+  "max_query_budget_bytes": 25000000000,
+  "max_query_budget_usd": 0.125,
+  "prohibited_partitions_enforced": [
+    "data/processed/phase7c/test_metadata.csv",
+    "data/processed/phase7c/X_test.npy",
+    "data/processed/phase7c/y_test.npy",
+    "data/processed/confirmatory/confirmatory_metadata.csv",
+    "data/processed/confirmatory_l5/confirmatory_l5_metadata.csv"
+  ]
+}

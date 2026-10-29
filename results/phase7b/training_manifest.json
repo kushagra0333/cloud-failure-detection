@@ -1,0 +1,55 @@
+{
+  "phase": "Phase 7B \u2014 Retraining on Candidate A",
+  "timestamp_iso": "2026-10-28T00:30:00+05:30",
+  "governing_protocol": "Protocol v2.0 (results/phase7b_1/phase7b_evaluation_protocol_v2.json)",
+  "split_reference": "results/phase7a_4/candidate_a_job_grouped_split.csv",
+  "environment": {
+    "python": "3.11.9",
+    "torch": "2.14.1+cpu",
+    "sklearn": "1.9.1",
+    "numpy": "2.4.6",
+    "device": "cpu",
+    "random_seed": 42
+  },
+  "models": {
+    "random_forest": {
+      "model_name": "Random Forest",
+      "architecture": "RandomForestClassifier(n_estimators=100, max_depth=15, class_weight='balanced', random_state=42)",
+      "input_shape": "[batch_size, 31]",
+      "training_duration_seconds": 0.3194308280944824,
+      "checkpoint_path": "C:\\Users\\hp\\Desktop\\Research project\\models\\checkpoints_phase7b\\random_forest_phase7b.joblib",
+      "checkpoint_sha256": "3dcd7704bab47790c7e360902767d41458f7c976b77f55b7d4f96556a67510b3"
+    },
+    "temporal_lstm": {
+      "model_name": "Temporal LSTM",
+      "architecture": "TemporalLSTMClassifier(input_dim=31, hidden_dim=64, num_layers=2, num_classes=3, dropout=0.2)",
+      "input_shape": "[batch_size, 5, 31]",
+      "parameter_count": 62467,
+      "best_epoch": 1,
+      "best_val_macro_f1": 0.30676526978909885,
+      "training_duration_seconds": 6.699972152709961,
+      "checkpoint_path": "C:\\Users\\hp\\Desktop\\Research project\\models\\checkpoints_phase7b\\best_lstm_checkpoint_phase7b.pt",
+      "checkpoint_sha256": "bdb5083b2f9efac08170966fc61c8d62e5278b954156e884870e9c513f51118e"
+    },
+    "compact_transformer": {
+      "model_name": "Compact Temporal Transformer",
+      "architecture": "CompactTemporalTransformer(input_dim=31, d_model=32, nhead=4, num_layers=2, dim_feedforward=64, num_classes=3, dropout=0.1, max_len=5)",
+      "input_shape": "[batch_size, 5, 31]",
+      "parameter_count": 19331,
+      "best_epoch": 12,
+      "best_val_macro_f1": 0.33083169329955964,
+      "training_duration_seconds": 15.52521014213562,
+      "checkpoint_path": "C:\\Users\\hp\\Desktop\\Research project\\models\\checkpoints_phase7b\\best_transformer_checkpoint_phase7b.pt",
+      "checkpoint_sha256": "54267c7b9daaedf167a9990f11895e6dcb116baafa86304b8e7aa88262b973db"
+    },
+    "representation_hybrid": {
+      "model_name": "Representation Hybrid",
+      "architecture": "Frozen Compact Transformer encoder backbone (32-dim) concatenated with 31-dim tabular vector, classified by Random Forest",
+      "input_shape": "[batch_size, 63]",
+      "parameter_count": 19331,
+      "training_duration_seconds": 0.38605260848999023,
+      "checkpoint_path": "C:\\Users\\hp\\Desktop\\Research project\\models\\checkpoints_phase7b\\representation_hybrid_phase7b.joblib",
+      "checkpoint_sha256": "e3ae8bcbb92a643c0f6adf668f11aa8cc7b5be96def25fad07dd3b7f49df7f84"
+    }
+  }
+}

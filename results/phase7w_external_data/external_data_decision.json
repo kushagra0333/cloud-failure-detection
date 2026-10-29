@@ -1,0 +1,27 @@
+{
+  "decision_timestamp_utc": "2026-10-29T09:35:29Z",
+  "phase": "Phase 7W",
+  "primary_verdict": "NEW_BENCHMARK_REQUIRED",
+  "governance_status": {
+    "discrepancy_audited": true,
+    "correction_addendum_published": "results/phase7w_external_data/phase7v_governance_correction.md",
+    "prohibited_partitions_unaccessed_in_phase7w": true,
+    "governance_resolution": "DOCUMENTED_AND_RESOLVED"
+  },
+  "compatibility_findings": {
+    "c1_frozen_model_external_evaluation_viable": false,
+    "c1_blocking_reasons": [
+      "Zero external datasets supply the 31 Borg 2011 telemetry features (specifically hardware counters CPI and MAI, disk I/O fraction, and assigned memory ratio).",
+      "Scaler shift: Frozen models require the Candidate A Train scaler fitted on 2011 feature distributions; applying it to external traces causes severe out-of-distribution distortion.",
+      "Label semantics: None of the external datasets contain native 3-class failure proximity labels (Class 0/1/2)."
+    ],
+    "c2_new_external_benchmark_viable": true,
+    "c2_recommended_dataset": "Google Borg ClusterData 2019 (v3)",
+    "c2_secondary_dataset": "Alibaba Cluster Trace 2018 (v2018)"
+  },
+  "next_study_recommendation": {
+    "action": "Design a formal study protocol for an adapted cloud failure-prediction benchmark on Google Borg 2019.",
+    "access_mechanism": "Google BigQuery cohort extraction sandbox (single cell, 1-week window, ~1 GB export).",
+    "comparison_restriction": "Explicitly declare that newly trained models on Borg 2019 represent a new benchmark and cannot be directly compared against Phase 7S-7U Borg 2011 operational gate metrics."
+  }
+}

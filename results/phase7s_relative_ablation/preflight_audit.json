@@ -1,0 +1,30 @@
+{
+  "preflight_timestamp_utc": "2026-10-29T08:17:55Z",
+  "phase": "Phase 7S",
+  "governance_status": "Candidate A Test and Phase 6 holdout strictly excluded",
+  "train_cohort": {
+    "windows": 3278,
+    "parent_jobs": 51,
+    "failure_windows": 481
+  },
+  "val_cohort": {
+    "windows": 657,
+    "parent_jobs": 12,
+    "failure_windows": 97
+  },
+  "discrepancy_resolutions": {
+    "discrepancy_1_inverse_auc_identity": {
+      "reported_issue": "Phase 7R reported mean Val Q0 AUC=0.4244 and inv_auc=0.5772 (sum=1.0016).",
+      "root_cause": "Phase 7R evaluated p0 instead of the exact complement (1 - pfail). Due to float32 softmax rounding, p0 + pfail = 1.0 +/- 1.3e-7, which slightly perturbed rank order during tie breaking.",
+      "resolution": "Using exact analytical complement (1 - pfail) yields AUC(s) + AUC(1-s) = 1.00000000 with exactly zero error across all models and seeds."
+    },
+    "discrepancy_2_operational_gate_narrative_vs_csv": {
+      "reported_issue": "Phase 7Q report narrative mentioned draft placeholder figures ('1.7% Recall'), while operational_gate_summary.csv reported 35.0% Episode Recall.",
+      "root_cause": "Report text generation defect in Phase 7Q narrative. The serialized CSV files (operational_gate_summary.csv, validation_predictions.csv) were 100% verified and correct.",
+      "resolution": "Phase 7S uses strictly programmatically generated tables directly from verified CSV files."
+    },
+    "discrepancy_3_baseline_checkpoint_verification": {
+      "status": "All 18 Q0 and 18 Q1 checkpoints in results/phase7q_signal_audit/checkpoints/ pass bit-for-bit inference reproduction."
+    }
+  }
+}

@@ -1,0 +1,738 @@
+{
+  "parent_job_cluster_bootstrap": {
+    "random_forest": {
+      "resampling_unit": "parent_job_id",
+      "n_clusters": 11,
+      "n_boot": 1000,
+      "metrics": {
+        "macro_f1": {
+          "mean": 0.38739598413937076,
+          "std": 0.04808719869501628,
+          "ci_95": [
+            0.29723061186391414,
+            0.4885464457463429
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "accuracy": {
+          "mean": 0.749237549641144,
+          "std": 0.1422768533763599,
+          "ci_95": [
+            0.4821299615288665,
+            0.921225358084453
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "critical_recall": {
+          "mean": 0.2522950431675169,
+          "std": 0.11039168259499593,
+          "ci_95": [
+            0.07800000000000011,
+            0.5555555555555556
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "warning_recall": {
+          "mean": 0.07492797726466867,
+          "std": 0.03980488787111451,
+          "ci_95": [
+            0.0,
+            0.15384615384615385
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "episode_recall_pct": {
+          "mean": 48.717165006847864,
+          "std": 14.744541854509212,
+          "ci_95": [
+            31.24652777777778,
+            85.71428571428571
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "window_fpr_pct": {
+          "mean": 15.9222901114172,
+          "std": 9.957833191901909,
+          "ci_95": [
+            6.079716962640637,
+            39.35868392202542
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "entity_far_pct": {
+          "mean": 77.31409620351288,
+          "std": 17.117713230642533,
+          "ci_95": [
+            61.19402985074627,
+            100.0
+          ],
+          "valid_replicates": 999,
+          "valid_fraction": 0.999
+        },
+        "parent_job_far_pct": {
+          "mean": 100.0,
+          "std": 0.0,
+          "ci_95": [
+            100.0,
+            100.0
+          ],
+          "valid_replicates": 969,
+          "valid_fraction": 0.969
+        }
+      },
+      "replicate_window_stats": {
+        "min": 122,
+        "max": 4114,
+        "mean": 998.606,
+        "median": 958.0
+      }
+    },
+    "temporal_lstm": {
+      "resampling_unit": "parent_job_id",
+      "n_clusters": 11,
+      "n_boot": 1000,
+      "metrics": {
+        "macro_f1": {
+          "mean": 0.30582370559813615,
+          "std": 0.021772519727945066,
+          "ci_95": [
+            0.26053404501680366,
+            0.3306247467416226
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "accuracy": {
+          "mean": 0.8539987637254964,
+          "std": 0.10741247209326336,
+          "ci_95": [
+            0.6414999239196592,
+            0.9838794769845619
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "critical_recall": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "warning_recall": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "episode_recall_pct": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "window_fpr_pct": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "entity_far_pct": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 999,
+          "valid_fraction": 0.999
+        },
+        "parent_job_far_pct": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 969,
+          "valid_fraction": 0.969
+        }
+      },
+      "replicate_window_stats": {
+        "min": 122,
+        "max": 4114,
+        "mean": 998.606,
+        "median": 958.0
+      }
+    },
+    "compact_transformer": {
+      "resampling_unit": "parent_job_id",
+      "n_clusters": 11,
+      "n_boot": 1000,
+      "metrics": {
+        "macro_f1": {
+          "mean": 0.35452590264855083,
+          "std": 0.06403483143970941,
+          "ci_95": [
+            0.2703470071264889,
+            0.5165368206941866
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "accuracy": {
+          "mean": 0.8594592953547483,
+          "std": 0.10437528737931928,
+          "ci_95": [
+            0.6499017627784659,
+            0.9855592977425847
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "critical_recall": {
+          "mean": 0.08755176117948961,
+          "std": 0.11460588373330177,
+          "ci_95": [
+            0.0,
+            0.4
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "warning_recall": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "episode_recall_pct": {
+          "mean": 6.869686914685988,
+          "std": 8.796024206652975,
+          "ci_95": [
+            0.0,
+            30.0
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "window_fpr_pct": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "entity_far_pct": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 999,
+          "valid_fraction": 0.999
+        },
+        "parent_job_far_pct": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 969,
+          "valid_fraction": 0.969
+        }
+      },
+      "replicate_window_stats": {
+        "min": 122,
+        "max": 4114,
+        "mean": 998.606,
+        "median": 958.0
+      }
+    },
+    "representation_hybrid": {
+      "resampling_unit": "parent_job_id",
+      "n_clusters": 11,
+      "n_boot": 1000,
+      "metrics": {
+        "macro_f1": {
+          "mean": 0.37891865628457216,
+          "std": 0.033182433046857925,
+          "ci_95": [
+            0.30836119108970406,
+            0.43473498661240734
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "accuracy": {
+          "mean": 0.710355945431101,
+          "std": 0.1500535924607239,
+          "ci_95": [
+            0.40447556175168115,
+            0.8897280823218091
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "critical_recall": {
+          "mean": 0.45543442948746354,
+          "std": 0.22765720267321396,
+          "ci_95": [
+            0.037500000000000054,
+            0.7209397636294319
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "warning_recall": {
+          "mean": 0.12992427319121636,
+          "std": 0.10149682707934143,
+          "ci_95": [
+            0.018518518518518517,
+            0.375
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "episode_recall_pct": {
+          "mean": 83.15341492889505,
+          "std": 8.153516613628268,
+          "ci_95": [
+            70.0,
+            100.0
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "window_fpr_pct": {
+          "mean": 23.991222132185932,
+          "std": 14.53238380736836,
+          "ci_95": [
+            8.89949111994161,
+            57.91904898036973
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "entity_far_pct": {
+          "mean": 72.07888763509278,
+          "std": 21.06795474540619,
+          "ci_95": [
+            52.23880597014925,
+            100.0
+          ],
+          "valid_replicates": 999,
+          "valid_fraction": 0.999
+        },
+        "parent_job_far_pct": {
+          "mean": 100.0,
+          "std": 0.0,
+          "ci_95": [
+            100.0,
+            100.0
+          ],
+          "valid_replicates": 969,
+          "valid_fraction": 0.969
+        }
+      },
+      "replicate_window_stats": {
+        "min": 122,
+        "max": 4114,
+        "mean": 998.606,
+        "median": 958.0
+      }
+    }
+  },
+  "entity_cluster_bootstrap": {
+    "random_forest": {
+      "resampling_unit": "entity_id",
+      "n_clusters": 59,
+      "n_boot": 1000,
+      "metrics": {
+        "macro_f1": {
+          "mean": 0.4008896892767302,
+          "std": 0.030957709717013702,
+          "ci_95": [
+            0.3404689348027445,
+            0.4622011415614778
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "accuracy": {
+          "mean": 0.8131541461121797,
+          "std": 0.029789174907025495,
+          "ci_95": [
+            0.7524917084545465,
+            0.8676576031942413
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "critical_recall": {
+          "mean": 0.23444600089777906,
+          "std": 0.09301100768389049,
+          "ci_95": [
+            0.06553017091035927,
+            0.4348001402524544
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "warning_recall": {
+          "mean": 0.0813823623557911,
+          "std": 0.03506772129741017,
+          "ci_95": [
+            0.02,
+            0.15518199233716476
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "episode_recall_pct": {
+          "mean": 43.07090256145487,
+          "std": 11.037119949209666,
+          "ci_95": [
+            22.714646464646464,
+            65.0
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "window_fpr_pct": {
+          "mean": 11.25203827230031,
+          "std": 2.5699011816280923,
+          "ci_95": [
+            6.686913786237109,
+            16.520314198921657
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "entity_far_pct": {
+          "mean": 65.70838735769942,
+          "std": 7.919416303735878,
+          "ci_95": [
+            50.0,
+            80.55779569892474
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "parent_job_far_pct": {
+          "mean": null,
+          "std": null,
+          "ci_95": null,
+          "valid_replicates": 0,
+          "valid_fraction": 0.0
+        }
+      },
+      "replicate_window_stats": {
+        "min": 891,
+        "max": 1158,
+        "mean": 1025.295,
+        "median": 1026.0
+      }
+    },
+    "temporal_lstm": {
+      "resampling_unit": "entity_id",
+      "n_clusters": 59,
+      "n_boot": 1000,
+      "metrics": {
+        "macro_f1": {
+          "mean": 0.3152405395988886,
+          "std": 0.00392610221278039,
+          "ci_95": [
+            0.30690950600129235,
+            0.3221814838361745
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "accuracy": {
+          "mean": 0.8972681639354839,
+          "std": 0.021127060067638957,
+          "ci_95": [
+            0.8531018711202377,
+            0.9352549850220515
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "critical_recall": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "warning_recall": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "episode_recall_pct": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "window_fpr_pct": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "entity_far_pct": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "parent_job_far_pct": {
+          "mean": null,
+          "std": null,
+          "ci_95": null,
+          "valid_replicates": 0,
+          "valid_fraction": 0.0
+        }
+      },
+      "replicate_window_stats": {
+        "min": 891,
+        "max": 1158,
+        "mean": 1025.295,
+        "median": 1026.0
+      }
+    },
+    "compact_transformer": {
+      "resampling_unit": "entity_id",
+      "n_clusters": 59,
+      "n_boot": 1000,
+      "metrics": {
+        "macro_f1": {
+          "mean": 0.34918450544318264,
+          "std": 0.03199522699134748,
+          "ci_95": [
+            0.31007428221197836,
+            0.4208829540402494
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "accuracy": {
+          "mean": 0.9002610656191957,
+          "std": 0.02078669938949181,
+          "ci_95": [
+            0.8572911912368781,
+            0.9376248207147646
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "critical_recall": {
+          "mean": 0.05551391026278823,
+          "std": 0.054754702700422084,
+          "ci_95": [
+            0.0,
+            0.18468749999999995
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "warning_recall": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "episode_recall_pct": {
+          "mean": 4.862394532313097,
+          "std": 4.816767321677721,
+          "ci_95": [
+            0.0,
+            16.666666666666664
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "window_fpr_pct": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "entity_far_pct": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_95": [
+            0.0,
+            0.0
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "parent_job_far_pct": {
+          "mean": null,
+          "std": null,
+          "ci_95": null,
+          "valid_replicates": 0,
+          "valid_fraction": 0.0
+        }
+      },
+      "replicate_window_stats": {
+        "min": 891,
+        "max": 1158,
+        "mean": 1025.295,
+        "median": 1026.0
+      }
+    },
+    "representation_hybrid": {
+      "resampling_unit": "entity_id",
+      "n_clusters": 59,
+      "n_boot": 1000,
+      "metrics": {
+        "macro_f1": {
+          "mean": 0.4069538368810079,
+          "std": 0.020761332685335778,
+          "ci_95": [
+            0.3683610734100267,
+            0.4477086684037906
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "accuracy": {
+          "mean": 0.766922018344678,
+          "std": 0.03679339864643796,
+          "ci_95": [
+            0.6926723768152111,
+            0.8346221052172823
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "critical_recall": {
+          "mean": 0.5773778068008885,
+          "std": 0.10918764371940602,
+          "ci_95": [
+            0.3606393442622951,
+            0.7857435597189695
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "warning_recall": {
+          "mean": 0.08203972036642274,
+          "std": 0.03900458585666532,
+          "ci_95": [
+            0.0161226318484383,
+            0.16666666666666666
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "episode_recall_pct": {
+          "mean": 80.40440835777945,
+          "std": 8.546462170026581,
+          "ci_95": [
+            62.5,
+            95.23809523809523
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "window_fpr_pct": {
+          "mean": 18.482862626819514,
+          "std": 3.7746058049325972,
+          "ci_95": [
+            11.293033724343386,
+            26.311482948410458
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "entity_far_pct": {
+          "mean": 57.492145631440685,
+          "std": 8.316791866709572,
+          "ci_95": [
+            41.66158536585366,
+            73.17073170731707
+          ],
+          "valid_replicates": 1000,
+          "valid_fraction": 1.0
+        },
+        "parent_job_far_pct": {
+          "mean": null,
+          "std": null,
+          "ci_95": null,
+          "valid_replicates": 0,
+          "valid_fraction": 0.0
+        }
+      },
+      "replicate_window_stats": {
+        "min": 891,
+        "max": 1158,
+        "mean": 1025.295,
+        "median": 1026.0
+      }
+    }
+  }
+}

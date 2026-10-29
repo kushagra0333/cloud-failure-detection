@@ -1,0 +1,161 @@
+{
+  "metadata": {
+    "phase": "Phase 7Z.3",
+    "title": "Resolve Quota Verification and Git Data Protection",
+    "timestamp_utc": "2026-10-29T13:53:33.091938+00:00",
+    "project_root": "C:\\Users\\hp\\Desktop\\Research project",
+    "final_verdict": "NOT_READY_BILLING_OR_QUOTA_UNVERIFIED",
+    "verdict_rule_applied": "Git data protection is resolved (PASS). Manual quota verification in Google Cloud Console remains outstanding (UNVERIFIED). Per governing rules: 'If manual quota verification remains outstanding, report NOT_READY_BILLING_OR_QUOTA_UNVERIFIED'."
+  },
+  "query_identity": {
+    "file": "results/phase7y_borg2019_pilot/phase7y_candidate_a_projection_reduction.sql",
+    "byte_size": 2993,
+    "sha256": "8abdbd8bdf20444f1282a82e01b30de0f8b9182c1d706a94b940c5c054ee395e",
+    "dry_run_bytes_processed": 418578205568,
+    "dry_run_bytes_readable": "418,578,205,568 bytes",
+    "dry_run_gib": 389.8313,
+    "dry_run_tib": 0.380695,
+    "estimated_on_demand_cost_usd": 2.3793
+  },
+  "gcp_environment_and_billing": {
+    "active_client_project": "canvas-advice-464215-n1",
+    "configured_gcloud_project": "canvas-advice-464215-n1",
+    "authenticated_account": "kushagrapandey0333@gmail.com",
+    "billing_enabled": false,
+    "billing_account_name": "",
+    "bigquery_sandbox_status": "ACTIVE_SANDBOX",
+    "monthly_quota_allocation_gib": 1024.0,
+    "monthly_quota_allocation_bytes": 1099511627776,
+    "quota_reset_cadence": "First day of each calendar month at 00:00:00 UTC",
+    "query_eligibility": "ELIGIBLE. Public dataset on-demand queries in Sandbox draw from monthly 1 TiB free allowance.",
+    "shared_allowance_risk": "Any queries run by other tools or IAM identities under project canvas-advice-464215-n1 share this quota.",
+    "programmatic_read_limitation": "BigQuery Python client and gcloud CLI do not expose an API endpoint for current-month remaining Sandbox free bytes. Client job history (client.list_jobs()) is an incomplete proxy that does not prove global quota state."
+  },
+  "quota_mathematics": {
+    "total_applicable_quota_gib": 1024.0,
+    "total_applicable_quota_bytes": 1099511627776,
+    "estimated_query_scan_gib": 389.8313,
+    "estimated_query_scan_bytes": 418578205568,
+    "minimum_remaining_quota_required_gib": 389.8313,
+    "minimum_remaining_quota_required_bytes": 418578205568,
+    "maximum_allowable_prior_usage_gib": 634.1687,
+    "maximum_allowable_prior_usage_bytes": 680933422208,
+    "safety_margin_10pct_gib": 428.8145,
+    "safety_margin_10pct_bytes": 460436026124,
+    "max_prior_usage_with_safety_gib": 595.1855,
+    "quota_status": "UNVERIFIED (Requires manual owner confirmation in Cloud Console)"
+  },
+  "git_data_protection": {
+    "is_git_working_tree": true,
+    "gitignore_created": true,
+    "gitignore_path": "C:\\Users\\hp\\Desktop\\Research project\\.gitignore",
+    "gitignore_rules": [
+      "# Raw research datasets",
+      "/data/raw/",
+      "*.parquet",
+      "",
+      "# Python bytecode and virtual environment",
+      "__pycache__/",
+      "*.py[cod]",
+      ".venv/",
+      ".pytest_cache/",
+      "",
+      "# Local temporary files",
+      "*.tmp"
+    ],
+    "check_ignore_verification": {
+      "data/raw/borg2019_pilot/pilot_telemetry.parquet": true,
+      "hypothetical_test.parquet": true,
+      "data/raw/new_file.csv": true,
+      "scripts/run_phase7z3_safeguards_audit.py": false,
+      "results/phase7y_borg2019_pilot/phase7y_candidate_a_projection_reduction.sql": false,
+      "reports/phase7y_borg2019_pilot/phase7z3_quota_and_git_safeguards.md": false
+    },
+    "existing_tracked_data_files": [
+      "data/raw/sample_task_events.csv.gz",
+      "data/raw/sample_task_events_part1.csv.gz",
+      "data/raw/sample_task_events_part2.csv.gz",
+      "data/raw/sample_task_usage.csv.gz",
+      "data/raw/sample_task_usage_part1.csv.gz"
+    ],
+    "untracked_data_risk_status": "RESOLVED_SAFEGUARDS_ACTIVE"
+  },
+  "checkpoints": [
+    {
+      "checkpoint_id": "CHK-Z3-01",
+      "name": "Active Project and Account Verification",
+      "status": "PASS",
+      "evidence": "Configured project is canvas-advice-464215-n1; authenticated identity is kushagrapandey0333@gmail.com."
+    },
+    {
+      "checkpoint_id": "CHK-Z3-02",
+      "name": "Billing Account Absence Verification",
+      "status": "PASS",
+      "evidence": "gcloud billing projects describe confirmed billingEnabled: false and billingAccountName: ''. No credit card attached."
+    },
+    {
+      "checkpoint_id": "CHK-Z3-03",
+      "name": "BigQuery Sandbox Applicability",
+      "status": "PASS",
+      "evidence": "Authoritative Google Cloud documentation confirms projects without billing automatically use BigQuery Sandbox."
+    },
+    {
+      "checkpoint_id": "CHK-Z3-04",
+      "name": "Applicable Monthly Query Quota and Units",
+      "status": "PASS",
+      "evidence": "Sandbox provides 1 TiB (1,024 GiB / 1,099,511,627,776 bytes) of on-demand query capacity per calendar month."
+    },
+    {
+      "checkpoint_id": "CHK-Z3-05",
+      "name": "Remaining Quota Balance Verification",
+      "status": "UNVERIFIED",
+      "evidence": "UNVERIFIED from client API. Google BigQuery does not expose a programmatic remaining_quota API endpoint. Local job history (client.list_jobs()) does not prove central Google Cloud quota consumption. The research owner must manually inspect https://console.cloud.google.com/bigquery?project=canvas-advice-464215-n1."
+    },
+    {
+      "checkpoint_id": "CHK-Z3-06",
+      "name": "Required Quota versus Available Quota Math",
+      "status": "PASS",
+      "evidence": "Candidate A requires 418,578,205,568 bytes (389.83 GiB). Under the 1,024 GiB Sandbox allowance, prior monthly usage must be <= 634.17 GiB (or <= 595.19 GiB with 10% safety margin). Math reconciled exactly."
+    },
+    {
+      "checkpoint_id": "CHK-Z3-07",
+      "name": "Query Checksum and Dry-Run Estimate Parity",
+      "status": "PASS",
+      "evidence": "SQL on disk verified: 8abdbd8bdf20444f1282a82e01b30de0f8b9182c1d706a94b940c5c054ee395e (2993 bytes). BigQuery service dry run confirmed: 418,578,205,568 bytes."
+    },
+    {
+      "checkpoint_id": "CHK-Z3-08",
+      "name": "Root .gitignore Implementation and Testing",
+      "status": "PASS",
+      "evidence": "Root .gitignore created with /data/raw/ and *.parquet. Verified via git check-ignore: data/raw/ and *.parquet ignored; code/reports trackable."
+    },
+    {
+      "checkpoint_id": "CHK-Z3-09",
+      "name": "Existing Tracked Raw Data Audit",
+      "status": "PASS",
+      "evidence": "Identified 5 existing tracked sample files in data/raw/ (historical Borg 2011 samples). Git rules preserve them; no history rewrite or untracking performed without authorization."
+    },
+    {
+      "checkpoint_id": "CHK-Z3-10",
+      "name": "Protected Holdouts Quarantine",
+      "status": "PASS",
+      "evidence": "Candidate A Test (1,025 windows) and Phase 6 Confirmatory holdouts remain strictly untouched (PROTECTED_UNACCESSED)."
+    }
+  ],
+  "checkpoint_counts": {
+    "pass_count": 9,
+    "unverified_count": 1,
+    "fail_count": 0,
+    "total_count": 10
+  },
+  "owner_action_required": {
+    "step_1": "Open Google Cloud Console BigQuery: https://console.cloud.google.com/bigquery?project=canvas-advice-464215-n1",
+    "step_2": "Verify that Query Usage for the current month is below 634.17 GiB (meaning at least 389.83 GiB remains).",
+    "step_3": "If quota is sufficient, the owner may formally authorize Candidate A extraction."
+  },
+  "historical_links": {
+    "phase7z1_report": "reports/phase7y_borg2019_pilot/phase7z1_pre_extraction_authorization_package.md",
+    "phase7z2_report": "reports/phase7y_borg2019_pilot/phase7z2_final_authorization_readiness_audit.md"
+  },
+  "mandatory_safety_statement": "No data-returning BigQuery query, extraction, export, staging operation, pilot dataset creation, model training, or protected holdout access was authorized or performed during Phase 7Z.3. Completion of this phase does not authorize data extraction. A separate explicit owner decision is required."
+}

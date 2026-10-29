@@ -1,0 +1,13 @@
+feature_id,feature_name,source_table,source_field,data_type,unit,sampling_interval,imputation_policy,availability_at_prediction_time
+F01,cpu_avg_usage,instance_usage,cpu_usage.average,float,Normalized cores,5 minutes,Zero if task inactive; forward fill if missing within task,YES
+F02,cpu_max_usage,instance_usage,cpu_usage.maximum,float,Normalized cores,5 minutes,Equal to cpu_avg_usage if missing,YES
+F03,cpu_burstiness_ratio,instance_usage,"derived: cpu_max / max(cpu_avg, 1e-5)",float,Ratio,5 minutes,1.0 baseline,YES
+F04,memory_canonical_usage,instance_usage,memory_usage.canonical_memory_usage,float,Normalized bytes,5 minutes,Median training value,YES
+F05,memory_assigned_usage,instance_usage,memory_usage.assigned_memory_usage,float,Normalized bytes,5 minutes,Median training value,YES
+F06,memory_utilization_ratio,instance_usage,"derived: canonical_memory / max(assigned_memory, 1e-5)",float,"Ratio [0, 1+]",5 minutes,0.5 baseline,YES
+F07,cpu_rolling_mean_3,instance_usage,derived: 3-step rolling mean of cpu_avg,float,Normalized cores,15-minute window,Current cpu_avg if <3 historical steps,YES
+F08,cpu_rolling_std_3,instance_usage,derived: 3-step rolling std of cpu_avg,float,Normalized cores,15-minute window,0.0 if <3 historical steps,YES
+F09,cpu_trend_slope_3,instance_usage,derived: 3-step linear regression slope,float,Cores / 5-min step,15-minute window,0.0 if <3 historical steps,YES
+F10,memory_rolling_mean_3,instance_usage,derived: 3-step rolling mean of canonical_memory,float,Normalized bytes,15-minute window,Current canonical_memory if <3 steps,YES
+F11,priority_tier,instance_events,priority,integer,Priority code (0-360),Static per task,0 (batch default),YES
+F12,task_elapsed_minutes,instance_events,derived: (window_end_time - schedule_time) / 60e6,float,Minutes,Dynamic,5.0 minutes minimum,YES

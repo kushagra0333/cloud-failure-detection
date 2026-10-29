@@ -1,0 +1,152 @@
+{
+  "review_timestamp_utc": "2026-10-29T13:07:17.049774+00:00",
+  "review_type": "DESIGN_ONLY_SCIENTIFIC_FEASIBILITY_REVIEW",
+  "candidate_d_sql_file": "phase7y_candidate_d_alternative_source.sql",
+  "candidate_d_sha256": "0476eefca0076cf7ac18d571160b7060a8dbbee29951746eafda5955837dec14",
+  "source_dataset": "google.com:google-cluster-data.clusterdata_2019_a",
+  "source_table": "collection_events",
+  "dry_run_budget_status": {
+    "scanned_bytes": 2520117308,
+    "scanned_bytes_readable": "2,520,117,308 bytes (~2.52 GB / 2.35 GiB)",
+    "hard_scan_cap_bytes": 21000000000,
+    "scan_cap_utilization_pct": 12.0,
+    "estimated_cost_usd_at_6_25": 0.0143,
+    "budget_cap_usd": 0.125,
+    "budget_cap_utilization_pct": 11.4,
+    "meets_numerical_budget_caps": true,
+    "authorization_note": "Meeting numerical dry-run caps does NOT authorize data extraction or imply scientific equivalence."
+  },
+  "task_definition": {
+    "unit_of_observation": "Job/Collection submission event (collection_id at submit_time_us)",
+    "historical_unit_of_observation": "Fixed 5-minute sliding telemetry windows of individual container tasks (task_id, window_index)",
+    "observation_shift": "Shift from continuous dynamic container time series to discrete static job submission metadata",
+    "prediction_timestamp": "t_pred = submit_time_us (Job admission time)",
+    "lead_time_definition": "delta_t = t_terminal - t_submit (Entire job execution lifetime, ranging from seconds to weeks)",
+    "features_available_at_admission": [
+      "parent_collection_id (workflow grouping)",
+      "user (obfuscated user ID)",
+      "collection_name (obfuscated job template name)",
+      "priority (Borg priority tier)",
+      "scheduling_class (latency sensitivity: 0-3)",
+      "collection_type (0=JOB, 1=ALLOC)",
+      "scheduler (Borg scheduler queue/algorithm)"
+    ],
+    "telemetry_features_available": "NONE. collection_events contains zero CPU, memory, CPI, page cache, or time-series usage metrics."
+  },
+  "temporal_leakage_audit": {
+    "leakage_table": [
+      {
+        "feature": "collection_id",
+        "source": "collection_events",
+        "available_at_prediction_time": true,
+        "leakage_risk": "High (Monotonically increasing ID; leaks global cluster epoch/time)."
+      },
+      {
+        "feature": "parent_collection_id",
+        "source": "collection_events",
+        "available_at_prediction_time": true,
+        "leakage_risk": "High (Workflow group ID; causes co-occurrence leakage between train and val if parent appears in both)."
+      },
+      {
+        "feature": "user",
+        "source": "collection_events",
+        "available_at_prediction_time": true,
+        "leakage_risk": "Critical (Categorical user ID; models memorize users with buggy code rather than learning system signals)."
+      },
+      {
+        "feature": "collection_name",
+        "source": "collection_events",
+        "available_at_prediction_time": true,
+        "leakage_risk": "Critical (Job name string; periodic recurring cron jobs share identical names, creating direct target memorization)."
+      },
+      {
+        "feature": "submit_time_us",
+        "source": "collection_events",
+        "available_at_prediction_time": true,
+        "leakage_risk": "Medium (Diurnal cycle / temporal shift)."
+      },
+      {
+        "feature": "scheduling_class",
+        "source": "collection_events",
+        "available_at_prediction_time": true,
+        "leakage_risk": "Low (Static admission attribute)."
+      },
+      {
+        "feature": "priority",
+        "source": "collection_events",
+        "available_at_prediction_time": true,
+        "leakage_risk": "Low (Static admission attribute)."
+      },
+      {
+        "feature": "terminal_time_us",
+        "source": "earliest_job_terminal",
+        "available_at_prediction_time": false,
+        "leakage_risk": "Fatal (Future target timestamp; strictly excluded from features)."
+      },
+      {
+        "feature": "terminal_type_code",
+        "source": "earliest_job_terminal",
+        "available_at_prediction_time": false,
+        "leakage_risk": "Fatal (Future target label; strictly excluded from features)."
+      },
+      {
+        "feature": "terminal_status",
+        "source": "earliest_job_terminal",
+        "available_at_prediction_time": false,
+        "leakage_risk": "Fatal (Future target string; strictly excluded from features)."
+      }
+    ],
+    "leakage_summary": "If restricted to admission-time fields, no future target leakage occurs. However, severe categorical memorization leakage exists for 'user' and 'collection_name' across repeated periodic jobs."
+  },
+  "label_feasibility": {
+    "failure_target": "FAIL (event code 5): Abnormal job termination where one or more non-retryable tasks failed.",
+    "normal_anchor": "FINISH (event code 6): Clean successful completion of all collection tasks.",
+    "competing_risks": [
+      "KILL (event code 7): Explicit user or parent workflow cancellation.",
+      "EVICT (event code 4): Collection-level preemption by scheduler.",
+      "LOST (event code 8): Host/network disconnect."
+    ],
+    "censoring_and_incomplete_jobs": "Long-running service collections (daemons, databases, web serving tiers) run indefinitely and never log FINISH or FAIL within Day 1. Truncating at Day 1 results in right-censoring for all service jobs, severely biasing the sample toward short batch jobs.",
+    "applicability_of_original_lead_time_horizons": "INAPPLICABLE. The original 5-minute critical (Class 2) and 10-25 minute warning (Class 1) horizons are defined relative to sliding 5-minute telemetry windows during active execution. At job submission, the job has not even been scheduled or assigned to machines. A job may wait in queue for 15 minutes and execute for 4 hours. A 5-minute failure proximity label cannot be evaluated at admission time without continuous runtime telemetry."
+  },
+  "validation_feasibility": {
+    "temporal_split_feasible": true,
+    "group_split_feasible": "Feasible by grouping on parent_collection_id or user.",
+    "operational_gate_comparability": {
+      "Episode_Recall_ge_70": {
+        "meaningful_on_candidate_d": false,
+        "reason": "Episodes were defined as sequences of failure-bound 5-minute telemetry windows. Candidate D has no telemetry windows."
+      },
+      "Genuine_Critical_Recall_ge_50": {
+        "reason": "Critical windows were defined as 0-5 minutes prior to container failure. Candidate D has no critical window observations.",
+        "meaningful_on_candidate_d": false
+      },
+      "Pure_Normal_Entity_FAR_le_10": {
+        "meaningful_on_candidate_d": true,
+        "reason": "Can be adapted as False Alarm Rate on pure-normal parent collections."
+      },
+      "Normal_Window_FPR_le_5": {
+        "meaningful_on_candidate_d": false,
+        "reason": "Normal windows were sliding 5-minute non-failure intervals. Candidate D has no window structure."
+      }
+    },
+    "comparability_summary": "Candidate D cannot evaluate three of the four governing Phase 7B operational gates. Model outputs cannot be compared against Phase 7B-7U results."
+  },
+  "research_continuity_assessment": {
+    "continuity_classification": "C. REQUIRES_SEPARATE_RESEARCH_QUESTION_AND_EXPERIMENTAL_PROTOCOL",
+    "justification": [
+      "1. Modality Mismatch: Phase 7S-7U models (S0, S2, Hybrid, Fuzzy) strictly require input tensors of shape (batch, seq_len=12, features=6) containing standardized CPU and memory telemetry. Candidate D contains zero telemetry.",
+      "2. Model Incompatibility: Frozen neural and fuzzy models developed in Phases 7N-7U cannot be tested or evaluated on Candidate D without retraining an entirely different tabular architecture.",
+      "3. Problem Re-framing: Candidate D changes the core scientific question from 'Can continuous runtime container telemetry predict imminent software crashes?' to 'Can static submission metadata predict job failure proneness at admission?'."
+    ]
+  },
+  "governance_and_holdouts": {
+    "candidate_a_test_accessed": false,
+    "phase6_confirmatory_holdouts_accessed": false,
+    "data_extraction_performed": false,
+    "models_trained_or_tuned": false,
+    "tables_created": false
+  },
+  "recommended_decision": "CANDIDATE_D_REQUIRES_NEW_RESEARCH_DESIGN",
+  "final_operational_verdict": "CANDIDATE_D_REQUIRES_NEW_RESEARCH_DESIGN"
+}

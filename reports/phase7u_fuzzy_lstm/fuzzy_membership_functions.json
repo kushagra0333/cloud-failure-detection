@@ -1,0 +1,43 @@
+{
+  "provenance": "Candidate A Train-OOF pooled predictions across seeds 42, 123, 456 (9,834 observations)",
+  "validation_leakage_prevented": true,
+  "input_a_relative_risk": {
+    "name": "R_rel",
+    "source_model": "S2",
+    "breakpoints": {
+      "q20": 0.092291516,
+      "q50": 0.182063795,
+      "q80": 0.32295263
+    },
+    "membership_functions": {
+      "LOW": "Trapezoidal: 1.0 for x <= q20, linear ramp down to 0.0 at q50",
+      "MEDIUM": "Triangular: linear ramp 0.0 to 1.0 from q20 to q50, linear ramp 1.0 to 0.0 from q50 to q80",
+      "HIGH": "Trapezoidal: linear ramp 0.0 to 1.0 from q50 to q80, 1.0 for x >= q80"
+    }
+  },
+  "input_b_absolute_risk": {
+    "name": "R_abs",
+    "source_model": "S0",
+    "breakpoints": {
+      "q20": 0.096816158,
+      "q50": 0.26665084,
+      "q80": 0.62482592
+    },
+    "membership_functions": {
+      "LOW": "Trapezoidal: 1.0 for x <= q20, linear ramp down to 0.0 at q50",
+      "MEDIUM": "Triangular: linear ramp 0.0 to 1.0 from q20 to q50, linear ramp 1.0 to 0.0 from q50 to q80",
+      "HIGH": "Trapezoidal: linear ramp 0.0 to 1.0 from q50 to q80, 1.0 for x >= q80"
+    }
+  },
+  "output_failure_score": {
+    "domain": [
+      0.0,
+      1.0
+    ],
+    "membership_functions": {
+      "LOW": "Trapezoidal: 1.0 for y <= 0.10, ramp down to 0.40",
+      "MEDIUM": "Triangular: ramp up 0.20 to 0.50, peak at 0.50, ramp down 0.50 to 0.80",
+      "HIGH": "Trapezoidal: ramp up 0.60 to 0.90, peak 1.0 for y >= 0.90"
+    }
+  }
+}

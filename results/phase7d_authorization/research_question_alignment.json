@@ -1,0 +1,49 @@
+{
+  "alignment_check_metadata": {
+    "phase": "Phase 7D Final Research-Question Alignment Check",
+    "timestamp_utc": "2026-10-28T17:35:00Z",
+    "analyst": "Senior ML Research Engineer & Reproducibility Specialist",
+    "governing_protocol": "Protocol v2.0 (results/phase7b_1/phase7b_evaluation_protocol_v2.json)",
+    "governing_split": "Candidate A (results/phase7a_4/candidate_a_job_grouped_split.csv)"
+  },
+  "question_1_primary_research_question": {
+    "classification": "A. Whether the corrected pipeline improves the overall model-selection outcome",
+    "reasoning": "Protocol v2.0 defines a competitive candidate-selection tournament across 4 model architectures. It does not pre-select Random Forest as the designated confirmatory subject. Random Forest is an eligible candidate within the model-selection search space. The overall confirmatory question governed by Protocol v2.0 is whether the end-to-end pipeline and validation selection yield an Operational Winner."
+  },
+  "question_2_confirmatory_status_of_random_forest": {
+    "can_rf_receive_confirmatory_interpretation_if_not_m_star": false,
+    "distinction": {
+      "confirmatory_subject": "Strictly model M* (the single model winning Stage 2 validation qualification). Only M* receives an official confirmatory test verdict (OPERATIONAL_WINNER vs NO_OPERATIONAL_WINNER).",
+      "descriptive_benchmarks": "The remaining 3 models are evaluated on Test strictly as descriptive scientific benchmarks. Under Protocol v2.0 Section 3.3, non-selected models are firewalled from receiving confirmatory status or retroactively replacing M* based on test performance."
+    }
+  },
+  "question_3_nature_of_validation_selection": {
+    "evaluates": "Overall candidate-selection procedure across diverse inductive biases",
+    "explanation": "Stage 2 validation selection evaluates whether a multi-architecture search (tabular, LSTM, Transformer, Hybrid) can identify a qualified candidate under operational gates. It does not directly test a Random Forest-specific hypothesis, because Random Forest may be eliminated during Stage 2 if another architecture achieves higher Validation Macro-F1."
+  },
+  "question_4_path_recommendation": {
+    "selected_path": "Path A",
+    "path_title": "Preserve Protocol v2.0 (Four-Model Tournament; Overall Pipeline Confirmation; Descriptive RF Diagnostics)",
+    "justification": [
+      "Methodological Continuity: Maintains 1-to-1 experimental comparability with Phase 7B, which executed the identical four-model tournament.",
+      "Zero Protocol Bloat: Eliminates the need for an artificial Protocol v3.0 amendment that restricts the study to a legacy tabular baseline.",
+      "Dual Diagnostic Value: If Random Forest wins Validation Stage 2 (as in Phase 7B), it naturally receives the confirmatory test evaluation; if another model wins, RF's test metrics are still fully computed and compared descriptively against Phase 7B RF.",
+      "Comprehensive Scientific Insight: Evaluates how modern temporal architectures (LSTM, Transformer, Hybrid) respond to clean raw telemetry alongside Random Forest."
+    ]
+  },
+  "question_5_bootstrap_limitations_confirmation": {
+    "parent_job_cluster_limitation_confirmed": true,
+    "cluster_count_j": 11,
+    "acknowledged_limitations": [
+      "J=11 parent jobs in Test is a small-sample cluster bootstrap with high empirical variance.",
+      "In ~3.1% of bootstrap replicates, zero pure-normal parent jobs are sampled; handled via valid replicate fraction reporting.",
+      "The two bootstrap levels (parent-job level J=11 and entity level N=59) are hierarchical views of the same single-cluster dataset.",
+      "Neither bootstrap level demonstrates cross-cluster or multi-datacenter generalization; both will be reported strictly as internal sample variability diagnostics."
+    ]
+  },
+  "final_recommendation": {
+    "verdict": "PROCEED WITH PATH A UNDER PROTOCOL V2.0",
+    "stop_condition_honored": true,
+    "model_training_status": "PAUSED (Awaiting explicit user authorization)"
+  }
+}

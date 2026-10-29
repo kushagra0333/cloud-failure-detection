@@ -1,0 +1,806 @@
+{
+  "transformer_hierarchical_baseline": {
+    "name": "Ablation A: Existing Hierarchical Baseline (unfloored)",
+    "checkpoint_path": "models/checkpoints_phase7g/transformer_hierarchical.pt",
+    "best_epoch": 2,
+    "training_time_sec": 0.0,
+    "metrics": {
+      "macro_f1": 0.40358514021389236,
+      "balanced_accuracy": 0.4530328798185941,
+      "accuracy": 0.7366818873668188,
+      "precision": [
+        0.8790786948176583,
+        0.25252525252525254,
+        0.02702702702702703
+      ],
+      "recall": [
+        0.8178571428571428,
+        0.5208333333333334,
+        0.02040816326530612
+      ],
+      "f1": [
+        0.84736355226642,
+        0.3401360544217687,
+        0.023255813953488372
+      ],
+      "support": [
+        560,
+        48,
+        49
+      ],
+      "confusion_matrix": [
+        [
+          458,
+          66,
+          36
+        ],
+        [
+          23,
+          25,
+          0
+        ],
+        [
+          40,
+          8,
+          1
+        ]
+      ],
+      "warning_recall": 0.5208333333333334,
+      "critical_recall": 0.02040816326530612,
+      "episode_metrics": {
+        "total_episodes": 20,
+        "detected_episodes": 12,
+        "episode_recall_pct": 60.0,
+        "episode_recall_ci95": [
+          36.36363636363637,
+          82.35933503836316
+        ],
+        "lead_time_mean_sec": 1414.9083333333335
+      },
+      "false_alarm_metrics": {
+        "pure_normal_entities": 49,
+        "fa_entities": 13,
+        "entity_far_pct": 26.53061224489796,
+        "entity_far_ci95": [
+          14.893617021276595,
+          40.0
+        ],
+        "normal_windows": 560,
+        "fp_windows": 102,
+        "window_fpr_pct": 18.21428571428571,
+        "window_fpr_ci95": [
+          12.203785152605626,
+          24.15068027210884
+        ],
+        "pure_normal_jobs": 4,
+        "fa_jobs": 2,
+        "job_far_pct": 50.0,
+        "job_breakdown": {
+          "698645235": {
+            "pure_normal_job": false,
+            "false_alarm_windows": 3,
+            "normal_windows": 19,
+            "window_fpr_pct": 15.789473684210526,
+            "entity_count": 1,
+            "fa_entities": 1
+          },
+          "4665617026": {
+            "pure_normal_job": true,
+            "false_alarm_windows": 0,
+            "normal_windows": 20,
+            "window_fpr_pct": 0.0,
+            "entity_count": 1,
+            "fa_entities": 0
+          },
+          "6127571078": {
+            "pure_normal_job": false,
+            "false_alarm_windows": 0,
+            "normal_windows": 0,
+            "window_fpr_pct": 0.0,
+            "entity_count": 1,
+            "fa_entities": 1
+          },
+          "6177502198": {
+            "pure_normal_job": false,
+            "false_alarm_windows": 5,
+            "normal_windows": 5,
+            "window_fpr_pct": 100.0,
+            "entity_count": 1,
+            "fa_entities": 1
+          },
+          "6233966714": {
+            "pure_normal_job": false,
+            "false_alarm_windows": 0,
+            "normal_windows": 0,
+            "window_fpr_pct": 0.0,
+            "entity_count": 1,
+            "fa_entities": 1
+          },
+          "6237552348": {
+            "pure_normal_job": false,
+            "false_alarm_windows": 6,
+            "normal_windows": 67,
+            "window_fpr_pct": 8.955223880597014,
+            "entity_count": 9,
+            "fa_entities": 5
+          },
+          "6238836357": {
+            "pure_normal_job": false,
+            "false_alarm_windows": 25,
+            "normal_windows": 104,
+            "window_fpr_pct": 24.03846153846154,
+            "entity_count": 7,
+            "fa_entities": 5
+          },
+          "6238840043": {
+            "pure_normal_job": false,
+            "false_alarm_windows": 11,
+            "normal_windows": 27,
+            "window_fpr_pct": 40.74074074074074,
+            "entity_count": 2,
+            "fa_entities": 2
+          },
+          "6238842343": {
+            "pure_normal_job": false,
+            "false_alarm_windows": 8,
+            "normal_windows": 45,
+            "window_fpr_pct": 17.77777777777778,
+            "entity_count": 5,
+            "fa_entities": 4
+          },
+          "6250023935": {
+            "pure_normal_job": true,
+            "false_alarm_windows": 4,
+            "normal_windows": 100,
+            "window_fpr_pct": 4.0,
+            "entity_count": 5,
+            "fa_entities": 1
+          },
+          "6251664479": {
+            "pure_normal_job": true,
+            "false_alarm_windows": 40,
+            "normal_windows": 120,
+            "window_fpr_pct": 33.33333333333333,
+            "entity_count": 6,
+            "fa_entities": 6
+          },
+          "6251933641": {
+            "pure_normal_job": true,
+            "false_alarm_windows": 0,
+            "normal_windows": 53,
+            "window_fpr_pct": 0.0,
+            "entity_count": 30,
+            "fa_entities": 0
+          }
+        }
+      },
+      "stratification_by_baseline_source": {
+        "cluster_scaler_fallback": {
+          "total_windows": 54,
+          "normal_windows": 46,
+          "fp_windows": 12,
+          "window_fpr_pct": 26.08695652173913,
+          "warning_windows": 6,
+          "warning_recall": 0.5,
+          "critical_windows": 2,
+          "critical_recall": 0.0
+        },
+        "task_history": {
+          "total_windows": 532,
+          "normal_windows": 446,
+          "fp_windows": 80,
+          "window_fpr_pct": 17.937219730941703,
+          "warning_windows": 41,
+          "warning_recall": 0.5365853658536586,
+          "critical_windows": 45,
+          "critical_recall": 0.0
+        },
+        "parent_job_history": {
+          "total_windows": 71,
+          "normal_windows": 68,
+          "fp_windows": 10,
+          "window_fpr_pct": 14.705882352941178,
+          "warning_windows": 1,
+          "warning_recall": 0.0,
+          "critical_windows": 2,
+          "critical_recall": 0.5
+        }
+      },
+      "stratification_by_history_depth": {
+        "K=0 (No History)": {
+          "total_windows": 49,
+          "normal_windows": 43,
+          "fp_windows": 11,
+          "window_fpr_pct": 25.581395348837212,
+          "critical_windows": 2,
+          "critical_recall": 0.0
+        },
+        "K=1-2 (Minimal)": {
+          "total_windows": 49,
+          "normal_windows": 42,
+          "fp_windows": 15,
+          "window_fpr_pct": 35.714285714285715,
+          "critical_windows": 4,
+          "critical_recall": 0.0
+        },
+        "K=3-5 (Moderate)": {
+          "total_windows": 118,
+          "normal_windows": 103,
+          "fp_windows": 32,
+          "window_fpr_pct": 31.06796116504854,
+          "critical_windows": 9,
+          "critical_recall": 0.1111111111111111
+        },
+        "K>5 (Rich)": {
+          "total_windows": 441,
+          "normal_windows": 372,
+          "fp_windows": 44,
+          "window_fpr_pct": 11.827956989247312,
+          "critical_windows": 34,
+          "critical_recall": 0.0
+        }
+      },
+      "probability_distributions": {
+        "critical_windows": {
+          "count": 49,
+          "p_normal_mean": 0.39526697993278503,
+          "p_normal_median": 0.4018769860267639,
+          "p_warning_mean": 0.3162265419960022,
+          "p_warning_median": 0.3182062804698944,
+          "p_critical_mean": 0.28850647807121277,
+          "p_critical_median": 0.2848920226097107
+        },
+        "pure_normal_windows": {
+          "count": 433,
+          "p_normal_mean": 0.43196210265159607,
+          "p_normal_median": 0.42988187074661255,
+          "p_warning_mean": 0.2900288701057434,
+          "p_warning_median": 0.2870655953884125,
+          "p_critical_mean": 0.2780090272426605,
+          "p_critical_median": 0.27333974838256836
+        }
+      },
+      "operational_gates": {
+        "gate_1_pass": false,
+        "gate_2_pass": false,
+        "both_gates_pass": false
+      }
+    }
+  },
+  "transformer_hierarchical_floored": {
+    "name": "Ablation B: Hierarchical with Variance Floor (sigma_floor=0.05)",
+    "checkpoint_path": "C:\\Users\\hp\\Desktop\\Research project\\models\\checkpoints_phase7h\\transformer_hierarchical_floored.pt",
+    "best_epoch": 1,
+    "training_time_sec": 6.479724407196045,
+    "metrics": {
+      "macro_f1": 0.32387436915672535,
+      "balanced_accuracy": 0.35626417233560087,
+      "accuracy": 0.54337899543379,
+      "precision": [
+        0.8652849740932642,
+        0.04430379746835443,
+        0.1415929203539823
+      ],
+      "recall": [
+        0.5964285714285714,
+        0.14583333333333334,
+        0.32653061224489793
+      ],
+      "f1": [
+        0.7061310782241015,
+        0.06796116504854369,
+        0.19753086419753085
+      ],
+      "support": [
+        560,
+        48,
+        49
+      ],
+      "confusion_matrix": [
+        [
+          334,
+          148,
+          78
+        ],
+        [
+          22,
+          7,
+          19
+        ],
+        [
+          30,
+          3,
+          16
+        ]
+      ],
+      "warning_recall": 0.14583333333333334,
+      "critical_recall": 0.32653061224489793,
+      "episode_metrics": {
+        "total_episodes": 20,
+        "detected_episodes": 12,
+        "episode_recall_pct": 60.0,
+        "episode_recall_ci95": [
+          37.5,
+          81.25
+        ],
+        "lead_time_mean_sec": 1448.45
+      },
+      "false_alarm_metrics": {
+        "pure_normal_entities": 49,
+        "fa_entities": 47,
+        "entity_far_pct": 95.91836734693877,
+        "entity_far_ci95": [
+          90.0,
+          100.0
+        ],
+        "normal_windows": 560,
+        "fp_windows": 226,
+        "window_fpr_pct": 40.35714285714286,
+        "window_fpr_ci95": [
+          31.862327488420455,
+          50.60938636914868
+        ],
+        "pure_normal_jobs": 4,
+        "fa_jobs": 4,
+        "job_far_pct": 100.0,
+        "job_breakdown": {
+          "698645235": {
+            "pure_normal_job": false,
+            "false_alarm_windows": 1,
+            "normal_windows": 19,
+            "window_fpr_pct": 5.263157894736842,
+            "entity_count": 1,
+            "fa_entities": 1
+          },
+          "4665617026": {
+            "pure_normal_job": true,
+            "false_alarm_windows": 6,
+            "normal_windows": 20,
+            "window_fpr_pct": 30.0,
+            "entity_count": 1,
+            "fa_entities": 1
+          },
+          "6127571078": {
+            "pure_normal_job": false,
+            "false_alarm_windows": 0,
+            "normal_windows": 0,
+            "window_fpr_pct": 0.0,
+            "entity_count": 1,
+            "fa_entities": 1
+          },
+          "6177502198": {
+            "pure_normal_job": false,
+            "false_alarm_windows": 2,
+            "normal_windows": 5,
+            "window_fpr_pct": 40.0,
+            "entity_count": 1,
+            "fa_entities": 1
+          },
+          "6233966714": {
+            "pure_normal_job": false,
+            "false_alarm_windows": 0,
+            "normal_windows": 0,
+            "window_fpr_pct": 0.0,
+            "entity_count": 1,
+            "fa_entities": 1
+          },
+          "6237552348": {
+            "pure_normal_job": false,
+            "false_alarm_windows": 28,
+            "normal_windows": 67,
+            "window_fpr_pct": 41.7910447761194,
+            "entity_count": 9,
+            "fa_entities": 8
+          },
+          "6238836357": {
+            "pure_normal_job": false,
+            "false_alarm_windows": 18,
+            "normal_windows": 104,
+            "window_fpr_pct": 17.307692307692307,
+            "entity_count": 7,
+            "fa_entities": 3
+          },
+          "6238840043": {
+            "pure_normal_job": false,
+            "false_alarm_windows": 11,
+            "normal_windows": 27,
+            "window_fpr_pct": 40.74074074074074,
+            "entity_count": 2,
+            "fa_entities": 2
+          },
+          "6238842343": {
+            "pure_normal_job": false,
+            "false_alarm_windows": 17,
+            "normal_windows": 45,
+            "window_fpr_pct": 37.77777777777778,
+            "entity_count": 5,
+            "fa_entities": 5
+          },
+          "6250023935": {
+            "pure_normal_job": true,
+            "false_alarm_windows": 16,
+            "normal_windows": 100,
+            "window_fpr_pct": 16.0,
+            "entity_count": 5,
+            "fa_entities": 5
+          },
+          "6251664479": {
+            "pure_normal_job": true,
+            "false_alarm_windows": 74,
+            "normal_windows": 120,
+            "window_fpr_pct": 61.66666666666667,
+            "entity_count": 6,
+            "fa_entities": 6
+          },
+          "6251933641": {
+            "pure_normal_job": true,
+            "false_alarm_windows": 53,
+            "normal_windows": 53,
+            "window_fpr_pct": 100.0,
+            "entity_count": 30,
+            "fa_entities": 30
+          }
+        }
+      },
+      "stratification_by_baseline_source": {
+        "cluster_scaler_fallback": {
+          "total_windows": 54,
+          "normal_windows": 46,
+          "fp_windows": 25,
+          "window_fpr_pct": 54.347826086956516,
+          "warning_windows": 6,
+          "warning_recall": 0.5,
+          "critical_windows": 2,
+          "critical_recall": 0.0
+        },
+        "task_history": {
+          "total_windows": 532,
+          "normal_windows": 446,
+          "fp_windows": 143,
+          "window_fpr_pct": 32.062780269058294,
+          "warning_windows": 41,
+          "warning_recall": 0.0975609756097561,
+          "critical_windows": 45,
+          "critical_recall": 0.35555555555555557
+        },
+        "parent_job_history": {
+          "total_windows": 71,
+          "normal_windows": 68,
+          "fp_windows": 58,
+          "window_fpr_pct": 85.29411764705883,
+          "warning_windows": 1,
+          "warning_recall": 0.0,
+          "critical_windows": 2,
+          "critical_recall": 0.0
+        }
+      },
+      "stratification_by_history_depth": {
+        "K=0 (No History)": {
+          "total_windows": 49,
+          "normal_windows": 43,
+          "fp_windows": 24,
+          "window_fpr_pct": 55.81395348837209,
+          "critical_windows": 2,
+          "critical_recall": 0.0
+        },
+        "K=1-2 (Minimal)": {
+          "total_windows": 49,
+          "normal_windows": 42,
+          "fp_windows": 24,
+          "window_fpr_pct": 57.14285714285714,
+          "critical_windows": 4,
+          "critical_recall": 0.25
+        },
+        "K=3-5 (Moderate)": {
+          "total_windows": 118,
+          "normal_windows": 103,
+          "fp_windows": 55,
+          "window_fpr_pct": 53.398058252427184,
+          "critical_windows": 9,
+          "critical_recall": 0.2222222222222222
+        },
+        "K>5 (Rich)": {
+          "total_windows": 441,
+          "normal_windows": 372,
+          "fp_windows": 123,
+          "window_fpr_pct": 33.064516129032256,
+          "critical_windows": 34,
+          "critical_recall": 0.38235294117647056
+        }
+      },
+      "probability_distributions": {
+        "critical_windows": {
+          "count": 49,
+          "p_normal_mean": 0.36846187710762024,
+          "p_normal_median": 0.35875776410102844,
+          "p_warning_mean": 0.2987918257713318,
+          "p_warning_median": 0.2951452434062958,
+          "p_critical_mean": 0.33274635672569275,
+          "p_critical_median": 0.3365662097930908
+        },
+        "pure_normal_windows": {
+          "count": 433,
+          "p_normal_mean": 0.3516947329044342,
+          "p_normal_median": 0.35573339462280273,
+          "p_warning_mean": 0.32658880949020386,
+          "p_warning_median": 0.3155477046966553,
+          "p_critical_mean": 0.3217165172100067,
+          "p_critical_median": 0.3249838650226593
+        }
+      },
+      "operational_gates": {
+        "gate_1_pass": false,
+        "gate_2_pass": false,
+        "both_gates_pass": false
+      }
+    }
+  },
+  "transformer_hierarchical_robust": {
+    "name": "Ablation C: Robust Scaling (Median, MAD, Soft Tanh)",
+    "checkpoint_path": "C:\\Users\\hp\\Desktop\\Research project\\models\\checkpoints_phase7h\\transformer_hierarchical_robust.pt",
+    "best_epoch": 1,
+    "training_time_sec": 5.93621826171875,
+    "metrics": {
+      "macro_f1": 0.3531403919112677,
+      "balanced_accuracy": 0.3779478458049887,
+      "accuracy": 0.6316590563165906,
+      "precision": [
+        0.8834080717488789,
+        0.03669724770642202,
+        0.16666666666666666
+      ],
+      "recall": [
+        0.7035714285714286,
+        0.08333333333333333,
+        0.3469387755102041
+      ],
+      "f1": [
+        0.7833001988071571,
+        0.050955414012738856,
+        0.2251655629139073
+      ],
+      "support": [
+        560,
+        48,
+        49
+      ],
+      "confusion_matrix": [
+        [
+          394,
+          97,
+          69
+        ],
+        [
+          28,
+          4,
+          16
+        ],
+        [
+          24,
+          8,
+          17
+        ]
+      ],
+      "warning_recall": 0.08333333333333333,
+      "critical_recall": 0.3469387755102041,
+      "episode_metrics": {
+        "total_episodes": 20,
+        "detected_episodes": 11,
+        "episode_recall_pct": 55.00000000000001,
+        "episode_recall_ci95": [
+          31.812200956937797,
+          76.92307692307693
+        ],
+        "lead_time_mean_sec": 1251.2181818181818
+      },
+      "false_alarm_metrics": {
+        "pure_normal_entities": 49,
+        "fa_entities": 45,
+        "entity_far_pct": 91.83673469387756,
+        "entity_far_ci95": [
+          83.01786431152148,
+          98.14814814814815
+        ],
+        "normal_windows": 560,
+        "fp_windows": 166,
+        "window_fpr_pct": 29.642857142857142,
+        "window_fpr_ci95": [
+          22.14897582059634,
+          37.87590644672882
+        ],
+        "pure_normal_jobs": 4,
+        "fa_jobs": 4,
+        "job_far_pct": 100.0,
+        "job_breakdown": {
+          "698645235": {
+            "pure_normal_job": false,
+            "false_alarm_windows": 0,
+            "normal_windows": 19,
+            "window_fpr_pct": 0.0,
+            "entity_count": 1,
+            "fa_entities": 0
+          },
+          "4665617026": {
+            "pure_normal_job": true,
+            "false_alarm_windows": 8,
+            "normal_windows": 20,
+            "window_fpr_pct": 40.0,
+            "entity_count": 1,
+            "fa_entities": 1
+          },
+          "6127571078": {
+            "pure_normal_job": false,
+            "false_alarm_windows": 0,
+            "normal_windows": 0,
+            "window_fpr_pct": 0.0,
+            "entity_count": 1,
+            "fa_entities": 0
+          },
+          "6177502198": {
+            "pure_normal_job": false,
+            "false_alarm_windows": 1,
+            "normal_windows": 5,
+            "window_fpr_pct": 20.0,
+            "entity_count": 1,
+            "fa_entities": 1
+          },
+          "6233966714": {
+            "pure_normal_job": false,
+            "false_alarm_windows": 0,
+            "normal_windows": 0,
+            "window_fpr_pct": 0.0,
+            "entity_count": 1,
+            "fa_entities": 0
+          },
+          "6237552348": {
+            "pure_normal_job": false,
+            "false_alarm_windows": 21,
+            "normal_windows": 67,
+            "window_fpr_pct": 31.343283582089555,
+            "entity_count": 9,
+            "fa_entities": 9
+          },
+          "6238836357": {
+            "pure_normal_job": false,
+            "false_alarm_windows": 5,
+            "normal_windows": 104,
+            "window_fpr_pct": 4.807692307692308,
+            "entity_count": 7,
+            "fa_entities": 3
+          },
+          "6238840043": {
+            "pure_normal_job": false,
+            "false_alarm_windows": 3,
+            "normal_windows": 27,
+            "window_fpr_pct": 11.11111111111111,
+            "entity_count": 2,
+            "fa_entities": 2
+          },
+          "6238842343": {
+            "pure_normal_job": false,
+            "false_alarm_windows": 1,
+            "normal_windows": 45,
+            "window_fpr_pct": 2.2222222222222223,
+            "entity_count": 5,
+            "fa_entities": 3
+          },
+          "6250023935": {
+            "pure_normal_job": true,
+            "false_alarm_windows": 27,
+            "normal_windows": 100,
+            "window_fpr_pct": 27.0,
+            "entity_count": 5,
+            "fa_entities": 4
+          },
+          "6251664479": {
+            "pure_normal_job": true,
+            "false_alarm_windows": 62,
+            "normal_windows": 120,
+            "window_fpr_pct": 51.66666666666667,
+            "entity_count": 6,
+            "fa_entities": 6
+          },
+          "6251933641": {
+            "pure_normal_job": true,
+            "false_alarm_windows": 38,
+            "normal_windows": 53,
+            "window_fpr_pct": 71.69811320754717,
+            "entity_count": 30,
+            "fa_entities": 30
+          }
+        }
+      },
+      "stratification_by_baseline_source": {
+        "cluster_scaler_fallback": {
+          "total_windows": 54,
+          "normal_windows": 46,
+          "fp_windows": 19,
+          "window_fpr_pct": 41.30434782608695,
+          "warning_windows": 6,
+          "warning_recall": 0.16666666666666666,
+          "critical_windows": 2,
+          "critical_recall": 0.5
+        },
+        "task_history": {
+          "total_windows": 532,
+          "normal_windows": 446,
+          "fp_windows": 101,
+          "window_fpr_pct": 22.6457399103139,
+          "warning_windows": 41,
+          "warning_recall": 0.04878048780487805,
+          "critical_windows": 45,
+          "critical_recall": 0.3333333333333333
+        },
+        "parent_job_history": {
+          "total_windows": 71,
+          "normal_windows": 68,
+          "fp_windows": 46,
+          "window_fpr_pct": 67.64705882352942,
+          "warning_windows": 1,
+          "warning_recall": 1.0,
+          "critical_windows": 2,
+          "critical_recall": 0.5
+        }
+      },
+      "stratification_by_history_depth": {
+        "K=0 (No History)": {
+          "total_windows": 49,
+          "normal_windows": 43,
+          "fp_windows": 17,
+          "window_fpr_pct": 39.53488372093023,
+          "critical_windows": 2,
+          "critical_recall": 0.5
+        },
+        "K=1-2 (Minimal)": {
+          "total_windows": 49,
+          "normal_windows": 42,
+          "fp_windows": 22,
+          "window_fpr_pct": 52.38095238095239,
+          "critical_windows": 4,
+          "critical_recall": 0.0
+        },
+        "K=3-5 (Moderate)": {
+          "total_windows": 118,
+          "normal_windows": 103,
+          "fp_windows": 43,
+          "window_fpr_pct": 41.74757281553398,
+          "critical_windows": 9,
+          "critical_recall": 0.1111111111111111
+        },
+        "K>5 (Rich)": {
+          "total_windows": 441,
+          "normal_windows": 372,
+          "fp_windows": 84,
+          "window_fpr_pct": 22.58064516129032,
+          "critical_windows": 34,
+          "critical_recall": 0.4411764705882353
+        }
+      },
+      "probability_distributions": {
+        "critical_windows": {
+          "count": 49,
+          "p_normal_mean": 0.3470500111579895,
+          "p_normal_median": 0.34509655833244324,
+          "p_warning_mean": 0.31131237745285034,
+          "p_warning_median": 0.30901187658309937,
+          "p_critical_mean": 0.34163764119148254,
+          "p_critical_median": 0.33946692943573
+        },
+        "pure_normal_windows": {
+          "count": 433,
+          "p_normal_mean": 0.3653465807437897,
+          "p_normal_median": 0.3648081123828888,
+          "p_warning_mean": 0.3173488974571228,
+          "p_warning_median": 0.31226035952568054,
+          "p_critical_mean": 0.31730446219444275,
+          "p_critical_median": 0.31978511810302734
+        }
+      },
+      "operational_gates": {
+        "gate_1_pass": false,
+        "gate_2_pass": false,
+        "both_gates_pass": false
+      }
+    }
+  }
+}

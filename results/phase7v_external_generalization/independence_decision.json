@@ -1,0 +1,12 @@
+{
+  "decision_timestamp_utc": "2026-10-29T09:15:34Z",
+  "path_selected": "Path B \u2014 No eligible independent cohort exists",
+  "primary_verdict": "NO_INDEPENDENT_COHORT_AVAILABLE",
+  "governance_compliance": {
+    "candidate_a_test_accessed": false,
+    "phase6_confirmatory_holdout_accessed": false,
+    "validation_labels_used_for_tuning": false
+  },
+  "justification": "A comprehensive audit of all repository data assets established that zero independent workload cohorts exist in the project root. Every available dataset is either: (1) already part of the Candidate A development pool, (2) directly overlapping with Candidate A entities and parent jobs from the same Google Borg 2011 cluster trace, (3) strictly prohibited by experimental governance protocol (Candidate A Test and Phase 6 Holdout), or (4) an empty directory (data/synthetic_benchmark). Under strict scientific protocol, evaluating models against non-independent partitions or prohibited test sets is forbidden. Therefore, Path B is declared.",
+  "operational_status": "STANDBY_FOR_EXTERNAL_COHORT_ACQUISITION"
+}

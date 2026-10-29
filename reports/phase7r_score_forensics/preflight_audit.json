@@ -1,0 +1,28 @@
+{
+  "preflight_timestamp_utc": "2026-10-29T07:56:41Z",
+  "authorized_train_windows": 3278,
+  "authorized_val_windows": 657,
+  "train_parent_jobs": 51,
+  "val_parent_jobs": 12,
+  "train_class_counts": {
+    "0": 2797,
+    "1": 244,
+    "2": 237
+  },
+  "val_class_counts": {
+    "0": 560,
+    "2": 49,
+    "1": 48
+  },
+  "historical_questions_reconciliation": {
+    "q1_task_relative_normalization_methods_tested": "Task-relative z-scoring in Phase 7F, hierarchical job-level baseline in Phase 7G, window-level robust scaling in Phase 7H.",
+    "q2_methods_with_near_zero_variance_blowup": "Unfloored task-relative division in Phase 7F produced extreme spikes (>1e6) due to near-zero std in short task runs.",
+    "q3_scheduler_metadata_features_in_7k": "Phase 7K ablated priority, scheduling class, machine ID, preemption history; found no generalizable signal.",
+    "q4_features_improved_validation_ranking": "No ablated feature improved parent-job-grouped validation ranking under matched seeds.",
+    "q5_negative_platt_slope_occurrence": "In Phase 7P, negative slope occurred across pooled OOF due to Fold 0 (a=-0.72) and Fold 1 (a=-0.19), whereas Folds 3 and 4 had positive slopes (+0.30, +0.59).",
+    "q6_single_parent_job_influence": "Fold 0 placed 643 windows of single job 6251414911 (99.1% normal) into test, causing severe slope distortion.",
+    "q7_phase7p_brier_vs_constant_prevalence": "Phase 7P calibrated Brier (0.125955) equals static prevalence predictor p(1-p)=0.125844. It did not improve individual discrimination.",
+    "q8_n2_checkpoints_reproducible": "Yes, re-running inference on saved N2 checkpoints reproduces serialized predictions with max diff < 1e-6."
+  },
+  "governance_check": "Candidate A Test and Phase 6 holdout strictly excluded."
+}

@@ -1,0 +1,43 @@
+{
+  "manifest_version": "1.0",
+  "phase": "Phase 7H-A \u2014 Metric, Normalization, and Provenance Verification",
+  "timestamp": "2026-10-28T21:18:00+05:30",
+  "safeguards_verification": {
+    "candidate_a_test_accessed": false,
+    "phase6_confirmatory_holdout_accessed": false,
+    "phase7b_to_7h_artifacts_overwritten": false,
+    "confirmatory_testing_authorized": false
+  },
+  "artifacts": {
+    "metric_reproduction.json": {
+      "path": "results/phase7h_a/metric_reproduction.json",
+      "size_bytes": 6147,
+      "sha256": "b4a7a2948a585c19550002da85ff8444865502787895996d8c57fac8ba2a4c25"
+    },
+    "normalization_unit_tests.json": {
+      "path": "results/phase7h_a/normalization_unit_tests.json",
+      "size_bytes": 6869,
+      "sha256": "f76dc0190c460c3260c2f4fd3e18eba74624f0af1bcaa686c96ce850f7aead7c"
+    },
+    "probability_shift_audit.json": {
+      "path": "results/phase7h_a/probability_shift_audit.json",
+      "size_bytes": 22750,
+      "sha256": "e2fb554c12fd3795ba62a3dce0ddaecd257a6a60618757226cec53e6fbe3fe4c"
+    },
+    "provenance_audit.json": {
+      "path": "results/phase7h_a/provenance_audit.json",
+      "size_bytes": 3126,
+      "sha256": "efdb2ac03a97406d99661465746ce41fe7ce52e5c771d465123fa0def4d5c1f5"
+    },
+    "temporal_metric_audit.json": {
+      "path": "results/phase7h_a/temporal_metric_audit.json",
+      "size_bytes": 29843,
+      "sha256": "dd0b360c716e1e8751298f8d7dada03b47afc186a9fe73b360d90be1965ad135"
+    },
+    "threshold_semantics_audit.json": {
+      "path": "results/phase7h_a/threshold_semantics_audit.json",
+      "size_bytes": 131585,
+      "sha256": "b541640de88ece12d3771a4ceb8e9a34c3f2a9d7563a1b989988a1c6ec11693d"
+    }
+  }
+}

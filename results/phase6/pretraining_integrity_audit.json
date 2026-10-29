@@ -1,0 +1,97 @@
+{
+  "audit_version": "1.0",
+  "audit_date": "2026-10-26",
+  "auditor": "Independent ML Scientific Auditor (Phase 6.2.1)",
+  "protocol_version_audited": "2.0-pre-registered-L5",
+  "verdict": "READY_FOR_L5_TRAINING",
+  "verdict_rationale": "Cohort integrity independently verified from raw shards. All 137 failure entities, 141 episodes, and 200 normal entities are intact and 100% leakage-free. Window count differences between Phase 6.1 (1,212) and Phase 6.2 (5,727) are completely reconciled. Hybrid in-sample training audit confirmed zero holdout leakage. Evaluation denominators and alert semantics are fully operationalized.",
+  "window_reconciliation": {
+    "frozen_failing_entities_count": 137,
+    "frozen_failing_entities_windows": {
+      "critical_windows": 400,
+      "warning_windows": 300,
+      "normal_windows": 296,
+      "total_windows": 996
+    },
+    "phase6_1_unused_failing_tasks_census_count": 198,
+    "phase6_1_unused_failing_tasks_windows": {
+      "critical_windows": 400,
+      "warning_windows": 300,
+      "normal_windows": 512,
+      "total_windows": 1212
+    },
+    "difference_explanation": {
+      "tasks_count": 61,
+      "windows_count": 216,
+      "window_type": "Normal (y=0)",
+      "mechanism": "61 unused failing tasks in the raw trace had >= 5 valid bins before failure, but their failure occurred > 30 minutes after telemetry terminated. Under TargetLabelGenerator, all their windows had TTF > 1800s, generating 216 Normal windows and 0 pre-failure windows. Protocol 2.0 frozen entities include the 137 entities that generate pre-failure windows (996 windows)."
+    },
+    "normal_control_cohort_windows": {
+      "entities_sampled": 200,
+      "entities_evaluable_l5": 198,
+      "entities_excluded_short_history": 2,
+      "normal_windows": 4515
+    },
+    "grand_total_evaluable_windows": {
+      "frozen_cohort_total": 5511,
+      "protocol_summary_census_total": 5727,
+      "reconciliation_status": "Mathematically reconciled. Protocol Clarification 2.1 clarifies that holdout evaluation evaluates 5,511 windows across the frozen 337 entities (335 evaluable)."
+    }
+  },
+  "episode_distribution_audit": {
+    "total_episodes": 141,
+    "total_entities": 137,
+    "distribution": {
+      "1": 133,
+      "2": 4
+    },
+    "multi_episode_entities_count": 4,
+    "multi_episode_entities": {
+      "6250345153_388": 2,
+      "6250804554_0": 2,
+      "6250804554_1": 2,
+      "6250804554_2": 2
+    }
+  },
+  "isolation_audit": {
+    "dev_entities_count": 525,
+    "holdout_failure_entities_count": 137,
+    "holdout_normal_entities_count": 200,
+    "entity_leakage_count": 0,
+    "disjoint_parent_jobs": [
+      "6250345153",
+      "6250804554",
+      "6251723929",
+      "6252225776"
+    ],
+    "disjoint_parent_jobs_in_dev": 0
+  },
+  "hybrid_training_audit": {
+    "architecture": "RepresentationHybridClassifier",
+    "temporal_backbone": "CompactTemporalTransformer (2 layers, d=32, 4 heads)",
+    "tabular_vector": "x_last in R^31 from Groups A-I",
+    "fused_dimension": 63,
+    "embedding_extraction_mode": "IN_SAMPLE",
+    "out_of_fold_cross_fitting": false,
+    "validation_or_holdout_leakage": false,
+    "holdout_quarantine_preserved": true,
+    "methodological_assessment": "The Transformer backbone is trained on the training partition. Training-set fused embeddings are then extracted using this same backbone in-sample. Zero validation or holdout data enters the hybrid Random Forest. While holdout quarantine is strictly preserved, in-sample extraction creates a potential for the Random Forest to over-index on latent features that fit training noise.",
+    "recommendation_amendment_2_2": "Protocol Amendment 2.2 Proposal: For future iterations, propose K-fold cross-fitting on the training split to produce out-of-fold embeddings for fitting the downstream Random Forest. For the current pre-registered protocol, maintain the frozen single-backbone design to adhere to pre-registered specifications."
+  },
+  "evaluation_denominators": {
+    "pure_normal_entities_denominator": 198,
+    "normal_windows_denominator": 4811,
+    "prefail_windows_denominator": 700,
+    "warning_windows_denominator": 300,
+    "critical_windows_denominator": 400,
+    "failure_episodes_denominator_primary": 141,
+    "failure_episodes_denominator_disjoint": 79,
+    "failure_episodes_denominator_shared": 62,
+    "alert_rule": "y_hat = argmax_c P(y=c | X). Alert triggered if y_hat in {1, 2}.",
+    "operational_gates": {
+      "entity_far_gate": "FAR_entity <= 12.0% (<= 23 false alarm entities out of 198)",
+      "window_fpr_gate": "FPR_window <= 5.0% (<= 240 false positive windows out of 4,811)"
+    },
+    "model_selection_policy": "Models must pass BOTH gates to be eligible. Ranked by Episode Recall on the 141 episodes. Tie-breaker: Macro-F1. Fallback: NO OPERATIONAL WINNER if no model passes both gates."
+  }
+}

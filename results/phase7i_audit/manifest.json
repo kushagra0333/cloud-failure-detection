@@ -1,0 +1,45 @@
+{
+  "manifest_version": "1.0",
+  "phase": "Phase 7I-A \u2014 Training Collapse, Label Distribution, and Metric Audit",
+  "timestamp_iso": "2026-10-28T21:55:00+05:30",
+  "target_phase": "Phase 7I \u2014 Controlled Loss-Weighting Experiment",
+  "safeguards_verification": {
+    "candidate_a_test_accessed": false,
+    "phase6_confirmatory_holdout_accessed": false,
+    "existing_artifacts_overwritten": false,
+    "new_models_trained_for_selection": false,
+    "confirmatory_testing_authorized": false
+  },
+  "artifacts": {
+    "label_distribution_audit.json": {
+      "path": "results/phase7i_audit/label_distribution_audit.json",
+      "size_bytes": 4693,
+      "sha256": "6f2f3f115cd76301bbbc47b4894d92087e1ab6fc3389dbbcd3e67be7a5cff0e2"
+    },
+    "metric_reproduction.json": {
+      "path": "results/phase7i_audit/metric_reproduction.json",
+      "size_bytes": 8027,
+      "sha256": "f027486b2f25901ffe590bf4961b6d9f6f809f3af3f57e6a662b0064fc639dd0"
+    },
+    "phase7i_audit_report.md": {
+      "path": "results/phase7i_audit/phase7i_audit_report.md",
+      "size_bytes": 33549,
+      "sha256": "c7c19b58e0047cff754c7110ce8e9847cb39faa4ed51c1cc0c04a455c7308cd9"
+    },
+    "provenance_audit.json": {
+      "path": "results/phase7i_audit/provenance_audit.json",
+      "size_bytes": 7414,
+      "sha256": "936082d3407990278614809cc05f5664edbcc5f4f468bb5f9901b3af2400e1c7"
+    },
+    "training_dynamics_audit.json": {
+      "path": "results/phase7i_audit/training_dynamics_audit.json",
+      "size_bytes": 22539,
+      "sha256": "10987493e6461410c3561faa5c980052141b3d34569f7555f771fb15197a148b"
+    },
+    "validation_ranking_metrics.json": {
+      "path": "results/phase7i_audit/validation_ranking_metrics.json",
+      "size_bytes": 15931,
+      "sha256": "d1dd7695d9573ed9b697d27964e8695903d9544a0e013e4d306b9104d88563b3"
+    }
+  }
+}

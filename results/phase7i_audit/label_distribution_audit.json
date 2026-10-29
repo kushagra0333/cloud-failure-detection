@@ -1,0 +1,101 @@
+{
+  "audit_metadata": {
+    "phase": "Phase 7I-A",
+    "description": "Exhaustive label distribution and class-index mapping audit",
+    "timestamp_iso": "2026-10-28T21:50:00+05:30"
+  },
+  "approved_data_arrays": {
+    "candidate_a_train": {
+      "array_path": "data/processed/phase7c/y_train.npy",
+      "array_sha256": "355ca59b1609780181fabe8f06c6ab51cc5c53cfbec91cb822d76b8e373fab1e",
+      "metadata_path": "data/processed/phase7c/train_metadata.csv",
+      "metadata_sha256": "0180ade4098711680c44bbd2ca8c3c5d85834a86042546cc9300b00f1df725ce",
+      "total_windows": 3278,
+      "classes": {
+        "0_normal": {
+          "count": 2797,
+          "percentage": 85.3264
+        },
+        "1_warning": {
+          "count": 244,
+          "percentage": 7.4436
+        },
+        "2_critical": {
+          "count": 237,
+          "percentage": 7.23
+        }
+      },
+      "array_metadata_exact_match": true
+    },
+    "candidate_a_validation": {
+      "array_path": "data/processed/phase7c/y_val.npy",
+      "array_sha256": "eb968a74ae86dcc574f3341055ff45ca9fcf77ec5a1b4cee5ad8cb4c1e2631b9",
+      "metadata_path": "data/processed/phase7c/val_metadata.csv",
+      "metadata_sha256": "8d22193f11d671dc570d29abf9255d06386880d49c5de83c68d6404a8b41b956",
+      "total_windows": 657,
+      "classes": {
+        "0_normal": {
+          "count": 560,
+          "percentage": 85.2359
+        },
+        "1_warning": {
+          "count": 48,
+          "percentage": 7.3059
+        },
+        "2_critical": {
+          "count": 49,
+          "percentage": 7.4581
+        }
+      },
+      "array_metadata_exact_match": true
+    }
+  },
+  "discrepancy_forensic_resolution": {
+    "reported_discrepancy": {
+      "text_description": "Phase 7I report describes training as approximately 85.3% Normal, but manifests in Phase 7F/7G list counts of 3,044 Normal, 118 Warning, 116 Critical (Total 3,278).",
+      "validation_distribution_reported": "560 Normal (85.24%), 48 Warning (7.31%), 49 Critical (7.46%)"
+    },
+    "forensic_finding": {
+      "true_training_distribution": {
+        "Normal": 2797,
+        "Warning": 244,
+        "Critical": 237,
+        "Total": 3278,
+        "Normal_pct": 85.3264
+      },
+      "spurious_manifest_entry": {
+        "Normal": 3044,
+        "Warning": 118,
+        "Critical": 116,
+        "Total": 3278,
+        "Normal_pct": 92.8615
+      },
+      "resolution_verdict": "CONFIRMED_REPORTING_ARTIFACT_IN_EARLIER_MANIFESTS",
+      "detailed_evidence": [
+        "1. The actual approved array data/processed/phase7c/y_train.npy contains exactly [2797, 244, 237].",
+        "2. The report text 'approximately 85.3% Normal' is mathematically exact for 2797 / 3278 (85.33%), whereas 3044 / 3278 would be 92.86%.",
+        "3. In Phase 7E (results/phase7e/training_manifest.json), class distributions were correctly recorded as 0: 2797, 1: 244, 2: 237.",
+        "4. The standard inverse-frequency weights throughout Phase 7E, 7F, and 7G were [1.0, 11.463, 11.802]. These equal 2797/244 (11.4631) and 2797/237 (11.8017). Had 3044, 118, 116 been used, inverse-frequency weights would have been [1.0, 25.796, 26.241].",
+        "5. In results/phase7i/phase7i_report.md Section 8 (line 207), the class ratio was explicitly cited as ln(2797/244) \u2248 2.44.",
+        "6. The Phase 7I training script scripts/run_phase7i_experiment.py loaded y_train.npy directly and never ingested or generated 3044, 118, or 116.",
+        "7. The spurious numbers [3044, 118, 116] originated as a clerical error in results/phase7f/phase7f_manifest.json, likely conflating 118 (total parent jobs in Phase 6 protocol) and 116 (parent jobs in holdout), subtracting from 3278 (3278 - 118 - 116 = 3044).",
+        "8. No samples were relabeled or corrupted. The true data arrays remain intact and verified."
+      ]
+    }
+  },
+  "class_index_mapping_verification": {
+    "label_encoding": {
+      "0": "Normal",
+      "1": "Warning",
+      "2": "Critical"
+    },
+    "subsystem_checks": {
+      "training_label_array": "PASSED: Array contains int64 values {0, 1, 2}.",
+      "validation_label_array": "PASSED: Array contains int64 values {0, 1, 2}.",
+      "loss_criterion_weight_vector": "PASSED: Weight tensor [w0, w1, w2] aligns index 0 to Normal, 1 to Warning, 2 to Critical.",
+      "prediction_decoding": "PASSED: argmax over softmax logits correctly produces class index 0, 1, or 2.",
+      "metric_calculation": "PASSED: confusion_matrix and classification_report explicitly pass labels=[0, 1, 2]."
+    },
+    "consistency_status": "STRICTLY_CONSISTENT_ACROSS_ALL_SUBSYSTEMS"
+  }
+}

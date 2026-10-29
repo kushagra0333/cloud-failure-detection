@@ -1,0 +1,18 @@
+{
+  "phase": "Phase 7X",
+  "description": "Google Borg 2019 Acquisition, Label Feasibility and New-Benchmark Protocol",
+  "primary_verdict": "DATA_ACCESS_BLOCKED",
+  "dataset_name": "Google Borg ClusterData 2019 (v3)",
+  "bigquery_public_project": "google.com:google-cluster-data",
+  "pilot_target_cell": "clusterdata_2019_a",
+  "query_budget_limit_bytes": 20000000000,
+  "query_budget_limit_usd": 0.1,
+  "access_blocker_status": "AUTHENTICATION_AND_BILLING_UNAVAILABLE",
+  "prohibited_partitions_enforced": [
+    "data/processed/phase7c/test_metadata.csv",
+    "data/processed/phase7c/X_test.npy",
+    "data/processed/phase7c/y_test.npy",
+    "data/processed/confirmatory/confirmatory_metadata.csv",
+    "data/processed/confirmatory_l5/confirmatory_l5_metadata.csv"
+  ]
+}

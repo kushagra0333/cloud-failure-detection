@@ -1,0 +1,34 @@
+{
+  "manifest_id": "PHASE-7J-A-AUDIT-MANIFEST",
+  "timestamp_iso": "2026-10-28T22:47:30+05:30",
+  "phase": "Phase 7J-A \u2014 Independent Metric Reproduction and Artifact Consistency Audit",
+  "status": "SEALED",
+  "executive_verdict": "NO_OPERATIONAL_WINNER_CONFIRMED",
+  "files": {
+    "independent_threshold_metrics.csv": {
+      "path": "results/phase7j_audit/independent_threshold_metrics.csv",
+      "size_bytes": 285078,
+      "sha256": "0329aecd78ac67cd7400d3d4e3b9d2c8cfab9251b2a8b3c2b2ca43ef281f4b48"
+    },
+    "independent_gate_summary.csv": {
+      "path": "results/phase7j_audit/independent_gate_summary.csv",
+      "size_bytes": 1475,
+      "sha256": "58d9490b51686851f0310dbb26d093f2e2b82fd1549aeb020ba309f28ee4cffb"
+    },
+    "metric_discrepancy_register.csv": {
+      "path": "results/phase7j_audit/metric_discrepancy_register.csv",
+      "size_bytes": 3892,
+      "sha256": "f18d9745fcff77646975a3e5d21d19a56da434911d90ab8a3bbd9c3c43e9d369"
+    },
+    "phase7j_audit_integrity.json": {
+      "path": "results/phase7j_audit/phase7j_audit_integrity.json",
+      "size_bytes": 4472,
+      "sha256": "114c4b4ee0c63e9a0ff5cb8ee2f19ef57676fd3604fd4dfdfef4c0bd3359f486"
+    },
+    "phase7j_audit_report.md": {
+      "path": "results/phase7j_audit/phase7j_audit_report.md",
+      "size_bytes": 28616,
+      "sha256": "e95b62dec3dcc5ad2f77013f4b56ad7e891103f1e32061fd9bca5e748d87d28d"
+    }
+  }
+}

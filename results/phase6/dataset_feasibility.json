@@ -1,0 +1,144 @@
+{
+  "feasibility_audit_version": "1.0",
+  "audit_date": "2026-10-26",
+  "auditor": "Independent Scientific ML Auditor",
+  "history_window_mathematics": {
+    "cadence_seconds": 300.0,
+    "cadence_minutes": 5.0,
+    "sequence_length_L": 15,
+    "endpoint_distance_seconds": 4200.0,
+    "endpoint_distance_minutes": 70.0,
+    "physical_collection_span_seconds": 4500.0,
+    "physical_collection_span_minutes": 75.0,
+    "earliest_possible_prediction_timestamp_sec": 5100.0,
+    "minimum_pre_failure_lifespan_required_sec": 4200.0
+  },
+  "frozen_100_failure_entities_audit": {
+    "total_frozen_failure_entities": 100,
+    "entities_with_verified_fail_event": 100,
+    "first_fail_timestamp_summary_sec": {
+      "mean": 4949.16,
+      "std": 2831.12,
+      "min": 927.18,
+      "median": 3801.24,
+      "max": 9450.93
+    },
+    "entities_failing_before_5100s": 63,
+    "entities_failing_after_5100s": 37,
+    "pre_failure_step_distribution": {
+      "0_steps": 1,
+      "1_step": 6,
+      "2_steps": 7,
+      "3_steps": 7,
+      "4_steps": 5,
+      "5_steps": 2,
+      "6_steps": 6,
+      "7_steps": 3,
+      "8_steps": 5,
+      "9_steps": 10,
+      "10_steps": 18,
+      "11_steps": 4,
+      "12_steps": 15,
+      "13_steps": 9,
+      "14_steps": 2,
+      "15_or_more_steps": 0
+    },
+    "entities_with_ge_15_pre_failure_steps": 0,
+    "entities_with_ge_10_pre_failure_steps": 48,
+    "entities_with_ge_5_pre_failure_steps": 74,
+    "entities_with_ge_3_pre_failure_steps": 86,
+    "entities_exhibiting_restarts_after_failure": 100,
+    "post_failure_telemetry_treatment": "Classified as censored/UNKNOWN (label -1) and excluded from evaluation to strictly prevent retrospective alerts from counting as early detection."
+  },
+  "full_trace_failure_census": {
+    "total_failing_entities_in_raw_events": 5170,
+    "total_failing_entities_with_telemetry": 748,
+    "total_failing_entities_with_ge_15_pre_fail_bins": 241,
+    "development_partition_failing_entities_with_ge_15_bins": 241,
+    "development_partition_breakdown": {
+      "train_failing_entities": 120,
+      "val_failing_entities": 36,
+      "test_failing_entities": 36,
+      "other_dev_failing_entities_without_windows": 49
+    },
+    "unused_failing_entities_with_ge_15_pre_fail_bins": 0,
+    "exhaustion_proof": "The Phase 2 pipeline ingested all failing tasks from the source trace. All 241 failing entities in the raw shards that met the 15-step pre-failure invariant were fully absorbed into development partitions. The remaining 507 failing tasks in the raw trace failed before completing 15 pre-failure steps."
+  },
+  "phase5_metrics_verification": {
+    "evaluated_windows": 2596,
+    "evaluated_entities": 188,
+    "true_normal_windows": 2596,
+    "true_warning_windows": 0,
+    "true_critical_windows": 0,
+    "recomputed_window_fpr": {
+      "Random Forest": 29.23728813559322,
+      "Temporal LSTM": 43.41294298921417,
+      "Compact Temporal Transformer": 44.49152542372881,
+      "Representation Hybrid": 26.617873651771955
+    },
+    "recomputed_pure_normal_far": {
+      "Random Forest": 42.02127659574468,
+      "Temporal LSTM": 51.06382978723404,
+      "Compact Temporal Transformer": 60.63829787234043,
+      "Representation Hybrid": 42.5531914893617
+    },
+    "far_definition": "Percentage of evaluated pure-normal entities that generated at least one false alarm (pred in {1, 2}) across their evaluated sliding windows.",
+    "failure_metrics_status": "Empirically undefined (0/0) due to 0 evaluable failure episodes in holdout."
+  },
+  "alternative_designs_feasibility": [
+    {
+      "sequence_length_L": 3,
+      "endpoint_duration_min": 10.0,
+      "collection_duration_min": 15.0,
+      "total_trace_failing_entities": 503,
+      "dev_failing_entities": 294,
+      "unused_failing_entities": 209,
+      "potential_unused_failure_windows": 1160,
+      "target_horizon_feasibility": "Fully compatible with 15-30m Warning and 0-15m Critical horizons."
+    },
+    {
+      "sequence_length_L": 5,
+      "endpoint_duration_min": 20.0,
+      "collection_duration_min": 25.0,
+      "total_trace_failing_entities": 418,
+      "dev_failing_entities": 286,
+      "unused_failing_entities": 132,
+      "potential_unused_failure_windows": 801,
+      "target_horizon_feasibility": "Recommended: Captures 25-minute temporal dynamics while retaining 132 untouched failure entities."
+    },
+    {
+      "sequence_length_L": 8,
+      "endpoint_duration_min": 35.0,
+      "collection_duration_min": 40.0,
+      "total_trace_failing_entities": 377,
+      "dev_failing_entities": 270,
+      "unused_failing_entities": 107,
+      "potential_unused_failure_windows": 426,
+      "target_horizon_feasibility": "Feasible: 107 untouched failure entities available."
+    },
+    {
+      "sequence_length_L": 10,
+      "endpoint_duration_min": 45.0,
+      "collection_duration_min": 50.0,
+      "total_trace_failing_entities": 349,
+      "dev_failing_entities": 265,
+      "unused_failing_entities": 84,
+      "potential_unused_failure_windows": 224,
+      "target_horizon_feasibility": "Marginal: 84 untouched failure entities available."
+    },
+    {
+      "sequence_length_L": 15,
+      "endpoint_duration_min": 70.0,
+      "collection_duration_min": 75.0,
+      "total_trace_failing_entities": 241,
+      "dev_failing_entities": 241,
+      "unused_failing_entities": 0,
+      "potential_unused_failure_windows": 0,
+      "target_horizon_feasibility": "Infeasible in Google Borg 2011 (zero unused entities available; requires external trace like Alibaba)."
+    }
+  ],
+  "strategic_recommendations": {
+    "path_a_revised_sequence_google_trace": "Revise sequence length to L=5 (25 min history) on Google Borg 2011 trace, unlocking 132 unused failing entities and 801 pre-failure windows for an untouched holdout.",
+    "path_b_cross_cluster_alibaba_trace": "Retain L=15 (75 min history) and evaluate cross-cluster generalization on Alibaba Cluster Trace 2018/2021 with multi-day job telemetry."
+  }
+}

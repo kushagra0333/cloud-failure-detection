@@ -1,0 +1,92 @@
+{
+  "phase": "Phase 7S",
+  "title": "Absolute-versus-Relative Telemetry Ablation and Cross-Job Generalization",
+  "timestamp_utc": "2026-10-29T13:45:00Z",
+  "project_root": "C:/Users/hp/Desktop/Research project",
+  "conditions": {
+    "S0": {
+      "name": "Absolute-only Baseline (Phase 7N N2)",
+      "stream_A": "Recent 5-step absolute telemetry (31 features)",
+      "stream_B": "Historical 93-dim summary statistics from steps 0..6",
+      "stream_C": null,
+      "parameter_count": 46451
+    },
+    "S1": {
+      "name": "Combined Representation (Phase 7Q Q1)",
+      "stream_A": "Recent 5-step absolute telemetry (31 features)",
+      "stream_B": "Historical 93-dim summary statistics from steps 0..6",
+      "stream_C": "Causal relative deltas MLP (31 features)",
+      "parameter_count": 49443
+    },
+    "S2": {
+      "name": "Baseline-Relative-Only Treatment",
+      "stream_A": "Recent 5-step relative telemetry (normalized to historical median and MAD)",
+      "stream_B": "Historical 93-dim summary statistics derived exclusively from normalized historical steps",
+      "stream_C": null,
+      "parameter_count": 46451,
+      "absolute_levels_present": false
+    }
+  },
+  "seeds": [42, 123, 456],
+  "authorized_partitions": {
+    "train": {
+      "name": "Candidate A Train",
+      "windows": 3278,
+      "entities": 284,
+      "parent_jobs": 51,
+      "labels": {
+        "0": 2797,
+        "1": 244,
+        "2": 237
+      },
+      "failure_prevalence": 0.14673581452104942
+    },
+    "validation": {
+      "name": "Candidate A Validation",
+      "windows": 657,
+      "entities": 69,
+      "parent_jobs": 12,
+      "labels": {
+        "0": 560,
+        "1": 48,
+        "2": 49
+      },
+      "failure_prevalence": 0.14764079147640793,
+      "episodes": 20,
+      "pure_normal_entities": 49
+    }
+  },
+  "prohibited_partitions": [
+    "Candidate A Test",
+    "Phase 6 Confirmatory Holdout"
+  ],
+  "relative_transformation": {
+    "historical_interval": "steps 0..6 (t-55m to t-25m, 7 steps)",
+    "recent_interval": "steps 7..11 (t-20m to t, 5 steps)",
+    "scale_floor_percentile": 10.0,
+    "scale_floor_source": "Candidate A Train only",
+    "clip_bounds": [-5.0, 5.0]
+  },
+  "training_hyperparameters": {
+    "optimizer": "Adam",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "batch_size": 64,
+    "max_epochs": 25,
+    "class_weights": [1.0, 2.0, 2.0],
+    "auxiliary_margin": 0.50,
+    "lambda_critical": 0.10
+  },
+  "frozen_operating_policy": {
+    "score_definition": "P_fail = P1 + P2",
+    "threshold": 0.50,
+    "margin_definition": "z2 - z1",
+    "critical_margin_threshold": 0.50
+  },
+  "operational_gates": {
+    "gate_1a_episode_recall_min": 70.0,
+    "gate_1b_critical_recall_min": 50.0,
+    "gate_2a_entity_far_max": 10.0,
+    "gate_2b_window_fpr_max": 5.0
+  }
+}

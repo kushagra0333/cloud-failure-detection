@@ -1,0 +1,66 @@
+{
+  "manifest_version": "1.0",
+  "phase": "Phase 7W",
+  "timestamp_utc": "2026-10-29T09:35:29Z",
+  "operational_verdict": "NEW_BENCHMARK_REQUIRED",
+  "governance_status": "DOCUMENTED_AND_RESOLVED",
+  "audit_status": "AUDIT_PASSED",
+  "deliverables_count": 12,
+  "deliverables": {
+    "phase7w_design.md": {
+      "bytes": 1696,
+      "sha256": "6fc4d90d933a96e2e7d8b129c1625caef5dbba11ac0a404cf79c89c626f384ac",
+      "path": "results/phase7w_external_data/phase7w_design.md"
+    },
+    "phase7w_config.json": {
+      "bytes": 621,
+      "sha256": "691d0dd16a365069fd65bf5272fc89f02ac5150ad09207b10848d8b70ae6cd09",
+      "path": "results/phase7w_external_data/phase7w_config.json"
+    },
+    "phase7v_governance_correction.md": {
+      "bytes": 6196,
+      "sha256": "2ba1e59d2c43dd1665beac61c6bcf64d6e4944ffc09f96a6bc364c6dbcef7043",
+      "path": "results/phase7w_external_data/phase7v_governance_correction.md"
+    },
+    "candidate_inventory.csv": {
+      "bytes": 2778,
+      "sha256": "220c542cee04aceaa7b0ba41ad6e24e42390b71f3d45215310ce9c939702eaf9",
+      "path": "results/phase7w_external_data/candidate_inventory.csv"
+    },
+    "candidate_compatibility_matrix.csv": {
+      "bytes": 3347,
+      "sha256": "0ebb70ad7d2cd1c6ea5234b872a8b98a20e99549926cfa963658756f01f22d6f",
+      "path": "results/phase7w_external_data/candidate_compatibility_matrix.csv"
+    },
+    "feature_mapping_matrix.csv": {
+      "bytes": 15909,
+      "sha256": "eb7228d307c991e3b985b8247946e850f8ced9ab702b0730d5cae6583cf81055",
+      "path": "results/phase7w_external_data/feature_mapping_matrix.csv"
+    },
+    "label_semantics_audit.md": {
+      "bytes": 3136,
+      "sha256": "3aaf223dc44cb4467c9d57d588d17d7f035209e6186efb899585ede0cd3f4d42",
+      "path": "results/phase7w_external_data/label_semantics_audit.md"
+    },
+    "access_and_resource_assessment.md": {
+      "bytes": 3856,
+      "sha256": "577f2cba43e42a880cbdb4f8d04304d78237c9521bb2cc5e72d420bdf34f4565",
+      "path": "results/phase7w_external_data/access_and_resource_assessment.md"
+    },
+    "external_data_decision.json": {
+      "bytes": 1682,
+      "sha256": "817b923f60661ba2f0cc4bd5f2f80abc3be85c168608e3e97062f8f6c68ed67b",
+      "path": "results/phase7w_external_data/external_data_decision.json"
+    },
+    "integrity_checks.json": {
+      "bytes": 758,
+      "sha256": "b958e9f89bedd00ee4b7fe0a8d4d646066f5b33ebb7881fcd9f4679848c71d72",
+      "path": "results/phase7w_external_data/integrity_checks.json"
+    },
+    "phase7w_final_report.md": {
+      "bytes": 9534,
+      "sha256": "7a25d2ac3b87df5dfff154bd70baa9564454f7c6b2fded48aab210d95a311215",
+      "path": "results/phase7w_external_data/phase7w_final_report.md"
+    }
+  }
+}

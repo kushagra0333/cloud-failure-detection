@@ -1,0 +1,907 @@
+{
+  "split": "Candidate A Validation Split (N=657 windows, 12 parent jobs, 69 entities)",
+  "models": {
+    "random_forest": {
+      "macro_f1": 0.3652610497846593,
+      "accuracy": 0.730593607305936,
+      "class_metrics": {
+        "NORMAL": {
+          "precision": 0.8677839851024208,
+          "recall": 0.8321428571428572,
+          "f1": 0.8495897903372835,
+          "support": 560
+        },
+        "WARNING": {
+          "precision": 0.12903225806451613,
+          "recall": 0.08333333333333333,
+          "f1": 0.10126582278481013,
+          "support": 48
+        },
+        "CRITICAL": {
+          "precision": 0.11235955056179775,
+          "recall": 0.20408163265306123,
+          "f1": 0.14492753623188406,
+          "support": 49
+        }
+      },
+      "warning_recall": 0.08333333333333333,
+      "critical_recall": 0.20408163265306123,
+      "confusion_matrix": [
+        [
+          466,
+          22,
+          72
+        ],
+        [
+          37,
+          4,
+          7
+        ],
+        [
+          34,
+          5,
+          10
+        ]
+      ],
+      "pr_auc": {
+        "pr_auc_warning": 0.08398062397441014,
+        "pr_auc_critical": 0.16615816120230786
+      },
+      "total_windows": 657,
+      "episode_metrics": {
+        "total_episodes": 20,
+        "detected_episodes": 10,
+        "episode_recall_pct": 50.0,
+        "lead_time_mean_sec": 878.2700000000001,
+        "lead_time_mean_min": 14.637833333333335,
+        "lead_time_median_sec": 908.2999999999997,
+        "lead_time_median_min": 15.138333333333328,
+        "lead_time_min_sec": 24.899999999999636,
+        "lead_time_max_sec": 1677.8999999999996,
+        "episodes_detail": [
+          {
+            "entity_id": "6127571078_0",
+            "fail_timestamp": 6652.7,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6177502198_0",
+            "fail_timestamp": 8277.9,
+            "total_windows": 6,
+            "detected": true,
+            "lead_time_sec": 1677.8999999999996
+          },
+          {
+            "entity_id": "6233966714_0",
+            "fail_timestamp": 6351.8,
+            "total_windows": 5,
+            "detected": true,
+            "lead_time_sec": 351.8000000000002
+          },
+          {
+            "entity_id": "6237552348_11",
+            "fail_timestamp": 7963.9,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6237552348_12",
+            "fail_timestamp": 9257.3,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6237552348_13",
+            "fail_timestamp": 8493.9,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6237552348_14",
+            "fail_timestamp": 8275.0,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6237552348_15",
+            "fail_timestamp": 10014.0,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6237552348_3",
+            "fail_timestamp": 8240.9,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6237552348_5",
+            "fail_timestamp": 9186.1,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6237552348_6",
+            "fail_timestamp": 5262.1,
+            "total_windows": 1,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6238836357_111",
+            "fail_timestamp": 8916.6,
+            "total_windows": 6,
+            "detected": true,
+            "lead_time_sec": 216.60000000000036
+          },
+          {
+            "entity_id": "6238836357_173",
+            "fail_timestamp": 11856.7,
+            "total_windows": 3,
+            "detected": true,
+            "lead_time_sec": 1656.7000000000007
+          },
+          {
+            "entity_id": "6238836357_86",
+            "fail_timestamp": 5724.9,
+            "total_windows": 3,
+            "detected": true,
+            "lead_time_sec": 24.899999999999636
+          },
+          {
+            "entity_id": "6238840043_40",
+            "fail_timestamp": 8968.9,
+            "total_windows": 6,
+            "detected": true,
+            "lead_time_sec": 568.8999999999996
+          },
+          {
+            "entity_id": "6238842343_126",
+            "fail_timestamp": 6347.7,
+            "total_windows": 5,
+            "detected": true,
+            "lead_time_sec": 1247.6999999999998
+          },
+          {
+            "entity_id": "6238842343_189",
+            "fail_timestamp": 11753.7,
+            "total_windows": 3,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6238842343_37",
+            "fail_timestamp": 9139.0,
+            "total_windows": 6,
+            "detected": true,
+            "lead_time_sec": 1339.0
+          },
+          {
+            "entity_id": "6238842343_76",
+            "fail_timestamp": 6153.6,
+            "total_windows": 4,
+            "detected": true,
+            "lead_time_sec": 153.60000000000036
+          },
+          {
+            "entity_id": "698645235_0",
+            "fail_timestamp": 12345.6,
+            "total_windows": 1,
+            "detected": true,
+            "lead_time_sec": 1545.6000000000004
+          }
+        ]
+      },
+      "window_fpr": {
+        "false_positive_windows": 94,
+        "denominator_windows": 560,
+        "fpr_pct": 16.785714285714285
+      },
+      "entity_far": {
+        "false_alarm_entities": 18,
+        "denominator_entities": 49,
+        "far_pct": 36.734693877551024
+      },
+      "parent_job_far": {
+        "false_alarm_jobs": 3,
+        "denominator_jobs": 4,
+        "far_pct": 75.0,
+        "status": "SECONDARY_DIAGNOSTIC_METRIC"
+      }
+    },
+    "temporal_lstm": {
+      "macro_f1": 0.30676526978909885,
+      "accuracy": 0.852359208523592,
+      "class_metrics": {
+        "NORMAL": {
+          "precision": 0.852359208523592,
+          "recall": 1.0,
+          "f1": 0.9202958093672966,
+          "support": 560
+        },
+        "WARNING": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 48
+        },
+        "CRITICAL": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 49
+        }
+      },
+      "warning_recall": 0.0,
+      "critical_recall": 0.0,
+      "confusion_matrix": [
+        [
+          560,
+          0,
+          0
+        ],
+        [
+          48,
+          0,
+          0
+        ],
+        [
+          49,
+          0,
+          0
+        ]
+      ],
+      "pr_auc": {
+        "pr_auc_warning": 0.05943916988576364,
+        "pr_auc_critical": 0.062481250848112166
+      },
+      "total_windows": 657,
+      "episode_metrics": {
+        "total_episodes": 20,
+        "detected_episodes": 0,
+        "episode_recall_pct": 0.0,
+        "lead_time_mean_sec": 0.0,
+        "lead_time_mean_min": 0.0,
+        "lead_time_median_sec": 0.0,
+        "lead_time_median_min": 0.0,
+        "lead_time_min_sec": 0.0,
+        "lead_time_max_sec": 0.0,
+        "episodes_detail": [
+          {
+            "entity_id": "6127571078_0",
+            "fail_timestamp": 6652.7,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6177502198_0",
+            "fail_timestamp": 8277.9,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6233966714_0",
+            "fail_timestamp": 6351.8,
+            "total_windows": 5,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6237552348_11",
+            "fail_timestamp": 7963.9,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6237552348_12",
+            "fail_timestamp": 9257.3,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6237552348_13",
+            "fail_timestamp": 8493.9,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6237552348_14",
+            "fail_timestamp": 8275.0,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6237552348_15",
+            "fail_timestamp": 10014.0,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6237552348_3",
+            "fail_timestamp": 8240.9,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6237552348_5",
+            "fail_timestamp": 9186.1,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6237552348_6",
+            "fail_timestamp": 5262.1,
+            "total_windows": 1,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6238836357_111",
+            "fail_timestamp": 8916.6,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6238836357_173",
+            "fail_timestamp": 11856.7,
+            "total_windows": 3,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6238836357_86",
+            "fail_timestamp": 5724.9,
+            "total_windows": 3,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6238840043_40",
+            "fail_timestamp": 8968.9,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6238842343_126",
+            "fail_timestamp": 6347.7,
+            "total_windows": 5,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6238842343_189",
+            "fail_timestamp": 11753.7,
+            "total_windows": 3,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6238842343_37",
+            "fail_timestamp": 9139.0,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6238842343_76",
+            "fail_timestamp": 6153.6,
+            "total_windows": 4,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "698645235_0",
+            "fail_timestamp": 12345.6,
+            "total_windows": 1,
+            "detected": false,
+            "lead_time_sec": null
+          }
+        ]
+      },
+      "window_fpr": {
+        "false_positive_windows": 0,
+        "denominator_windows": 560,
+        "fpr_pct": 0.0
+      },
+      "entity_far": {
+        "false_alarm_entities": 0,
+        "denominator_entities": 49,
+        "far_pct": 0.0
+      },
+      "parent_job_far": {
+        "false_alarm_jobs": 0,
+        "denominator_jobs": 4,
+        "far_pct": 0.0,
+        "status": "SECONDARY_DIAGNOSTIC_METRIC"
+      }
+    },
+    "compact_transformer": {
+      "macro_f1": 0.3328347241904162,
+      "accuracy": 0.7929984779299848,
+      "class_metrics": {
+        "NORMAL": {
+          "precision": 0.8486842105263158,
+          "recall": 0.9214285714285714,
+          "f1": 0.8835616438356164,
+          "support": 560
+        },
+        "WARNING": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 48
+        },
+        "CRITICAL": {
+          "precision": 0.13157894736842105,
+          "recall": 0.10204081632653061,
+          "f1": 0.11494252873563218,
+          "support": 49
+        }
+      },
+      "warning_recall": 0.0,
+      "critical_recall": 0.10204081632653061,
+      "confusion_matrix": [
+        [
+          516,
+          11,
+          33
+        ],
+        [
+          48,
+          0,
+          0
+        ],
+        [
+          44,
+          0,
+          5
+        ]
+      ],
+      "pr_auc": {
+        "pr_auc_warning": 0.05372996871276714,
+        "pr_auc_critical": 0.07818774534733808
+      },
+      "total_windows": 657,
+      "episode_metrics": {
+        "total_episodes": 20,
+        "detected_episodes": 3,
+        "episode_recall_pct": 15.0,
+        "lead_time_mean_sec": 413.0333333333335,
+        "lead_time_mean_min": 6.883888888888891,
+        "lead_time_median_sec": 453.60000000000036,
+        "lead_time_median_min": 7.560000000000006,
+        "lead_time_min_sec": 216.60000000000036,
+        "lead_time_max_sec": 568.8999999999996,
+        "episodes_detail": [
+          {
+            "entity_id": "6127571078_0",
+            "fail_timestamp": 6652.7,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6177502198_0",
+            "fail_timestamp": 8277.9,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6233966714_0",
+            "fail_timestamp": 6351.8,
+            "total_windows": 5,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6237552348_11",
+            "fail_timestamp": 7963.9,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6237552348_12",
+            "fail_timestamp": 9257.3,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6237552348_13",
+            "fail_timestamp": 8493.9,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6237552348_14",
+            "fail_timestamp": 8275.0,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6237552348_15",
+            "fail_timestamp": 10014.0,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6237552348_3",
+            "fail_timestamp": 8240.9,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6237552348_5",
+            "fail_timestamp": 9186.1,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6237552348_6",
+            "fail_timestamp": 5262.1,
+            "total_windows": 1,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6238836357_111",
+            "fail_timestamp": 8916.6,
+            "total_windows": 6,
+            "detected": true,
+            "lead_time_sec": 216.60000000000036
+          },
+          {
+            "entity_id": "6238836357_173",
+            "fail_timestamp": 11856.7,
+            "total_windows": 3,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6238836357_86",
+            "fail_timestamp": 5724.9,
+            "total_windows": 3,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6238840043_40",
+            "fail_timestamp": 8968.9,
+            "total_windows": 6,
+            "detected": true,
+            "lead_time_sec": 568.8999999999996
+          },
+          {
+            "entity_id": "6238842343_126",
+            "fail_timestamp": 6347.7,
+            "total_windows": 5,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6238842343_189",
+            "fail_timestamp": 11753.7,
+            "total_windows": 3,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6238842343_37",
+            "fail_timestamp": 9139.0,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6238842343_76",
+            "fail_timestamp": 6153.6,
+            "total_windows": 4,
+            "detected": true,
+            "lead_time_sec": 453.60000000000036
+          },
+          {
+            "entity_id": "698645235_0",
+            "fail_timestamp": 12345.6,
+            "total_windows": 1,
+            "detected": false,
+            "lead_time_sec": null
+          }
+        ]
+      },
+      "window_fpr": {
+        "false_positive_windows": 44,
+        "denominator_windows": 560,
+        "fpr_pct": 7.857142857142857
+      },
+      "entity_far": {
+        "false_alarm_entities": 11,
+        "denominator_entities": 49,
+        "far_pct": 22.448979591836736
+      },
+      "parent_job_far": {
+        "false_alarm_jobs": 2,
+        "denominator_jobs": 4,
+        "far_pct": 50.0,
+        "status": "SECONDARY_DIAGNOSTIC_METRIC"
+      }
+    },
+    "representation_hybrid": {
+      "macro_f1": 0.2879711329948889,
+      "accuracy": 0.60882800608828,
+      "class_metrics": {
+        "NORMAL": {
+          "precision": 0.8283898305084746,
+          "recall": 0.6982142857142857,
+          "f1": 0.7577519379844961,
+          "support": 560
+        },
+        "WARNING": {
+          "precision": 0.022222222222222223,
+          "recall": 0.020833333333333332,
+          "f1": 0.021505376344086023,
+          "support": 48
+        },
+        "CRITICAL": {
+          "precision": 0.05714285714285714,
+          "recall": 0.16326530612244897,
+          "f1": 0.08465608465608465,
+          "support": 49
+        }
+      },
+      "warning_recall": 0.020833333333333332,
+      "critical_recall": 0.16326530612244897,
+      "confusion_matrix": [
+        [
+          391,
+          40,
+          129
+        ],
+        [
+          44,
+          1,
+          3
+        ],
+        [
+          37,
+          4,
+          8
+        ]
+      ],
+      "pr_auc": {
+        "pr_auc_warning": 0.05904633828236062,
+        "pr_auc_critical": 0.10168278488564389
+      },
+      "total_windows": 657,
+      "episode_metrics": {
+        "total_episodes": 20,
+        "detected_episodes": 9,
+        "episode_recall_pct": 45.0,
+        "lead_time_mean_sec": 683.4444444444446,
+        "lead_time_mean_min": 11.390740740740743,
+        "lead_time_median_sec": 453.60000000000036,
+        "lead_time_median_min": 7.560000000000006,
+        "lead_time_min_sec": 51.80000000000018,
+        "lead_time_max_sec": 1656.7000000000007,
+        "episodes_detail": [
+          {
+            "entity_id": "6127571078_0",
+            "fail_timestamp": 6652.7,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6177502198_0",
+            "fail_timestamp": 8277.9,
+            "total_windows": 6,
+            "detected": true,
+            "lead_time_sec": 777.8999999999996
+          },
+          {
+            "entity_id": "6233966714_0",
+            "fail_timestamp": 6351.8,
+            "total_windows": 5,
+            "detected": true,
+            "lead_time_sec": 51.80000000000018
+          },
+          {
+            "entity_id": "6237552348_11",
+            "fail_timestamp": 7963.9,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6237552348_12",
+            "fail_timestamp": 9257.3,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6237552348_13",
+            "fail_timestamp": 8493.9,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6237552348_14",
+            "fail_timestamp": 8275.0,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6237552348_15",
+            "fail_timestamp": 10014.0,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6237552348_3",
+            "fail_timestamp": 8240.9,
+            "total_windows": 6,
+            "detected": true,
+            "lead_time_sec": 440.89999999999964
+          },
+          {
+            "entity_id": "6237552348_5",
+            "fail_timestamp": 9186.1,
+            "total_windows": 6,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6237552348_6",
+            "fail_timestamp": 5262.1,
+            "total_windows": 1,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6238836357_111",
+            "fail_timestamp": 8916.6,
+            "total_windows": 6,
+            "detected": true,
+            "lead_time_sec": 216.60000000000036
+          },
+          {
+            "entity_id": "6238836357_173",
+            "fail_timestamp": 11856.7,
+            "total_windows": 3,
+            "detected": true,
+            "lead_time_sec": 1656.7000000000007
+          },
+          {
+            "entity_id": "6238836357_86",
+            "fail_timestamp": 5724.9,
+            "total_windows": 3,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6238840043_40",
+            "fail_timestamp": 8968.9,
+            "total_windows": 6,
+            "detected": true,
+            "lead_time_sec": 568.8999999999996
+          },
+          {
+            "entity_id": "6238842343_126",
+            "fail_timestamp": 6347.7,
+            "total_windows": 5,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6238842343_189",
+            "fail_timestamp": 11753.7,
+            "total_windows": 3,
+            "detected": false,
+            "lead_time_sec": null
+          },
+          {
+            "entity_id": "6238842343_37",
+            "fail_timestamp": 9139.0,
+            "total_windows": 6,
+            "detected": true,
+            "lead_time_sec": 439.0
+          },
+          {
+            "entity_id": "6238842343_76",
+            "fail_timestamp": 6153.6,
+            "total_windows": 4,
+            "detected": true,
+            "lead_time_sec": 453.60000000000036
+          },
+          {
+            "entity_id": "698645235_0",
+            "fail_timestamp": 12345.6,
+            "total_windows": 1,
+            "detected": true,
+            "lead_time_sec": 1545.6000000000004
+          }
+        ]
+      },
+      "window_fpr": {
+        "false_positive_windows": 169,
+        "denominator_windows": 560,
+        "fpr_pct": 30.178571428571427
+      },
+      "entity_far": {
+        "false_alarm_entities": 24,
+        "denominator_entities": 49,
+        "far_pct": 48.97959183673469
+      },
+      "parent_job_far": {
+        "false_alarm_jobs": 3,
+        "denominator_jobs": 4,
+        "far_pct": 75.0,
+        "status": "SECONDARY_DIAGNOSTIC_METRIC"
+      }
+    }
+  },
+  "gate_status": {
+    "random_forest": {
+      "gate_1_pass": false,
+      "gate_2_pass": false,
+      "both_pass": false
+    },
+    "temporal_lstm": {
+      "gate_1_pass": false,
+      "gate_2_pass": true,
+      "both_pass": false
+    },
+    "compact_transformer": {
+      "gate_1_pass": false,
+      "gate_2_pass": false,
+      "both_pass": false
+    },
+    "representation_hybrid": {
+      "gate_1_pass": false,
+      "gate_2_pass": false,
+      "both_pass": false
+    }
+  },
+  "selection_verdict": "NO_MODEL_PASSED_BOTH_GATES | Highest Val Macro-F1 Candidate Frozen: Random Forest (random_forest)",
+  "selected_candidate": {
+    "model_key": "random_forest",
+    "model_name": "Random Forest",
+    "validation_macro_f1": 0.3652610497846593,
+    "gate_status": {
+      "gate_1_pass": false,
+      "gate_2_pass": false,
+      "both_pass": false
+    },
+    "frozen_timestamp": "2026-10-28T13:36:22Z"
+  }
+}

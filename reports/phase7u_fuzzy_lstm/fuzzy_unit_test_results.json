@@ -1,0 +1,134 @@
+{
+  "all_unit_tests_passed": true,
+  "check_rel_primary_low_preserved": true,
+  "check_rel_primary_high_preserved": true,
+  "check_med_reinforcement_working": true,
+  "unit_test_cases": [
+    {
+      "test_name": "LOW_LOW",
+      "r_rel": 0.05,
+      "r_abs": 0.05,
+      "fuzzy_output": 0.13971989354624087,
+      "expected_range": [
+        0.1,
+        0.2
+      ],
+      "passed": true,
+      "act_low": 1.0,
+      "act_med": 0.0,
+      "act_high": 0.0
+    },
+    {
+      "test_name": "LOW_MED",
+      "r_rel": 0.05,
+      "r_abs": 0.26,
+      "fuzzy_output": 0.14119080832759615,
+      "expected_range": [
+        0.1,
+        0.2
+      ],
+      "passed": true,
+      "act_low": 0.9608393296252647,
+      "act_med": 0.0,
+      "act_high": 0.0
+    },
+    {
+      "test_name": "LOW_HIGH",
+      "r_rel": 0.05,
+      "r_abs": 0.9,
+      "fuzzy_output": 0.13971989354624087,
+      "expected_range": [
+        0.1,
+        0.2
+      ],
+      "passed": true,
+      "act_low": 1.0,
+      "act_med": 0.0,
+      "act_high": 0.0
+    },
+    {
+      "test_name": "MED_LOW",
+      "r_rel": 0.18,
+      "r_abs": 0.05,
+      "fuzzy_output": 0.49386419958594163,
+      "expected_range": [
+        0.45,
+        0.55
+      ],
+      "passed": true,
+      "act_low": 0.02298922365555638,
+      "act_med": 0.9770107763444437,
+      "act_high": 0.0
+    },
+    {
+      "test_name": "MED_MED",
+      "r_rel": 0.18,
+      "r_abs": 0.26,
+      "fuzzy_output": 0.4938581120397452,
+      "expected_range": [
+        0.45,
+        0.55
+      ],
+      "passed": true,
+      "act_low": 0.02298922365555638,
+      "act_med": 0.9608393296252647,
+      "act_high": 0.0
+    },
+    {
+      "test_name": "MED_HIGH",
+      "r_rel": 0.18,
+      "r_abs": 0.9,
+      "fuzzy_output": 0.8359612935379905,
+      "expected_range": [
+        0.8,
+        0.9
+      ],
+      "passed": true,
+      "act_low": 0.02298922365555638,
+      "act_med": 0.0,
+      "act_high": 0.9770107763444437
+    },
+    {
+      "test_name": "HIGH_LOW",
+      "r_rel": 0.8,
+      "r_abs": 0.05,
+      "fuzzy_output": 0.8602801064537591,
+      "expected_range": [
+        0.8,
+        0.9
+      ],
+      "passed": true,
+      "act_low": 0.0,
+      "act_med": 0.0,
+      "act_high": 1.0
+    },
+    {
+      "test_name": "HIGH_MED",
+      "r_rel": 0.8,
+      "r_abs": 0.26,
+      "fuzzy_output": 0.8588091916724038,
+      "expected_range": [
+        0.8,
+        0.9
+      ],
+      "passed": true,
+      "act_low": 0.0,
+      "act_med": 0.0,
+      "act_high": 0.9608393296252647
+    },
+    {
+      "test_name": "HIGH_HIGH",
+      "r_rel": 0.8,
+      "r_abs": 0.9,
+      "fuzzy_output": 0.8602801064537591,
+      "expected_range": [
+        0.8,
+        0.9
+      ],
+      "passed": true,
+      "act_low": 0.0,
+      "act_med": 0.0,
+      "act_high": 1.0
+    }
+  ]
+}

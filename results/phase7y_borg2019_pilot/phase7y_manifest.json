@@ -1,0 +1,80 @@
+{
+  "manifest_version": "1.0",
+  "phase": "Phase 7Y",
+  "timestamp_utc": "2026-10-29T10:12:24Z",
+  "operational_verdict": "DATA_ACCESS_BLOCKED",
+  "audit_status": "AUDIT_PASSED",
+  "deliverables_count": 15,
+  "deliverables": {
+    "phase7y_design.md": {
+      "bytes": 1446,
+      "sha256": "f0049992c4320c97a06e854c8c3ff8644816d820dcced889c348c1b78d364ac4",
+      "path": "results/phase7y_borg2019_pilot/phase7y_design.md"
+    },
+    "phase7y_config.json": {
+      "bytes": 623,
+      "sha256": "809d5fa9cdf5dbe7186e5655c05df403655246004b3d1da4a9824af39c5fc39c",
+      "path": "results/phase7y_borg2019_pilot/phase7y_config.json"
+    },
+    "authentication_status.json": {
+      "bytes": 1645,
+      "sha256": "9cbef518ac0dff1e8a8280a92b1c65dac2337cf4e84ece69ae772956e40b99eb",
+      "path": "results/phase7y_borg2019_pilot/authentication_status.json"
+    },
+    "schema_verification.md": {
+      "bytes": 4504,
+      "sha256": "3d59bae1620e590f069d8f80951005c046541c86eb3bdfd98cde42eb14b3d2ad",
+      "path": "results/phase7y_borg2019_pilot/schema_verification.md"
+    },
+    "query_plan.sql": {
+      "bytes": 3238,
+      "sha256": "7b9f3bd7142980b0de3aa31b17d2993de078821c20a4f1d89c706bf01cab9602",
+      "path": "results/phase7y_borg2019_pilot/query_plan.sql"
+    },
+    "query_dry_run_evidence.json": {
+      "bytes": 1460,
+      "sha256": "e50585c3da73d671cde420e3943f74d1045fe37ce4cac3e845c6dcbde17e645f",
+      "path": "results/phase7y_borg2019_pilot/query_dry_run_evidence.json"
+    },
+    "query_budget_and_cost_report.md": {
+      "bytes": 2328,
+      "sha256": "8aa16ae2c65d9b87ea7c6a1270fcbd85f1fc836e00f4a64858422c1b970eea16",
+      "path": "results/phase7y_borg2019_pilot/query_budget_and_cost_report.md"
+    },
+    "pilot_selection_manifest.json": {
+      "bytes": 714,
+      "sha256": "f2644e00ce0ab5f937cb9ebc2a5f143004308fd86b56d15b4d89db3ee0da3aaf",
+      "path": "results/phase7y_borg2019_pilot/pilot_selection_manifest.json"
+    },
+    "pilot_data_dictionary.csv": {
+      "bytes": 1277,
+      "sha256": "ff8d1ab4f1f8a533952880048c37b0a4701fc285556379576221f1031cd0e840",
+      "path": "results/phase7y_borg2019_pilot/pilot_data_dictionary.csv"
+    },
+    "label_construction_spec.md": {
+      "bytes": 2407,
+      "sha256": "62828b1d0ebbdd07e91fc757829c09e699fe3070879a8731c501804522526614",
+      "path": "results/phase7y_borg2019_pilot/label_construction_spec.md"
+    },
+    "pilot_quality_metrics.json": {
+      "bytes": 776,
+      "sha256": "4a2669c11ba099cd7bd5a54154b95a3b755daaf607c209e0018adc961d7112bd",
+      "path": "results/phase7y_borg2019_pilot/pilot_quality_metrics.json"
+    },
+    "pilot_feasibility_decision.json": {
+      "bytes": 912,
+      "sha256": "0a85b8a61bbe89450b7bf3be17c1d4c4359a08ca6a042f9ba45b46a345106d7f",
+      "path": "results/phase7y_borg2019_pilot/pilot_feasibility_decision.json"
+    },
+    "integrity_checks.json": {
+      "bytes": 735,
+      "sha256": "80c1ca8943b5bd303999e95aacad35980694151f898872c81b4be83e5b8d3ca3",
+      "path": "results/phase7y_borg2019_pilot/integrity_checks.json"
+    },
+    "phase7y_final_report.md": {
+      "bytes": 10313,
+      "sha256": "e015360d8d87e0f5706519730f3c60ac7aaa0cd3201bbefd26f29ed26630ede2",
+      "path": "results/phase7y_borg2019_pilot/phase7y_final_report.md"
+    }
+  }
+}

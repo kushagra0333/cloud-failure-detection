@@ -1,0 +1,22 @@
+{
+  "manifest_version": "2.0-VERIFIED-SPEC",
+  "phase": "Phase 7Y",
+  "timestamp_utc": "2026-10-29T10:12:24Z",
+  "target_source": "google.com:google-cluster-data.clusterdata_2019_a",
+  "sql_checksum": "58e5a2e4d864182f8b38786e356b02572df0a5c7b152a859b0ad093f6951a7bb",
+  "selection_criteria": {
+    "cell": "clusterdata_2019_a",
+    "time_range_us": [
+      0,
+      86400000000
+    ],
+    "follow_up_lookahead_us": 90000000000,
+    "min_task_duration_intervals": 6,
+    "composite_entity_key": "concat('cell_a_', collection_id, '_', instance_index)"
+  },
+  "query_budget": {
+    "max_bytes_billed": 25000000000,
+    "max_cost_usd": 0.125
+  },
+  "status": "READY_FOR_AUTHENTICATED_EXECUTION"
+}

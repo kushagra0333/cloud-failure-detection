@@ -1,0 +1,32 @@
+{
+  "temporal_boundaries": {
+    "stream_A": "t-20m to t (steps -5 to 0)",
+    "stream_B": "t-55m to t-25m (steps -12 to -5)",
+    "temporal_overlap": "STRICTLY_DISJOINT (boundary at t-25m)"
+  },
+  "preprocessing_leakage_check": {
+    "scaler_fitted_on": "Candidate A Train only (N=3,278)",
+    "val_observations_used": 0,
+    "status": "PASSED_ZERO_LEAKAGE"
+  },
+  "target_distribution_check": {
+    "train": {
+      "total": 3278,
+      "normal": 2797,
+      "warning": 244,
+      "critical": 237
+    },
+    "val": {
+      "total": 657,
+      "normal": 560,
+      "warning": 48,
+      "critical": 49
+    },
+    "status": "PASSED_EXACT_MATCH"
+  },
+  "forbidden_holdout_access": {
+    "candidate_a_test_accessed": false,
+    "phase6_holdout_accessed": false,
+    "status": "PASSED_ZERO_ACCESS"
+  }
+}

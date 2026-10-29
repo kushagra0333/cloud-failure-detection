@@ -1,0 +1,213 @@
+{
+  "audit_metadata": {
+    "phase": "Phase 7H-A \u2014 Metric, Normalization, and Provenance Verification",
+    "audit_id": "AUDIT-3-NORMALIZATION-NUMERICAL-VALIDATION",
+    "timestamp": "2026-10-28T21:18:00+05:30",
+    "implementation_files_audited": [
+      "src/features/hierarchical_baseline.py",
+      "scripts/prepare_phase7h_transformed_data.py"
+    ]
+  },
+  "code_inspection_findings": {
+    "temporal_causality": {
+      "verified": true,
+      "mechanism": "task_mask = (job_entities == eid) & (job_timestamps < t_pred); job_mask = (job_timestamps < t_pred)",
+      "conclusion": "Strictly causal. Only observations strictly prior to prediction timestamp (t_prior < t_pred) are accessed."
+    },
+    "training_data_fit": {
+      "verified": true,
+      "mechanism": "Variance floor sigma_floor=0.05 and MAD floor mad_floor=0.05 fit exclusively on Candidate A Train split percentiles.",
+      "conclusion": "Zero validation or test observations were used to fit global scaling parameters."
+    },
+    "target_and_future_telemetry_isolation": {
+      "verified": true,
+      "mechanism": "Only raw input sequence array X_seq is indexed by prior timestamps; target labels are neither passed nor accessed.",
+      "conclusion": "Zero label leakage into features."
+    },
+    "scale_and_units_of_variance_floor": {
+      "verified": true,
+      "mechanism": "Features are already standardized to cluster population variance (sigma_cluster = 1.0) by Phase 7C scaler. Therefore, sigma_floor = 0.05 represents exactly 5% of the cluster population standard deviation.",
+      "conclusion": "Directly aligned with intended feature scale and unit-variance dimensions."
+    },
+    "mad_conversion_consistency": {
+      "verified": true,
+      "mechanism": "mad = np.median(np.abs(past_obs - med), axis=0) * 1.4826 + 1e-5",
+      "conclusion": "Normal-consistency factor 1.4826 is correctly applied to yield an asymptotic normal standard deviation estimate."
+    },
+    "missing_and_nonfinite_handling": {
+      "verified": true,
+      "mechanism": "FeatureEngineer upstream preserves NaNs, and Scaler imputes using Training median prior to tensor slicing. Tensors contain 0 NaNs and 0 Infs.",
+      "conclusion": "Missing and non-finite values are handled deterministically."
+    }
+  },
+  "reproduced_tensor_extrema": {
+    "Phase 7C Train (cluster scaler)": {
+      "shape": [
+        3278,
+        5,
+        31
+      ],
+      "min": -1.2208267450332642,
+      "median": -0.16422194242477417,
+      "p99": 3.0801196098327637,
+      "p999": 9.830531120300293,
+      "max": 10.22568416595459,
+      "count_abs_gt10": 15,
+      "count_abs_gt50": 0,
+      "count_abs_gt100": 0,
+      "count_abs_gt1000": 0
+    },
+    "Phase 7C Val (cluster scaler)": {
+      "shape": [
+        657,
+        5,
+        31
+      ],
+      "min": -1.2140942811965942,
+      "median": -0.02131539396941662,
+      "p99": 6.586467742919922,
+      "p999": 7.5559492111206055,
+      "max": 7.976171016693115,
+      "count_abs_gt10": 0,
+      "count_abs_gt50": 0,
+      "count_abs_gt100": 0,
+      "count_abs_gt1000": 0
+    },
+    "Phase 7G Train (unfloored hierarchical)": {
+      "shape": [
+        3278,
+        5,
+        31
+      ],
+      "min": -10754.6572265625,
+      "median": -0.07350042462348938,
+      "p99": 4.495586395263672,
+      "p999": 18.527286529541016,
+      "max": 51775.29296875,
+      "count_abs_gt10": 260,
+      "count_abs_gt50": 26,
+      "count_abs_gt100": 14,
+      "count_abs_gt1000": 4
+    },
+    "Phase 7G Val (unfloored hierarchical)": {
+      "shape": [
+        657,
+        5,
+        31
+      ],
+      "min": -252.9382781982422,
+      "median": -0.011780494824051857,
+      "p99": 6.204669952392578,
+      "p999": 143.50511169433594,
+      "max": 12905.5859375,
+      "count_abs_gt10": 58,
+      "count_abs_gt50": 22,
+      "count_abs_gt100": 16,
+      "count_abs_gt1000": 7
+    },
+    "Phase 7H Train (floored hierarchical)": {
+      "shape": [
+        3278,
+        5,
+        31
+      ],
+      "min": -39.30845260620117,
+      "median": -0.0020456314086914062,
+      "p99": 3.5607054233551025,
+      "p999": 9.830531120300293,
+      "max": 32.22591018676758,
+      "count_abs_gt10": 119,
+      "count_abs_gt50": 0,
+      "count_abs_gt100": 0,
+      "count_abs_gt1000": 0
+    },
+    "Phase 7H Val (floored hierarchical)": {
+      "shape": [
+        657,
+        5,
+        31
+      ],
+      "min": -23.307838439941406,
+      "median": -2.384185791015625e-06,
+      "p99": 5.3021087646484375,
+      "p999": 11.140448570251465,
+      "max": 27.418319702148438,
+      "count_abs_gt10": 20,
+      "count_abs_gt50": 0,
+      "count_abs_gt100": 0,
+      "count_abs_gt1000": 0
+    },
+    "Phase 7H Train (robust hierarchical)": {
+      "shape": [
+        3278,
+        5,
+        31
+      ],
+      "min": -5.0,
+      "median": 0.0,
+      "p99": 4.9233269691467285,
+      "p999": 4.999995708465576,
+      "max": 9.830531120300293,
+      "count_abs_gt10": 0,
+      "count_abs_gt50": 0,
+      "count_abs_gt100": 0,
+      "count_abs_gt1000": 0
+    },
+    "Phase 7H Val (robust hierarchical)": {
+      "shape": [
+        657,
+        5,
+        31
+      ],
+      "min": -4.999913692474365,
+      "median": 0.0,
+      "p99": 4.988446235656738,
+      "p999": 6.557566165924072,
+      "max": 7.9464898109436035,
+      "count_abs_gt10": 0,
+      "count_abs_gt50": 0,
+      "count_abs_gt100": 0,
+      "count_abs_gt1000": 0
+    }
+  },
+  "deterministic_unit_tests": {
+    "zero_variance_perturbation": {
+      "input_perturbation": 0.001,
+      "baseline_variance": 0.0,
+      "unfloored_z": 99.99275207519531,
+      "floored_z": 0.019998550415039062,
+      "robust_z": 0.019998442381620407,
+      "unfloored_blowup": true,
+      "floored_stable": true,
+      "robust_stable": true
+    },
+    "near_zero_variance": {
+      "input_shift": 0.05,
+      "baseline_sigma": 0.0001,
+      "unfloored_z": 454.4764404296875,
+      "floored_z": 0.9999990463256836,
+      "robust_z": 0.9868756532669067,
+      "unfloored_blowup": true,
+      "floored_stable": true,
+      "robust_stable": true
+    },
+    "constant_feature": {
+      "input_constant": 5.0,
+      "unfloored_z": 0.0,
+      "floored_z": 0.0,
+      "robust_z": 0.0,
+      "all_zero": true
+    },
+    "missing_values_safety": {
+      "nan_handled_gracefully": true,
+      "upstream_invariant": "Upstream Phase 7C pipeline imputes NaNs using Training median before sequence tensor generation."
+    },
+    "tiny_perturbation": {
+      "input_perturbation": 1e-06,
+      "floored_z": 1.9073486328125e-05,
+      "robust_z": 1.9073486328125e-05,
+      "floored_near_zero": true,
+      "robust_near_zero": true
+    }
+  }
+}

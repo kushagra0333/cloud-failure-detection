@@ -1,0 +1,68 @@
+{
+  "rule_system": "Mamdani Type-1 Relative-Primary",
+  "rules": [
+    {
+      "rule_id": "R1",
+      "rel_term": "LOW",
+      "abs_term": "LOW",
+      "consequent": "LOW",
+      "rationale": "Both signals indicate low failure likelihood; low output"
+    },
+    {
+      "rule_id": "R2",
+      "rel_term": "LOW",
+      "abs_term": "MEDIUM",
+      "consequent": "LOW",
+      "rationale": "Relative signal is low; moderate absolute usage is insufficient to indicate failure"
+    },
+    {
+      "rule_id": "R3",
+      "rel_term": "LOW",
+      "abs_term": "HIGH",
+      "consequent": "LOW",
+      "rationale": "Relative signal is low; high absolute telemetry represents healthy workload, NOT failure"
+    },
+    {
+      "rule_id": "R4",
+      "rel_term": "MEDIUM",
+      "abs_term": "LOW",
+      "consequent": "MEDIUM",
+      "rationale": "Moderate relative deviation observed without absolute saturation; alert remains moderate"
+    },
+    {
+      "rule_id": "R5",
+      "rel_term": "MEDIUM",
+      "abs_term": "MEDIUM",
+      "consequent": "MEDIUM",
+      "rationale": "Moderate relative deviation accompanied by moderate absolute resource load; moderate alert"
+    },
+    {
+      "rule_id": "R6",
+      "rel_term": "MEDIUM",
+      "abs_term": "HIGH",
+      "consequent": "HIGH",
+      "rationale": "Moderate relative deviation reinforced by high absolute resource usage triggers high alert"
+    },
+    {
+      "rule_id": "R7",
+      "rel_term": "HIGH",
+      "abs_term": "LOW",
+      "consequent": "HIGH",
+      "rationale": "Strong relative deviation indicates failure regardless of absolute baseline"
+    },
+    {
+      "rule_id": "R8",
+      "rel_term": "HIGH",
+      "abs_term": "MEDIUM",
+      "consequent": "HIGH",
+      "rationale": "Strong relative deviation accompanied by moderate load confirms failure"
+    },
+    {
+      "rule_id": "R9",
+      "rel_term": "HIGH",
+      "abs_term": "HIGH",
+      "consequent": "HIGH",
+      "rationale": "Both relative change and absolute saturation confirm impending failure"
+    }
+  ]
+}

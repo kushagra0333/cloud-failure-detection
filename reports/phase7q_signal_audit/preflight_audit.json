@@ -1,0 +1,43 @@
+{
+  "preflight_audit": {
+    "phase": "Phase 7Q",
+    "timestamp": "2026-10-29T12:45:00+05:30",
+    "governing_protocol": "results/phase7b_1/phase7b_evaluation_protocol_v2.json",
+    "data_partitions_verified": {
+      "candidate_a_train": {
+        "windows": 3278,
+        "normal": 2797,
+        "warning": 244,
+        "critical": 237,
+        "failure_total": 481,
+        "prevalence": 0.146736,
+        "parent_jobs": 51,
+        "status": "VERIFIED_EXACT_MATCH"
+      },
+      "candidate_a_val": {
+        "windows": 657,
+        "normal": 560,
+        "warning": 48,
+        "critical": 49,
+        "failure_total": 97,
+        "prevalence": 0.147641,
+        "episodes": 20,
+        "pure_normal_entities": 49,
+        "status": "VERIFIED_EXACT_MATCH"
+      }
+    },
+    "historical_investigation_answers": {
+      "q1_task_relative_normalization_methods_tested": "Phase 7F tested causal task-relative normalization with K_min=2 minimum history fallback. Phase 7G tested hierarchical task/parent-job normalization. Phase 7H tested variance-floored and robust MAD-scaled hierarchical normalization.",
+      "q2_methods_with_near_zero_variance_blowups": "Phase 7G Parent-Job Relative and Hierarchical Relative produced extreme feature blowups with maximum values reaching +2,751.48 and +12,905.59 due to near-zero variance in short historical intervals. Specifically cpu_utilization reached +2,222 and memory_utilization reached +8,768.",
+      "q3_scheduler_metadata_and_lifecycle_features_in_7k": "Phase 7K evaluated M1 (peak and headroom, 36 feats), M2 (scheduler metadata: priority, class, requests, 35 feats), M3 (lifecycle and reschedule/eviction events, 33 feats), and M4 (combined eligible, 42 feats).",
+      "q4_did_7k_features_improve_ranking_or_gates": "No. In Phase 7K, all feature variants (M1-M4) failed all operational gates across all three seeds under fixed policies. None resolved the sensitivity-specificity tradeoff.",
+      "q5_does_negative_platt_slope_occur_in_every_fold": "No. In Phase 7P, negative Platt slopes occurred in Folds 0, 1, and 2 (a = -0.72, -0.29, -0.09). In contrast, Folds 3 and 4 exhibited positive slopes (a = +0.30, +0.59) and positive AUCs (0.65-0.70). The negative pooled slope was driven by the first three folds representing 72.3% of train windows.",
+      "q6_fold_0_influence_on_pooled_metrics": "Fold 0 contains 643 windows from a single parent job (Job 3998246322) with only 6 failures (prevalence 0.93%) and an inverted raw AUC of 0.2611. Excluding Fold 0 shifts the intercept from -1.95 to -1.70, but the pooled slope remains slightly negative (a = -0.12 to -0.18) due to Folds 1 and 2.",
+      "q7_does_7p_calibrator_outperform_prevalence_baseline": "No. The Phase 7P calibrated Brier score (0.125955) is virtually identical to a constant-prevalence predictor (p = 0.1467, Brier = 0.125844). Calibration contracted all probabilities to the base rate without providing failure discrimination, and its negative slope inverted the raw ranking.",
+      "q8_are_n2_checkpoints_reproducible": "Yes. Inference on saved Phase 7N checkpoints reproduces validation predictions with maximum absolute error < 3.0e-8 across all three seeds."
+    },
+    "workstream_a_audit_verdict": "RANKING_SIGNAL_WEAK_OR_INCONSISTENT",
+    "workstream_b_causal_telemetry_status": "L12_CAUSAL_TENSORS_VERIFIED_AVAILABLE",
+    "preflight_status": "PASSED_PROCEED_TO_TREATMENT"
+  }
+}

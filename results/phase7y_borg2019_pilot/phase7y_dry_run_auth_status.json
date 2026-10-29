@@ -1,0 +1,19 @@
+{
+  "audit_timestamp_utc": "2026-10-29T12:38:12.826493+00:00",
+  "sdk_status": {
+    "google_cloud_bigquery_installed": true,
+    "google_auth_installed": true
+  },
+  "application_default_credentials_file_found": true,
+  "client_initialization": {
+    "authenticated": true,
+    "active_project": "canvas-advice-464215-n1",
+    "error_type": null
+  },
+  "operational_status": "AUTHENTICATED",
+  "security_safeguard_compliance": {
+    "secrets_printed_to_logs": false,
+    "tokens_exposed": false,
+    "private_keys_stored": false
+  }
+}

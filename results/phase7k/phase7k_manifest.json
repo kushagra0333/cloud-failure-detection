@@ -1,0 +1,70 @@
+{
+  "manifest_id": "PHASE-7K-COMPLETE-AUDIT-MANIFEST",
+  "timestamp_iso": "2026-10-28T23:28:30+05:30",
+  "phase": "Phase 7K \u2014 Protocol Hardening and Controlled Feature Ablation",
+  "status": "SEALED",
+  "executive_verdict": "NO_OPERATIONAL_WINNER_CONFIRMED",
+  "governance_verification": {
+    "candidate_a_test_accessed": false,
+    "candidate_a_test_status": "Inspected historically in Phase 7D; NOT accessed in Phase 7K.",
+    "phase6_holdout_accessed": false,
+    "phase6_holdout_status": "Strictly quarantined.",
+    "evaluation_split": "Candidate A Validation (N=657 windows)",
+    "training_split": "Candidate A Train (N=3278 windows)",
+    "models_trained_count": 30,
+    "evaluated_threshold_points_count": 6030,
+    "passing_operational_winners_count": 0
+  },
+  "files": {
+    "temporal_causality_audit.json": {
+      "path": "results/phase7k/temporal_causality_audit.json",
+      "size_bytes": 2938,
+      "sha256": "b583a296cc8b35be01655ef9f3b483a01aaf9a6a516e4ebfdb4c70c176f0670c"
+    },
+    "feature_availability_audit.csv": {
+      "path": "results/phase7k/feature_availability_audit.csv",
+      "size_bytes": 9409,
+      "sha256": "4821b101b00f30fea11aed74ccc7fedb2c22dc25f9a7a6ae84c97851fc9dad99"
+    },
+    "phase7k_ablation_protocol.json": {
+      "path": "results/phase7k/phase7k_ablation_protocol.json",
+      "size_bytes": 6504,
+      "sha256": "d4e5fd933494a9033a97d21b6600aa82418343450801b90b913ca027ce9c4d14"
+    },
+    "fitted_preprocessors_manifest.json": {
+      "path": "results/phase7k/fitted_preprocessors_manifest.json",
+      "size_bytes": 20498,
+      "sha256": "a6a69cad2fa5018e8b656431b6699a39dbab641d0682207fd4649f748a83a9a5"
+    },
+    "training_logs.csv": {
+      "path": "results/phase7k/training_logs.csv",
+      "size_bytes": 59391,
+      "sha256": "50fbb1b425b8139fec9f1bc163a3a6d98395ee8c187d815f7e3afcf407fbf471"
+    },
+    "validation_predictions.csv": {
+      "path": "results/phase7k/validation_predictions.csv",
+      "size_bytes": 894249,
+      "sha256": "e7ae4d7482eecce769ec9e1cfe1199c5c702e986940df8a6de64550453672b32"
+    },
+    "threshold_sweep_metrics.csv": {
+      "path": "results/phase7k/threshold_sweep_metrics.csv",
+      "size_bytes": 1659354,
+      "sha256": "19115f6421ebe34b8268128109470c023e6a26e32903ed610b458613bea68ba0"
+    },
+    "ablation_gate_summary.csv": {
+      "path": "results/phase7k/ablation_gate_summary.csv",
+      "size_bytes": 7225,
+      "sha256": "a3e966390ff8168212aa4fe49164927f61bc493bb02816b0a24d6dfdf498f723"
+    },
+    "ablation_cross_seed_aggregate.csv": {
+      "path": "results/phase7k/ablation_cross_seed_aggregate.csv",
+      "size_bytes": 2752,
+      "sha256": "4a5719c6827a5f4298047d86f105be7085a904802fbd5aa5934bc1286a9788e2"
+    },
+    "phase7k_report.md": {
+      "path": "results/phase7k/phase7k_report.md",
+      "size_bytes": 19380,
+      "sha256": "dd50ddf9f84d1f9e1bd84fd3d41c1ccc0371a9225be2391e64ed476841a52d76"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "amendment_id": "PROTOCOL-AMENDMENT-PHASE7E-01",
+  "title": "Protocol Amendment: Inverse-Frequency Loss Weighting and Validation-Calibrated Alert Thresholding",
+  "timestamp_iso": "2026-10-28T14:16:35Z",
+  "rationale": "Audit of Phase 7D revealed that neural networks suffered majority-class mode collapse under hardcoded weights [1.0, 1.5, 2.0] and uniform argmax. This amendment formally pre-registers inverse-frequency loss weighting w = [1.0, 11.46, 11.80] and validation-only calibration of decision threshold theta on failure-risk score S_fail = P(Warning) + P(Critical).",
+  "scope": "Candidate A Training and Validation splits ONLY. Test split remains strictly blinded and unaccessed for confirmation.",
+  "threshold_tuning_policy": "Threshold theta is selected strictly on Candidate A Validation split to maximize Episode Recall subject to Gate 2 (Entity FAR <= 10%, Window FPR <= 5%). The selected theta is permanently frozen prior to any future independent test scoring."
+}

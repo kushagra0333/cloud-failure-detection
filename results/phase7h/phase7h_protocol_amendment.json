@@ -1,0 +1,46 @@
+{
+  "amendment_id": "PROTOCOL-AMENDMENT-PHASE7H-01",
+  "parent_protocol": "PROTOCOL-AMENDMENT-PHASE7G-01",
+  "date": "2026-10-28",
+  "author": "Antigravity Research Team",
+  "status": "RATIFIED_PRE_ABLATION",
+  "objective": "Investigate normalization stability and evaluate controlled variance-floored and robust scaling ablations to resolve extreme feature blow-ups and false-alarm amplification.",
+  "safeguards": {
+    "candidate_a_test_access": "FORBIDDEN",
+    "phase6_confirmatory_holdout_access": "FORBIDDEN",
+    "historical_artifacts_overwrite": "FORBIDDEN",
+    "training_partition": "Candidate A Train (N=3,278)",
+    "validation_partition": "Candidate A Validation (N=657)",
+    "global_parameter_fitting": "Strictly Candidate A Training data only"
+  },
+  "audit_findings_summary": {
+    "numerical_instability_confirmed": true,
+    "max_normalized_feature_value": 12905.59,
+    "root_cause": "Historical standard deviations for stationary tasks and jobs drop below 1e-4, while epsilon was hardcoded at 1e-5. This causes minor telemetry fluctuations to scale up to >12,000 standard deviations, blowing up linear activations in neural models."
+  },
+  "ablations": {
+    "ablation_a": {
+      "id": "transformer_hierarchical_baseline",
+      "name": "Ablation A: Existing Hierarchical Baseline (eps=1e-5, unfloored)",
+      "description": "Standard hierarchical causal baseline from Phase 7G with no variance floor (eps=1e-5).",
+      "loss": "CrossEntropyLoss with Condition C training-only inverse-frequency weights w = [1.0, 11.463, 11.802]"
+    },
+    "ablation_b": {
+      "id": "transformer_hierarchical_floored",
+      "name": "Ablation B: Hierarchical Causal Baseline with Variance Floor (sigma_floor=0.05)",
+      "description": "Hierarchical causal baseline where historical denominator is floored at max(sigma_hist, 0.05). Floor derived as 5% of cluster population scale from training data.",
+      "loss": "CrossEntropyLoss with Condition C training-only inverse-frequency weights w = [1.0, 11.463, 11.802]"
+    },
+    "ablation_c": {
+      "id": "transformer_hierarchical_robust",
+      "name": "Ablation C: Robust Causal Scaling with Median, MAD, and Soft Tanh Bounding",
+      "description": "Hierarchical causal baseline using historical Median for centering, MAD*1.4826 (floored at 0.05) for scale, and soft hyperbolic tangent clipping to [-5.0, 5.0].",
+      "loss": "CrossEntropyLoss with Condition C training-only inverse-frequency weights w = [1.0, 11.463, 11.802]"
+    }
+  },
+  "operational_acceptance_gates": {
+    "gate_1": "Episode Recall >= 70.0% AND Critical Recall >= 50.0%",
+    "gate_2": "Pure-normal Entity FAR <= 10.0% AND Normal-window FPR <= 5.0%",
+    "eligibility_rule": "A model is operationally eligible ONLY if it satisfies BOTH Gate 1 and Gate 2 simultaneously."
+  }
+}

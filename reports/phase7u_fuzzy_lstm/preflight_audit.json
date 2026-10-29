@@ -1,0 +1,11 @@
+{
+  "timestamp_utc": "2026-10-29T09:02:31Z",
+  "phase7t_hybrid_exactness_verified": true,
+  "train_oof_ep_rec_tau765_proven": 0.2544529262086514,
+  "constant_prevalence_brier": 0.12584298816862774,
+  "hybrid_validation_brier": 0.15584177868548854,
+  "brier_higher_than_constant_prevalence": true,
+  "s0_parameters": 67027,
+  "s2_parameters": 67027,
+  "preflight_status": "AUDIT_PASSED"
+}

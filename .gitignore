@@ -1,0 +1,13 @@
+# Raw research datasets
+/data/raw/
+*.parquet
+
+# Python bytecode and virtual environment
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+
+# Local temporary files
+*.tmp
+

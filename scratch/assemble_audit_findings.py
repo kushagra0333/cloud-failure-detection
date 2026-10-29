@@ -1,0 +1,73 @@
+import json
+import hashlib
+from pathlib import Path
+import pandas as pd
+import numpy as np
+
+# Assemble comprehensive audit findings JSON
+findings = {
+    "audit_phase": "Phase 7D Diagnostic Audit (Read-Only)",
+    "timestamp_iso": "2026-10-28T14:00:00Z",
+    "status": "AUDIT_COMPLETE_NO_RETRAINING",
+    "verified_facts": {
+        "independent_metric_reproduction": True,
+        "holdout_isolation_maintained": True,
+        "checkpoint_reuse": False,
+        "stale_predictions": False,
+        "identical_discrete_predictions_reason": {
+            "temporal_lstm": "Mode collapse to Class 0 (100% of test predictions are 0) due to severe class imbalance (85.3% normal in train) and insufficient loss weights [1.0, 1.5, 2.0] vs balanced [1.0, 11.5, 11.8]. Continuous probabilities differ (max diff: 0.1515, mean diff: 0.0343), but argmax maps 100% to 0.",
+            "compact_transformer": "Conservative collapse where only 3 specific windows (out of 1,025) of entity 6238841354_6 exceed Class 0. Both 7B and 7D predicted Class 2 on exactly those 3 windows and Class 0 on the remaining 1,022 windows. Continuous probabilities differ (max diff: 0.2353, mean diff: 0.0328, PR-AUC warning 0.2290 vs 0.2219, critical 0.2635 vs 0.2623)."
+        },
+        "dataset_row_ordering_difference": "Phase 7B and Phase 7D test prediction CSVs contain the exact same 1,025 (entity_id, timestamp) pairs, but in a different sort order. When aligned by (entity_id, timestamp), Random Forest agrees on 94.05% of windows (61 diffs) and Hybrid agrees on 91.90% (83 diffs)."
+    },
+    "confirmed_defects_and_mismatches": [
+        {
+            "category": "Methodological Asymmetry in Protocol v2.0",
+            "description": "Random Forest and Representation Hybrid utilized class_weight='balanced' (assigning ~11.5x and ~11.8x penalty to Warning and Critical classes), whereas Temporal LSTM and Compact Temporal Transformer were restricted to hardcoded weights [1.0, 1.5, 2.0] (assigning only 1.5x and 2.0x penalty). This left the neural loss function 76.9% dominated by normal samples, inducing majority-class mode collapse."
+        },
+        {
+            "category": "Decision Rule Discrepancy",
+            "description": "configs/default_config.yaml specified a combined failure risk decision rule: P(WARNING) + P(CRITICAL) >= theta (theta=0.50). In contrast, Protocol v2.0 enforced standard 3-class argmax. Under argmax, probability mass split between Warning and Critical causes the model to predict Normal even when total failure probability exceeds 50% (median failure probability on true failures in Transformer was 57.17%, yet argmax selected Normal)."
+        },
+        {
+            "category": "Historical Sequence Length Reduction",
+            "description": "default_config.yaml specifies L=15 (75 min history), but Phase 6.1 feasibility analysis proved real-world Borg failure tasks have short lifespans (<75 min), necessitating L=5 (25 min history). At L=5, temporal recurrent and self-attention models possess minimal sequence context over static tabular features."
+        }
+    ],
+    "unresolved_hypotheses": [
+        {
+            "hypothesis_id": "H1",
+            "title": "Loss Weighting Rectification",
+            "statement": "Training Temporal LSTM and Compact Transformer with true balanced inverse-frequency weights [1.0, 11.46, 11.80] or Focal Loss will eliminate majority-class mode collapse and improve Validation Macro-F1."
+        },
+        {
+            "hypothesis_id": "H2",
+            "title": "Combined Risk Thresholding",
+            "statement": "Switching from 3-class argmax to validation-calibrated combined failure thresholding (P(Warning) + P(Critical) >= theta_val) will enable Transformer and Hybrid to detect failure episodes without triggering prohibitive false alarms."
+        },
+        {
+            "hypothesis_id": "H3",
+            "title": "Parent-Job Workload Domain Shift",
+            "statement": "The primary ceiling on False Alarm Rates across all architectures is cross-job workload domain shift between the 37 training parent jobs and the 12 validation / 11 test parent jobs."
+        }
+    ],
+    "proposed_experiment": {
+        "title": "Pre-Registered Development Experiment on Candidate A Train/Val",
+        "scope": "Candidate A Train (N=3,278) and Candidate A Validation (N=657) ONLY. Candidate A Test remains strictly blinded.",
+        "phase_1_weighting_comparison": [
+            "Baseline Unweighted (weights=[1.0, 1.0, 1.0])",
+            "Protocol v2.0 Ad-hoc Weighted (weights=[1.0, 1.5, 2.0])",
+            "True Balanced Inverse Frequency (weights=[1.0, 11.46, 11.80])"
+        ],
+        "phase_2_contingent_explorations": [
+            "Focal Loss (gamma=2.0, alpha=balanced)",
+            "Class-Balanced DataLoader Sampling (WeightedRandomSampler)",
+            "Validation Threshold Calibration (theta in [0.20, 0.60])"
+        ]
+    }
+}
+
+with open("results/phase7d_diagnostic_audit/audit_findings.json", "w") as f:
+    json.dump(findings, f, indent=2)
+
+print("Saved results/phase7d_diagnostic_audit/audit_findings.json successfully.")

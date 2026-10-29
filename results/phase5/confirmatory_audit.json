@@ -1,0 +1,41 @@
+{
+  "audit_version": "1.0-phase5-confirmatory",
+  "timestamp": "2026-10-26",
+  "auditor": "Independent Scientific ML Auditor",
+  "verdict": "CONFIRMATORY_INCONCLUSIVE_FOR_FAILURE_PREDICTION_BUT_DISCONFIRMATORY_FOR_OPERATIONAL_FALSE_ALARM_RATES",
+  "invariants_audited": {
+    "frozen_entity_membership": {
+      "status": "PASS",
+      "details": "Evaluated strictly the 300 pre-registered entities from results/phase4/confirmatory_protocol.json without replacement or resampling."
+    },
+    "zero_leakage_and_quarantine": {
+      "status": "PASS",
+      "details": "Confirmatory data was never touched during training, checkpoint selection, or threshold tuning. All checkpoints and models were frozen in Phase 3/4."
+    },
+    "timestamp_and_causality": {
+      "status": "PASS",
+      "details": "All windows span [5100s, 10800s] on the 300s discrete grid with 15 strictly trailing steps. Zero future observations used at prediction time."
+    },
+    "post_failure_exclusion": {
+      "status": "PASS",
+      "details": "Zero post-failure telemetry was labeled or evaluated as early detection. All post-failure steps were correctly classified as UNKNOWN (-1) and excluded."
+    },
+    "metric_denominators": {
+      "status": "PASS",
+      "details": "All denominators verified: 2,596 windows, 188 pure-normal entities, 0 failure episodes."
+    },
+    "prevalence_adjustment": {
+      "status": "PASS",
+      "details": "Prevalence adjustments reported separately using documented 0.5% production prevalence assumption as sensitivity analysis."
+    }
+  },
+  "findings": {
+    "failure_pool_lifespan_limitation": "The Borg 2011 trace exhibits short task lifespans for failing jobs. Tasks that fail typically do so in their first 10-45 minutes. Consequently, zero unpadded 75-minute history windows could be extracted strictly before failure from the untouched holdout entities.",
+    "operational_false_alarm_rates": {
+      "Random Forest": "42.02%",
+      "Temporal LSTM": "51.06%",
+      "Compact Transformer": "60.64%",
+      "Representation Hybrid": "42.55%"
+    }
+  }
+}

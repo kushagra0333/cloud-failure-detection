@@ -1,0 +1,106 @@
+{
+  "protocol_name": "Phase 7B Predeclared Evaluation Protocol",
+  "version": "1.0-FROZEN",
+  "timestamp_iso": "2026-10-27T23:48:00+05:30",
+  "frozen_split_reference": {
+    "candidate_a_assignment_csv": "results/phase7a_4/candidate_a_job_grouped_split.csv",
+    "candidate_a_sha256": "f84bc4fe54f8e0583e2ee52f49b2fbe8e6fcafb4f020c656985a1acc31bb4946",
+    "train_windows": 3278,
+    "val_windows": 657,
+    "test_windows": 1025,
+    "total_windows": 4960,
+    "zero_parent_job_overlap": true
+  },
+  "model_suite": [
+    {
+      "model_id": "random_forest",
+      "model_name": "Random Forest Baseline",
+      "architecture": "RandomForestClassifier(n_estimators=100, max_depth=12, min_samples_split=5, class_weight='balanced')",
+      "input_representation": "31-dimensional tabular feature vector x_last (endpoint step t)"
+    },
+    {
+      "model_id": "lstm",
+      "model_name": "Temporal LSTM",
+      "architecture": "TemporalLSTMClassifier(input_dim=31, hidden_dim=64, num_layers=2, dropout=0.2, bidirectional=False)",
+      "loss_function": "Weighted Cross-Entropy (weights=[1.0, 1.5, 2.0])",
+      "input_representation": "Tensor of shape (batch, 5, 31) representing L=5 temporal sequence"
+    },
+    {
+      "model_id": "transformer",
+      "model_name": "Compact Temporal Transformer",
+      "architecture": "CompactTemporalTransformer(input_dim=31, d_model=32, nhead=4, num_layers=2, dim_feedforward=64, dropout=0.1)",
+      "loss_function": "Weighted Cross-Entropy (weights=[1.0, 1.5, 2.0])",
+      "input_representation": "Tensor of shape (batch, 5, 31) representing L=5 temporal sequence"
+    },
+    {
+      "model_id": "hybrid",
+      "model_name": "Representation Hybrid",
+      "architecture": "RepresentationHybridClassifier(Transformer 32-dim pooled embeddings + 31-dim x_last vector -> Random Forest)",
+      "input_representation": "Concatenated 63-dimensional feature vector"
+    }
+  ],
+  "metrics_hierarchy": {
+    "primary_metric": {
+      "name": "Macro-F1",
+      "formula": "mean(F1_normal, F1_warning, F1_critical)",
+      "role": "Primary optimization and ranking metric across all three classes"
+    },
+    "secondary_window_metrics": [
+      "Critical Class Precision, Recall, F1 (urgent 15-minute failure horizon)",
+      "Warning Class Precision, Recall, F1 (early 30-minute warning horizon)",
+      "Normal Class Precision, Recall, F1",
+      "Overall Accuracy",
+      "Confusion Matrix (3x3)",
+      "PR-AUC (Precision-Recall Area Under Curve)"
+    ],
+    "episode_detection_metrics": {
+      "episode_identifier": "(entity_id, fail_timestamp)",
+      "definition": "A failure episode is detected if any pre-failure window (y in {1, 2}) yields y_pred in {1, 2}",
+      "metrics": [
+        "Episode Recall = Detected Episodes / Total Eligible Episodes",
+        "Detection Lead Time = t_fail - t_first_alert (median, IQR, min, max in seconds/minutes)"
+      ]
+    },
+    "false_alarm_containment_metrics": [
+      {
+        "name": "Pure-Normal Entity False Alarm Rate (Entity FAR)",
+        "formula": "Pure-Normal Entities with >= 1 alert / Total Pure-Normal Entities",
+        "target": "<= 10.0%"
+      },
+      {
+        "name": "Pure-Normal Parent-Job False Alarm Rate (Job FAR)",
+        "formula": "Pure-Normal Parent Jobs with >= 1 alert / Total Pure-Normal Parent Jobs",
+        "target": "<= 15.0%"
+      },
+      {
+        "name": "Normal-Window False Positive Rate (Window FPR)",
+        "formula": "Normal Windows with y_pred in {1, 2} / Total Normal Windows",
+        "target": "<= 5.0%"
+      }
+    ]
+  },
+  "uncertainty_estimation": {
+    "method": "Parent-Job Cluster Bootstrap",
+    "resampling_unit": "parent_job_id (clusters all windows of sampled jobs together)",
+    "iterations": 1000,
+    "confidence_level": 0.95,
+    "interval_type": "Empirical percentiles [2.5%, 97.5%]",
+    "justification": "Accounts for intra-cluster correlation across tasks from the same parent job."
+  },
+  "operational_acceptance_gates": {
+    "gate_1_failure_recall": {
+      "requirement": "Episode Recall >= 70.0% AND Critical Recall >= 50.0%",
+      "rationale": "Ensures the system catches at least 7 out of 10 failure episodes with sufficient lead time."
+    },
+    "gate_2_false_alarm_containment": {
+      "requirement": "Pure-Normal Entity FAR <= 10.0% AND Normal-Window FPR <= 5.0%",
+      "rationale": "Prevents operational alert fatigue across healthy cluster services."
+    },
+    "winner_determination": "A model is declared an OPERATIONAL_WINNER if and only if it passes both Gate 1 and Gate 2. If multiple models pass, the model with the highest Macro-F1 on the Test split wins. If no model passes both gates, the verdict is NO_OPERATIONAL_WINNER.",
+    "immutability_rule": "These gates are predeclared before training and cannot be modified post-hoc."
+  },
+  "quarantine_declaration": {
+    "spent_confirmatory_holdout_quarantined": true,
+    "rationale": "Phase 6 confirmatory holdout shares 20 parent jobs (1,727 windows, 32.5%) with dev pool and was repeatedly unblinded. It must NOT be used for model selection or fresh confirmatory claims."
+  }
+}

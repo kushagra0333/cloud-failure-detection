@@ -1,0 +1,31 @@
+{
+  "audit_timestamp_utc": "2026-10-29T12:38:15.272572+00:00",
+  "pricing_reference": {
+    "on_demand_rate_usd_per_tib": 6.25,
+    "bytes_per_tib": 1099511627776,
+    "pricing_source": "Google Cloud BigQuery US Multi-Region On-Demand Pricing ($6.25/TiB)"
+  },
+  "budget_limits": {
+    "configured_hard_byte_cap": 21000000000,
+    "configured_hard_byte_cap_readable": "21,000,000,000 bytes (21.0 GB)",
+    "monetary_budget_cap_usd": 0.125
+  },
+  "service_measured_consumption": {
+    "actual_bytes_scanned": 749075319040,
+    "actual_bytes_scanned_readable": "749,075,319,040 bytes (697.6308 GiB / 749.08 GB)",
+    "actual_cost_at_6_25_usd": 4.258,
+    "actual_cost_at_5_00_usd": 3.4064,
+    "byte_cap_excess_ratio": 35.67,
+    "budget_excess_ratio": 34.06,
+    "exceeds_byte_cap": true,
+    "exceeds_budget_cap": true
+  },
+  "sandbox_evaluation": {
+    "monthly_quota_bytes": 1099511627776,
+    "sandbox_monthly_quota_readable": "1 TiB / calendar month",
+    "single_query_quota_consumption_pct": 68.13,
+    "sandbox_marginal_cost_usd": 0.0,
+    "sandbox_feasibility_note": "While marginal cost in Sandbox is $0.00, scanning 697.6 GiB in a single query consumes 68.1% of the monthly 1 TiB Sandbox allowance. The query exceeds the predeclared 21.0 GB research scan cap by 35.7x."
+  },
+  "compliance_verdict": "QUERY_EXCEEDS_BUDGET"
+}

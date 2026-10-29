@@ -1,0 +1,50 @@
+{
+  "report_id": "INTEGRITY-REPORT-PHASE-7I",
+  "timestamp": "2026-10-28T21:30:00+05:30",
+  "status": "PASSED_ALL_CHECKS",
+  "assertions": {
+    "identical_train_val_sample_ids": true,
+    "train_sample_count": 3278,
+    "val_sample_count": 657,
+    "val_class_distribution_checked": [
+      560,
+      48,
+      49
+    ],
+    "identical_architecture_and_dims": true,
+    "input_dimension": 31,
+    "sequence_length": 5,
+    "random_seed": 42,
+    "fresh_initialization_each_condition": true,
+    "no_validation_labels_in_gradient_updates": true,
+    "no_test_data_accessed": true,
+    "no_phase6_holdout_accessed": true,
+    "correct_class_label_ordering": [
+      0,
+      1,
+      2
+    ],
+    "correct_metric_denominators": {
+      "critical_recall_denominator": 49,
+      "episode_recall_denominator": 20,
+      "entity_far_denominator": 49,
+      "window_fpr_denominator": 560,
+      "parent_job_far_denominator": 4
+    },
+    "deterministic_evaluation_from_saved_checkpoints": true
+  },
+  "input_hashes": {
+    "X_train_hierarchical_floored": "970378c6a704fbfa4e25f9ff3db844b8ddf81e06964d9a24cb30f5f61a670d4f",
+    "X_val_hierarchical_floored": "1e185e2874ec2c0c0bd47a484701e850c3448b995fd04f145c6bdbf5d7fe90cd",
+    "y_train": "355ca59b1609780181fabe8f06c6ab51cc5c53cfbec91cb822d76b8e373fab1e",
+    "y_val": "eb968a74ae86dcc574f3341055ff45ca9fcf77ec5a1b4cee5ad8cb4c1e2631b9",
+    "train_metadata": "0180ade4098711680c44bbd2ca8c3c5d85834a86042546cc9300b00f1df725ce",
+    "val_metadata": "8d22193f11d671dc570d29abf9255d06386880d49c5de83c68d6404a8b41b956"
+  },
+  "checkpoint_hashes": {
+    "condition_A": "5a4a907d4a31891d5ded01a718956b74dccf5e525253501bc9acac270ee975c8",
+    "condition_B": "6461a8b81b9cedfea41b0871ff2e67cf1a0818c3a467c0df19236a8f85600a72",
+    "condition_C": "1329ee91520ac2733a51777cb7e6e83f6f989667e7d3639e1e30cc560e7d56bb",
+    "condition_D": "3cf9c3b6ba97021d254f1beb6b23b2c9a25324c1c591c0ec7db23a59487e4ef8"
+  }
+}

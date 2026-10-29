@@ -1,0 +1,179 @@
+{
+  "audit_phase": "Phase 6.4",
+  "timestamp_utc": "2026-10-27 12:24:44",
+  "auditor": "Independent ML Scientific Auditor (Phase 6.4)",
+  "protocol_under_audit": "results/phase6/protocol_l5_amendment_2_1.json",
+  "predecessor_protocol": "results/phase6/protocol_l5.json",
+  "checks": {
+    "protocol_integrity": {
+      "status": "PASSED",
+      "amendment_version": "2.1",
+      "amendment_status": "RATIFIED_PRE_REGISTERED_FROZEN",
+      "amendment_sha256": "f354cd9f02343e83d0e71056e6800189715506fbdd845342c6d982cd0e88d8b0",
+      "predecessor_sha256": "ebf692598f2cb7115919c427127782f44ba054c655b3b76100aadb5955377bd1",
+      "predecessor_preserved": true
+    },
+    "population_accounting": {
+      "status": "PASSED",
+      "failure_entities_count": 137,
+      "sampled_normal_entities_count": 200,
+      "evaluable_normal_entities_count": 198,
+      "excluded_short_history_normal_entities": [
+        "4974636262_330",
+        "4974636615_100"
+      ],
+      "evaluable_primary_entities_total": 335,
+      "total_primary_windows": 5511,
+      "critical_windows": 400,
+      "warning_windows": 300,
+      "prefail_windows": 700,
+      "normal_windows_total": 4811,
+      "pure_normal_windows": 4515,
+      "failure_cohort_normal_windows": 296
+    },
+    "preprocessing_and_split_isolation": {
+      "status": "PASSED",
+      "fitted_scaler_source": "configs\\fitted_scaler.json",
+      "fitted_feature_count": 31,
+      "dev_train_entities": 367,
+      "dev_val_entities": 78,
+      "dev_test_entities": 80,
+      "dev_total_entities": 525,
+      "dev_holdout_overlap": 0,
+      "isolation_verified": true
+    }
+  },
+  "entity_count_resolution": {
+    "status": "RESOLVED_CONSISTENT",
+    "sampled_holdout_entities_count": 337,
+    "evaluable_primary_entities_count": 335,
+    "short_history_exclusions": {
+      "count": 2,
+      "entity_ids": [
+        "4974636262_330",
+        "4974636615_100"
+      ],
+      "telemetry_intervals": {
+        "4974636262_330": 3,
+        "4974636615_100": 4
+      },
+      "windows_produced": 0,
+      "exclusion_rationale": "Under strict unpadded L=5 rules (require_full_history=True, allow_zero_padding=False), tasks with < 5 intervals produce zero sliding windows and are excluded before scoring."
+    },
+    "bootstrap_resampling_frame": {
+      "cluster_unit": "entity_id",
+      "evaluable_clusters_count": 335,
+      "sampled_design_clusters_count": 337,
+      "mathematical_reconciliation": "The primary evaluation manifest contains exactly 335 clusters with empirical windows (137 failure + 198 evaluable pure-normal). The 2 excluded normal entities possess 0 windows and 0 episodes. Resampling N=335 clusters from the manifest correctly reflects the empirical cluster population. Tenet 1 and the downstream integration directive formally lock the evaluation population to 335 entities. No metric or bootstrap denominator is corrupted by 337."
+    }
+  },
+  "denominators_audit": {
+    "entity_far": {
+      "denominator": 198,
+      "population": "evaluable pure-normal entities",
+      "max_allowable_false_alarms": 23,
+      "max_allowable_pct": 11.616,
+      "threshold_pct": 12.0,
+      "uses_337": false,
+      "uses_335": false
+    },
+    "window_fpr": {
+      "denominator": 4811,
+      "population": "pooled primary normal windows",
+      "max_allowable_false_positives": 240,
+      "max_allowable_pct": 4.9886,
+      "threshold_pct": 5.0,
+      "uses_337": false,
+      "uses_335": false
+    },
+    "episode_recall": {
+      "denominator": 141,
+      "population": "failure episodes across 137 failure entities",
+      "uses_337": false,
+      "uses_335": false
+    },
+    "macro_f1_accuracy": {
+      "denominator": 5511,
+      "population": "total primary evaluable windows",
+      "uses_337": false,
+      "uses_335": false
+    }
+  },
+  "checkpoints_audit": {
+    "status": "PASSED",
+    "random_forest": {
+      "checkpoint_path": "models\\checkpoints_l5\\random_forest_l5.joblib",
+      "sha256": "7cba0f75bc11754b201d7961e3ee30968540caafe20deea93ac30372e9ce8481",
+      "architecture": "RandomForestClassifier(n_estimators=100, max_depth=15, class_weight='balanced', random_state=42)",
+      "input_dim": 31,
+      "loads_cleanly": true
+    },
+    "temporal_lstm": {
+      "checkpoint_path": "models\\checkpoints_l5\\best_lstm_checkpoint_l5.pt",
+      "sha256": "08f8cc36defe3771a1f5eda5a59ec434a3891105f11f6e32c6d59e7327a462d2",
+      "architecture": "TemporalLSTMClassifier(input_dim=31, hidden_dim=64, num_layers=2, num_classes=3, dropout=0.2)",
+      "parameter_count": 62467,
+      "input_shape": "[batch_size, 5, 31]",
+      "best_epoch": 10,
+      "loads_cleanly": true
+    },
+    "compact_transformer": {
+      "checkpoint_path": "models\\checkpoints_l5\\best_transformer_checkpoint_l5.pt",
+      "sha256": "6eff178c2b4fce1eef0d965feaa218f8d25310601ff60bc730902ac38f4e03cc",
+      "architecture": "CompactTemporalTransformer(input_dim=31, d_model=32, nhead=4, num_layers=2, dim_feedforward=64, num_classes=3, dropout=0.1, max_len=5)",
+      "parameter_count": 19331,
+      "input_shape": "[batch_size, 5, 31]",
+      "best_epoch": 33,
+      "loads_cleanly": true
+    },
+    "representation_hybrid": {
+      "checkpoint_path": "models\\checkpoints_l5\\representation_hybrid_l5.joblib",
+      "sha256": "0de9ed259df7984cd5cf2f958d31ad75cafe3b5ef61951fdd620b385ea4ea6ce",
+      "architecture": "Frozen Compact Transformer (32-dim latent embedding) + 31-dim tabular -> Random Forest (63-dim fused)",
+      "fused_feature_dim": 63,
+      "loads_cleanly": true
+    }
+  },
+  "quarantine_audit": {
+    "status": "PASSED",
+    "quarantined_census_failure_tasks": {
+      "count": 61,
+      "overlap_with_primary_evaluable": 0,
+      "overlap_with_sampled_normal": 0,
+      "quarantine_strictly_enforced": true
+    },
+    "excluded_short_history_normal_controls": {
+      "count": 2,
+      "entity_ids": [
+        "4974636262_330",
+        "4974636615_100"
+      ],
+      "overlap_with_primary_evaluable": 0,
+      "exclusion_strictly_enforced": true
+    }
+  },
+  "sensitivity_cohort_audit": {
+    "status": "PASSED",
+    "unseen_parent_jobs": [
+      "6250804554",
+      "6251723929",
+      "6252225776",
+      "6250345153"
+    ],
+    "disjoint_failure_entities_count": 75,
+    "disjoint_failure_episodes_count": 79,
+    "disjoint_prefail_windows_count": 347,
+    "isolation_from_dev_training": true
+  },
+  "holdout_preservation_audit": {
+    "status": "PASSED",
+    "holdout_feature_tensors_loaded": false,
+    "holdout_predictions_generated": false,
+    "holdout_metrics_computed": false,
+    "holdout_thresholds_tuned": false,
+    "operational_winner_selected": false,
+    "holdout_remains_pristine": true
+  },
+  "final_verdict": "READY_FOR_CONFIRMATORY_EVALUATION",
+  "audit_duration_seconds": 0.17777371406555176
+}

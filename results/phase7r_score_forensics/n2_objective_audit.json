@@ -1,0 +1,58 @@
+{
+  "audit_timestamp_utc": "2026-10-29T07:56:42Z",
+  "loss_specification": {
+    "name": "AsymmetricCriticalMarginLoss",
+    "base_loss": "CrossEntropyLoss(weight=[1.0, 2.0, 2.0])",
+    "auxiliary_margin": 0.5,
+    "lambda_critical": 0.1,
+    "auxiliary_formula": "ReLU(0.50 - (z2 - z1)) applied exclusively to true Critical windows (y == 2)"
+  },
+  "in_sample_vs_held_out_generalization": {
+    "finding": "In-sample training achieves high AUC (0.851 - 0.892) with positive correlation and clear separation (c0=0.15 vs c1=0.38, c2=0.39).",
+    "implication": "The loss function and model architecture are mathematically and computationally correct. Failure to rank on held-out parent jobs is entirely a generalization and distribution shift phenomenon, not an in-sample inversion or software bug."
+  },
+  "checkpoint_evaluations": [
+    {
+      "seed": 42,
+      "checkpoint_file": "ckpt_N2_seed42.pt",
+      "in_sample_train_auc": 0.8511004885692051,
+      "in_sample_train_ap": 0.5599589861102832,
+      "in_sample_train_c0_mean": 0.15089163184165955,
+      "in_sample_train_c1_mean": 0.38057783246040344,
+      "in_sample_train_c2_mean": 0.3876365125179291,
+      "val_auc": 0.45734536082474225,
+      "val_ap": 0.13984976553792344,
+      "val_c0_mean": 0.1756998747587204,
+      "val_c1_mean": 0.16861091554164886,
+      "val_c2_mean": 0.1585589498281479
+    },
+    {
+      "seed": 123,
+      "checkpoint_file": "ckpt_N2_seed123.pt",
+      "in_sample_train_auc": 0.8915321360798658,
+      "in_sample_train_ap": 0.6045465717020693,
+      "in_sample_train_c0_mean": 0.14175018668174744,
+      "in_sample_train_c1_mean": 0.3879157602787018,
+      "in_sample_train_c2_mean": 0.4009604752063751,
+      "val_auc": 0.5381627393225331,
+      "val_ap": 0.19465973118109675,
+      "val_c0_mean": 0.2078505903482437,
+      "val_c1_mean": 0.2276695966720581,
+      "val_c2_mean": 0.24038922786712646
+    },
+    {
+      "seed": 456,
+      "checkpoint_file": "ckpt_N2_seed456.pt",
+      "in_sample_train_auc": 0.8579841633112996,
+      "in_sample_train_ap": 0.5579391444426718,
+      "in_sample_train_c0_mean": 0.16321177780628204,
+      "in_sample_train_c1_mean": 0.39489981532096863,
+      "in_sample_train_c2_mean": 0.3973252773284912,
+      "val_auc": 0.40104933726067743,
+      "val_ap": 0.12197528584563436,
+      "val_c0_mean": 0.2152496576309204,
+      "val_c1_mean": 0.18031024932861328,
+      "val_c2_mean": 0.17652162909507751
+    }
+  ]
+}

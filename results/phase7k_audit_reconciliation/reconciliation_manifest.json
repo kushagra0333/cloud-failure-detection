@@ -1,0 +1,36 @@
+{
+  "manifest_name": "reconciliation_manifest",
+  "phase": "Phase 7K-B",
+  "timestamp": "2026-10-29T00:30:00+05:30",
+  "project_root": "C:\\Users\\hp\\Desktop\\Research project",
+  "artifacts": {
+    "results\\phase7k_audit_reconciliation\\reconciliation_report.md": {
+      "size_bytes": 19937,
+      "sha256": "5a3d53b8f4a9739c042a59dc7bcfb2ef926fb4a30b52d09df8b397ac628244ec"
+    },
+    "results\\phase7k_audit_reconciliation\\label_transition_audit.csv": {
+      "size_bytes": 46862,
+      "sha256": "cbc5f26460aa32672d04a8c573dc31a1f7851c38243dba4a13024661532452b2"
+    },
+    "results\\phase7k_audit_reconciliation\\metric_denominator_audit.csv": {
+      "size_bytes": 2635,
+      "sha256": "6450e50fbe84a121840c1a12bbbdef83abf19d80927fdcbb80291ab72ccfb9fb"
+    },
+    "results\\phase7k_audit_reconciliation\\episode_grouping_audit.json": {
+      "size_bytes": 11709,
+      "sha256": "a02f8d5e114e39ced00937da51e9d6698cc5f1d00d5d32f291b73cccbfcb7865"
+    },
+    "results\\phase7k_audit_reconciliation\\discrepancy_register.csv": {
+      "size_bytes": 3104,
+      "sha256": "69fafffb8a715ca6dbf686ffccf387e0c502f46851103bb02669fc37276bcdbb"
+    },
+    "results\\phase7k_audit_reconciliation\\reconciliation_integrity.json": {
+      "size_bytes": 2297,
+      "sha256": "6209e4c05febf6c6b1de39f4f1c9d5559c894188a6531107fcc4a3dc81933622"
+    },
+    "reports\\phase7k_audit_reconciliation\\reconciliation_report.md": {
+      "size_bytes": 19937,
+      "sha256": "5a3d53b8f4a9739c042a59dc7bcfb2ef926fb4a30b52d09df8b397ac628244ec"
+    }
+  }
+}

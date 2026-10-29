@@ -1,0 +1,17 @@
+{
+  "phase": "Phase 7V",
+  "description": "Independent-Cohort Readiness and Frozen-Model Generalization Audit",
+  "verdict": "NO_INDEPENDENT_COHORT_AVAILABLE",
+  "path_selected": "Path B",
+  "governing_protocol": "results/phase7b_1/phase7b_evaluation_protocol_v2.json",
+  "prohibited_partitions": [
+    "Candidate A Test",
+    "Phase 6 Confirmatory Holdout"
+  ],
+  "audited_models": [
+    "Phase 7S S2",
+    "Phase 7T Linear Hybrid",
+    "Phase 7U Mamdani Fuzzy"
+  ],
+  "future_protocol_specification": "results/phase7v_external_generalization/evaluation_protocol.json"
+}

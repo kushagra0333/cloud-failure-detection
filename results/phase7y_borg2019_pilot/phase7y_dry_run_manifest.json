@@ -1,0 +1,55 @@
+{
+  "manifest_version": "4.0_dry_run_executed",
+  "phase": "Phase 7Y Continuation \u2014 Authenticated BigQuery Dry Run and Final SQL Safety Audit",
+  "timestamp_utc": "2026-10-29T12:38:15.272572+00:00",
+  "operational_verdict": "QUERY_EXCEEDS_BUDGET",
+  "service_measurement": {
+    "total_bytes_processed": 749075319040,
+    "total_bytes_processed_readable": "749,075,319,040 bytes (697.6308 GiB / 749.08 GB)",
+    "project_id": "canvas-advice-464215-n1",
+    "service_status": "VALIDATED_BY_SERVICE"
+  },
+  "historical_manifest_references": [
+    "results/phase7y_borg2019_pilot/phase7y_manifest.json",
+    "results/phase7y_borg2019_pilot/phase7y_continuation_manifest.json"
+  ],
+  "historical_deliverables_preserved_count": 21,
+  "new_deliverables_count": 7,
+  "new_deliverables": {
+    "phase7y_dry_run_auth_status.json": {
+      "bytes": 553,
+      "sha256": "2b19b95f4f3550d6cdfbeb438b4ac2fb498a8761b93d5d0959211b4453b10054",
+      "path": "results/phase7y_borg2019_pilot/phase7y_dry_run_auth_status.json"
+    },
+    "phase7y_dry_run_sql_audit.md": {
+      "bytes": 9230,
+      "sha256": "d955cb29f5fac4da9a129bbfa65be85011b4ac144d22adeadd6e8d4556b7f364",
+      "path": "results/phase7y_borg2019_pilot/phase7y_dry_run_sql_audit.md"
+    },
+    "phase7y_dry_run_query.sql": {
+      "bytes": 4096,
+      "sha256": "889e2841f0983248a9f1d4c2f4f917ae7733b2038f7b939a66e098f60699a8e6",
+      "path": "results/phase7y_borg2019_pilot/phase7y_dry_run_query.sql"
+    },
+    "phase7y_dry_run_evidence.json": {
+      "bytes": 1874,
+      "sha256": "b23dd306c251463c707c6032fa4ba61f0bf44183a9bdca4aa1fc6e4d8f8aa7ef",
+      "path": "results/phase7y_borg2019_pilot/phase7y_dry_run_evidence.json"
+    },
+    "phase7y_dry_run_budget_check.json": {
+      "bytes": 1363,
+      "sha256": "31955563b91f0f5620af583b11e74835fe9ddcda0c664ccfdfdd2495ee79e557",
+      "path": "results/phase7y_borg2019_pilot/phase7y_dry_run_budget_check.json"
+    },
+    "phase7y_dry_run_governance_checks.json": {
+      "bytes": 1001,
+      "sha256": "ac50647da9641f00314325407e132379f6eccaf5416c28b8454f5b31bf92fe0d",
+      "path": "results/phase7y_borg2019_pilot/phase7y_dry_run_governance_checks.json"
+    },
+    "phase7y_dry_run_continuation_report.md": {
+      "bytes": 5191,
+      "sha256": "a9c9692a21f07c3af0459e0288bb3333e111b8431284efdbf79739eef2ef2951",
+      "path": "results/phase7y_borg2019_pilot/phase7y_dry_run_continuation_report.md"
+    }
+  }
+}

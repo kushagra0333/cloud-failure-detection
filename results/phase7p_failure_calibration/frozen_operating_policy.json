@@ -1,0 +1,51 @@
+{
+  "policy_id": "Phase_7P_Frozen_Operating_Policy",
+  "phase": "Phase 7P",
+  "timestamp_frozen": "2026-10-29T11:55:39+05:30",
+  "calibration_method": "PlattScaling",
+  "calibrator_parameters": {
+    "seed_42": {
+      "platt": {
+        "a_slope": -0.12049299478530884,
+        "b_intercept": -1.9524142742156982,
+        "formula": "q_fail = 1 / (1 + exp(-(a * logit(clip(P_fail, 1e-6, 1-1e-6)) + b)))",
+        "epsilon": 1e-06
+      },
+      "isotonic": {
+        "n_thresholds": 12
+      }
+    },
+    "seed_123": {
+      "platt": {
+        "a_slope": -0.14431409537792206,
+        "b_intercept": -1.9683456420898438,
+        "formula": "q_fail = 1 / (1 + exp(-(a * logit(clip(P_fail, 1e-6, 1-1e-6)) + b)))",
+        "epsilon": 1e-06
+      },
+      "isotonic": {
+        "n_thresholds": 14
+      }
+    },
+    "seed_456": {
+      "platt": {
+        "a_slope": -0.14888589084148407,
+        "b_intercept": -1.9935024976730347,
+        "formula": "q_fail = 1 / (1 + exp(-(a * logit(clip(P_fail, 1e-6, 1-1e-6)) + b)))",
+        "epsilon": 1e-06
+      },
+      "isotonic": {
+        "n_thresholds": 12
+      }
+    }
+  },
+  "selected_operating_threshold_tau": 0.225,
+  "threshold_status": "SELECTED",
+  "critical_margin_rule": "logit_2 - logit_1 >= 0.50",
+  "decision_rule_description": "If q_fail < 0.225 -> 0 (Normal); Else if (z2 - z1 >= 0.50) -> 2 (Critical); Else -> 1 (Warning)",
+  "train_oof_provenance": {
+    "folds_csv_sha256": "d614a741b43f691ecae40f8dde9b20f4a95d7f0d148e8ce9be047c4d3514a492",
+    "oof_predictions_sha256": "6d862aae6bcf68b78dcc97eafa06450ca476162630dcab91f302c83f6b471ee7",
+    "threshold_selection_sha256": "4fb88a3858044cf5196c25f0941da53c35a74e311ffa8ae899ed238876594cbc"
+  },
+  "governance_assertion": "Validation outcomes were NEVER accessed during fold generation, calibrator fitting, or threshold selection."
+}

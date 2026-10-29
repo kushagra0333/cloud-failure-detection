@@ -1,0 +1,139 @@
+{
+  "manifest_name": "phase7m_manifest",
+  "phase": "Phase 7M",
+  "timestamp": "2026-10-29T01:35:00+05:30",
+  "project_root": "C:\\Users\\hp\\Desktop\\Research project",
+  "auditor": "Antigravity Senior Research Engineer Subsystem",
+  "decision_outcome": "PARTIAL_IMPROVEMENT",
+  "operational_verdict": "NO_OPERATIONAL_WINNER",
+  "artifacts": {
+    "results/phase7m_multiresolution/phase7m_design.md": {
+      "size_bytes": 7322,
+      "sha256": "e6046073c75e4805bb8ecf09e0d497d0a629fd1c2748995c7fa3a63f0c57a8a6"
+    },
+    "results/phase7m_multiresolution/phase7m_config.json": {
+      "size_bytes": 3454,
+      "sha256": "75ba01e293e30eedb6aa78a2701818570ae40b429c4fc2dc7671ca155b4fa462"
+    },
+    "results/phase7m_multiresolution/data_manifest.json": {
+      "size_bytes": 1936,
+      "sha256": "6b5edab7684ecd322e939e4c4305cef73e40c4a1d6f9b2bc123723bcf6de377c"
+    },
+    "results/phase7m_multiresolution/integrity_checks.json": {
+      "size_bytes": 834,
+      "sha256": "5189b1e49a9a13bae64f1f64900996bce53b8250f6824d26a65e6f3f03978f01"
+    },
+    "results/phase7m_multiresolution/training_logs.csv": {
+      "size_bytes": 23791,
+      "sha256": "1530460edfcebc4a7d2d7b20abad715eec32d9b6b6213dc5cb192acdbc6dfb19"
+    },
+    "results/phase7m_multiresolution/validation_predictions.csv": {
+      "size_bytes": 552551,
+      "sha256": "a8c1687d6de68cff9366ba0b08c723f43d91c03f51a4b6158bd1355a9fb20fc2"
+    },
+    "results/phase7m_multiresolution/per_seed_metrics.csv": {
+      "size_bytes": 5457,
+      "sha256": "b956e731856685e69d29b7a06df2144da781a28801a9ea68277606887e9d558b"
+    },
+    "results/phase7m_multiresolution/paired_comparison.csv": {
+      "size_bytes": 4529,
+      "sha256": "34d0cc293e4b8847e1322b5cea7629080cd2c36d56e18de511b503ca99cc89d3"
+    },
+    "results/phase7m_multiresolution/confusion_matrices.csv": {
+      "size_bytes": 8885,
+      "sha256": "f60a649f91912e73916213ae010af99f4e73528545d84cbe278bb9ce35d9dfb5"
+    },
+    "results/phase7m_multiresolution/critical_probability_analysis.csv": {
+      "size_bytes": 13244,
+      "sha256": "2b8eb6053092745939e288295a203e562f7854d23d1f5f3251f4c2476fba7ba4"
+    },
+    "results/phase7m_multiresolution/episode_error_analysis.csv": {
+      "size_bytes": 1544,
+      "sha256": "1505d1a4b5f4acd49355d34625d8266eae1c172bdc86efe0f000830d0b4cde25"
+    },
+    "results/phase7m_multiresolution/calibration_analysis.csv": {
+      "size_bytes": 1684,
+      "sha256": "559690e8ad749e34ec4f5477071303395e193b87ee7db1421209be69892728d8"
+    },
+    "results/phase7m_multiresolution/threshold_sweep.csv": {
+      "size_bytes": 812006,
+      "sha256": "996f7e1f641132705901e34acd9661b16311ca563f0cf1f6fc40fb47ecf0c854"
+    },
+    "results/phase7m_multiresolution/operational_gate_summary.csv": {
+      "size_bytes": 1776,
+      "sha256": "487df2b4ca6e9ef2fee7284b8fe202dbf33e94c42129673688cdc2f8a949e2ec"
+    },
+    "results/phase7m_multiresolution/independent_audit_report.md": {
+      "size_bytes": 3051,
+      "sha256": "ecca99fedf1339ba982d78fa391fc4e1caf333464f80ec4c5036ded4ee5b2d3f"
+    },
+    "results/phase7m_multiresolution/phase7m_final_report.md": {
+      "size_bytes": 19476,
+      "sha256": "9f283a7c4a0d8c298b4b825eb9af286bdb27fa4a52ff81dd40d1f26fb5caf2f3"
+    },
+    "reports/phase7m_multiresolution/phase7m_design.md": {
+      "size_bytes": 7322,
+      "sha256": "e6046073c75e4805bb8ecf09e0d497d0a629fd1c2748995c7fa3a63f0c57a8a6"
+    },
+    "reports/phase7m_multiresolution/phase7m_config.json": {
+      "size_bytes": 3454,
+      "sha256": "75ba01e293e30eedb6aa78a2701818570ae40b429c4fc2dc7671ca155b4fa462"
+    },
+    "reports/phase7m_multiresolution/data_manifest.json": {
+      "size_bytes": 1936,
+      "sha256": "6b5edab7684ecd322e939e4c4305cef73e40c4a1d6f9b2bc123723bcf6de377c"
+    },
+    "reports/phase7m_multiresolution/integrity_checks.json": {
+      "size_bytes": 834,
+      "sha256": "5189b1e49a9a13bae64f1f64900996bce53b8250f6824d26a65e6f3f03978f01"
+    },
+    "reports/phase7m_multiresolution/training_logs.csv": {
+      "size_bytes": 23791,
+      "sha256": "1530460edfcebc4a7d2d7b20abad715eec32d9b6b6213dc5cb192acdbc6dfb19"
+    },
+    "reports/phase7m_multiresolution/validation_predictions.csv": {
+      "size_bytes": 552551,
+      "sha256": "a8c1687d6de68cff9366ba0b08c723f43d91c03f51a4b6158bd1355a9fb20fc2"
+    },
+    "reports/phase7m_multiresolution/per_seed_metrics.csv": {
+      "size_bytes": 5457,
+      "sha256": "b956e731856685e69d29b7a06df2144da781a28801a9ea68277606887e9d558b"
+    },
+    "reports/phase7m_multiresolution/paired_comparison.csv": {
+      "size_bytes": 4529,
+      "sha256": "34d0cc293e4b8847e1322b5cea7629080cd2c36d56e18de511b503ca99cc89d3"
+    },
+    "reports/phase7m_multiresolution/confusion_matrices.csv": {
+      "size_bytes": 8885,
+      "sha256": "f60a649f91912e73916213ae010af99f4e73528545d84cbe278bb9ce35d9dfb5"
+    },
+    "reports/phase7m_multiresolution/critical_probability_analysis.csv": {
+      "size_bytes": 13244,
+      "sha256": "2b8eb6053092745939e288295a203e562f7854d23d1f5f3251f4c2476fba7ba4"
+    },
+    "reports/phase7m_multiresolution/episode_error_analysis.csv": {
+      "size_bytes": 1544,
+      "sha256": "1505d1a4b5f4acd49355d34625d8266eae1c172bdc86efe0f000830d0b4cde25"
+    },
+    "reports/phase7m_multiresolution/calibration_analysis.csv": {
+      "size_bytes": 1684,
+      "sha256": "559690e8ad749e34ec4f5477071303395e193b87ee7db1421209be69892728d8"
+    },
+    "reports/phase7m_multiresolution/threshold_sweep.csv": {
+      "size_bytes": 812006,
+      "sha256": "996f7e1f641132705901e34acd9661b16311ca563f0cf1f6fc40fb47ecf0c854"
+    },
+    "reports/phase7m_multiresolution/operational_gate_summary.csv": {
+      "size_bytes": 1776,
+      "sha256": "487df2b4ca6e9ef2fee7284b8fe202dbf33e94c42129673688cdc2f8a949e2ec"
+    },
+    "reports/phase7m_multiresolution/independent_audit_report.md": {
+      "size_bytes": 3051,
+      "sha256": "ecca99fedf1339ba982d78fa391fc4e1caf333464f80ec4c5036ded4ee5b2d3f"
+    },
+    "reports/phase7m_multiresolution/phase7m_final_report.md": {
+      "size_bytes": 19476,
+      "sha256": "9f283a7c4a0d8c298b4b825eb9af286bdb27fa4a52ff81dd40d1f26fb5caf2f3"
+    }
+  }
+}

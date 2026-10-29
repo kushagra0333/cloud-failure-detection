@@ -1,0 +1,174 @@
+{
+  "title": "Phase 7A.2 Diagnostic Regeneration and Split Reconciliation",
+  "date": "2026-10-27",
+  "policy": "Policy A: Terminal Entity Lifecycle (All observations t >= T_fail_1 labeled UNKNOWN -1)",
+  "reconciliation_by_split": {
+    "train": {
+      "original_total_windows": 4798,
+      "excluded_affected_windows": 1403,
+      "retained_clean_windows": 3395,
+      "original_labels": {
+        "0": 4188,
+        "2": 363,
+        "1": 247
+      },
+      "retained_labels": {
+        "0": 2959,
+        "2": 221,
+        "1": 215
+      },
+      "removed_labels": {
+        "0": 1229,
+        "2": 142,
+        "1": 32
+      },
+      "retained_entities": 282,
+      "original_entities": 367,
+      "output_metadata_path": "c:\\Users\\hp\\Desktop\\Research project\\data\\processed\\phase7a_diagnostic\\train_metadata_repaired.csv",
+      "output_X_path": "c:\\Users\\hp\\Desktop\\Research project\\data\\processed\\phase7a_diagnostic\\X_train_repaired.npy",
+      "output_y_path": "c:\\Users\\hp\\Desktop\\Research project\\data\\processed\\phase7a_diagnostic\\y_train_repaired.npy"
+    },
+    "val": {
+      "original_total_windows": 1015,
+      "excluded_affected_windows": 237,
+      "retained_clean_windows": 778,
+      "original_labels": {
+        "0": 840,
+        "2": 103,
+        "1": 72
+      },
+      "retained_labels": {
+        "0": 643,
+        "1": 72,
+        "2": 63
+      },
+      "removed_labels": {
+        "0": 197,
+        "2": 40,
+        "1": 0
+      },
+      "retained_entities": 64,
+      "original_entities": 78,
+      "output_metadata_path": "c:\\Users\\hp\\Desktop\\Research project\\data\\processed\\phase7a_diagnostic\\val_metadata_repaired.csv",
+      "output_X_path": "c:\\Users\\hp\\Desktop\\Research project\\data\\processed\\phase7a_diagnostic\\X_val_repaired.npy",
+      "output_y_path": "c:\\Users\\hp\\Desktop\\Research project\\data\\processed\\phase7a_diagnostic\\y_val_repaired.npy"
+    },
+    "test": {
+      "original_total_windows": 1003,
+      "excluded_affected_windows": 216,
+      "retained_clean_windows": 787,
+      "original_labels": {
+        "0": 864,
+        "2": 71,
+        "1": 68
+      },
+      "retained_labels": {
+        "0": 676,
+        "2": 57,
+        "1": 54
+      },
+      "removed_labels": {
+        "0": 188,
+        "2": 14,
+        "1": 14
+      },
+      "retained_entities": 66,
+      "original_entities": 80,
+      "output_metadata_path": "c:\\Users\\hp\\Desktop\\Research project\\data\\processed\\phase7a_diagnostic\\test_metadata_repaired.csv",
+      "output_X_path": "c:\\Users\\hp\\Desktop\\Research project\\data\\processed\\phase7a_diagnostic\\X_test_repaired.npy",
+      "output_y_path": "c:\\Users\\hp\\Desktop\\Research project\\data\\processed\\phase7a_diagnostic\\y_test_repaired.npy"
+    },
+    "confirmatory": {
+      "original_total_windows": 5511,
+      "excluded_affected_windows": 196,
+      "retained_clean_windows": 5315,
+      "original_labels": {
+        "0": 4811,
+        "2": 400,
+        "1": 300
+      },
+      "retained_labels": {
+        "0": 4655,
+        "2": 374,
+        "1": 286
+      },
+      "removed_labels": {
+        "0": 156,
+        "2": 26,
+        "1": 14
+      },
+      "retained_entities": 329,
+      "original_entities": 335,
+      "output_metadata_path": "c:\\Users\\hp\\Desktop\\Research project\\data\\processed\\phase7a_diagnostic\\confirmatory_metadata_repaired.csv",
+      "output_X_path": "c:\\Users\\hp\\Desktop\\Research project\\data\\processed\\phase7a_diagnostic\\X_confirmatory_repaired.npy",
+      "output_y_path": "c:\\Users\\hp\\Desktop\\Research project\\data\\processed\\phase7a_diagnostic\\y_confirmatory_repaired.npy"
+    }
+  },
+  "generated_artifact_hashes": {
+    "confirmatory_metadata_repaired.csv": {
+      "path": "c:\\Users\\hp\\Desktop\\Research project\\data\\processed\\phase7a_diagnostic\\confirmatory_metadata_repaired.csv",
+      "size_bytes": 150883,
+      "sha256": "964e26a5a4ee2aef4f8cf37fd1fb516f7bd823efa4b935d181347fc078e75625"
+    },
+    "corrected_confirmatory_manifest.csv": {
+      "path": "c:\\Users\\hp\\Desktop\\Research project\\data\\processed\\phase7a_diagnostic\\corrected_confirmatory_manifest.csv",
+      "size_bytes": 589896,
+      "sha256": "fba100a13a15b4ae85623b62e3a3aef0a671264c2dd6ae52c47d20af8cb15954"
+    },
+    "test_metadata_repaired.csv": {
+      "path": "c:\\Users\\hp\\Desktop\\Research project\\data\\processed\\phase7a_diagnostic\\test_metadata_repaired.csv",
+      "size_bytes": 27345,
+      "sha256": "abeb4ca0cf8642ba1d0a16fe449ce3f1e2949776a0cdd55a5fafca5e5331aa09"
+    },
+    "train_metadata_repaired.csv": {
+      "path": "c:\\Users\\hp\\Desktop\\Research project\\data\\processed\\phase7a_diagnostic\\train_metadata_repaired.csv",
+      "size_bytes": 115217,
+      "sha256": "e012ab201aa4525b78dae855d124d2785a70c3061cd3c1006d1ba83aa1430897"
+    },
+    "val_metadata_repaired.csv": {
+      "path": "c:\\Users\\hp\\Desktop\\Research project\\data\\processed\\phase7a_diagnostic\\val_metadata_repaired.csv",
+      "size_bytes": 27795,
+      "sha256": "833ed347f715de8026b0ac6b978fe5afbf1d543a23d7641981343b83095e288d"
+    },
+    "X_confirmatory_repaired.npy": {
+      "path": "c:\\Users\\hp\\Desktop\\Research project\\data\\processed\\phase7a_diagnostic\\X_confirmatory_repaired.npy",
+      "size_bytes": 3295428,
+      "sha256": "cc4c9ea01430df879390d0dbd2c52e374b442e6f77a2568d85d10e75328df3b7"
+    },
+    "X_test_repaired.npy": {
+      "path": "c:\\Users\\hp\\Desktop\\Research project\\data\\processed\\phase7a_diagnostic\\X_test_repaired.npy",
+      "size_bytes": 488068,
+      "sha256": "b1497a7034d24bd2ad5ac0db2ec08dbb389ff75dbc06edc2160824d988467aa4"
+    },
+    "X_train_repaired.npy": {
+      "path": "c:\\Users\\hp\\Desktop\\Research project\\data\\processed\\phase7a_diagnostic\\X_train_repaired.npy",
+      "size_bytes": 2105028,
+      "sha256": "ef3bc8e7ed6dc1cefd2e03c3ce581ceb1eed37814bfc27bf95590eed8ee293cf"
+    },
+    "X_val_repaired.npy": {
+      "path": "c:\\Users\\hp\\Desktop\\Research project\\data\\processed\\phase7a_diagnostic\\X_val_repaired.npy",
+      "size_bytes": 482488,
+      "sha256": "2774b50a4e3ff840b3a0c9b71c34e2224049add9284f94a9512c944f82564140"
+    },
+    "y_confirmatory_repaired.npy": {
+      "path": "c:\\Users\\hp\\Desktop\\Research project\\data\\processed\\phase7a_diagnostic\\y_confirmatory_repaired.npy",
+      "size_bytes": 42648,
+      "sha256": "73942367133bb6748a38b36f759b1ea8a396d5cbeedef1d711674f90a12d3fde"
+    },
+    "y_test_repaired.npy": {
+      "path": "c:\\Users\\hp\\Desktop\\Research project\\data\\processed\\phase7a_diagnostic\\y_test_repaired.npy",
+      "size_bytes": 6424,
+      "sha256": "7695bb1ed4a383f4c2c000adcad859fbd6c5098dcd6aab6bfdcbd4c007cc3986"
+    },
+    "y_train_repaired.npy": {
+      "path": "c:\\Users\\hp\\Desktop\\Research project\\data\\processed\\phase7a_diagnostic\\y_train_repaired.npy",
+      "size_bytes": 27288,
+      "sha256": "2f09005b6a56f3e8ea237984aca474c75b91dc61fd5cfb1891beba92c3155972"
+    },
+    "y_val_repaired.npy": {
+      "path": "c:\\Users\\hp\\Desktop\\Research project\\data\\processed\\phase7a_diagnostic\\y_val_repaired.npy",
+      "size_bytes": 6352,
+      "sha256": "df32bba10edc2d086955239c1625f77de50f4f213f03ed1fa6e64348e0bd20db"
+    }
+  }
+}

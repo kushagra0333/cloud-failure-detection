@@ -1,0 +1,36 @@
+{
+  "manifest_version": "2.0_continuation",
+  "phase": "Phase 7Y Continuation",
+  "timestamp_utc": "2026-10-29T10:40:04.962324+00:00",
+  "operational_verdict": "DATA_ACCESS_BLOCKED",
+  "historical_manifest_reference": "results/phase7y_borg2019_pilot/phase7y_manifest.json",
+  "historical_deliverables_preserved_count": 15,
+  "continuation_deliverables_count": 5,
+  "continuation_deliverables": {
+    "phase7y_continuation_report.md": {
+      "bytes": 10395,
+      "sha256": "b8e04a92892c70b97753382b66151d41dbfdffae0d769024db1a76490ba81b7a",
+      "path": "results/phase7y_borg2019_pilot/phase7y_continuation_report.md"
+    },
+    "sandbox_and_auth_assessment.json": {
+      "bytes": 2173,
+      "sha256": "0240114ecf7f47fcce1ce855e82dafbf479e6e8bac9c191a3ff2a735a073616c",
+      "path": "results/phase7y_borg2019_pilot/sandbox_and_auth_assessment.json"
+    },
+    "query_cost_and_budget_recalculation.json": {
+      "bytes": 1971,
+      "sha256": "8a79b6c5ba810cee4682609026bfb1809ea04fc56b777b7ef268ed200aa2af2b",
+      "path": "results/phase7y_borg2019_pilot/query_cost_and_budget_recalculation.json"
+    },
+    "revisited_label_and_censoring_spec.md": {
+      "bytes": 3689,
+      "sha256": "a39dbde1591533880151082a76cdf74a22ae3343356550acca08b393f2876ff0",
+      "path": "results/phase7y_borg2019_pilot/revisited_label_and_censoring_spec.md"
+    },
+    "continuation_integrity_checks.json": {
+      "bytes": 805,
+      "sha256": "b32678aa94c30a85f9f572404899048bcc67b45b51d5164427653fcf8fc18eb1",
+      "path": "results/phase7y_borg2019_pilot/continuation_integrity_checks.json"
+    }
+  }
+}

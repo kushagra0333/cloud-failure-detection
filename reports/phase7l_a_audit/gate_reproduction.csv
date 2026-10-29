@@ -1,0 +1,13 @@
+run_tag,context,condition,seed,total_threshold_points,gate1_passing_points,gate1_threshold_range,gate2_passing_points,gate2_threshold_range,simultaneous_passing_points,disjoint_separation_gap,operational_winner_verdict
+L5_cond_B_seed42,L5,cond_B,42,201,0,None,90,"[0.555, 1.0]",0,,NO_OPERATIONAL_WINNER
+L5_cond_B_seed123,L5,cond_B,123,201,43,"[0.0, 0.21]",86,"[0.575, 1.0]",0,0.365,NO_OPERATIONAL_WINNER
+L5_cond_B_seed456,L5,cond_B,456,201,0,None,102,"[0.495, 1.0]",0,,NO_OPERATIONAL_WINNER
+L12_cond_B_seed42,L12,cond_B,42,201,0,None,64,"[0.685, 1.0]",0,,NO_OPERATIONAL_WINNER
+L12_cond_B_seed123,L12,cond_B,123,201,26,"[0.0, 0.125]",66,"[0.675, 1.0]",0,0.55,NO_OPERATIONAL_WINNER
+L12_cond_B_seed456,L12,cond_B,456,201,0,None,88,"[0.565, 1.0]",0,,NO_OPERATIONAL_WINNER
+L5_cond_A_seed42,L5,cond_A,42,201,14,"[0.0, 0.065]",110,"[0.455, 1.0]",0,0.39,NO_OPERATIONAL_WINNER
+L5_cond_A_seed123,L5,cond_A,123,201,31,"[0.0, 0.15]",109,"[0.46, 1.0]",0,0.31000000000000005,NO_OPERATIONAL_WINNER
+L5_cond_A_seed456,L5,cond_A,456,201,21,"[0.0, 0.1]",128,"[0.365, 1.0]",0,0.265,NO_OPERATIONAL_WINNER
+L12_cond_A_seed42,L12,cond_A,42,201,0,None,64,"[0.685, 1.0]",0,,NO_OPERATIONAL_WINNER
+L12_cond_A_seed123,L12,cond_A,123,201,18,"[0.0, 0.085]",76,"[0.625, 1.0]",0,0.54,NO_OPERATIONAL_WINNER
+L12_cond_A_seed456,L12,cond_A,456,201,0,None,127,"[0.37, 1.0]",0,,NO_OPERATIONAL_WINNER

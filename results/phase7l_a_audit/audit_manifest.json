@@ -1,0 +1,109 @@
+{
+  "manifest_name": "phase7l_a_audit_manifest",
+  "phase": "Phase 7L-A",
+  "timestamp": "2026-10-29T01:15:00+05:30",
+  "auditor": "Antigravity Independent Research Engineering Subsystem",
+  "audit_status": "PHASE7L_VERIFIED_WITH_CAVEATS",
+  "operational_verdict": "NO_OPERATIONAL_WINNER",
+  "phase_7m_decision": "PROCEED_WITH_CONTROLLED_DESIGN",
+  "inputs_audited": {
+    "candidate_a_split": "results/phase7a_4/candidate_a_job_grouped_split.csv",
+    "phase7l_report": "results/phase7l_longer_context/phase7l_report.md",
+    "phase7l_manifest": "results/phase7l_longer_context/phase7l_manifest.json",
+    "phase7l_predictions": "results/phase7l_longer_context/validation_predictions.csv",
+    "phase7l_threshold_metrics": "results/phase7l_longer_context/threshold_sweep_metrics.csv",
+    "phase7l_gate_summary": "results/phase7l_longer_context/gate_summary.csv",
+    "phase7l_cross_seed_aggregate": "results/phase7l_longer_context/cross_seed_aggregate.csv",
+    "phase7l_checkpoints": "results/phase7l_longer_context/checkpoints/ (12 files)"
+  },
+  "artifacts": {
+    "results/phase7l_a_audit/phase7l_a_audit_report.md": {
+      "size_bytes": 27234,
+      "sha256": "a80e2c8bc9e3aab6882b8344c00d4093d766d49609185aa90225a99f242e4cd7"
+    },
+    "results/phase7l_a_audit/claim_reconciliation.csv": {
+      "size_bytes": 4792,
+      "sha256": "b17d33561d8899b0c03824d5c0d9f688ab0ed4c9670833e431efd792cfcf5489"
+    },
+    "results/phase7l_a_audit/policy_definition_audit.md": {
+      "size_bytes": 10772,
+      "sha256": "dfe3fffcc9a5ebc629aed889384f1f1e1254acdcc757fd41c2ef62b4283402d4"
+    },
+    "results/phase7l_a_audit/gate_reproduction.csv": {
+      "size_bytes": 1374,
+      "sha256": "1b21969336e7c4635690412c607d70cefdd78ae1dde0e07d1a99ddb90ad37b86"
+    },
+    "results/phase7l_a_audit/confusion_matrices.csv": {
+      "size_bytes": 3760,
+      "sha256": "31a436cc976304b40ab8be2cecf4ccd67c6ce2691b7a79c637b1af93b06777b0"
+    },
+    "results/phase7l_a_audit/critical_probability_analysis.csv": {
+      "size_bytes": 8264,
+      "sha256": "92ff37425e4d5b4ff86bf359ea5b2f0be9843d3c25626fe837876e123730a141"
+    },
+    "results/phase7l_a_audit/episode_error_analysis.csv": {
+      "size_bytes": 3664,
+      "sha256": "a2f88f6e65b91a322ef5d4087e7fa7887cc420560c4a1cacb6b6acf1f3668720"
+    },
+    "results/phase7l_a_audit/calibration_audit.csv": {
+      "size_bytes": 1418,
+      "sha256": "7460c12f2d8f2988731179c06700e9e28f384c4e7970184c3e67081f6e8d00b3"
+    },
+    "results/phase7l_a_audit/seed_paired_comparison.csv": {
+      "size_bytes": 2485,
+      "sha256": "3a2d633564a01aeee132f3ebfbd1653eca3831a5927792e370bdb2e2a8fcbbea"
+    },
+    "results/phase7l_a_audit/integrity_checks.json": {
+      "size_bytes": 1427,
+      "sha256": "7faaea9f801e4af320b885154daa92719d4aaeb82fc2d67e5f42fbb4de49c306"
+    },
+    "results/phase7l_a_audit/phase7m_proposal.md": {
+      "size_bytes": 8649,
+      "sha256": "f7e85b8de13a99a528f0323319fc65b9be692ee15393d51d6734ffcfdf81925e"
+    },
+    "reports/phase7l_a_audit/phase7l_a_audit_report.md": {
+      "size_bytes": 27234,
+      "sha256": "a80e2c8bc9e3aab6882b8344c00d4093d766d49609185aa90225a99f242e4cd7"
+    },
+    "reports/phase7l_a_audit/claim_reconciliation.csv": {
+      "size_bytes": 4792,
+      "sha256": "b17d33561d8899b0c03824d5c0d9f688ab0ed4c9670833e431efd792cfcf5489"
+    },
+    "reports/phase7l_a_audit/policy_definition_audit.md": {
+      "size_bytes": 10772,
+      "sha256": "dfe3fffcc9a5ebc629aed889384f1f1e1254acdcc757fd41c2ef62b4283402d4"
+    },
+    "reports/phase7l_a_audit/gate_reproduction.csv": {
+      "size_bytes": 1374,
+      "sha256": "1b21969336e7c4635690412c607d70cefdd78ae1dde0e07d1a99ddb90ad37b86"
+    },
+    "reports/phase7l_a_audit/confusion_matrices.csv": {
+      "size_bytes": 3760,
+      "sha256": "31a436cc976304b40ab8be2cecf4ccd67c6ce2691b7a79c637b1af93b06777b0"
+    },
+    "reports/phase7l_a_audit/critical_probability_analysis.csv": {
+      "size_bytes": 8264,
+      "sha256": "92ff37425e4d5b4ff86bf359ea5b2f0be9843d3c25626fe837876e123730a141"
+    },
+    "reports/phase7l_a_audit/episode_error_analysis.csv": {
+      "size_bytes": 3664,
+      "sha256": "a2f88f6e65b91a322ef5d4087e7fa7887cc420560c4a1cacb6b6acf1f3668720"
+    },
+    "reports/phase7l_a_audit/calibration_audit.csv": {
+      "size_bytes": 1418,
+      "sha256": "7460c12f2d8f2988731179c06700e9e28f384c4e7970184c3e67081f6e8d00b3"
+    },
+    "reports/phase7l_a_audit/seed_paired_comparison.csv": {
+      "size_bytes": 2485,
+      "sha256": "3a2d633564a01aeee132f3ebfbd1653eca3831a5927792e370bdb2e2a8fcbbea"
+    },
+    "reports/phase7l_a_audit/integrity_checks.json": {
+      "size_bytes": 1427,
+      "sha256": "7faaea9f801e4af320b885154daa92719d4aaeb82fc2d67e5f42fbb4de49c306"
+    },
+    "reports/phase7l_a_audit/phase7m_proposal.md": {
+      "size_bytes": 8649,
+      "sha256": "f7e85b8de13a99a528f0323319fc65b9be692ee15393d51d6734ffcfdf81925e"
+    }
+  }
+}

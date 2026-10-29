@@ -1,0 +1,17 @@
+{
+  "phase": "Phase 7W",
+  "description": "Governance Correction, External Dataset Sourcing and Compatibility Assessment",
+  "primary_verdict": "NEW_BENCHMARK_REQUIRED",
+  "prohibited_partitions_enforced": [
+    "data/processed/phase7c/test_metadata.csv",
+    "data/processed/confirmatory/confirmatory_metadata.csv",
+    "data/processed/confirmatory_l5/confirmatory_l5_metadata.csv"
+  ],
+  "audited_candidates": [
+    "Google Borg ClusterData 2019",
+    "ClusterWise OLCF Summit",
+    "Alibaba Cluster Trace 2018",
+    "LANL CFDR"
+  ],
+  "decision_path": "Part C2 \u2014 New External Benchmark Required"
+}

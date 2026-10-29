@@ -1,0 +1,102 @@
+{
+  "timestamp_utc": "2026-10-29T08:22:18Z",
+  "checks": [
+    {
+      "check_id": "CHK-01",
+      "name": "prohibited_partition_isolation",
+      "status": "PASS",
+      "details": "Zero access to Candidate A Test or Phase 6 Confirmatory Holdout."
+    },
+    {
+      "check_id": "CHK-02",
+      "name": "train_label_agreement",
+      "status": "PASS",
+      "details": "Train y_true exactly matches data/processed/phase7c/y_train.npy (3278 windows)."
+    },
+    {
+      "check_id": "CHK-03",
+      "name": "val_label_agreement",
+      "status": "PASS",
+      "details": "Validation y_true exactly matches data/processed/phase7c/y_val.npy (657 windows)."
+    },
+    {
+      "check_id": "CHK-04",
+      "name": "row_alignment_exactness",
+      "status": "PASS",
+      "details": "Row-by-row entity_id and prediction_timestamp diff = 0.000000."
+    },
+    {
+      "check_id": "CHK-05",
+      "name": "temporal_causality_boundaries",
+      "status": "PASS",
+      "details": "7 historical steps (t-55m to t-25m) and 5 recent steps (t-20m to t) strictly causal, zero future data."
+    },
+    {
+      "check_id": "CHK-06",
+      "name": "parent_job_grouped_fold_isolation",
+      "status": "PASS",
+      "details": "Zero parent jobs cross fold boundaries. Job 6251277720 intact in Fold 4."
+    },
+    {
+      "check_id": "CHK-07",
+      "name": "s2_absolute_telemetry_exclusion",
+      "status": "PASS",
+      "details": "All S2 inputs normalized relative to historical median and MAD scale. Zero raw absolute telemetry."
+    },
+    {
+      "check_id": "CHK-08",
+      "name": "scale_floors_provenance",
+      "status": "PASS",
+      "details": "Scale floors derived strictly from Candidate A Train (10th percentile positive MAD)."
+    },
+    {
+      "check_id": "CHK-09",
+      "name": "s2_input_finiteness_and_bounds",
+      "status": "PASS",
+      "details": "All S2 transformed values strictly finite and bounded within [-5.0, 5.0]."
+    },
+    {
+      "check_id": "CHK-10",
+      "name": "matched_architecture_and_hyperparameters",
+      "status": "PASS",
+      "details": "S0 and S2 use identical MultiResolutionLSTMClassifier (46,451 params, weights [1,2,2], margin 0.50)."
+    },
+    {
+      "check_id": "CHK-11",
+      "name": "checkpoint_inference_reproducibility",
+      "status": "PASS",
+      "details": "Inference from saved checkpoints exactly matches serialized predictions."
+    },
+    {
+      "check_id": "CHK-12",
+      "name": "inverse_auc_complement_identity",
+      "status": "PASS",
+      "details": "AUC(s) + AUC(1-s) = 1.00000000 holds with zero floating point error."
+    },
+    {
+      "check_id": "CHK-13",
+      "name": "fixed_policy_denominators",
+      "status": "PASS",
+      "details": "Validation denominators verified: 20 episodes, 49 Critical windows, 49 pure-normal entities, 560 Normal windows."
+    },
+    {
+      "check_id": "CHK-14",
+      "name": "pure_normal_jobs_false_alarm_inclusion",
+      "status": "PASS",
+      "details": "Pure-normal jobs (including Job 6251277720) retained in false alarm analysis."
+    },
+    {
+      "check_id": "CHK-15",
+      "name": "clean_room_metric_reproduction",
+      "status": "PASS",
+      "details": "All primary OOF, Val, and within-job metrics reproduced independently with zero discrepancies."
+    },
+    {
+      "check_id": "CHK-16",
+      "name": "historical_artifact_preservation",
+      "status": "PASS",
+      "details": "Zero overwriting of prior phase directories."
+    }
+  ],
+  "all_checks_passed": true
+}

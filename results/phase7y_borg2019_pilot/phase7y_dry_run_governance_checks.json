@@ -1,0 +1,28 @@
+{
+  "audit_timestamp_utc": "2026-10-29T12:38:15.272572+00:00",
+  "candidate_a_test_unaccessed": true,
+  "phase6_confirmatory_unaccessed": true,
+  "metadata_inspection_of_protected_holdouts_performed": false,
+  "zero_model_training_enforced": true,
+  "zero_synthetic_data_generated": true,
+  "zero_fabricated_dry_run_responses": true,
+  "pilot_extraction_attempted": false,
+  "protected_paths_audit": [
+    {
+      "path": "C:\\Users\\hp\\Desktop\\Research project\\data\\processed\\candidate_a_test_windows.parquet",
+      "exists": false,
+      "status": "PROTECTED_UNACCESSED"
+    },
+    {
+      "path": "C:\\Users\\hp\\Desktop\\Research project\\data\\processed\\test_windows.parquet",
+      "exists": false,
+      "status": "PROTECTED_UNACCESSED"
+    },
+    {
+      "path": "C:\\Users\\hp\\Desktop\\Research project\\results\\phase6_confirmatory",
+      "exists": false,
+      "status": "PROTECTED_UNACCESSED"
+    }
+  ],
+  "operational_verdict": "QUERY_EXCEEDS_BUDGET"
+}

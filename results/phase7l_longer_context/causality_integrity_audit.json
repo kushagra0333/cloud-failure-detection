@@ -1,0 +1,63 @@
+{
+  "audit_phase": "Phase 7L",
+  "timestamp": "2026-10-29T00:55:00+05:30",
+  "auditor": "Antigravity Independent Audit Subsystem",
+  "data_governance": {
+    "candidate_a_train_windows": 3278,
+    "candidate_a_val_windows": 657,
+    "candidate_a_test_accessed": false,
+    "candidate_a_test_status": "INSPECTED_IN_PHASE_7D_NON_VIRGIN",
+    "phase_6_holdout_quarantined": true,
+    "frozen_split_hash": "f84bc4fe54f8e0583e2ee52f49b2fbe8e6fcafb4f020c656985a1acc31bb4946"
+  },
+  "temporal_context_analysis": {
+    "baseline_l5": {
+      "seq_len": 5,
+      "temporal_span_seconds": 1500.0,
+      "temporal_span_minutes": 25.0,
+      "temporal_boundary": "t - 1200s to t <= t_prediction",
+      "future_leakage_violations": 0
+    },
+    "treatment_l12": {
+      "seq_len": 12,
+      "temporal_span_seconds": 3600.0,
+      "temporal_span_minutes": 60.0,
+      "temporal_boundary": "t - 3300s to t <= t_prediction",
+      "future_leakage_violations": 0
+    },
+    "trailing_steps_alignment": "100% bit-for-bit equality between L=12[-5:] and L=5"
+  },
+  "preprocessing_integrity": {
+    "preprocessor_fitting_split": "Candidate A Train only",
+    "validation_statistics_leaked": false,
+    "scaling_parameters_identical_across_lengths": true,
+    "finite_values_verified": true
+  },
+  "reproduction_summary": {
+    "total_models_evaluated": 12,
+    "total_threshold_evaluations": 2412,
+    "max_discrepancy": 0.0,
+    "simultaneous_gate_passes": 0,
+    "reproduction_verdict": "PHASE 7L RESULTS REPRODUCED EXACTLY"
+  },
+  "scientific_evaluation": {
+    "primary_comparison": "Condition B (Moderate [1,2,2])",
+    "baseline_peak_macro_f1": "0.3306 +/- 0.0261",
+    "treatment_peak_macro_f1": "0.3559 +/- 0.0186",
+    "macro_f1_delta": "+0.0253 (+7.65%)",
+    "baseline_episode_recall": "8.3% +/- 7.6%",
+    "treatment_episode_recall": "16.7% +/- 2.9%",
+    "episode_recall_delta": "+8.4%",
+    "baseline_critical_recall": "2.0% +/- 3.5%",
+    "treatment_critical_recall": "0.0% +/- 0.0%",
+    "baseline_entity_far": "8.2% +/- 7.1%",
+    "treatment_entity_far": "12.9% +/- 1.2%",
+    "baseline_window_fpr": "6.2% +/- 5.4%",
+    "treatment_window_fpr": "5.4% +/- 1.1%",
+    "calibration_brier_baseline": 0.3152,
+    "calibration_brier_treatment": 0.3699,
+    "calibration_ece_baseline": 0.1653,
+    "calibration_ece_treatment": 0.2429,
+    "decision_verdict": "MIXED EVIDENCE / NO OPERATIONAL WINNER"
+  }
+}

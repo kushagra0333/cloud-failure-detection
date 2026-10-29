@@ -1,0 +1,97 @@
+{
+  "audit_phase": "Phase 7B.2 Execution Status Audit",
+  "timestamp_iso": "2026-10-28T00:22:00+05:30",
+  "audit_verdict": "TRAINING STARTED — RESULTS PRESERVED, AUDIT REQUIRED",
+  "process_state": {
+    "task_id": "93852725-b55d-4e97-951f-5978ff186a69/task-3491",
+    "script": "scripts/train_and_evaluate_phase7b.py",
+    "status": "CANCELLED_GRACEFULLY",
+    "active_python_processes": 0,
+    "start_time_iso": "2026-10-28T00:05:15+05:30",
+    "cancellation_time_iso": "2026-10-28T00:16:08+05:30",
+    "elapsed_seconds": 653.0
+  },
+  "execution_stages_status": {
+    "data_loading_and_invariants": "COMPLETED",
+    "scaler_fitting_and_standardization": "COMPLETED (ran prior in prepare_phase7b_scaler_and_data.py)",
+    "stage_1_model_training": "COMPLETED_ALL_4_MODELS",
+    "stage_2_validation_selection": "COMPLETED_IN_MEMORY (buffered stdout)",
+    "stage_3_test_confirmatory_scoring": "COMPLETED_IN_MEMORY (buffered stdout)",
+    "step_4_bootstrap_uncertainty": "INTERRUPTED_DURING_EXECUTION",
+    "step_5_artifact_serialization": "NOT_EXECUTED (no results JSON/CSV files created)"
+  },
+  "trained_checkpoints": [
+    {
+      "model_key": "random_forest",
+      "model_name": "Random Forest",
+      "path": "models/checkpoints_phase7b/random_forest_phase7b.joblib",
+      "sha256": "3dcd7704bab47790c7e360902767d41458f7c976b77f55b7d4f96556a67510b3",
+      "size_bytes": 3800977,
+      "mtime_iso": "2026-10-28T00:05:21+05:30",
+      "status": "PRESERVED"
+    },
+    {
+      "model_key": "temporal_lstm",
+      "model_name": "Temporal LSTM",
+      "path": "models/checkpoints_phase7b/best_lstm_checkpoint_phase7b.pt",
+      "sha256": "bdb5083b2f9efac08170966fc61c8d62e5278b954156e884870e9c513f51118e",
+      "size_bytes": 255801,
+      "mtime_iso": "2026-10-28T00:05:24+05:30",
+      "status": "PRESERVED"
+    },
+    {
+      "model_key": "compact_transformer",
+      "model_name": "Compact Temporal Transformer",
+      "path": "models/checkpoints_phase7b/best_transformer_checkpoint_phase7b.pt",
+      "sha256": "54267c7b9daaedf167a9990f11895e6dcb116baafa86304b8e7aa88262b973db",
+      "size_bytes": 92484,
+      "mtime_iso": "2026-10-28T00:05:38+05:30",
+      "status": "PRESERVED"
+    },
+    {
+      "model_key": "representation_hybrid",
+      "model_name": "Representation Hybrid",
+      "path": "models/checkpoints_phase7b/representation_hybrid_phase7b.joblib",
+      "sha256": "e3ae8bcbb92a643c0f6adf668f11aa8cc7b5be96def25fad07dd3b7f49df7f84",
+      "size_bytes": 3324897,
+      "mtime_iso": "2026-10-28T00:05:46+05:30",
+      "status": "PRESERVED"
+    }
+  ],
+  "scaler_and_data_audit": {
+    "reprocessing_rationale": "Protocol v2.0 mandates standardization parameters fitted strictly on Candidate A training data. Phase 7A diagnostic data was standardized with legacy Phase 2 entity-split parameters.",
+    "scaler_saved_path": "configs/fitted_scaler_phase7b.json",
+    "scaler_sha256": "a4af2a776cdb552a6de7a2f1f2cb469929ed485dbafa9bf60f8b87225413a6ae",
+    "overwrote_historical_configs": false,
+    "historical_scaler_preserved": {
+      "path": "configs/fitted_scaler.json",
+      "mtime": "2026-10-26T13:07:00",
+      "unmodified": true
+    },
+    "inversion_accuracy": "Exact within float32 numerical precision (~1.19e-7)",
+    "imputation_finding": "Phase 2 imputed medians (e.g. CPI=2.50) were present in the inverted raw feature array; Candidate A scaler was fitted over this array. No NaNs or cross-split leakage occurred, but missing values carried legacy training median.",
+    "data_tensors_standardized_on_candidate_a": {
+      "train_shape": [3278, 5, 31],
+      "val_shape": [657, 5, 31],
+      "test_shape": [1025, 5, 31],
+      "train_means_near_zero": true,
+      "train_stds_near_one": true
+    }
+  },
+  "evaluation_sequence_audit": {
+    "validation_only_candidate_selection": true,
+    "frozen_before_test_scoring": true,
+    "descriptive_benchmarks_only_for_other_models": true,
+    "bootstrap_performed_on_frozen_predictions_only": true,
+    "gates_match_protocol_v2": true,
+    "holdout_accessed": false
+  },
+  "unwritten_results_files": [
+    "results/phase7b/training_manifest.json",
+    "results/phase7b/validation_metrics.json",
+    "results/phase7b/test_evaluation_results.json",
+    "results/phase7b/bootstrap_ci.json",
+    "results/phase7b/test_predictions.csv",
+    "results/phase7b/test_episode_metrics.csv"
+  ]
+}

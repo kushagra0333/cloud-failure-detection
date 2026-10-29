@@ -1,0 +1,231 @@
+{
+  "audit_metadata": {
+    "phase": "Phase 7H-A \u2014 Metric, Normalization, and Provenance Verification",
+    "audit_id": "AUDIT-1-METRIC-REPRODUCTION",
+    "timestamp": "2026-10-28T21:18:00+05:30",
+    "dataset_split": "Candidate A Validation Split Only (N=657)",
+    "source_predictions_csv": "results/phase7h/validation_predictions.csv",
+    "assertions_passed": [
+      "All confusion matrix totals equal 657 (100% of validation rows accounted for)",
+      "Per-class recalls derived from confusion matrix exactly equal reported classification recalls",
+      "All denominators and edge-case handlings documented and mathematically verified"
+    ]
+  },
+  "denominators_and_definitions": {
+    "total_validation_rows": 657,
+    "class_support": {
+      "class_0_normal_windows": 560,
+      "class_1_warning_windows": 48,
+      "class_2_critical_windows": 49,
+      "sum_support": 657
+    },
+    "entity_support": {
+      "total_validation_entities": 69,
+      "failing_entities": 20,
+      "pure_normal_entities": 49
+    },
+    "parent_job_support": {
+      "total_validation_parent_jobs": 12,
+      "failing_parent_jobs": 8,
+      "pure_normal_parent_jobs": 4,
+      "pure_normal_job_ids": [
+        4665617026,
+        6250023935,
+        6251664479,
+        6251933641
+      ]
+    },
+    "episode_support": {
+      "total_validation_failure_episodes": 20,
+      "episode_grouping_key": [
+        "entity_id",
+        "fail_timestamp"
+      ],
+      "definition": "Pre-failure degradation interval ending at physical failure timestamp"
+    },
+    "metric_formulas": {
+      "Macro_F1": "Arithmetic mean of unweighted per-class F1 scores: mean([F1_0, F1_1, F1_2])",
+      "Balanced_Accuracy": "Arithmetic mean of per-class recalls: mean([Recall_0, Recall_1, Recall_2])",
+      "Episode_Recall": "Number of failure episodes with >=1 failure alert (y_pred > 0) in (0, 1800s] / 20",
+      "Entity_FAR": "Number of pure-normal entities with >=1 false alarm (y_pred > 0) / 49",
+      "Window_FPR": "Number of true-normal windows (y_true == 0) with y_pred > 0 / 560",
+      "Parent_Job_FAR": "Number of pure-normal parent jobs with >=1 false alarm / 4"
+    }
+  },
+  "models": {
+    "transformer_hierarchical_baseline": {
+      "confusion_matrix": [
+        [
+          458,
+          66,
+          36
+        ],
+        [
+          23,
+          25,
+          0
+        ],
+        [
+          40,
+          8,
+          1
+        ]
+      ],
+      "cm_sum": 657,
+      "support": [
+        560,
+        48,
+        49
+      ],
+      "precision": [
+        0.8790786948176583,
+        0.25252525252525254,
+        0.02702702702702703
+      ],
+      "recall": [
+        0.8178571428571428,
+        0.5208333333333334,
+        0.02040816326530612
+      ],
+      "f1": [
+        0.84736355226642,
+        0.3401360544217687,
+        0.023255813953488372
+      ],
+      "macro_f1": 0.40358514021389236,
+      "balanced_accuracy": 0.4530328798185941,
+      "episode_metrics": {
+        "total_episodes": 20,
+        "detected_episodes": 12,
+        "episode_recall_pct": 60.0
+      },
+      "false_alarm_metrics": {
+        "pure_normal_entities": 49,
+        "fa_entities": 13,
+        "entity_far_pct": 26.53061224489796,
+        "normal_windows": 560,
+        "fp_windows": 102,
+        "window_fpr_pct": 18.21428571428571,
+        "pure_normal_jobs": 4,
+        "fa_jobs": 2,
+        "job_far_pct": 50.0
+      }
+    },
+    "transformer_hierarchical_floored": {
+      "confusion_matrix": [
+        [
+          334,
+          148,
+          78
+        ],
+        [
+          22,
+          7,
+          19
+        ],
+        [
+          30,
+          3,
+          16
+        ]
+      ],
+      "cm_sum": 657,
+      "support": [
+        560,
+        48,
+        49
+      ],
+      "precision": [
+        0.8652849740932642,
+        0.04430379746835443,
+        0.1415929203539823
+      ],
+      "recall": [
+        0.5964285714285714,
+        0.14583333333333334,
+        0.32653061224489793
+      ],
+      "f1": [
+        0.7061310782241015,
+        0.06796116504854369,
+        0.19753086419753085
+      ],
+      "macro_f1": 0.32387436915672535,
+      "balanced_accuracy": 0.35626417233560087,
+      "episode_metrics": {
+        "total_episodes": 20,
+        "detected_episodes": 12,
+        "episode_recall_pct": 60.0
+      },
+      "false_alarm_metrics": {
+        "pure_normal_entities": 49,
+        "fa_entities": 47,
+        "entity_far_pct": 95.91836734693877,
+        "normal_windows": 560,
+        "fp_windows": 226,
+        "window_fpr_pct": 40.35714285714286,
+        "pure_normal_jobs": 4,
+        "fa_jobs": 4,
+        "job_far_pct": 100.0
+      }
+    },
+    "transformer_hierarchical_robust": {
+      "confusion_matrix": [
+        [
+          394,
+          97,
+          69
+        ],
+        [
+          28,
+          4,
+          16
+        ],
+        [
+          24,
+          8,
+          17
+        ]
+      ],
+      "cm_sum": 657,
+      "support": [
+        560,
+        48,
+        49
+      ],
+      "precision": [
+        0.8834080717488789,
+        0.03669724770642202,
+        0.16666666666666666
+      ],
+      "recall": [
+        0.7035714285714286,
+        0.08333333333333333,
+        0.3469387755102041
+      ],
+      "f1": [
+        0.7833001988071571,
+        0.050955414012738856,
+        0.2251655629139073
+      ],
+      "macro_f1": 0.3531403919112677,
+      "balanced_accuracy": 0.3779478458049887,
+      "episode_metrics": {
+        "total_episodes": 20,
+        "detected_episodes": 11,
+        "episode_recall_pct": 55.00000000000001
+      },
+      "false_alarm_metrics": {
+        "pure_normal_entities": 49,
+        "fa_entities": 45,
+        "entity_far_pct": 91.83673469387756,
+        "normal_windows": 560,
+        "fp_windows": 166,
+        "window_fpr_pct": 29.642857142857142,
+        "pure_normal_jobs": 4,
+        "fa_jobs": 4,
+        "job_far_pct": 100.0
+      }
+    }
+  }
+}

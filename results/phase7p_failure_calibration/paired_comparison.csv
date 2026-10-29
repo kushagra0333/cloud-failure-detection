@@ -1,0 +1,4 @@
+comparison,seed,diff_macro_f1,diff_episode_recall,diff_critical_recall,diff_warning_recall,diff_entity_far,diff_window_fpr
+V1_vs_V0,42,0.0,0.0,0.0,0.0,0.0,0.0
+V1_vs_V0,123,-0.02477260097911005,-5.0,0.0,-4.166666666666666,0.0,-0.5357142857142857
+V1_vs_V0,456,0.0011868141694231227,0.0,0.0,0.0,-8.16326530612245,-0.7142857142857143

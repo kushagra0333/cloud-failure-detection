@@ -1,0 +1,66 @@
+{
+  "audit_phase": "Phase 7B Pre-Training Pipeline Verification",
+  "timestamp_iso": "2026-10-27T23:45:00+05:30",
+  "candidate_a_frozen_csv": {
+    "path": "c:/Users/hp/Desktop/Research project/results/phase7a_4/candidate_a_job_grouped_split.csv",
+    "sha256": "f84bc4fe54f8e0583e2ee52f49b2fbe8e6fcafb4f020c656985a1acc31bb4946",
+    "verified_immutable": true
+  },
+  "phase7b_dataset_files": {
+    "X_train.npy": "9818945f2bb5e8ccb237fb356ab4da61576466a2d43819969e6e65bd5800777b",
+    "y_train.npy": "da8f7731767eac3750a0281824c16f4a2411c16b66b6b8d2c6db8ae8253b9ee0",
+    "train_metadata.csv": "b4484d64190843a85766222d18c496b698015f910f56f3fc3966a8ed0b13ec8c",
+    "X_val.npy": "8a4a61338cd70fb2b658d26ff2fcce67f77a92b50330b772c81f30cdf416f3d8",
+    "y_val.npy": "2527024a14eb15db060ab9ec1f13bad810a211653c3029d08dcc280a516e206b",
+    "val_metadata.csv": "995a748ba6aecadeece64b633fb9c2ca94dfa49257cb9b3cd9bcaff4089f84d6",
+    "X_test.npy": "c4f78d78215142423af3b0038339a6722fd60bab10e3d8a9ad7ea640f525eaad",
+    "y_test.npy": "511964b124f7b6719da1b94c8f91e069e9c91f8d612acedd4f309d371e5d19aa",
+    "test_metadata.csv": "3e3958cef76b78691f9c0b6682ceff2809ccd80d551b57a8eb3093069f6e8dfe"
+  },
+  "split_counts": {
+    "train": {
+      "windows": 3278,
+      "entities": 284,
+      "parent_jobs": 51,
+      "class_distribution": {
+        "normal": 2797,
+        "warning": 244,
+        "critical": 237
+      }
+    },
+    "val": {
+      "windows": 657,
+      "entities": 69,
+      "parent_jobs": 12,
+      "class_distribution": {
+        "normal": 560,
+        "warning": 48,
+        "critical": 49
+      }
+    },
+    "test": {
+      "windows": 1025,
+      "entities": 59,
+      "parent_jobs": 11,
+      "class_distribution": {
+        "normal": 921,
+        "warning": 49,
+        "critical": 55
+      }
+    }
+  },
+  "data_pipeline_verification": {
+    "post_failure_endpoint_violations": 0,
+    "cross_failure_history_violations": 0,
+    "nan_inf_features_detected": false,
+    "invalid_labels_detected": false,
+    "duplicate_windows_detected": false,
+    "pairwise_parent_job_overlap": {
+      "train_val": 0,
+      "train_test": 0,
+      "val_test": 0
+    },
+    "target_leakage_in_features": false,
+    "status": "ALL_PRETRAINING_CHECKS_PASSED"
+  }
+}
