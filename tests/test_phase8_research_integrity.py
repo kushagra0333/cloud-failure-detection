@@ -99,3 +99,4 @@ def test_mandatory_safety_statement():
 
     rec_md_path = REPORTS_DIR / "phase8_final_evaluation_recommendation.md"
     assert EXPECTED_SAFETY_STATEMENT in rec_md_path.read_text(encoding="utf-8")
+
