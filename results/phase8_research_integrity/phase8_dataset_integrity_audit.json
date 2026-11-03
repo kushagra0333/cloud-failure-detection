@@ -1,0 +1,760 @@
+{
+  "metadata": {
+    "phase": "Phase 8",
+    "title": "Research Dataset Integrity, Leakage Audit & Final Testing Readiness",
+    "timestamp_utc": "2026-11-03T14:09:42.024431+00:00",
+    "project_root": "C:\\Users\\hp\\Desktop\\Research project",
+    "final_audit_verdict": "NO_VALID_INDEPENDENT_TEST_SET_IDENTIFIED",
+    "verdict_justification": "Phase 8 verified that: (1) Candidate A Test was previously evaluated and published in Phase 7D, disqualifying it as an untouched final holdout; (2) Phase 6 Confirmatory holdout is spent and strictly quarantined under governance rules; (3) Forensic census of raw Borg 2011 shards proves the trace is completely exhausted of unused failing tasks; (4) Randomly splitting previously inspected data is strictly prohibited by research governance. Consequently, the research paper must report existing Phase 7D-7U experiments as development and validation findings, transparently disclosing the absence of an unaccessed independent test partition as a methodological boundary."
+  },
+  "candidate_a_provenance": {
+    "directory": "data/processed/phase7c",
+    "total_windows": 4960,
+    "train_windows": 3278,
+    "val_windows": 657,
+    "test_windows": 1025,
+    "files": {
+      "train_metadata.csv": {
+        "size_bytes": 164062,
+        "sha256": "0180ade4098711680c44bbd2ca8c3c5d85834a86042546cc9300b00f1df725ce"
+      },
+      "val_metadata.csv": {
+        "size_bytes": 32677,
+        "sha256": "8d22193f11d671dc570d29abf9255d06386880d49c5de83c68d6404a8b41b956"
+      },
+      "test_metadata.csv": {
+        "size_bytes": 55645,
+        "sha256": "5bf69371833c4b90558afaf0f445244252bc6a6cc5a368cc2cc027d8a38fb4cf"
+      },
+      "X_train.npy": {
+        "size_bytes": 2032488,
+        "sha256": "6d3a7aca61f84732da301ede11c276afeafd7cbf863b2ce3b5ba4e71e843702d"
+      },
+      "X_val.npy": {
+        "size_bytes": 407468,
+        "sha256": "ce25dc6e5783730db200ef7c3ee85b9023be76b344f2982347ff28fb6bf7479e"
+      },
+      "X_test.npy": {
+        "size_bytes": 635628,
+        "sha256": "1199fce77261166a19f8885b9d92f34fadf308af85b05f43dd55b6c67984ea14"
+      },
+      "y_train.npy": {
+        "size_bytes": 26352,
+        "sha256": "355ca59b1609780181fabe8f06c6ab51cc5c53cfbec91cb822d76b8e373fab1e"
+      },
+      "y_val.npy": {
+        "size_bytes": 5384,
+        "sha256": "eb968a74ae86dcc574f3341055ff45ca9fcf77ec5a1b4cee5ad8cb4c1e2631b9"
+      },
+      "y_test.npy": {
+        "size_bytes": 8328,
+        "sha256": "c073fe68540017728fd2ddde25bf7334c3b95cdcc760cd556764ca23a0c307b0"
+      }
+    },
+    "entity_leakage": "VERIFIED_ZERO (0 entity or job overlap across train/val/test)"
+  },
+  "protected_holdouts": {
+    "confirmatory_v1": {
+      "directory": "data/processed/confirmatory",
+      "files": [
+        {
+          "file_name": "confirmatory_metadata.csv",
+          "size_bytes": 67386,
+          "last_modified_timestamp": 1793007379.9033115,
+          "exists": true
+        },
+        {
+          "file_name": "X_confirmatory.npy",
+          "size_bytes": 4828688,
+          "last_modified_timestamp": 1793007379.8881423,
+          "exists": true
+        },
+        {
+          "file_name": "y_confirmatory.npy",
+          "size_bytes": 20896,
+          "last_modified_timestamp": 1793007379.8903103,
+          "exists": true
+        }
+      ],
+      "status": "PROTECTED_UNACCESSED"
+    },
+    "confirmatory_l5": {
+      "directory": "data/processed/confirmatory_l5",
+      "files": [
+        {
+          "file_name": "confirmatory_l5_metadata.csv",
+          "size_bytes": 156696,
+          "last_modified_timestamp": 1793107527.768498,
+          "exists": true
+        },
+        {
+          "file_name": "X_confirmatory_l5.npy",
+          "size_bytes": 3416948,
+          "last_modified_timestamp": 1793107527.750281,
+          "exists": true
+        },
+        {
+          "file_name": "y_confirmatory_l5.npy",
+          "size_bytes": 44216,
+          "last_modified_timestamp": 1793107527.750281,
+          "exists": true
+        }
+      ],
+      "status": "PROTECTED_UNACCESSED"
+    }
+  },
+  "dataset_roles_and_contamination": [
+    {
+      "dataset_identifier": "data/processed/phase7c/train",
+      "role": "Training & Out-of-Fold Preprocessing/Tuning",
+      "window_count": 3278,
+      "entity_count": 284,
+      "job_count": 51,
+      "contamination_status": "VERIFIED (Clean training partition)",
+      "description": "Used exclusively for parameter learning, representation learning, scaler fitting, and k-fold cross-validation."
+    },
+    {
+      "dataset_identifier": "data/processed/phase7c/val",
+      "role": "Validation, Model Comparison & Diagnostic Evaluation",
+      "window_count": 657,
+      "entity_count": 69,
+      "job_count": 12,
+      "contamination_status": "EXPOSED_TO_DEVELOPMENT (Validation partition)",
+      "description": "Used repeatedly across Phases 7D-7U for architecture comparisons, ablation diagnostics, and threshold sweeps. Scientifically valid for validation reporting, but cannot be treated as an unaccessed test holdout."
+    },
+    {
+      "dataset_identifier": "data/processed/phase7c/test (Candidate A Test)",
+      "role": "Previous One-Shot Test Evaluation (Phase 7D)",
+      "window_count": 1025,
+      "entity_count": 59,
+      "job_count": 11,
+      "contamination_status": "CONFIRMED_LEAKAGE / PREVIOUSLY_EVALUATED",
+      "description": "Evaluated in Phase 7D across Random Forest, LSTM, Transformer, and Hybrid. Its performance was published in reports/phase7d/. Disqualified from serving as a virgin final evaluation holdout."
+    },
+    {
+      "dataset_identifier": "data/processed/confirmatory_l5",
+      "role": "Historical Phase 6 Confirmatory Holdout",
+      "window_count": 5511,
+      "entity_count": 335,
+      "job_count": "Historical cohort",
+      "contamination_status": "PROTECTED_UNACCESSED / SPENT_IN_PHASE_6",
+      "description": "Evaluated in Phase 6.4, found to have label contamination in Phase 6.8. Quarantined bit-for-bit. Forbidden from access."
+    },
+    {
+      "dataset_identifier": "data/processed/ (Root legacy)",
+      "role": "Legacy Phase 1-4 Development Splits",
+      "window_count": 6816,
+      "entity_count": "Legacy",
+      "job_count": "Legacy",
+      "contamination_status": "CONFIRMED_LEAKAGE (Defective pre-Phase 7A labels)",
+      "description": "Contaminated by post-failure recovery window mislabeling (repaired in Phase 7A). Historical baseline interest only."
+    },
+    {
+      "dataset_identifier": "data/raw/ (Borg 2011 trace shards)",
+      "role": "Source Trace Archive",
+      "window_count": "Exhausted of unused failing tasks",
+      "entity_count": "Exhausted",
+      "job_count": "Exhausted",
+      "contamination_status": "EXHAUSTED",
+      "description": "Contains sample_task_events*.csv.gz and sample_task_usage*.csv.gz. All tasks with >= 5 pre-failure intervals were previously allocated to Candidate A or Phase 6 holdout."
+    }
+  ],
+  "feasibility_options": {
+    "option_1": {
+      "name": "Existing Untouched Partition",
+      "verdict": "NOT_AVAILABLE",
+      "rationale": "Every partition in data/processed/ has either been evaluated (Candidate A Test in Phase 7D, Phase 2 test in Phase 4), exposed to model comparison (Candidate A Val), contaminated by pre-7A labeling bugs, or is the quarantined Phase 6 holdout."
+    },
+    "option_2": {
+      "name": "New Chronological Entity-Level Partition from Unused Raw Borg 2011 Trace",
+      "verdict": "NOT_FEASIBLE",
+      "rationale": "Forensic trace census (proven in Phase 6 Feasibility Audit) confirmed that 100% of tasks with >= 15 pre-failure intervals and 100% of tasks with >= 5 pre-failure intervals in the raw sample files were already extracted into Candidate A or Phase 6 holdout. Zero unused failing entities with sufficient telemetry remain in data/raw/."
+    },
+    "option_3": {
+      "name": "No Valid Independent Test Partition (Transparent Limitation Disclosure)",
+      "verdict": "RECOMMENDED_AND_SELECTED",
+      "rationale": "Scientifically honest, defensible, and methodologically sound. Reports existing experimental series (Phase 7D-7U) as developmental and validation findings under strict data governance, while explicitly documenting that Candidate A Test was previously spent and the sample trace is exhausted of independent failure episodes."
+    }
+  },
+  "experiment_history": [
+    {
+      "experiment_id": "EXP-7D-01",
+      "phase": "Phase 7D",
+      "model": "Random Forest (M*)",
+      "training_data": "Candidate A Train (N=3,278)",
+      "validation_data": "Candidate A Val (N=657)",
+      "test_data": "Candidate A Test (N=1,025) [EXPOSED]",
+      "threshold_selection": "Default argmax on Train",
+      "hyperparameter_tuning": "Protocol v2.0 pre-registered defaults (n_estimators=100, max_depth=15)",
+      "metrics": {
+        "val_macro_f1": 0.3653,
+        "test_macro_f1": 0.4023,
+        "test_accuracy": 0.8146,
+        "test_episode_recall_pct": 42.86,
+        "test_critical_recall_pct": 23.64,
+        "test_entity_far_pct": 65.79,
+        "test_window_fpr_pct": 11.18,
+        "gates_passed": false
+      },
+      "data_contamination_risk": "CONFIRMED_LEAKAGE (Test set evaluated and exposed)",
+      "paper_eligibility": "Reportable as Benchmark Baseline only; Test set disqualified as future holdout"
+    },
+    {
+      "experiment_id": "EXP-7D-02",
+      "phase": "Phase 7D",
+      "model": "Temporal LSTM (Unweighted)",
+      "training_data": "Candidate A Train (N=3,278)",
+      "validation_data": "Candidate A Val (N=657)",
+      "test_data": "Candidate A Test (N=1,025) [EXPOSED]",
+      "threshold_selection": "Default argmax",
+      "hyperparameter_tuning": "2-layer LSTM, hidden_dim=64, dropout=0.20, lr=1e-3",
+      "metrics": {
+        "val_macro_f1": 0.3068,
+        "test_macro_f1": 0.3155,
+        "test_accuracy": 0.8985,
+        "test_episode_recall_pct": 0.0,
+        "test_critical_recall_pct": 0.0,
+        "test_entity_far_pct": 0.0,
+        "test_window_fpr_pct": 0.0,
+        "gates_passed": false
+      },
+      "data_contamination_risk": "CONFIRMED_LEAKAGE (Test set evaluated and exposed)",
+      "paper_eligibility": "Reportable as Unweighted Baseline demonstrating majority-class mode collapse"
+    },
+    {
+      "experiment_id": "EXP-7D-03",
+      "phase": "Phase 7D",
+      "model": "Compact Temporal Transformer",
+      "training_data": "Candidate A Train (N=3,278)",
+      "validation_data": "Candidate A Val (N=657)",
+      "test_data": "Candidate A Test (N=1,025) [EXPOSED]",
+      "threshold_selection": "Default argmax",
+      "hyperparameter_tuning": "2-layer Transformer, d_model=64, nhead=4, d_ff=128",
+      "metrics": {
+        "val_macro_f1": 0.3328,
+        "test_macro_f1": 0.3505,
+        "test_accuracy": 0.9015,
+        "test_episode_recall_pct": 4.76,
+        "test_critical_recall_pct": 5.45,
+        "test_entity_far_pct": 0.0,
+        "test_window_fpr_pct": 0.0,
+        "gates_passed": false
+      },
+      "data_contamination_risk": "CONFIRMED_LEAKAGE (Test set evaluated and exposed)",
+      "paper_eligibility": "Reportable as Baseline demonstrating severe sensitivity deficit"
+    },
+    {
+      "experiment_id": "EXP-7D-04",
+      "phase": "Phase 7D",
+      "model": "Representation Hybrid",
+      "training_data": "Candidate A Train (N=3,278)",
+      "validation_data": "Candidate A Val (N=657)",
+      "test_data": "Candidate A Test (N=1,025) [EXPOSED]",
+      "threshold_selection": "Default argmax",
+      "hyperparameter_tuning": "LSTM feature extractor + RF classification head",
+      "metrics": {
+        "val_macro_f1": 0.288,
+        "test_macro_f1": 0.4074,
+        "test_accuracy": 0.7668,
+        "test_episode_recall_pct": 80.95,
+        "test_critical_recall_pct": 58.18,
+        "test_entity_far_pct": 57.89,
+        "test_window_fpr_pct": 18.57,
+        "gates_passed": false
+      },
+      "data_contamination_risk": "CONFIRMED_LEAKAGE (Test set evaluated and exposed)",
+      "paper_eligibility": "Reportable as Demonstration of Sensitivity-Specificity tension"
+    },
+    {
+      "experiment_id": "EXP-7E-01",
+      "phase": "Phase 7E",
+      "model": "Weighted Temporal LSTM & Transformer",
+      "training_data": "Candidate A Train (N=3,278)",
+      "validation_data": "Candidate A Val (N=657)",
+      "test_data": "None (Strictly quarantined)",
+      "threshold_selection": "Failure-risk threshold sweep tau in [0.05, 0.95] on Val",
+      "hyperparameter_tuning": "Inverse-frequency class loss weights [1.0, 11.46, 11.80]",
+      "metrics": {
+        "val_macro_f1": 0.3463,
+        "val_episode_recall_pct": 30.0,
+        "val_critical_recall_pct": 22.92,
+        "val_entity_far_pct": 20.41,
+        "val_window_fpr_pct": 8.57,
+        "gates_passed": false
+      },
+      "data_contamination_risk": "POTENTIAL_LEAKAGE (Threshold sweep evaluated on Validation set)",
+      "paper_eligibility": "Reportable as Class Weighting ablation / methodological study"
+    },
+    {
+      "experiment_id": "EXP-7F-01",
+      "phase": "Phase 7F",
+      "model": "Focal Loss & Task-Relative Normalization",
+      "training_data": "Candidate A Train (N=3,278)",
+      "validation_data": "Candidate A Val (N=657)",
+      "test_data": "None (Strictly quarantined)",
+      "threshold_selection": "Grid sweep on Validation",
+      "hyperparameter_tuning": "Multi-class Focal Loss (gamma in [1.0, 3.0]) + task baselines",
+      "metrics": {
+        "val_macro_f1": 0.3313,
+        "val_episode_recall_pct": 85.0,
+        "val_critical_recall_pct": 81.63,
+        "val_entity_far_pct": 91.84,
+        "val_window_fpr_pct": 56.43,
+        "gates_passed": false
+      },
+      "data_contamination_risk": "POTENTIAL_LEAKAGE (Validation set used to observe job clustering)",
+      "paper_eligibility": "Reportable as Error Forensics demonstrating Job Clustering effect"
+    },
+    {
+      "experiment_id": "EXP-7G-01",
+      "phase": "Phase 7G",
+      "model": "Hierarchical Causal Baseline",
+      "training_data": "Candidate A Train (N=3,278)",
+      "validation_data": "Candidate A Val (N=657)",
+      "test_data": "None (Strictly quarantined)",
+      "threshold_selection": "2-step sequential thresholding",
+      "hyperparameter_tuning": "Step 1: Normal vs Failure, Step 2: Warning vs Critical",
+      "metrics": {
+        "val_macro_f1": 0.3541,
+        "val_episode_recall_pct": 75.0,
+        "val_critical_recall_pct": 65.31,
+        "val_entity_far_pct": 73.47,
+        "val_window_fpr_pct": 39.29,
+        "gates_passed": false
+      },
+      "data_contamination_risk": "POTENTIAL_LEAKAGE (Validation-guided routing design)",
+      "paper_eligibility": "Reportable as Architecture ablation study"
+    },
+    {
+      "experiment_id": "EXP-7K-01",
+      "phase": "Phase 7K",
+      "model": "Systematic Feature Ablation Series (M0-M5)",
+      "training_data": "Candidate A Train (N=3,278)",
+      "validation_data": "Candidate A Val (N=657)",
+      "test_data": "None (Strictly quarantined)",
+      "threshold_selection": "Constrained G2 threshold optimization",
+      "hyperparameter_tuning": "Systematic removal of CPU, memory, disk, network, and relative groups",
+      "metrics": {
+        "val_macro_f1": 0.3582,
+        "val_episode_recall_pct": 25.0,
+        "val_critical_recall_pct": 14.29,
+        "val_entity_far_pct": 8.16,
+        "val_window_fpr_pct": 2.14,
+        "gates_passed": false
+      },
+      "data_contamination_risk": "POTENTIAL_LEAKAGE (Ablation evaluated on Validation set)",
+      "paper_eligibility": "Reportable as Feature Importance & Signal Source section"
+    },
+    {
+      "experiment_id": "EXP-7L-01",
+      "phase": "Phase 7L",
+      "model": "Sequence Length Ablation (L=12 vs L=20 vs L=30)",
+      "training_data": "Candidate A Train (L=12, L=20, L=30 variants)",
+      "validation_data": "Candidate A Val (L=12, L=20, L=30 variants)",
+      "test_data": "None (Strictly quarantined)",
+      "threshold_selection": "Train-OOF and Validation sweeps",
+      "hyperparameter_tuning": "Context length variation under causal alignment",
+      "metrics": {
+        "val_macro_f1": 0.361,
+        "val_episode_recall_pct": 30.0,
+        "val_critical_recall_pct": 18.37,
+        "val_entity_far_pct": 12.24,
+        "val_window_fpr_pct": 4.82,
+        "gates_passed": false
+      },
+      "data_contamination_risk": "POTENTIAL_LEAKAGE (Validation comparison across sequence lengths)",
+      "paper_eligibility": "Reportable as Context Window Length study"
+    },
+    {
+      "experiment_id": "EXP-7M-01",
+      "phase": "Phase 7M",
+      "model": "Multiresolution Temporal Architecture",
+      "training_data": "Candidate A Train (N=3,278 short + long cadence)",
+      "validation_data": "Candidate A Val (N=657 short + long cadence)",
+      "test_data": "None (Strictly quarantined)",
+      "threshold_selection": "Train-OOF constrained threshold selection",
+      "hyperparameter_tuning": "Dual-branch encoder (5-min and 15-min aggregation scales)",
+      "metrics": {
+        "val_macro_f1": 0.3514,
+        "val_episode_recall_pct": 35.0,
+        "val_critical_recall_pct": 16.33,
+        "val_entity_far_pct": 16.33,
+        "val_window_fpr_pct": 5.71,
+        "gates_passed": false
+      },
+      "data_contamination_risk": "POTENTIAL_LEAKAGE (Validation evaluation)",
+      "paper_eligibility": "Reportable as Multiscale Representation study"
+    },
+    {
+      "experiment_id": "EXP-7P-01",
+      "phase": "Phase 7P",
+      "model": "Post-Hoc Calibrated Risk Models",
+      "training_data": "Candidate A Train (OOF cross-validation for calibration)",
+      "validation_data": "Candidate A Val (N=657)",
+      "test_data": "None (Strictly quarantined)",
+      "threshold_selection": "Train-OOF calibrated threshold selection",
+      "hyperparameter_tuning": "Temperature Scaling, Isotonic Regression, Platt Scaling",
+      "metrics": {
+        "val_macro_f1": 0.352,
+        "val_ece": 0.0482,
+        "val_episode_recall_pct": 35.0,
+        "val_critical_recall_pct": 14.29,
+        "val_entity_far_pct": 12.24,
+        "val_window_fpr_pct": 3.93,
+        "gates_passed": false
+      },
+      "data_contamination_risk": "None (Calibrator fitted on Train-OOF, evaluated on Val)",
+      "paper_eligibility": "Reportable as Reliability & Calibration section"
+    },
+    {
+      "experiment_id": "EXP-7S-01",
+      "phase": "Phase 7S",
+      "model": "Relative Telemetry S2 (Task-Relative Normalization)",
+      "training_data": "Candidate A Train (N=3,278 with S2 features)",
+      "validation_data": "Candidate A Val (N=657 with S2 features)",
+      "test_data": "None (Strictly quarantined)",
+      "threshold_selection": "Fixed threshold tau=0.500 and Train-OOF tuning",
+      "hyperparameter_tuning": "Baseline subtraction: x_rel = (x - x_base) / sigma_base",
+      "metrics": {
+        "val_macro_f1": 0.3685,
+        "val_episode_recall_pct": 43.33,
+        "val_critical_recall_pct": 22.45,
+        "val_entity_far_pct": 37.41,
+        "val_window_fpr_pct": 10.3,
+        "gates_passed": false
+      },
+      "data_contamination_risk": "None (Causal initial-window baseline, zero future lookahead)",
+      "paper_eligibility": "Reportable as Relative vs Absolute Telemetry discovery (Core Contribution)"
+    },
+    {
+      "experiment_id": "EXP-7T-01",
+      "phase": "Phase 7T",
+      "model": "Linear Hybrid Blend (0.80 S2 + 0.20 S0)",
+      "training_data": "Candidate A Train (OOF predictions from S2 and S0)",
+      "validation_data": "Candidate A Val (N=657)",
+      "test_data": "None (Strictly quarantined)",
+      "threshold_selection": "Frozen operating policy selected strictly on Train-OOF (tau=0.765)",
+      "hyperparameter_tuning": "Linear combination weights alpha=0.80, beta=0.20",
+      "metrics": {
+        "val_macro_f1": 0.3702,
+        "val_episode_recall_pct": 36.67,
+        "val_critical_recall_pct": 17.01,
+        "val_entity_far_pct": 24.49,
+        "val_window_fpr_pct": 4.4,
+        "gates_passed": false
+      },
+      "data_contamination_risk": "None (Weights and threshold selected on Train-OOF)",
+      "paper_eligibility": "Reportable as Model Ensembling / Blending analysis"
+    },
+    {
+      "experiment_id": "EXP-7U-01",
+      "phase": "Phase 7U",
+      "model": "Type-1 Mamdani Interpretable Fuzzy Inference System",
+      "training_data": "Candidate A Train (Percentile breakpoints derived on Train-OOF)",
+      "validation_data": "Candidate A Val (N=657)",
+      "test_data": "None (Strictly quarantined)",
+      "threshold_selection": "Train-OOF constrained threshold selection (tau=1.0000; fixed tau=0.500)",
+      "hyperparameter_tuning": "9 inspectable linguistic Mamdani rules combining S2 and S0",
+      "metrics": {
+        "val_macro_f1": 0.365,
+        "val_episode_recall_pct": 66.67,
+        "val_critical_recall_pct": 27.21,
+        "val_entity_far_pct": 48.3,
+        "val_window_fpr_pct": 17.44,
+        "gates_passed": false
+      },
+      "data_contamination_risk": "None (Fuzzy breakpoints and thresholds derived strictly on Train-OOF)",
+      "paper_eligibility": "Reportable as Interpretable Decision Modeling section"
+    }
+  ],
+  "operational_gates": {
+    "gate_1a": {
+      "name": "Episode Recall",
+      "threshold": ">= 70.0%",
+      "unit": "percentage"
+    },
+    "gate_1b": {
+      "name": "Genuine Critical Recall",
+      "threshold": ">= 50.0%",
+      "unit": "percentage"
+    },
+    "gate_2a": {
+      "name": "Pure-Normal Entity FAR",
+      "threshold": "<= 10.0%",
+      "unit": "percentage"
+    },
+    "gate_2b": {
+      "name": "Normal-Window FPR",
+      "threshold": "<= 5.0%",
+      "unit": "percentage"
+    }
+  },
+  "models_comparison": [
+    {
+      "model_architecture": "Random Forest (M*)",
+      "source_phase": "Phase 7D",
+      "val_macro_f1": 0.3653,
+      "val_accuracy": 0.7306,
+      "episode_recall_pct": 42.86,
+      "genuine_critical_recall_pct": 23.64,
+      "pure_normal_entity_far_pct": 65.79,
+      "normal_window_fpr_pct": 11.18,
+      "pr_auc": {
+        "warning": 0.0415,
+        "critical": 0.2272
+      },
+      "roc_auc": 0.6748,
+      "training_config": "n_estimators=100, max_depth=15, min_samples_split=5, class_weight='balanced'",
+      "threshold_method": "Default argmax",
+      "primary_weakness": "High entity false alarm rate (65.79%) on pure-normal entities; misses 57% of failure episodes.",
+      "operational_verdict": "NO_OPERATIONAL_WINNER"
+    },
+    {
+      "model_architecture": "Temporal LSTM (Unweighted)",
+      "source_phase": "Phase 7D",
+      "val_macro_f1": 0.3068,
+      "val_accuracy": 0.8524,
+      "episode_recall_pct": 0.0,
+      "genuine_critical_recall_pct": 0.0,
+      "pure_normal_entity_far_pct": 0.0,
+      "normal_window_fpr_pct": 0.0,
+      "pr_auc": {
+        "warning": 0.1996,
+        "critical": 0.1485
+      },
+      "roc_auc": 0.612,
+      "training_config": "2-layer LSTM, hidden_dim=64, dropout=0.20, Adam lr=1e-3, uniform weights [1,1,1]",
+      "threshold_method": "Default argmax",
+      "primary_weakness": "Total majority-class collapse: predicts 100% normal windows, yielding zero sensitivity.",
+      "operational_verdict": "NO_OPERATIONAL_WINNER"
+    },
+    {
+      "model_architecture": "Temporal LSTM (Weighted, Inverse Freq)",
+      "source_phase": "Phase 7E",
+      "val_macro_f1": 0.3409,
+      "val_accuracy": 0.7823,
+      "episode_recall_pct": 10.0,
+      "genuine_critical_recall_pct": 8.16,
+      "pure_normal_entity_far_pct": 16.33,
+      "normal_window_fpr_pct": 6.79,
+      "pr_auc": {
+        "warning": 0.0712,
+        "critical": 0.0894
+      },
+      "roc_auc": 0.6986,
+      "training_config": "2-layer LSTM, weights [1.0, 11.46, 11.80]",
+      "threshold_method": "Argmax with inverse-frequency weighted cross-entropy",
+      "primary_weakness": "Breaks mode collapse but severely fails Episode Recall (10.0% vs >= 70%) and Critical Recall (8.16% vs >= 50%).",
+      "operational_verdict": "NO_OPERATIONAL_WINNER"
+    },
+    {
+      "model_architecture": "Compact Temporal Transformer",
+      "source_phase": "Phase 7D / 7E",
+      "val_macro_f1": 0.3463,
+      "val_accuracy": 0.8128,
+      "episode_recall_pct": 30.0,
+      "genuine_critical_recall_pct": 10.2,
+      "pure_normal_entity_far_pct": 20.41,
+      "normal_window_fpr_pct": 8.57,
+      "pr_auc": {
+        "warning": 0.0537,
+        "critical": 0.0782
+      },
+      "roc_auc": 0.7223,
+      "training_config": "2-layer TransformerEncoder, d_model=64, nhead=4, d_ff=128, dropout=0.10",
+      "threshold_method": "Weighted argmax / risk score sweep",
+      "primary_weakness": "Fails Gate 1 (Episode Recall 30% < 70%, Critical Recall 10.2% < 50%) and Gate 2 (FAR 20.4% > 10%).",
+      "operational_verdict": "NO_OPERATIONAL_WINNER"
+    },
+    {
+      "model_architecture": "Representation Hybrid",
+      "source_phase": "Phase 7D",
+      "val_macro_f1": 0.288,
+      "val_accuracy": 0.6088,
+      "episode_recall_pct": 80.95,
+      "genuine_critical_recall_pct": 58.18,
+      "pure_normal_entity_far_pct": 57.89,
+      "normal_window_fpr_pct": 18.57,
+      "pr_auc": {
+        "warning": 0.0638,
+        "critical": 0.176
+      },
+      "roc_auc": 0.7612,
+      "training_config": "Pretrained LSTM encoder (frozen representations) + Random Forest head",
+      "threshold_method": "Default argmax",
+      "primary_weakness": "Extreme false alarm rate (Window FPR 18.57%, Entity FAR 57.89%) despite high sensitivity.",
+      "operational_verdict": "NO_OPERATIONAL_WINNER"
+    },
+    {
+      "model_architecture": "Relative Telemetry S2 (Task-Relative Normalization)",
+      "source_phase": "Phase 7S",
+      "val_macro_f1": 0.3685,
+      "val_accuracy": 0.8356,
+      "episode_recall_pct": 43.33,
+      "genuine_critical_recall_pct": 22.45,
+      "pure_normal_entity_far_pct": 37.41,
+      "normal_window_fpr_pct": 10.3,
+      "pr_auc": {
+        "warning": 0.0842,
+        "critical": 0.162
+      },
+      "roc_auc": 0.7845,
+      "training_config": "Task-relative standardized inputs: x_rel = (x - x_base) / sigma_base; LSTM encoder",
+      "threshold_method": "Fixed threshold tau=0.500",
+      "primary_weakness": "Significantly suppresses false alarms from normal high-resource jobs, but misses abrupt failures lacking steady-state baselines.",
+      "operational_verdict": "NO_OPERATIONAL_WINNER"
+    },
+    {
+      "model_architecture": "Linear Hybrid Risk Blend (0.80 S2 + 0.20 S0)",
+      "source_phase": "Phase 7T",
+      "val_macro_f1": 0.3702,
+      "val_accuracy": 0.8412,
+      "episode_recall_pct": 36.67,
+      "genuine_critical_recall_pct": 17.01,
+      "pure_normal_entity_far_pct": 24.49,
+      "normal_window_fpr_pct": 4.4,
+      "pr_auc": {
+        "warning": 0.091,
+        "critical": 0.1712
+      },
+      "roc_auc": 0.8015,
+      "training_config": "Ensemble risk score R_hybrid = 0.80 * R_S2 + 0.20 * R_S0; evaluated at Train-OOF operating threshold tau=0.765",
+      "threshold_method": "Train-OOF constrained threshold selection (tau=0.765)",
+      "primary_weakness": "Passes Window FPR (4.40% <= 5%), but fails Entity FAR (24.49% > 10%) and Episode Recall (36.67% < 70%).",
+      "operational_verdict": "NO_OPERATIONAL_WINNER"
+    },
+    {
+      "model_architecture": "Type-1 Mamdani Fuzzy Inference System",
+      "source_phase": "Phase 7U",
+      "val_macro_f1": 0.365,
+      "val_accuracy": 0.8158,
+      "episode_recall_pct": 66.67,
+      "genuine_critical_recall_pct": 27.21,
+      "pure_normal_entity_far_pct": 48.3,
+      "normal_window_fpr_pct": 17.44,
+      "pr_auc": {
+        "warning": 0.089,
+        "critical": 0.168
+      },
+      "roc_auc": 0.798,
+      "training_config": "9 Mamdani rules combining S2 (relative) and S0 (absolute) probabilities; evaluated at fixed tau=0.50",
+      "threshold_method": "Fixed tau=0.50 (at tau=1.0, outputs 0% recall and 0% FAR)",
+      "primary_weakness": "Reaches 66.67% Episode Recall (near 70% gate), but suffers 48.30% Entity FAR due to rule-firing on transient resource bursts.",
+      "operational_verdict": "NO_OPERATIONAL_WINNER"
+    }
+  ],
+  "paper_results_checklist": {
+    "classification_metrics": {
+      "overall_accuracy": {
+        "status": "AVAILABLE",
+        "source": "All Phase 7D-7U reports"
+      },
+      "overall_macro_f1": {
+        "status": "AVAILABLE",
+        "source": "All Phase 7D-7U reports"
+      },
+      "weighted_f1": {
+        "status": "AVAILABLE",
+        "source": "Historical validation logs"
+      },
+      "per_class_precision": {
+        "status": "AVAILABLE",
+        "source": "Confusion matrices in Phase 7M-7U"
+      },
+      "per_class_recall": {
+        "status": "AVAILABLE",
+        "source": "Confusion matrices in Phase 7M-7U"
+      },
+      "per_class_f1": {
+        "status": "AVAILABLE",
+        "source": "Phase 7M-7U per_seed_metrics.csv"
+      },
+      "confusion_matrices": {
+        "status": "AVAILABLE",
+        "source": "Saved in results/phase7m..7u"
+      },
+      "pr_auc_per_class": {
+        "status": "AVAILABLE",
+        "source": "Warning and Critical PR-AUC in 7D-7U"
+      },
+      "roc_auc": {
+        "status": "AVAILABLE",
+        "source": "Computed across all candidate models"
+      }
+    },
+    "operational_metrics": {
+      "episode_recall_gate1a": {
+        "status": "AVAILABLE",
+        "benchmark": ">= 70%",
+        "result": "All fail (max 66.67% Fuzzy, 80.95% Hybrid with excessive FAR)"
+      },
+      "genuine_critical_recall_gate1b": {
+        "status": "AVAILABLE",
+        "benchmark": ">= 50%",
+        "result": "All fail (max 27.21% Fuzzy, 58.18% Hybrid with excessive FAR)"
+      },
+      "pure_normal_entity_far_gate2a": {
+        "status": "AVAILABLE",
+        "benchmark": "<= 10%",
+        "result": "All sensitive models fail (24.49% - 65.79%)"
+      },
+      "normal_window_fpr_gate2b": {
+        "status": "AVAILABLE",
+        "benchmark": "<= 5%",
+        "result": "Passed only by S0/S2 unweighted (0%) or Hybrid_Primary (4.40%) at severe cost to recall"
+      }
+    },
+    "comparative_experimental_studies": {
+      "rf_vs_lstm_vs_transformer": {
+        "status": "COMPLETE",
+        "finding": "RF dominates tabular features; LSTM/Transformer suffer majority collapse without weighting"
+      },
+      "absolute_vs_relative_telemetry": {
+        "status": "COMPLETE",
+        "finding": "Relative telemetry (S2) reduces false alarms on high-resource batch jobs by >30%"
+      },
+      "individual_vs_hybrid_ensembles": {
+        "status": "COMPLETE",
+        "finding": "Linear and fuzzy hybrids improve within-job AUC by +0.033 over pure relative"
+      },
+      "class_imbalance_treatments": {
+        "status": "COMPLETE",
+        "finding": "Inverse weighting and Focal loss eliminate mode collapse but trigger excessive false alarms"
+      },
+      "feature_ablations_m0_to_m5": {
+        "status": "COMPLETE",
+        "finding": "CPU and Memory dynamics account for 85%+ of predictive signal; Disk/Network marginal"
+      },
+      "context_window_length_study": {
+        "status": "COMPLETE",
+        "finding": "L=12 (1 hour) balances early detection with entity survival; L=30 leads to severe survival censoring"
+      },
+      "post_hoc_risk_calibration": {
+        "status": "COMPLETE",
+        "finding": "Isotonic and Platt calibration reduce ECE to <0.05, but do not solve underlying Bayes risk"
+      }
+    }
+  },
+  "frozen_future_evaluation_protocol": {
+    "status": "SPECIFIED_FROZEN_NOT_EXECUTED",
+    "objective": "Pre-registered protocol for when an unaccessed independent trace is unlocked (e.g. Google Borg 2019 or new Borg cell).",
+    "rules": [
+      "1. Dataset Provenance: Must be a completely distinct, unaccessed trace with full event and usage logs.",
+      "2. Entity & Job Isolation: Parent-job grouped splitting strictly enforced; zero cross-job leakage.",
+      "3. Horizon & Cadence: 300s discrete aggregation grid; L=12 observation window (60 min); 30-min warning horizon; 15-min critical horizon.",
+      "4. Causal Telemetry: Task-relative baseline normalization computed strictly from first valid execution step (x - x_base) / sigma_base.",
+      "5. Preprocessing Quarantine: Preprocessor parameters (means, stds, missing medians) fitted exclusively on Training partition.",
+      "6. Operating Policy: Models evaluated at pre-registered Train-OOF operating thresholds without post-hoc tuning.",
+      "7. Reporting: Full operational gates and complementary bootstrap confidence intervals reported without modification."
+    ]
+  },
+  "mandatory_safety_confirmations": {
+    "no_google_cloud_query_executed": true,
+    "no_borg_2019_data_extracted": true,
+    "no_phase6_confirmatory_holdout_accessed": true,
+    "no_candidate_a_test_data_newly_accessed": true,
+    "no_model_training_or_evaluation_performed": true,
+    "no_existing_research_results_overwritten": true
+  },
+  "mandatory_safety_statement": "No Google Cloud query was executed. No Borg 2019 data was extracted. No Phase 6 Confirmatory holdout was accessed. No Candidate A Test data was newly accessed during this audit. No model training or evaluation was performed. No existing research results were overwritten."
+}
